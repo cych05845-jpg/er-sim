@@ -1097,6 +1097,37 @@ body.lcfull .lfig svg{max-height:46vh}
 @media (min-width:1200px){body.lcfull .cwpage{zoom:1.18}}
 @media (min-width:1500px){body.lcfull .cwpage{zoom:1.38}}
 @media (min-width:1850px){body.lcfull .cwpage{zoom:1.6}}
+
+.qlinks{display:none}
+@media (min-width:1100px){.qlinks{display:grid;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:var(--shadow)}
+  .qlinks h3{margin:2px 6px 4px;font-size:15px}
+  .qlinks a{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px;border-radius:12px;text-decoration:none;color:var(--ink)}
+  .qlinks a:hover{background:var(--surface-2)}.qlinks .qi{width:40px;height:40px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center}.qlinks .qi img{width:28px;height:28px}
+  .qlinks b{display:block;font-size:15px}.qlinks small{font-size:12.5px;color:var(--ink-2)}.qlinks i{font-style:normal;color:var(--ink-2)}}
+/* ===== 電腦版：字放大、版面加寬（手機版不變） ===== */
+.homtop{display:grid;gap:18px}.homl,.homr{display:grid;gap:18px;align-content:start;min-width:0}
+.homr .sec-h{margin-top:0}
+.tnext{display:grid;gap:2px;min-width:0}.tnext small{font-size:12px;color:var(--warm-ink);font-weight:800}.tnext b{font-size:15.5px}.tnext span{font-size:13px;color:var(--ink-2);line-height:1.5}
+.today .tnext{grid-column:1/-1;border-top:1px dashed var(--tint-line);padding-top:10px}
+@media (min-width:640px){
+  .today{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"ring main go" "ring next med"}
+  .today .tring{grid-area:ring}.today .tmain{grid-area:main}.today .tgo{grid-area:go;align-self:center}.today .tmed{grid-area:med;align-self:end}.today .tnext{grid-area:next;grid-column:auto}
+}
+@media (min-width:1100px){
+  .wrap,.appbar .in{max-width:1120px}
+  .wrap{zoom:1.08}.appbar .in{zoom:1.06}
+  .sitem{font-size:17px;padding:10px 10px}.sitem img{width:28px;height:28px}.sgrp{font-size:13px}.sbrand{font-size:17.5px}
+  .homtop{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);align-items:start}
+  .homr{position:sticky;top:84px}
+  .extras.hubx{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mods{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+}
+@media (min-width:1400px){ .wrap{zoom:1.14}.appbar .in{zoom:1.1}
+  .side{width:284px}body{padding-left:284px}.tabs,.dock{left:284px}.backmenu{left:304px}
+  .sitem{font-size:18px;padding:11px 12px;gap:12px}.sitem img{width:30px;height:30px}.sgrp{font-size:13.5px;padding:14px 20px 5px}.sbrand{font-size:18.5px}.sbrand img{width:34px;height:34px} }
+@media (min-width:1800px){ .side{width:300px}body{padding-left:300px}.tabs,.dock{left:300px}.backmenu{left:320px}.sitem{font-size:19px}
+  .wrap,.appbar .in{max-width:1180px}.wrap{zoom:1.22}.appbar .in{zoom:1.16} }
+body.lcfull .wrap{zoom:1}
 .cwpage{min-height:220px}
 .cwnav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .cwnav .btn{text-decoration:none}
@@ -2278,7 +2309,7 @@ function fbRows(S, fb){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.16-k";
+const SIM_VER = "2026.10.16-m";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -2494,7 +2525,7 @@ function landing(code, msg){
   let pick = "", force = "";
   $("view").onclick = async e => {
     if (e.target.closest("#mk")) { const mode = (document.querySelector("[name=md]:checked") || {}).value;
-      e.target.disabled = true; const r = await api("simCreate", { mode }); e.target.disabled = false;
+      const mk = $("mk"), lab = mk.textContent; mk.disabled = true; mk.textContent = "建立中…（伺服器剛睡醒時要等 5–10 秒）"; const r = await api("simCreate", { mode }); mk.disabled = false; mk.textContent = lab;
       if (!r || !r.ok) return toast((r && r.error) || "建立失敗", true);
       hostSet(r.code, { key: r.hostKey, pin: r.pin }); go("b-" + r.code); return; }
     const b = e.target.closest("[data-role]"); if (!b) return;
@@ -2508,11 +2539,14 @@ function landing(code, msg){
     if (!/^\d{4}$/.test(c)) { $("jCode").focus(); return toast("請先輸入 4 位數房間號碼", true); }
     if (!name) { $("jName").focus(); return toast("請先輸入名字", true); }
     try { localStorage.setItem("sim2-name", name); } catch (x) {}
+    toast("加入中…");
     const r = await api("simJoin", { code: c, role, name, pin: role === "T" ? $("jPin").value : "", force: f });
     if (!r || !r.ok) { if (r && r.taken) force = role; return toast((r && r.error) || "加入失敗", true); }
     seatSet(c, { role, key: r.key, name: r.name }); go("p-" + c);
   }
   if (code) setTimeout(() => $("jName").value ? null : $("jName").focus(), 50);
+  /* 先叫醒伺服器（Apps Script 閒置後第一次呼叫較慢），按下建立或加入時就快了 */
+  if (LIVE()) try { fetch(API, { mode: "no-cors" }).catch(() => {}); } catch (e) {}
 }
 
 /* ================= 團隊運作圖（Q 版急救室） ================= */
