@@ -2309,7 +2309,7 @@ function fbRows(S, fb){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.16-m";
+const SIM_VER = "2026.10.16-n";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -2346,21 +2346,24 @@ function stopRoom(){ clearInterval(ST.poll); clearInterval(ST.tick); ST.poll = S
 /* 拉新事件：同一時間只拉一次；拉的時候又有人要拉，結束後再補拉一次 */
 async function pull(){
   if (ST.busy) { ST.again = true; return ST.busy; }
-  ST.busy = (async () => { do { ST.again = false; await pull1(); } while (ST.again); })();
-  try { await ST.busy; } finally { ST.busy = null; }
+  const job = ST.busy = (async () => { do { ST.again = false; await pull1(); } while (ST.again); })();
+  try { await job; } finally { if (ST.busy === job) ST.busy = null; }
 }
 const realN = () => ST.events.filter(e => !e.tmp).length;
 function repaint(){ if (!ST.meta) return; ST.S = derive(ST.meta, ST.events); ST.paintFns.forEach(f => { try { f(ST.S); } catch (e) { console.error(e); } }); }
 async function pull1(){
-  const code = ST.code; const r = await api("simGet", { code, since: realN() }); if (code !== ST.code) return;
+  /* 換角色或換房間時會重新開始同步；舊的請求回來就丟掉，避免漏掉前面的事件 */
+  const gen = ST.gen, since = realN(); const r = await api("simGet", { code: ST.code, since }); if (gen !== ST.gen) return;
   if (!r || !r.ok) { const o = $("offline"); if (o) { o.hidden = false; o.textContent = r && r.gone ? "房間已過期或不存在" : "連線中斷，正在重試…"; } ST.gone = !!(r && r.gone); return; }
   const o = $("offline"); if (o) o.hidden = true;
   ST.off = r.now - Date.now(); ST.meta = r.room;
   if (r.ev && r.ev.length) { const have = new Set(ST.events.map(e => e.i)); r.ev.forEach(e => { if (!have.has(e.i)) ST.events.push(e); }); ST.events.sort((a, b) => a.i - b.i); }
+  /* 保險：事件編號要從 0 連續；有缺就整份重拿 */
+  const real = ST.events.filter(e => !e.tmp); if (real.some((e, k) => e.i !== k)) { ST.events = ST.events.filter(e => e.tmp); ST.again = true; return; }
   repaint();
 }
 function startRoom(code, ...fns){
-  stopRoom(); ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
+  stopRoom(); ST.gen = (ST.gen || 0) + 1; ST.busy = null; ST.again = false; ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
   ST.poll = setInterval(() => { if (!document.hidden) pull(); }, LIVE() ? 1000 : 600);
   ST.tick = setInterval(() => { if (ST.S && ST.S.status !== "end") paintTimers(ST.S); }, 1000);
   return pull();
