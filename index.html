@@ -1441,6 +1441,18 @@ button.dst{cursor:pointer}.dst i{font-style:normal;font-weight:900;font-family:u
 .tfb{display:grid;gap:6px;border-left:5px solid var(--rc);padding:6px 0 10px 10px;margin:8px 0}.tfb label{display:grid;gap:3px;font-size:13px;font-weight:700}.tfb .free{margin-top:0}
 .free textarea{flex:1}
 .row.sticky{position:sticky;bottom:8px;z-index:5;background:var(--surface);padding:8px;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+/* 兼任、輪流壓胸 */
+.me{flex-wrap:wrap}.rsw{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.rsw button{font:inherit;font-weight:800;font-size:13.5px;padding:6px 12px;border-radius:999px;border:1.5px solid var(--rc,var(--line));background:var(--surface);color:var(--ink);cursor:pointer}
+.rsw button.on{background:var(--rc);color:#fff}.rsw button.add{border-style:dashed;border-color:var(--line);color:var(--ink-2)}
+.rsadd{flex-basis:100%;display:grid;gap:6px;margin-top:6px}.rsadd small{color:var(--ink-2)}.rsadd .chips button{border-color:var(--rc)!important}
+.compbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;border:2px solid #C63D2F;border-radius:16px;padding:10px 12px;margin-bottom:12px;background:color-mix(in oklab,#C63D2F 7%,var(--surface))}
+.compbar small{display:block;color:var(--ink-2);font-size:12px}.compbar b{font-size:16px}.compbar .cyc{text-align:right}.compbar .cyc b{font-family:ui-monospace,monospace;font-size:20px}
+.compbar .cyc b.warn{color:#C63D2F;animation:micpulse 1s infinite}
+.compbar .abtn{grid-column:1/-1}.compbar .abtn.sm{grid-column:auto}
+.few{margin:4px 0;font-size:14px}.few summary{cursor:pointer;font-weight:800}.few ul{margin:6px 0 0;padding-left:1.2em;display:grid;gap:4px;color:var(--ink-2)}
+.me .rsw,.me .rsadd{grid-column:1/-1}.rsw button{flex:0 0 auto;width:auto}
+.me div.rsw{display:flex;flex-wrap:wrap}.me div.rsadd{display:grid}
 
 </style>
 </head>
@@ -1994,8 +2006,12 @@ function derive(meta, events){
         return; }
     if (a.type === "ht" && role === "L") { const h = HT.find(h => h[0] === a.k); if (!h) return; S.ht[a.k] = a.on ? t : 0; if (a.on) log(e, `Leader 懷疑：${h[1]}`, { g: "ht", sp: `懷疑${h[1]}` }); return; }
     /* ---- 壓胸 ---- */
-    if (role === "C") {
-      if (a.type === "cpr") { if (!S.cpr) { S.cpr = true; S.cprSince = t; if (S.pauseAt) { S.pauses.push([S.pauseAt, t]); S.pauseAt = 0; } } log(e, a.swap ? "換手，繼續壓胸" : "開始壓胸", { g: a.swap ? "swap" : "cpr", sp: a.swap ? "換手壓胸" : "開始壓胸" }); cmdDone("C", a.swap ? "swap" : "cpr", t); cmdDone("C", "resume", t); return; }
+    /* 人少時：任何角色都可以接手壓胸、暫停檢查、摸脈搏（輪流壓胸） */
+    if (role === "C" || (ROLES[role] && role !== "T" && ["cpr", "hold", "pcall"].includes(a.type))) {
+      const who = (S.seats[role] && S.seats[role].name) || roleName(role);
+      if (a.type === "cpr") { const was = S.comp; if (!S.cpr) { S.cpr = true; S.cprSince = t; if (S.pauseAt) { S.pauses.push([S.pauseAt, t]); S.pauseAt = 0; } } else if (a.swap) S.cprSince = t; S.comp = role;
+        const swap = a.swap || (was && was !== role);
+        log(e, swap ? `換手：${who}（${roleName(role)}）接手壓胸` : `${who} 開始壓胸`, { g: swap ? "swap" : "cpr", sp: swap ? "換手壓胸" : "開始壓胸" }); cmdDone("C", swap ? "swap" : "cpr", t); cmdDone("C", "resume", t); return; }
       if (a.type === "hold") { if (S.cpr) { S.cpr = false; S.pauseAt = t; } log(e, "暫停壓胸，檢查心律與脈搏", { g: "hold", sp: "暫停壓胸，檢查" }); cmdDone("C", "hold", t); return; }
       if (a.type === "pcall") { const ok = !!a.p === !!S.pulse; S.pcalls.push({ t, p: !!a.p, ok }); log(e, a.p ? "摸得到脈搏" : "摸不到脈搏", { g: "pcall", sp: a.p ? "摸得到脈搏" : "沒有脈搏", xt: `${a.p ? "摸得到脈搏" : "摸不到脈搏"}（實際：${S.pulse ? "有" : "無"}，${ok ? "正確" : "錯誤"}）` }); return; }
     }
@@ -2262,7 +2278,7 @@ function fbRows(S, fb){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.16-j";
+const SIM_VER = "2026.10.16-k";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -2460,6 +2476,11 @@ function landing(code, msg){
         <label class="fld">房間號碼<input id="jCode" inputmode="numeric" maxlength="4" value="${esc(code || "")}" placeholder="4 位數字"></label>
         <label class="fld">名字<input id="jName" maxlength="12" value="${esc(u ? u.name : (localStorage.getItem("sim2-name") || ""))}" ${u ? "readonly" : ""} placeholder="暱稱或姓名">${u ? `<small>已用員編登入：${esc(u.empId)}</small>` : `<small>用員編登入，紀錄會存到你名下</small>`}</label>
         <div class="roles">${[...ROLE_ORDER, "T"].map(k => `<button class="rolebtn ${k === "T" ? "t" : ""}" data-role="${k}" style="--rc:${ROLES[k][2]}"><b>${ROLES[k][0]}</b><small>${ROLES[k][1]}</small></button>`).join("")}</div>
+        <details class="few"><summary>人不夠 6 個怎麼辦？</summary><ul>
+          <li>一個人可以<b>兼任</b>：加入後按上方「＋兼任」，再切換畫面。</li>
+          <li><b>壓胸可以輪流</b>：每支手機上方都有「我接手壓胸」，兩分鐘到會閃。</li>
+          <li>4 人：Leader（兼紀錄）、壓胸、呼吸道、電擊兼給藥；壓胸與呼吸道每 2 分鐘互換。</li>
+          <li>3 人：Leader 兼給藥、電擊、壓胸兼呼吸道；Leader 或電擊手在換手時接手壓胸。</li></ul></details>
         <label class="fld" id="pinW" hidden>教師碼（大面板上有顯示）<input id="jPin" inputmode="numeric" maxlength="4"></label>
       </section>
       <section class="panel stack"><h2 class="h2">建立房間（投影的電腦）</h2>
@@ -2579,26 +2600,42 @@ function feedLi(e, S, teacher){
 /* ================= 角色手機 ================= */
 function player(code){
   const seat = seatGet(code); if (!seat) return go("j-" + code);
-  ST.seat = seat; const role = seat.role, info = ROLES[role];
+  ST.seat = seat; const role = seat.role, info = ROLES[role], more = seat.more || [];
   setBar(`${info[0]}・房間 ${code}`, info[1], "home");
   $("view").innerHTML = `<div class="note" id="offline" hidden></div>
     <section class="panel me" style="--rc:${info[2]}"><span class="badge">${esc(info[0])}</span><div><b>${esc(seat.name)}</b><small id="meSt"></small><small class="ver">版本 ${SIM_VER}</small></div>
-      <button class="mini" id="swRole">換角色</button></section>
+      <button class="mini" id="swRole">換角色</button>
+      ${role !== "T" ? `<div class="rsw">${[{ role }, ...more].map(s => `<button class="${s.role === role ? "on" : ""}" data-sw="${s.role}" style="--rc:${ROLES[s.role][2]}">${ROLES[s.role][0]}</button>`).join("")}<button class="add" id="addRole">＋兼任</button></div>
+      <div class="rsadd" id="rsAdd" hidden><small>人少時一個人可以兼兩、三個角色，上面切換畫面：</small><div class="chips">${ROLE_ORDER.filter(k => k !== role && !more.some(s => s.role === k)).map(k => `<button data-add="${k}" style="--rc:${ROLES[k][2]}">${ROLES[k][0]}</button>`).join("")}</div></div>` : ""}</section>
     <div id="pBody" style="--rc:${info[2]}"></div>`;
   $("swRole").onclick = () => { if (!confirm("離開「" + info[0] + "」，換一個角色？")) return; seatSet(code, null); go("j-" + code); };
+  /* 兼任：切換畫面＝換用那個角色的身分送出 */
+  const me = $("view").querySelector(".me");
+  me.onclick = async e => {
+    if (e.target.id === "addRole") { $("rsAdd").hidden = !$("rsAdd").hidden; return; }
+    const sw = e.target.closest("[data-sw]"); if (sw && sw.dataset.sw !== role) { const o = more.find(s => s.role === sw.dataset.sw); seatSet(code, { role: o.role, key: o.key, name: seat.name, more: [{ role, key: seat.key }, ...more.filter(s => s !== o)] }); stopRoom(); return player(code); }
+    const ad = e.target.closest("[data-add]"); if (ad) { const k = ad.dataset.add, f = ad.dataset.force === "1";
+      const r = await api("simJoin", { code, role: k, name: seat.name, force: f });
+      if (!r || !r.ok) { if (r && r.taken) ad.dataset.force = "1"; return toast((r && r.error) || "加入失敗", true); }
+      seatSet(code, { role: k, key: r.key, name: seat.name, more: [{ role, key: seat.key }, ...more] }); toast(`已兼任「${ROLES[k][0]}」，上面可以切換`); stopRoom(); return player(code); }
+  };
   const P = PANELS[role]; const ui = { tab: (localStorage.getItem("sim2-tab-" + role) || ""), lastKey: "" };
   const paint = S => {
-    const cur = S.seats[role]; if (cur && cur.name !== seat.name) { seatSet(code, null); stopRoom(); toast(`「${info[0]}」已由 ${cur.name} 接手，請重新選角色`, true); return go("j-" + code); }
+    const lost = more.filter(s => S.seats[s.role] && S.seats[s.role].name !== seat.name);
+    if (lost.length) { seat.more = more.filter(s => !lost.includes(s)); seatSet(code, seat); toast(`兼任的「${lost.map(s => ROLES[s.role][0]).join("、")}」已由別人接手`, true); stopRoom(); return player(code); }
+    const cur = S.seats[role]; if (cur && cur.name !== seat.name) { stopRoom(); toast(`「${info[0]}」已由 ${cur.name} 接手`, true);
+      if (more.length) { const o = more[0]; seatSet(code, { role: o.role, key: o.key, name: seat.name, more: more.slice(1) }); return player(code); }
+      seatSet(code, null); return go("j-" + code); }
     $("meSt").textContent = S.status === "wait" ? "等待主持人開始…" : S.status === "run" ? "演練中" : "演練結束";
     if (ui.seen === undefined || S.ev.length < ui.seen) ui.seen = S.ev.length;
     else if (S.ev.length > ui.seen) { const nw = S.ev.slice(ui.seen); ui.seen = S.ev.length;
       if (role === "L" && tts()) nw.filter(e => e.g === "reply" || e.g === "clue").forEach(e => e.voice ? playVoice(e.voice) : speak(e.sp || e.x)); }
     if (ui.dragging) return;
-    const key = (P.key ? P.key(S, ui) : JSON.stringify([S.status, S.ev.length])) + (S.status === "end" ? JSON.stringify([S.dstep, S.fbPub, S.fb, S.refl, ui.reedit]) : "");
+    const key = (P.key ? P.key(S, ui) : JSON.stringify([S.status, S.ev.length])) + JSON.stringify([S.cpr, S.comp, !!S.arrestAt, S.seats]) + (S.status === "end" ? JSON.stringify([S.dstep, S.fbPub, S.fb, S.refl, ui.reedit]) : "");
     if (key === ui.lastKey) return; ui.lastKey = key;
     const keepScroll = scrollY, focus = document.activeElement && document.activeElement.id, vals = {};
     $("pBody").querySelectorAll("input[id],textarea[id]").forEach(el => { if (el.type !== "checkbox") vals[el.id] = el.value; });
-    $("pBody").innerHTML = (S.status === "end" && role !== "T" ? learnerDebHTML(S, role, ui) + checklistHTML(S, role) : "") + (role !== "T" ? myCmds(S, role) : "") + P.html(S, ui) + (S.status === "end" ? debriefHTML(S, role === "T") : "");
+    $("pBody").innerHTML = (S.status === "end" && role !== "T" ? learnerDebHTML(S, role, ui) + checklistHTML(S, role) : "") + (role !== "T" && role !== "C" ? compBar(S, role) : "") + (role !== "T" ? myCmds(S, role) : "") + P.html(S, ui) + (S.status === "end" ? debriefHTML(S, role === "T") : "");
     Object.entries(vals).forEach(([id, v]) => { const el = $(id); if (el && v !== undefined && el.dataset.keep !== "0" && (el.tagName !== "TEXTAREA" || ui.edited && ui.edited[id])) el.value = v; });
     mountMonitors($("pBody")); paintTimers(S); reArm();
     if (focus && $(focus)) $(focus).focus(); scrollTo(0, keepScroll);
@@ -2629,6 +2666,14 @@ function player(code){
     await P.click(e, ST.S, ui, () => { ui.lastKey = ""; paint(ST.S); });
   };
   startRoom(code, paint);
+}
+/* 輪流壓胸：每支手機都有「我接手壓胸」，兩分鐘到會閃 */
+function compBar(S, role){
+  if (S.status !== "run" || !(S.cpr || S.arrestAt)) return "";
+  const c = S.comp, who = c ? `${(S.seats[c] && S.seats[c].name) || ""}（${roleName(c)}）` : "沒有人";
+  return `<section class="compbar ${S.cpr ? "on" : ""}"><div><small>現在壓胸</small><b>${S.cpr ? esc(who) : "暫停中"}</b></div><div class="cyc"><small>這輪</small><b data-tm="cyc">—</b></div>
+    ${S.cpr && c === role ? btn({ type: "hold" }, "暫停檢查") : btn({ type: "cpr", swap: S.cpr ? 1 : 0 }, S.cpr ? "我接手壓胸" : "我來壓胸", "red")}
+    ${!S.cpr && S.pauseAt ? btn({ type: "pcall", p: 0 }, "摸不到脈搏", "sm") + btn({ type: "pcall", p: 1 }, "摸得到脈搏", "sm") : ""}</section>`;
 }
 function myCmds(S, role){
   const mine = S.cmds.filter(c => c.to === role && !c.done);
