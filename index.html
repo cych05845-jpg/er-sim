@@ -1352,7 +1352,6 @@ body{padding-left:0!important}
   <button class="nbtn" id="backBtn" hidden>‹ 首頁</button>
   <div class="strip" aria-hidden="true"><i class="lvbg1"></i><i class="lvbg2"></i><i class="lvbg3"></i><i class="lvbg4"></i><i class="lvbg5"></i></div>
   <h1 id="barTitle">團隊擬真<small>嘉基急診</small></h1>
-  <a class="nbtn" href="https://cych05845-jpg.github.io/er-learn/" style="text-decoration:none">學習站</a>
   <button class="nbtn" id="acctBtn" hidden>登入</button>
 </div></header>
 <main class="wrap" id="view"></main>
@@ -1843,7 +1842,7 @@ function summarize(S){
 function logRows(S){ const t0 = S.t0 || 0; return S.ev.filter(e => e.g !== "join").map(e => [Math.max(0, Math.round((e.t - t0) / 1000)), e.w, e.xt || e.x]); }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.16-c";
+const SIM_VER = "2026.10.16-d";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -1858,9 +1857,12 @@ const seatSet = (c, v) => { try { v ? sessionStorage.setItem("sim2-seat-" + c, J
 const hostGet = c => { try { return JSON.parse(localStorage.getItem("sim2-host-" + c) || "null"); } catch (e) { return null; } };
 const hostSet = (c, v) => { try { localStorage.setItem("sim2-host-" + c, JSON.stringify(v)); } catch (e) {} };
 function go(r){ if (location.hash !== "#" + r) location.hash = r; else render(); }
+const HUB_URL = "https://cych05845-jpg.github.io/er-learn/";
 function setBar(title, sub, back){
   $("barTitle").innerHTML = `${esc(title)}<small>${esc(sub)}</small>`;
-  const b = $("backBtn"); b.hidden = !back; b.onclick = () => go(back || "home");
+  const b = $("backBtn"); b.hidden = false;
+  if (!back) { b.textContent = "‹ 學習站"; b.onclick = () => { location.href = HUB_URL; }; }
+  else { b.textContent = "‹ 團隊擬真首頁"; b.onclick = () => go(back); }
 }
 /* 雙擊確認：重要動作（給藥、電擊、結束）按第一下變「再按一次確認」；畫面刷新也保留 */
 let ARM = null;
@@ -2100,7 +2102,7 @@ function feedLi(e, S, teacher){
 function player(code){
   const seat = seatGet(code); if (!seat) return go("j-" + code);
   ST.seat = seat; const role = seat.role, info = ROLES[role];
-  setBar(`${info[0]}・房間 ${code}`, info[1], "");
+  setBar(`${info[0]}・房間 ${code}`, info[1], "home");
   $("view").innerHTML = `<div class="note" id="offline" hidden></div>
     <section class="panel me" style="--rc:${info[2]}"><span class="badge">${esc(info[0])}</span><div><b>${esc(seat.name)}</b><small id="meSt"></small><small class="ver">版本 ${SIM_VER}</small></div>
       <button class="mini" id="swRole">換角色</button></section>
