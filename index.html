@@ -1104,6 +1104,35 @@ body.lcfull .lfig svg{max-height:46vh}
   .qlinks a{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px;border-radius:12px;text-decoration:none;color:var(--ink)}
   .qlinks a:hover{background:var(--surface-2)}.qlinks .qi{width:40px;height:40px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center}.qlinks .qi img{width:28px;height:28px}
   .qlinks b{display:block;font-size:15px}.qlinks small{font-size:12.5px;color:var(--ink-2)}.qlinks i{font-style:normal;color:var(--ink-2)}}
+
+/* ===== 線上訓練手冊 ===== */
+.hubtoast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);transform:translateX(-50%);z-index:90;max-width:min(92vw,560px);padding:12px 18px;border-radius:14px;font-weight:800;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.25);color:#fff;background:#1B7D63}.hubtoast.bad{background:#B42318}
+.bkkpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}.bkkpi>div{display:grid;gap:4px}.bkkpi small{color:var(--ink-2);font-size:12.5px}.bkkpi b{font-size:18px;font-family:var(--f-data)}
+.bkhead .pill{font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 10px;border:1px solid var(--line)}.bkhead .pill.ok{background:color-mix(in srgb,var(--ok) 14%,var(--surface));color:var(--ok);border-color:var(--ok)}
+.bkgrid{display:grid;gap:6px}.bkrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.bkrow.done{border-color:color-mix(in srgb,var(--ok) 45%,var(--line));background:color-mix(in srgb,var(--ok) 6%,var(--surface))}.bkn{font-size:14.5px;line-height:1.5}
+.bkcs{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.bkc{display:grid;justify-items:center;gap:2px;min-width:64px;padding:4px;border-radius:10px;background:var(--surface-2)}
+.bkc small{font-size:11px;color:var(--ink-2)}.bkc b{font-size:18px;font-family:var(--f-data)}.bkc b.o{color:var(--ok)}.bkc b.t{color:var(--bad)}.bkc em{font-style:normal;font-size:10.5px;color:var(--ink-2);text-align:center;line-height:1.25}
+.bkc.edit{background:transparent;border:1px dashed var(--line)}.bkv{display:flex;gap:3px}
+@media (max-width:640px){.bkrow{grid-template-columns:1fr}.bkcs{justify-content:flex-start}}
+.oxb.armed{outline:3px solid var(--warm);outline-offset:2px;animation:pulseArm .8s infinite}@keyframes pulseArm{50%{transform:scale(1.12)}}
+.bkmon{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--warm) 12%,var(--surface));border:1.5px solid var(--warm);border-radius:12px;padding:10px 12px}
+.bkpin,.bkhf{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.bkpin input,.bkhf input,.bkhf select{font:inherit;font-size:16px;padding:9px 11px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}.bkpin input{width:9em}.bkhf #bkNote{flex:1;min-width:12em}
+.bklist{display:grid;gap:8px}.bklist a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface)}
+.bklist a span{grid-column:1;font-size:13px;color:var(--ink-2)}.bklist a em{grid-row:1/span 3;grid-column:2;align-self:center;font-style:normal;font-size:12.5px;font-weight:800;color:var(--ink-2)}.bklist a em.ok{color:var(--ok)}
+.bktabs{display:flex;gap:6px;margin-bottom:12px}.bktabs a{text-decoration:none}
+.ckl{display:grid;gap:6px}.ckl label{display:flex;gap:8px;align-items:center;font-size:14.5px}
+.sigs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.sigbox{display:grid;gap:6px}.sigbox canvas{width:100%;height:150px;border:2px dashed var(--line);border-radius:12px;background:#fff;touch-action:none}
+.sigs figure{margin:0;display:grid;gap:4px;justify-items:center}.sigs img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}.sigs figcaption{font-size:13px;color:var(--ink-2)}
+.mic{flex:none;width:46px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);font-size:20px;cursor:pointer}.mic.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+.free textarea{flex:1;font:inherit;font-size:15px;padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.bkres button{font:inherit;font-weight:800;cursor:pointer}.bkres button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}.free:has(textarea){align-items:flex-start}
+.bkpaper{background:#fff;color:#111;border:1px solid var(--line);border-radius:6px;padding:28px 32px;display:grid;gap:10px;font-size:13px}
+.bkpaper h1{font-size:19px;margin:0}.bkpaper h2{font-size:15px;margin:10px 0 0;border-bottom:1.5px solid #111;padding-bottom:3px}.bkmeta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;margin-top:6px}.bkrule{font-size:12px;color:#444;margin:0}
+.bkt{width:100%;border-collapse:collapse;font-size:12px}.bkt th,.bkt td{border:1px solid #888;padding:4px 6px;vertical-align:top;text-align:left}.bkt th{background:#eee}.bkt td b{font-size:14px}.bkt td small{display:block;font-size:10.5px;color:#444}
+.bkt tr.gh td{background:#f3f3f3;font-weight:700}.bknote{white-space:pre-wrap;border:1px solid #bbb;border-radius:4px;padding:8px;min-height:60px}
+.bksig{display:grid;grid-template-columns:1fr 1fr;gap:24px}.bksig figure{margin:0;display:grid;justify-items:center;gap:4px}.bksig img{max-width:100%;height:auto;border-bottom:1px solid #111}
+@media print{body{padding:0!important;background:#fff}.side,.appbar,#tabs,#fab,.dock,.noprint,.backmenu,#toast{display:none!important}.wrap{max-width:none!important;padding:0!important;zoom:1!important}.bkpaper{border:0;padding:0}.bkt tr{break-inside:avoid}}
 /* ===== 電腦版：字放大、版面加寬（手機版不變） ===== */
 .homtop{display:grid;gap:18px}.homl,.homr{display:grid;gap:18px;align-content:start;min-width:0}
 .homr .sec-h{margin-top:0}
@@ -1484,6 +1513,14 @@ button.dst{cursor:pointer}.dst i{font-style:normal;font-weight:900;font-family:u
 .few{margin:4px 0;font-size:14px}.few summary{cursor:pointer;font-weight:800}.few ul{margin:6px 0 0;padding-left:1.2em;display:grid;gap:4px;color:var(--ink-2)}
 .me .rsw,.me .rsadd{grid-column:1/-1}.rsw button{flex:0 0 auto;width:auto}
 .me div.rsw{display:flex;flex-wrap:wrap}.me div.rsadd{display:grid}
+/* 給藥步驟、電擊指令 */
+.msteps{display:grid;gap:8px;margin-top:10px}.msteps>div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 10px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;opacity:.55}
+.msteps>div>*:not(i):not(b){grid-column:2}.msteps i{font-style:normal;font-weight:900;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--surface-2)}.msteps small{color:var(--ink-2)}
+.msteps .now{opacity:1;border-color:#1B7D63;box-shadow:0 0 0 3px color-mix(in oklab,#1B7D63 18%,transparent)}.msteps .now i{background:#1B7D63;color:#fff}.msteps .done{opacity:.85}.msteps .done i{background:#1B7D63;color:#fff}
+.locked{position:relative}.locked .grid2,.locked .free{opacity:.35;pointer-events:none;filter:grayscale(.6)}
+.cmdb{display:grid;gap:8px;margin-top:12px;padding:12px;border:2px dashed #B7790A;border-radius:14px}
+.defcmd{border:2px solid #B7790A;border-radius:12px;padding:8px 12px;margin-bottom:10px;background:color-mix(in oklab,#B7790A 8%,var(--surface))}.defcmd.ok{border-color:#1B7D63;background:color-mix(in oklab,#1B7D63 8%,var(--surface))}
+.cmd .warn{margin:6px 0 0;color:#B42318;font-weight:700;font-size:13.5px}.hint.ok{color:#1B7D63;font-weight:700}
 
 </style>
 </head>
@@ -2018,7 +2055,8 @@ function derive(meta, events){
     /* ---- 指令（Leader → 角色）與閉環 ---- */
     if (a.type === "cmd" && role === "L" && ROLES[a.to] && a.to !== "L" && a.to !== "T") {
       const x = String(a.x || "").slice(0, 50); if (!x) return;
-      S.cmds.push({ id: "c" + (S.cmds.length + 1), to: a.to, g: a.g || "", x, t, ack: 0, done: 0 });
+      const p = a.p && a.g === "shock" ? { sync: !!a.p.sync, j: +a.p.j || 0 } : null;
+      S.cmds.push({ id: "c" + (S.cmds.length + 1), to: a.to, g: a.g || "", x, t, ack: 0, done: 0, p });
       log(e, `Leader → ${roleName(a.to)}：${x}`, { g: "cmd", to: a.to, sp: `${roleName(a.to)}，${x}` }); return; }
     if (a.type === "ack" || a.type === "done") { const c = S.cmds.find(c => c.id === a.id); if (!c || c.to !== role) return;
       if (a.type === "ack" && !c.ack) { c.ack = t; log(e, `收到：${c.x}`, { g: "ack", quiet: true }); }
@@ -2077,8 +2115,9 @@ function derive(meta, events){
         const r = S.rhythm, sync = S.defib.sync, cleared = S.defib.clearAt && t - S.defib.clearAt < 15000;
         if (sync && !S.pulse) { S.shocks.push({ t, j: S.defib.j, sync, r, delivered: false, ok: false, cleared }); log(e, "同步模式偵測不到可同步的 R 波：沒有放電！", { g: "shock_fail", sp: "同步模式，沒有放電" }); return; }
         const ok = S.pulse ? sync && ["svt", "af", "vt"].includes(r) : shockable(r);
-        S.shocks.push({ t, j: S.defib.j, sync, r, delivered: true, ok, cleared }); S.defib.charged = 0;
-        log(e, `${sync ? "同步" : "非同步"}電擊 ${S.defib.j} 焦耳${cleared ? "" : "（沒有先喊離開）"}`, { g: "shock", sp: "電擊完成，繼續壓胸", xt: `${sync ? "同步" : "非同步"}電擊 ${S.defib.j} J；當時心律 ${RHY[r][0]}（${ok ? "適當" : "不適當"}）${cleared ? "" : "；沒有先喊離開"}` });
+        const oc = S.cmds.find(c => c.to === "D" && c.g === "shock" && c.p && !c.done), mis = oc && (oc.p.sync !== sync || oc.p.j !== S.defib.j) ? oc : null;
+        S.shocks.push({ t, j: S.defib.j, sync, r, delivered: true, ok, cleared, mis: mis ? mis.x : "", byCmd: !!oc }); S.defib.charged = 0;
+        log(e, `${sync ? "同步" : "非同步"}電擊 ${S.defib.j} 焦耳${cleared ? "" : "（沒有先喊離開）"}`, { g: "shock", sp: "電擊完成，繼續壓胸", xt: `${sync ? "同步" : "非同步"}電擊 ${S.defib.j} J；當時心律 ${RHY[r][0]}（${ok ? "適當" : "不適當"}）${cleared ? "" : "；沒有先喊離開"}${mis ? `；與指令「${mis.x}」不同` : ""}` });
         cmdDone("D", "shock", t); cmdDone("D", "sync", t);
         if (S.pulse && ok) hint(e, `同步電擊 ${S.defib.j} J（${RHY[r][0]}）`, [["轉回竇性心律", { type: "state", id: "sinusOK" }], ["沒轉，維持原心律", null]]);
         else if (!S.pulse && ok) hint(e, `電擊 ${S.defib.j} J（${RHY[r][0]}）→ 2 分鐘後檢查心律`, [["仍是原心律", null], ["轉成 ROSC", { type: "state", id: "rosc" }], ["轉成 PEA", { type: "state", id: "pea" }], ["轉成 Asystole", { type: "state", id: "asys" }]]);
@@ -2094,6 +2133,7 @@ function derive(meta, events){
     }
     /* ---- 給藥 ---- */
     if (role === "M") {
+      if (a.type === "line") { if (!S.iv) return; S.line = t; log(e, "接上 N/S 點滴，管路通暢", { g: "line", sp: "N S 已接上，管路通暢" }); cmdDone("M", "line", t); return; }
       if (a.type === "iv") { S.iv = a.r === "IO" ? "IO" : "IV"; log(e, `${S.iv} 建立完成`, { g: "iv", sp: `${S.iv} 建立完成` }); cmdDone("M", "iv", t); return; }
       if (a.type === "drug" && (DRUG_BY[a.k] || a.x)) { const d = DRUG_BY[a.k]; const name = d ? d[2] : String(a.x).slice(0, 40); S.drugs.push({ k: d ? a.k : "other", name, t });
         if (a.k === "epi") S.epiLast = t;
@@ -2121,8 +2161,8 @@ const mmss = ms => { ms = Math.max(0, ms); const s = Math.floor(ms / 1000); retu
 const CMDS = {
   C: [["cpr", "開始壓胸"], ["swap", "換手壓胸"], ["hold", "暫停，檢查心律與脈搏"], ["resume", "繼續壓胸"]],
   A: [["o2", "給氧"], ["bvm", "BVM 給氧"], ["suction", "抽痰"], ["ett", "準備插管"], ["etco2", "接上 ETCO₂、確認管路"]],
-  D: [["pads", "接監視器／貼片"], ["call", "報告心律"], ["charge", "充電"], ["shock", "非同步電擊"], ["sync", "同步電擊"], ["pace", "經皮節律器"]],
-  M: [["iv", "建立 IV／IO"], ["epi", "給 Epinephrine 1 mg"], ["amio300", "給 Amiodarone 300 mg"], ["amio150", "給 Amiodarone 150 mg"], ["atropine", "給 Atropine 1 mg"], ["adeno6", "給 Adenosine 6 mg"], ["nahco3", "給 NaHCO₃"], ["ca", "給 Calcium gluconate"], ["mg", "給 MgSO₄ 2 g"], ["d50", "給 D50W"], ["ns", "NS 快速輸注"], ["blood", "緊急輸血"]],
+  D: [["pads", "接監視器／貼片"], ["call", "報告心律"], ["charge", "充電"], ["pace", "經皮節律器"]],
+  M: [["iv", "建立 IV／IO"], ["line", "接上 N/S"], ["epi", "給 Epinephrine 1 mg"], ["amio300", "給 Amiodarone 300 mg"], ["amio150", "給 Amiodarone 150 mg"], ["atropine", "給 Atropine 1 mg"], ["adeno6", "給 Adenosine 6 mg"], ["nahco3", "給 NaHCO₃"], ["ca", "給 Calcium gluconate"], ["mg", "給 MgSO₄ 2 g"], ["d50", "給 D50W"], ["ns", "NS 快速輸注"], ["blood", "緊急輸血"]],
   R: [["tepi", "報告距上次 Epi 時間"], ["tcyc", "兩分鐘提醒"], ["note", "記錄時間點"]]
 };
 
@@ -2168,10 +2208,12 @@ function checklist(S){
   if (S.vfAt) { const f = shocks.find(x => x.ok && !x.sync && x.t >= S.vfAt); add("D", "可電擊心律（VF／pVT）有電擊", !!f, f ? `出現後 ${Math.round((f.t - S.vfAt) / 1000)} 秒` : "沒有電擊"); }
   if (S.syncAt) add("D", "不穩定心搏過速用同步電擊", shocks.some(x => x.sync && x.ok), "");
   if (S.bradyAt) add("D", "不穩定心搏過慢：Atropine 或節律器", S.drugs.some(d => d.k === "atropine") || S.ev.some(e => e.g === "pace"), "");
+  if (shocks.some(x => x.byCmd)) add("D", "依 Leader 指令設定同步／非同步與焦耳", shocks.filter(x => x.byCmd).every(x => !x.mis), shocks.filter(x => x.mis).map(x => "指令：" + x.mis).join("、"));
   if (shocks.length) { add("D", "沒有不當電擊", shocks.every(x => x.ok), ""); add("D", "電擊前喊「所有人離開」", shocks.every(x => x.cleared), ""); }
   if (S.shocks.some(x => !x.delivered)) add("D", "無脈搏時沒用同步模式", false, "同步模式偵測不到 R 波，沒有放電");
   /* 給藥 */
   add("M", "建立 IV／IO", !!S.iv, S.iv || "");
+  if (S.drugs.length) { const f = S.drugs[0].t, ivT = (S.ev.find(e => e.g === "iv") || {}).t, lnT = (S.ev.find(e => e.g === "line") || {}).t; add("M", "給藥前已建立管路並接上 N/S", !!ivT && !!lnT && ivT <= f && lnT <= f, ""); }
   if (S.arrestAt) add("M", "心跳停止有給 Epinephrine", epis.length > 0, epis[0] ? `首劑 ${s(epis[0].t)}` : "");
   if (epis.length >= 2) { const gaps = epis.slice(1).map((x, i) => (x.t - epis[i].t) / 1000); add("M", "Epinephrine 每 3–5 分鐘", gaps.every(g => g >= 170 && g <= 330), gaps.map(g => Math.round(g / 60 * 10) / 10 + " 分").join("、")); }
   if (S.vfAt && shocks.length >= 3) add("M", "頑固 VF／pVT 給 Amiodarone", S.drugs.some(d => d.k.startsWith("amio") || d.k === "lido"), "");
@@ -2309,7 +2351,7 @@ function fbRows(S, fb){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.16-n";
+const SIM_VER = "2026.10.16-p";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -2514,7 +2556,8 @@ function landing(code, msg){
           <li>一個人可以<b>兼任</b>：加入後按上方「＋兼任」，再切換畫面。</li>
           <li><b>壓胸可以輪流</b>：每支手機上方都有「我接手壓胸」，兩分鐘到會閃。</li>
           <li>4 人：Leader（兼紀錄）、壓胸、呼吸道、電擊兼給藥；壓胸與呼吸道每 2 分鐘互換。</li>
-          <li>3 人：Leader 兼給藥、電擊、壓胸兼呼吸道；Leader 或電擊手在換手時接手壓胸。</li></ul></details>
+          <li>3 人：Leader 兼給藥、電擊、壓胸兼呼吸道；Leader 或電擊手在換手時接手壓胸。</li>
+          <li>壓胸手也可以兼任給藥：換手下來後切到「給藥」畫面給藥。</li></ul></details>
         <label class="fld" id="pinW" hidden>教師碼（大面板上有顯示）<input id="jPin" inputmode="numeric" maxlength="4"></label>
       </section>
       <section class="panel stack"><h2 class="h2">建立房間（投影的電腦）</h2>
@@ -2715,7 +2758,27 @@ function compBar(S, role){
 function myCmds(S, role){
   const mine = S.cmds.filter(c => c.to === role && !c.done);
   if (!mine.length) return "";
-  return `<section class="panel cmds"><h3 class="h3">Leader 的指令</h3>${mine.map(c => `<div class="cmd"><b>${esc(c.x)}</b><div class="row">${c.ack ? `<span class="hint">已收到</span>` : `<button class="btn ghost" data-ack="${c.id}">收到</button>`}<button class="btn" data-done="${c.id}">完成</button></div></div>`).join("")}<p class="hint">直接按下面對應的按鍵，也會自動完成這個指令。</p></section>`;
+  /* 指令卡：能對應實際動作的，直接給「執行」按鍵（做了才算完成）；Leader 打字的指令才有「完成」 */
+  const ackB = c => c.ack ? `<span class="hint">已收到</span>` : `<button class="btn ghost" data-ack="${c.id}">收到</button>`;
+  const doB = c => {
+    if (role === "M" && DRUG_BY[c.g]) return btn({ type: "drug", k: c.g }, `給藥：${DRUG_BY[c.g][1]}`, "drug", "data-confirm=1");
+    if (role === "M" && c.g === "iv") return btn({ type: "iv", r: "IV" }, "建立 IV") + btn({ type: "iv", r: "IO" }, "建立 IO");
+    if (role === "M" && c.g === "line") return btn({ type: "line" }, "接上 N/S");
+    if (role === "D" && c.g === "shock" && c.p) { const ok = S.defib.sync === c.p.sync && S.defib.j === c.p.j;
+      return ok ? `<span class="hint ok">已設定好 ✓ 接著：充電 → 所有人離開 → 電擊</span>` : `<button class="abtn big" data-setdef='${esc(JSON.stringify(c.p))}'>依指令設定：${c.p.sync ? "同步" : "非同步"} ${c.p.j} J</button>`; }
+    if (role === "D" && c.g === "pads") return btn({ type: "leads" }, "接監視器") + btn({ type: "pads" }, "貼電擊片");
+    if (role === "D" && ["charge", "pace"].includes(c.g)) return btn(c.g === "charge" ? { type: "charge" } : { type: "pace", rate: 70, ma: 60 }, c.g === "charge" ? "充電" : "經皮節律器");
+    if (role === "D" && c.g === "call") return `<span class="hint">到下方「判讀心律」選擇</span>`;
+    if (role === "C" && ["cpr", "swap", "resume"].includes(c.g)) return btn({ type: "cpr", swap: c.g === "swap" ? 1 : 0 }, c.x);
+    if (role === "C" && c.g === "hold") return btn({ type: "hold" }, "暫停，檢查");
+    if (role === "A" && ["bvm", "suction", "etco2"].includes(c.g)) return btn({ type: "air", k: c.g }, c.x);
+    if (role === "A" && ["o2", "ett"].includes(c.g)) return `<span class="hint">到下方「${c.g === "o2" ? "給氧醫令" : "氣管內插管"}」選好再送出</span>`;
+    if (role === "R" && ["tepi", "tcyc", "note"].includes(c.g)) return btn({ type: "remind", k: c.g === "tepi" ? "epi" : c.g === "tcyc" ? "swap" : "note" }, c.x);
+    return null; };
+  const vague = c => !c.g && (role === "D" && !/同步|SYNC/i.test(c.x) || role === "M" && !/mg|mL|g\b|單位|U\b/i.test(c.x));
+  return `<section class="panel cmds"><h3 class="h3">Leader 的指令</h3>${mine.map(c => { const d = doB(c);
+    return `<div class="cmd"><b>${esc(c.x)}</b>${!d && vague(c) ? `<p class="warn">指令不完整：請大聲複誦並跟 Leader 確認${role === "D" ? "「同步還是非同步？幾焦耳？」" : "「什麼藥？劑量多少？」"}，再到下面選好執行</p>` : ""}
+      <div class="row">${ackB(c)}${d || `<button class="btn" data-done="${c.id}">完成</button>`}</div></div>`; }).join("")}<p class="hint">有「執行」按鍵的指令，要真的做了才算完成。</p></section>`;
 }
 const tabs = (list, cur) => `<div class="tabs2">${list.map(([k, n]) => `<button data-tab="${k}" class="${cur === k ? "on" : ""}">${n}</button>`).join("")}</div>`;
 const btn = (a, label, cls = "", extra = "") => `<button class="abtn ${cls}" data-a='${esc(JSON.stringify(a))}' ${extra}>${label}</button>`;
@@ -2725,12 +2788,16 @@ function recent(S, role, n = 5){ const list = S.ev.filter(e => e.w === role && !
 const PANELS = {
   /* ---------- Leader ---------- */
   L: {
-    key: (S, ui) => JSON.stringify([S.status, ui.tab, ui.to, ui.zone, S.cmds.map(c => [c.ack, c.done]), S.asks.map(q => !!q.reply), S.ht, S.procs.length, S.rhythm, S.monitor, S.cpr, S.show, S.vit]),
+    key: (S, ui) => JSON.stringify([S.status, ui.tab, ui.to, ui.cs, ui.cj, ui.zone, S.cmds.map(c => [c.ack, c.done]), S.asks.map(q => !!q.reply), S.ht, S.procs.length, S.rhythm, S.monitor, S.cpr, S.show, S.vit]),
     html(S, ui){
       const tab = ui.tab || "cmd", to = ui.to || "C";
       let body = "";
       if (tab === "cmd") body = `<section class="panel"><div class="sseg">${ROLE_ORDER.filter(k => k !== "L").map(k => `<button data-to="${k}" class="${to === k ? "on" : ""}" style="--rc:${ROLES[k][2]}">${ROLES[k][0]}${S.seats[k] ? "" : "<small>（沒人）</small>"}</button>`).join("")}</div>
         <div class="grid2">${CMDS[to].map(([g, x]) => btn({ type: "cmd", to, g, x }, x)).join("")}</div>
+        ${to === "D" ? (() => { const sy = !!ui.cs, j = ui.cj || 200; return `<div class="cmdb"><div class="label">電擊指令：先選好再送出</div>
+          <div class="sseg two"><button data-cs="0" class="${!sy ? "on" : ""}">非同步</button><button data-cs="1" class="${sy ? "on sync" : ""}">同步 SYNC</button></div>
+          <div class="chips">${JOULES.map(x => `<button data-cj="${x}" class="${j === x ? "on" : ""}">${x} J</button>`).join("")}</div>
+          ${btn({ type: "cmd", to: "D", g: "shock", x: `${sy ? "同步" : "非同步"} ${j} J 電擊`, p: { sync: sy, j } }, `下指令：${sy ? "同步" : "非同步"} ${j} J 電擊`, "big wide")}</div>`; })() : ""}
         <div class="free"><input id="cmdX" maxlength="50" placeholder="自己打指令給「${ROLES[to][0]}」"><button class="mic" data-mic="cmdX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-free="cmd">送出</button></div></section>
         <section class="panel"><h3 class="h3">已下的指令</h3>${S.cmds.length ? `<ol class="cmdlist">${S.cmds.slice(-10).reverse().map(c => `<li class="${c.done ? "done" : c.ack ? "ack" : ""}"><span class="tag" style="--rc:${ROLES[c.to][2]}">${ROLES[c.to][0]}</span>${esc(c.x)}<em>${c.done ? "✓ 完成" : c.ack ? "收到" : "等待"}</em></li>`).join("")}</ol>` : `<p class="hint">還沒下指令。</p>`}</section>`;
       if (tab === "ask") { const z = BODY_ZONES.find(x => x.id === ui.zone), used = k => S.asks.some(q => q.k === k) ? "used" : "";
@@ -2748,6 +2815,8 @@ const PANELS = {
     },
     async click(e, S, ui, re){
       const to = e.target.closest("[data-to]"); if (to) { ui.to = to.dataset.to; return re(); }
+      const cs = e.target.closest("[data-cs]"); if (cs) { ui.cs = cs.dataset.cs === "1"; return re(); }
+      const cj = e.target.closest("[data-cj]"); if (cj) { ui.cj = +cj.dataset.cj; return re(); }
       const zn = e.target.closest("[data-zone]"); if (zn) { ui.zone = zn.dataset.zone; return re(); }
       const ht = e.target.closest("[data-ht]"); if (ht) return act({ type: "ht", k: ht.dataset.ht, on: !S.ht[ht.dataset.ht] });
       const ma = e.target.closest("[data-micask]"); if (ma) { if (S.status !== "run") return toast("演練還沒開始", true);
@@ -2790,18 +2859,20 @@ const PANELS = {
   },
   /* ---------- 電擊／監視器 ---------- */
   D: {
-    key: (S, ui) => JSON.stringify([S.status, S.defib, S.monitor, S.rhythm, S.cpr, S.show, S.vit, S.calls.length, S.cmds.filter(c => c.to === "D").map(c => [c.ack, c.done]), S.shocks.length, ui.callOpen]),
+    key: (S, ui) => JSON.stringify([S.status, S.defib, S.monitor, S.rhythm, S.cpr, S.show, S.vit, S.calls.length, S.cmds.filter(c => c.to === "D").map(c => [c.ack, c.done, c.id]), S.shocks.length, ui.callOpen]),
     html: (S, ui) => `<section class="panel">${monitorHTML(S, { small: true })}<div class="grid2">${btn({ type: "leads" }, S.monitor ? "監視器已接 ✓" : "接監視器（心電圖導程）", S.monitor ? "used" : "big")}${btn({ type: "pads" }, "貼電擊片", "big")}${btn({ type: "pace", rate: 70, ma: 60 }, "經皮節律器", "wide")}</div></section>
-      <section class="panel"><h3 class="h3">判讀心律</h3><p class="hint">看監視器，選你判讀的心律（壓胸中看不清楚，要先請壓胸手暫停）。</p>
-        <div class="grid2">${RHY_CALL.map(r => btn({ type: "call", r }, CALL_NAME(r), "sm")).join("")}</div><p class="hint">VT 有沒有脈搏，監視器上看不出來，要請人摸脈搏。</p></section>
-      <section class="panel"><h3 class="h3">電擊器</h3>
+      <section class="panel"><h3 class="h3">電擊器</h3>${(c => c ? `<div class="defcmd ${S.defib.sync === c.p.sync && S.defib.j === c.p.j ? "ok" : ""}">Leader 指令：<b>${esc(c.x)}</b>${S.defib.sync === c.p.sync && S.defib.j === c.p.j ? " ✓ 設定相符" : ` <button class="mini" data-setdef='${esc(JSON.stringify(c.p))}'>照指令設定</button>`}</div>` : "")(S.cmds.find(c => c.to === "D" && c.g === "shock" && c.p && !c.done))}
         <div class="sseg two"><button data-sync="0" class="${!S.defib.sync ? "on" : ""}">非同步</button><button data-sync="1" class="${S.defib.sync ? "on sync" : ""}">同步 SYNC</button></div>
         <div class="label">能量（焦耳）</div><div class="chips">${JOULES.map(j => `<button data-j="${j}" class="${S.defib.j === j ? "on" : ""}">${j}</button>`).join("")}</div>
         <div class="defst">${S.defib.sync ? "同步" : "非同步"}・${S.defib.j} J・${S.defib.charged ? `<b class="warn">已充電</b>` : "未充電"}</div>
         <div class="grid3">${btn({ type: "charge" }, "充電", "big")}${btn({ type: "clear" }, "所有人離開！", "big")}${btn({ type: "shock" }, "⚡ 電擊", "big red", "data-confirm=1")}</div>
         ${btn({ type: "disarm" }, "取消充電", "sm")}</section>
+      <section class="panel"><h3 class="h3">判讀心律</h3><p class="hint">看監視器，選你判讀的心律（壓胸中看不清楚，要先請壓胸手暫停）。</p>
+        <div class="grid2">${RHY_CALL.map(r => btn({ type: "call", r }, CALL_NAME(r), "sm")).join("")}</div><p class="hint">VT 有沒有脈搏，監視器上看不出來，要請人摸脈搏。</p></section>
       <section class="panel">${recent(S, "D")}</section>`,
     async click(e, S){
+      const sd = e.target.closest("[data-setdef]"); if (sd) { if (S.status !== "run") return toast("演練還沒開始", true); const p = JSON.parse(sd.dataset.setdef);
+        if (S.defib.sync !== p.sync) await act({ type: "mode", sync: p.sync }); if (ST.S.defib.j !== p.j) await act({ type: "energy", j: p.j }); return toast(`已設定：${p.sync ? "同步" : "非同步"} ${p.j} J，接著充電`); }
       const sy = e.target.closest("[data-sync]"); if (sy) { if (S.status !== "run") return toast("演練還沒開始", true); return act({ type: "mode", sync: sy.dataset.sync === "1" }); }
       const j = e.target.closest("[data-j]"); if (j) { if (S.status !== "run") return toast("演練還沒開始", true); return act({ type: "energy", j: +j.dataset.j }); }
       const [a, b] = A_(e); if (!a) return;
@@ -2811,16 +2882,23 @@ const PANELS = {
   },
   /* ---------- 給藥 ---------- */
   M: {
-    key: (S, ui) => JSON.stringify([S.status, ui.tab, S.iv, S.drugs.length, S.epiLast, S.cmds.filter(c => c.to === "M").map(c => [c.ack, c.done])]),
+    key: (S, ui) => JSON.stringify([S.status, ui.tab, S.iv, S.line, S.drugs.length, S.epiLast, S.cmds.filter(c => c.to === "M").map(c => [c.ack, c.done, c.id])]),
     html: (S, ui) => { const tab = DRUG_TABS.includes(ui.tab) ? ui.tab : "急救";
-      return `<section class="panel">${timersHTML(["epi", "run"])}<div class="grid2">${btn({ type: "iv", r: "IV" }, S.iv === "IV" ? "IV 已建立 ✓" : "建立 IV", S.iv ? "used" : "")}${btn({ type: "iv", r: "IO" }, S.iv === "IO" ? "IO 已建立 ✓" : "建立 IO（骨內）", S.iv === "IO" ? "used" : "")}</div></section>`
+      const ready = !!(S.iv && S.line);
+      return `<section class="panel">${timersHTML(["epi", "run"])}
+        <div class="msteps"><div class="${S.iv ? "done" : "now"}"><i>1</i><b>建立管路</b><div class="grid2">${btn({ type: "iv", r: "IV" }, S.iv === "IV" ? "IV ✓" : "建立 IV", S.iv === "IV" ? "used" : "")}${btn({ type: "iv", r: "IO" }, S.iv === "IO" ? "IO ✓" : "建立 IO（骨內）", S.iv === "IO" ? "used" : "")}</div></div>
+          <div class="${S.line ? "done" : S.iv ? "now" : ""}"><i>2</i><b>接上 N/S，確認管路通暢</b>${btn({ type: "line" }, S.line ? "N/S 已接上 ✓" : "接上 N/S", S.line ? "used" : S.iv ? "big" : "")}</div>
+          <div class="${ready ? "now" : ""}"><i>3</i><b>給藥</b><small>${ready ? "每次推藥後以 N/S 沖管" : "完成 1、2 才能給藥"}</small></div></div></section>`
         + tabs(DRUG_TABS.map(t => [t, t]), tab)
-        + `<section class="panel"><p class="hint">按一下藥名，再按一次確認給藥；大面板會播報「現在給予…」。</p><div class="grid2">${DRUGS.filter(d => d[3] === tab).map(d => btn({ type: "drug", k: d[0] }, `${d[1]}${S.drugs.filter(x => x.k === d[0]).length ? `<small>已給 ${S.drugs.filter(x => x.k === d[0]).length} 次</small>` : ""}`, "drug", "data-confirm=1")).join("")}</div>
+        + `<section class="panel ${ready ? "" : "locked"}"><p class="hint">${ready ? "按一下藥名，再按一次確認給藥；大面板會播報「現在給予…」。" : "🔒 先建立 IV／IO 並接上 N/S，才能給藥。"}</p><div class="grid2">${DRUGS.filter(d => d[3] === tab).map(d => btn({ type: "drug", k: d[0] }, `${d[1]}${S.drugs.filter(x => x.k === d[0]).length ? `<small>已給 ${S.drugs.filter(x => x.k === d[0]).length} 次</small>` : ""}`, "drug", "data-confirm=1")).join("")}</div>
         <div class="free"><input id="drugX" maxlength="40" placeholder="其他藥物（自己打）"><button class="mic" data-mic="drugX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-free="drug">給藥</button></div></section>
         <section class="panel"><h3 class="h3">已給藥物</h3>${S.drugs.length ? `<ol class="feed sm">${S.drugs.slice().reverse().map(d => `<li><time>${mmss(d.t - S.t0)}</time><span>${esc(d.name)}</span></li>`).join("")}</ol>` : `<p class="hint">還沒給藥。</p>`}</section>`; },
     async click(e, S){
-      const f = e.target.closest("[data-free]"); if (f) { const x = $("drugX").value.trim(); if (!x) return toast("先打藥名", true); if (await act({ type: "drug", k: "other", x })) $("drugX").value = ""; return; }
+      const need = () => !S.iv ? "先建立 IV／IO" : !S.line ? "先接上 N/S，確認管路通暢" : "";
+      const f = e.target.closest("[data-free]"); if (f) { if (need()) return toast(need() + "，才能給藥", true); const x = $("drugX").value.trim(); if (!x) return toast("先打藥名", true); if (await act({ type: "drug", k: "other", x })) $("drugX").value = ""; return; }
       const [a, b] = A_(e); if (!a) return;
+      if (a.type === "drug" && need()) return toast(need() + "，才能給藥", true);
+      if (a.type === "line" && !S.iv) return toast("先建立 IV／IO", true);
       if (b.dataset.confirm && !armed(b)) return toast("再按一次確認給藥");
       await act(a);
     }
