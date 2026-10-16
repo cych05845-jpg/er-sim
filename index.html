@@ -1311,6 +1311,39 @@ body{padding-left:0!important}
 .dbr.ok{background:color-mix(in oklab,#1B7D63 14%,var(--surface))}.dbr.bad{background:color-mix(in oklab,#C63D2F 14%,var(--surface))}
 .dbr b{text-align:right}
 .tblw{overflow-x:auto}.tblw table{border-collapse:collapse;font-size:13px;white-space:nowrap;min-width:100%}.tblw th,.tblw td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left}
+/* ---- 框起來的選項 ---- */
+.sseg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.sseg button{font:inherit;font-weight:800;flex:1;min-width:84px;padding:10px;border-radius:12px;border:2px solid color-mix(in oklab,var(--ink) 22%,var(--line));background:var(--surface);color:var(--ink);cursor:pointer}
+.sseg button small{display:block;font-size:10px;color:var(--ink-2)}
+.sseg button.on{background:var(--rc,var(--ink));color:#fff;border-color:var(--rc,var(--ink))}.sseg button.on.sync{background:#B7790A;border-color:#B7790A}
+.sseg.two button{min-width:0}
+.chips button{border:2px solid color-mix(in oklab,var(--ink) 22%,var(--line))!important;box-shadow:0 1px 0 rgba(0,0,0,.06);background:var(--surface)}
+.chips button:hover{background:var(--surface-2)}
+.chips.pre button{border-style:dashed!important;border-radius:12px}
+.box{border:2px solid color-mix(in oklab,var(--ink) 18%,var(--line));border-radius:18px;padding:14px;margin-bottom:12px;background:var(--surface)}
+.boxh{display:grid;gap:2px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--line)}.boxh b{font-size:15px}.boxh small{color:var(--ink-2);font-size:12px}
+.stgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.stcard{font:inherit;text-align:left;display:grid;gap:3px;padding:10px 12px;border-radius:14px;border:2px solid color-mix(in oklab,var(--ink) 20%,var(--line));border-left:6px solid #C63D2F;background:var(--surface);color:var(--ink);cursor:pointer;min-height:62px}
+.stcard.p{border-left-color:#1B7D63}.stcard b{font-size:15px}.stcard small{font-size:11px;color:var(--ink-2)}
+.stcard.on{background:color-mix(in oklab,var(--ink) 9%,var(--surface));outline:2px solid var(--ink)}
+.stcard:active{transform:scale(.98)}
+.sld{background:var(--surface-2);border-radius:12px;padding:8px 10px;margin-bottom:8px}
+.sldh{display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:var(--ink-2)}.sldh b{font-family:"IBM Plex Mono",monospace;font-size:20px;color:var(--ink)}
+.sldr{display:grid;grid-template-columns:42px 1fr 42px;gap:8px;align-items:center}
+.sldr button{font:inherit;font-size:20px;font-weight:900;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.sldr input[type=range]{width:100%;height:36px;accent-color:#C63D2F;touch-action:none}
+/* 全身圖 */
+.bodyw{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:12px;align-items:start}
+@media (max-width:380px){.bodyw{grid-template-columns:1fr}}
+.bodysvg{width:100%;height:auto}
+.bodysvg .zone path,.bodysvg .zone circle,.bodysvg .zone rect{fill:color-mix(in oklab,#E8B996 70%,var(--surface));stroke:color-mix(in oklab,var(--ink) 40%,transparent);stroke-width:1.5;cursor:pointer}
+.bodysvg .zone[data-zone=heart] path{fill:#E58A80}
+.bodysvg .zone.done path,.bodysvg .zone.done circle,.bodysvg .zone.done rect{fill:color-mix(in oklab,#1B7D63 30%,var(--surface))}
+.bodysvg .zone.sel path,.bodysvg .zone.sel circle,.bodysvg .zone.sel rect{stroke:#6650C0;stroke-width:3.5}
+.bodysvg text{font-size:10px;font-weight:800;fill:var(--ink);pointer-events:none}.bodysvg .side{fill:var(--ink-2);font-size:10px}
+.zpick{display:grid;gap:8px}.zpick b{font-size:16px}
+.bodysvg .zone[data-zone=heart] text{fill:#fff;font-size:9px}
+.me .ver{font-size:10px;opacity:.6}
 
 </style>
 </head>
@@ -1350,11 +1383,17 @@ const ASK = [
   ["pupil", "瞳孔", "兩側約 4 mm、對稱，對光反射遲鈍。"],
   ["trach", "氣管位置", "居中。"],
   ["jvd", "頸靜脈", "沒有明顯怒張，也沒有塌陷。"],
-  ["lung", "聽診呼吸音", "BVM 通氣時兩側呼吸音對稱。"],
+  ["lung", "聽診呼吸音（兩側）", "BVM 通氣時兩側呼吸音對稱。"],
+  ["lung_R", "右胸呼吸音", "右側有呼吸音（BVM 通氣中）。"],
+  ["lung_L", "左胸呼吸音", "左側有呼吸音（BVM 通氣中）。"],
   ["chest", "胸廓起伏", "通氣時兩側起伏對稱。"],
   ["heart", "心音", "壓胸暫停時聽不到心音。"],
   ["abd", "腹部", "柔軟、不脹。"],
   ["limb", "四肢／小腿", "兩側小腿對稱，沒有水腫。"],
+  ["limb_R", "右小腿", "右小腿不腫，摸起來不痛。"],
+  ["limb_L", "左小腿", "左小腿不腫，摸起來不痛。"],
+  ["arm_R", "右手臂", "右手臂沒有異常。"],
+  ["arm_L", "左手臂", "左手臂沒有異常。"],
   ["bleed", "出血／傷口", "沒有看到外傷或出血。"],
   ["temp", "體溫", "36.4°C"],
   ["glu", "血糖（指尖）", "128 mg/dL"],
@@ -1385,7 +1424,7 @@ const CASES = [
     push: ["護理師：「床單上有一大灘黑便。」"], tx: ["ns", "blood", "epi"] },
   { id: "hypoxia", g: "5H", n: "缺氧：痰液阻塞（COPD）", ht: "hypoxia", brief: "COPD 病人痰液阻塞呼吸道導致缺氧性心跳停止。重點是抽痰、打通呼吸道、有效通氣。",
     start: { rhythm: "pea", v: { hr: 42, etco2: 6 } },
-    clue: { hx: "COPD 長期使用居家氧氣，今早痰很多、很喘，發現時嘴唇發紫。", look: "嘴唇和指甲發紺。", lung: "BVM 擠起來阻力很大，兩側呼吸音很小，有痰音。", chest: "通氣時胸廓幾乎不起伏。", abg: "pH 7.02、PaCO₂ 98、PaO₂ 42", lus: "兩側都有肺滑動。" },
+    clue: { lung_R: "右側呼吸音很小，有痰音。", lung_L: "左側呼吸音很小，有痰音。", hx: "COPD 長期使用居家氧氣，今早痰很多、很喘，發現時嘴唇發紫。", look: "嘴唇和指甲發紺。", lung: "BVM 擠起來阻力很大，兩側呼吸音很小，有痰音。", chest: "通氣時胸廓幾乎不起伏。", abg: "pH 7.02、PaCO₂ 98、PaO₂ 42", lus: "兩側都有肺滑動。" },
     push: ["呼吸治療師：「BVM 很難擠，可能塞住了。」"], tx: ["suction", "ett", "epi"] },
   { id: "acid", g: "5H", n: "酸中毒：糖尿病酮酸中毒（DKA）", ht: "acid", brief: "第一型糖尿病沒打胰島素、嘔吐兩天。嚴重代謝性酸中毒合併高血鉀傾向，重點是輸液、通氣，考慮 NaHCO₃。",
     start: { rhythm: "pea", v: { hr: 118, etco2: 8 } },
@@ -1393,7 +1432,7 @@ const CASES = [
     push: ["家屬：「他這兩天一直吐，胰島素都沒打。」"], tx: ["ns", "nahco3", "insulin"] },
   { id: "hyperk", g: "5H", n: "高血鉀：洗腎病人沒去洗腎", ht: "kalemia", brief: "洗腎病人錯過洗腎，寬 QRS 正弦波。重點是 Calcium、NaHCO₃、胰島素加葡萄糖，聯絡洗腎。",
     start: { rhythm: "sine", v: { hr: 48, etco2: 12 } },
-    clue: { hx: "長期洗腎，這週三沒去洗腎，今天說全身無力。", limb: "左前臂有動靜脈廔管，摸得到震顫。", lab: "K 8.1、Hb 9.0", ekg: "QRS 很寬、像正弦波，看不到 P 波。", abg: "pH 7.18、HCO₃⁻ 14" },
+    clue: { arm_L: "左前臂有動靜脈廔管，摸得到震顫、聽得到雜音。", hx: "長期洗腎，這週三沒去洗腎，今天說全身無力。", limb: "左前臂有動靜脈廔管，摸得到震顫。", lab: "K 8.1、Hb 9.0", ekg: "QRS 很寬、像正弦波，看不到 P 波。", abg: "pH 7.18、HCO₃⁻ 14" },
     push: ["家屬拿來洗腎紀錄本：上次洗腎是 5 天前。"], tx: ["ca", "nahco3", "insulin"] },
   { id: "hypok", g: "5H", n: "低血鉀：Torsades", ht: "kalemia", brief: "嚴重腹瀉加利尿劑造成低血鉀、低血鎂，多形性 VT。重點是電擊、MgSO₄、補鉀。",
     start: { rhythm: "tdp", v: { etco2: 15 } },
@@ -1405,7 +1444,7 @@ const CASES = [
     push: ["救護員：「現場室溫大概 8 度。」"], tx: ["rewarm", "defib"] },
   { id: "tension", g: "5T", n: "張力性氣胸：車禍胸部外傷", ht: "tension", brief: "右胸撞擊，插管後正壓通氣惡化成 PEA。線索在氣管偏移、頸靜脈、單側呼吸音、肺超音波；處置是針刺減壓、胸管。",
     start: { rhythm: "pea", v: { hr: 136, etco2: 7 } },
-    clue: { hx: "機車車禍，右胸撞到路邊。剛插管、接上 BVM 正壓後很快惡化。", trach: "氣管偏向左側。", jvd: "頸靜脈明顯怒張。", lung: "右側聽不到呼吸音，左側正常。", chest: "右側胸廓膨起，通氣時幾乎不動；有皮下氣腫。", bleed: "右胸有擦傷，沒有外出血。", lus: "右側看不到肺滑動，左側正常。", echo: "心臟收縮快、沒有心包膜積液。", ivc: "漲滿，沒有呼吸變化。" },
+    clue: { lung_R: "右側聽不到呼吸音。", lung_L: "左側呼吸音正常。", hx: "機車車禍，右胸撞到路邊。剛插管、接上 BVM 正壓後很快惡化。", trach: "氣管偏向左側。", jvd: "頸靜脈明顯怒張。", lung: "右側聽不到呼吸音，左側正常。", chest: "右側胸廓膨起，通氣時幾乎不動；有皮下氣腫。", bleed: "右胸有擦傷，沒有外出血。", lus: "右側看不到肺滑動，左側正常。", echo: "心臟收縮快、沒有心包膜積液。", ivc: "漲滿，沒有呼吸變化。" },
     push: ["呼吸道：「BVM 越來越難擠。」"], tx: ["needle", "chesttube"] },
   { id: "tamponade", g: "5T", n: "心包填塞：胸部穿刺傷", ht: "tamponade", brief: "左胸刀刺傷，Beck 三徵。超音波看到心包膜積液；處置是心包膜穿刺、通知外科開胸。",
     start: { rhythm: "pea", v: { hr: 128, etco2: 9 } },
@@ -1413,15 +1452,15 @@ const CASES = [
     push: ["警察：「他被刺了一刀，大概 30 分鐘前。」"], tx: ["pericardio", "surgery", "ns"] },
   { id: "op", g: "5T", n: "中毒：有機磷農藥", ht: "toxin", brief: "喝農藥，膽鹼過量：瞳孔縮小、分泌物多、心跳慢。重點是保護呼吸道、Atropine 大量、PAM、除污。",
     start: { rhythm: "pea", v: { hr: 38, etco2: 8 } },
-    clue: { hx: "家屬在床邊找到一個農藥瓶，聞得到濃濃的大蒜味。", look: "全身濕冷、一直流口水，大小便失禁。", pupil: "兩側針尖般縮小（約 1 mm）。", lung: "兩側大量濕囉音，口鼻很多分泌物。", abg: "pH 7.12、PaCO₂ 62" },
+    clue: { lung_R: "右側大量濕囉音。", lung_L: "左側大量濕囉音。", hx: "家屬在床邊找到一個農藥瓶，聞得到濃濃的大蒜味。", look: "全身濕冷、一直流口水，大小便失禁。", pupil: "兩側針尖般縮小（約 1 mm）。", lung: "兩側大量濕囉音，口鼻很多分泌物。", abg: "pH 7.12、PaCO₂ 62" },
     push: ["家屬拿來農藥瓶，標籤寫「有機磷」。"], tx: ["atropine", "pam", "suction", "ett"] },
   { id: "opioid", g: "5T", n: "中毒：鴉片類藥物", ht: "toxin", brief: "鴉片類過量造成呼吸停止。重點是有效通氣，可考慮 Naloxone（不能取代 CPR 與通氣）。",
     start: { rhythm: "pea", v: { hr: 46, etco2: 6 } },
-    clue: { hx: "年輕男性，朋友說他今晚有用藥，之後就叫不醒。", look: "手臂有多處針孔。", pupil: "兩側針尖般縮小。", abg: "pH 7.05、PaCO₂ 92" },
+    clue: { arm_L: "左手肘內側有多處針孔。", arm_R: "右手臂也有幾個針孔。", hx: "年輕男性，朋友說他今晚有用藥，之後就叫不醒。", look: "手臂有多處針孔。", pupil: "兩側針尖般縮小。", abg: "pH 7.05、PaCO₂ 92" },
     push: ["朋友交出一個小塑膠袋和針筒。"], tx: ["ett", "naloxone"] },
   { id: "pe", g: "5T", n: "肺栓塞：術後臥床", ht: "pe", brief: "骨科術後臥床，下床後突然喘、倒下。超音波看到右心室擴大，處置是考慮血栓溶解（Alteplase），給藥後延長 CPR。",
     start: { rhythm: "pea", v: { hr: 124, etco2: 7 } },
-    clue: { hx: "一週前做完骨科手術，一直臥床；剛剛第一次下床，突然很喘、胸痛然後倒下。", limb: "左小腿腫脹，比右側粗 3 公分。", jvd: "頸靜脈怒張。", lung: "兩側呼吸音對稱。", echo: "右心室明顯擴大，左心室被擠成 D 字型。", ivc: "漲滿（> 2.5 cm），沒有呼吸變化。", abg: "pH 7.15、PaCO₂ 40、PaO₂ 48" },
+    clue: { limb_L: "左小腿腫脹、緊繃，比右側粗 3 公分，按壓會痛。", limb_R: "右小腿正常。", hx: "一週前做完骨科手術，一直臥床；剛剛第一次下床，突然很喘、胸痛然後倒下。", limb: "左小腿腫脹，比右側粗 3 公分。", jvd: "頸靜脈怒張。", lung: "兩側呼吸音對稱。", echo: "右心室明顯擴大，左心室被擠成 D 字型。", ivc: "漲滿（> 2.5 cm），沒有呼吸變化。", abg: "pH 7.15、PaCO₂ 40、PaO₂ 48" },
     push: ["護理師：「他今天第一次下床。」"], tx: ["alteplase"] },
   { id: "mi", g: "5T", n: "冠狀動脈：急性心肌梗塞", ht: "coronary", brief: "胸悶冒冷汗後 VF。ROSC 後 12 導程 ST 上升，要啟動心導管。",
     start: { rhythm: "vf", v: { etco2: 16 } },
@@ -1433,11 +1472,11 @@ const CASES = [
     push: ["家屬：「他有吃抗凝血劑。」"], tx: ["ett", "ct", "neuro"] },
   { id: "sepsis", g: "其他", n: "敗血性休克", ht: "", brief: "心跳停止前：發燒、低血壓、皮膚花斑。重點是輸液、抗生素、升壓劑。",
     start: { rhythm: "stach", pulse: true, v: { hr: 132, sbp: 72, dbp: 38, spo2: 92, rr: 30, etco2: 26, temp: 39.4 } },
-    clue: { hx: "三天咳嗽發燒，今天意識變差。", look: "皮膚花斑，微血管回填 4 秒。", temp: "39.4°C", lab: "Lactate 7.2、WBC 22,000", lung: "右下肺有濕囉音。", ivc: "塌陷（< 1 cm）。" },
+    clue: { lung_R: "右下肺有濕囉音。", lung_L: "左側呼吸音正常。", hx: "三天咳嗽發燒，今天意識變差。", look: "皮膚花斑，微血管回填 4 秒。", temp: "39.4°C", lab: "Lactate 7.2、WBC 22,000", lung: "右下肺有濕囉音。", ivc: "塌陷（< 1 cm）。" },
     push: ["胸部 X 光：右下肺浸潤。"], tx: ["ns", "abx", "norepi"] },
   { id: "anaphylaxis", g: "其他", n: "過敏性休克（抗生素）", ht: "", brief: "打完抗生素幾分鐘後全身紅疹、喘鳴、低血壓。依本院做法：立即 Vena＋Oradexon，出現組織腫脹、喘鳴、低血壓立即 Bosmin。",
     start: { rhythm: "stach", pulse: true, v: { hr: 138, sbp: 68, dbp: 30, spo2: 88, rr: 32, etco2: 30 } },
-    clue: { hx: "剛打完 Ceftriaxone 不到 5 分鐘。", look: "全身紅疹，嘴唇和眼皮腫起來。", lung: "兩側喘鳴。", med: "以前沒有藥物過敏紀錄。" },
+    clue: { lung_R: "右側有喘鳴聲。", lung_L: "左側有喘鳴聲。", arm_R: "右手臂 IV 處，抗生素剛打完。", hx: "剛打完 Ceftriaxone 不到 5 分鐘。", look: "全身紅疹，嘴唇和眼皮腫起來。", lung: "兩側喘鳴。", med: "以前沒有藥物過敏紀錄。" },
     push: ["病人：「喉嚨好緊……」"], tx: ["bosmin", "vena", "oradexon", "ns"] },
   { id: "hypogly", g: "其他", n: "低血糖昏迷", ht: "", brief: "心跳停止前：糖尿病打胰島素沒吃飯，叫不醒。一定要測血糖，D50W。",
     start: { rhythm: "sinus", pulse: true, v: { hr: 104, sbp: 138, dbp: 82, spo2: 97, rr: 18, etco2: 36 } },
@@ -1490,6 +1529,48 @@ const ETT_SIZE = ["6.5", "7.0", "7.5", "8.0", "8.5"];
 const ETT_DEPTH = [19, 20, 21, 22, 23, 24, 25];
 /* 電擊能量（雙相） */
 const JOULES = [50, 100, 120, 150, 200, 300, 360];
+
+/* 情境模組：一鍵改心律＋脈搏＋生命徵象；dur 秒內從 from 慢慢變到 v */
+const STATES = [
+  { id: "vf", n: "VF 心跳停止", r: "vf", pulse: false, v: { etco2: 14, rr: 0 } },
+  { id: "pvt", n: "無脈性 VT", r: "pvt", pulse: false, v: { etco2: 14, rr: 0 } },
+  { id: "pea", n: "PEA", r: "pea", pulse: false, v: { hr: 62, etco2: 10, rr: 0 } },
+  { id: "asys", n: "Asystole", r: "asys", pulse: false, v: { etco2: 8, rr: 0 } },
+  { id: "rosc", n: "ROSC（1 分鐘慢慢回穩）", r: "stach", pulse: true, from: { hr: 132, sbp: 74, dbp: 42, spo2: 84, rr: 10, etco2: 48 }, v: { hr: 104, sbp: 112, dbp: 68, spo2: 96, rr: 14, etco2: 38 }, dur: 60 },
+  { id: "roscLow", n: "ROSC 後低血壓", r: "stach", pulse: true, from: { hr: 120, sbp: 96, dbp: 58, spo2: 94, rr: 14, etco2: 36 }, v: { hr: 128, sbp: 76, dbp: 40, spo2: 92, rr: 16, etco2: 32 }, dur: 40 },
+  { id: "rearrest", n: "ROSC 後再度 VF", r: "vf", pulse: false, v: { etco2: 16, rr: 0 } },
+  { id: "brady", n: "心搏過緩、不穩定", r: "brady", pulse: true, v: { hr: 36, sbp: 70, dbp: 38, spo2: 90, rr: 18, etco2: 30 }, dur: 20 },
+  { id: "svt", n: "SVT、不穩定", r: "svt", pulse: true, v: { hr: 192, sbp: 78, dbp: 50, spo2: 93, rr: 26, etco2: 30 }, dur: 15 },
+  { id: "shock", n: "休克（代償中）", r: "stach", pulse: true, v: { hr: 128, sbp: 88, dbp: 54, spo2: 94, rr: 26, etco2: 28 }, dur: 30 },
+  { id: "hypox", n: "血氧一直掉", r: "stach", pulse: true, v: { hr: 132, sbp: 104, dbp: 62, spo2: 76, rr: 34, etco2: 52 }, dur: 60 },
+  { id: "stable", n: "穩定（正常範圍）", r: "sinus", pulse: true, v: { hr: 84, sbp: 126, dbp: 76, spo2: 98, rr: 16, etco2: 36 }, dur: 30 }
+];
+const STATE_BY = Object.fromEntries(STATES.map(x => [x.id, x]));
+/* 全身圖的部位 → 評估項目 */
+const BODY_ZONES = [
+  { id: "head", n: "頭／瞳孔", items: ["pupil", "look"] },
+  { id: "neck", n: "頸部", items: ["trach", "jvd"] },
+  { id: "chR", n: "右胸", items: ["lung_R", "chest"] },
+  { id: "chL", n: "左胸", items: ["lung_L", "chest"] },
+  { id: "heart", n: "心臟", items: ["heart", "echo"] },
+  { id: "abd", n: "腹部", items: ["abd", "bleed"] },
+  { id: "armR", n: "右手臂", items: ["arm_R"] },
+  { id: "armL", n: "左手臂", items: ["arm_L"] },
+  { id: "legR", n: "右腿", items: ["limb_R"] },
+  { id: "legL", n: "左腿", items: ["limb_L"] }
+];
+/* 建議回覆：病例線索 → 兩側共用線索 → 動態（插管太深）→ 一般 */
+function suggest(S, k){
+  const c = CASE_BY[S.caseId], cl = (c && c.clue) || {};
+  const ett = S.airway && S.airway.ett;
+  if (ett && ett.depth >= 24 && (k === "lung_L" || k === "lung")) return k === "lung" ? "右側呼吸音正常，左側明顯變小。" : "左側呼吸音明顯變小。";
+  if (ett && ett.depth >= 24 && k === "lung_R") return cl.lung_R || "右側呼吸音正常。";
+  if (ett && ett.depth <= 19 && (k === "lung" || k === "lung_R" || k === "lung_L")) return "兩側呼吸音很小，脖子附近聽到漏氣聲。";
+  if (cl[k]) return cl[k];
+  const base = k.replace(/_[RL]$/, "");
+  if (base !== k && cl[base]) return cl[base];
+  return ASK_BY[k] ? ASK_BY[k][2] : "";
+}
 
 /* ---- 急救室 Q 版配置圖（沿用學習站） ---- */
 const ACLS_ROLES = [
@@ -1597,7 +1678,7 @@ function blankState(meta){
   return { code: meta.code, mode: meta.mode, seats: meta.seats || {}, status: "wait", t0: 0, t1: 0,
     caseId: meta.mode === "auto" ? "vf" : "", rhythm: "vf", pulse: false, vit: { hr: 0, sbp: 0, dbp: 0, spo2: 0, rr: 0, etco2: 12, temp: 36.4 }, show: false,
     monitor: false, etco2On: false, cpr: false, cprSince: 0, pauseAt: 0, pauses: [], defib: { sync: false, j: 200, charged: 0, clearAt: 0 },
-    airway: { dev: "", ett: null, confirm: false }, iv: "", cmds: [], asks: [], drugs: [], shocks: [], calls: [], pcalls: [], procs: [], ht: {}, clues: [],
+    airway: { dev: "", ett: null, confirm: false }, iv: "", trend: null, stateId: "", cmds: [], asks: [], drugs: [], shocks: [], calls: [], pcalls: [], procs: [], ht: {}, clues: [],
     ev: [], epiLast: 0, saved: meta.saved, saveErr: meta.saveErr, n: meta.n };
 }
 function applyCase(S, id){
@@ -1621,14 +1702,21 @@ function derive(meta, events){
     if (S.status === "end") continue;
     /* ---- 教師 ---- */
     if (host) {
-      if (a.type === "rhythm" && RHY[a.r]) { S.rhythm = a.r; S.pulse = a.pulse !== undefined ? !!a.pulse : RHY[a.r][1]; S.vit.hr = RHY[a.r][2] || S.vit.hr;
+      if (a.type === "rhythm" && RHY[a.r]) { S.trend = null; S.stateId = ""; S.rhythm = a.r; S.pulse = a.pulse !== undefined ? !!a.pulse : RHY[a.r][1]; S.vit.hr = RHY[a.r][2] || S.vit.hr;
         if (S.pulse && !S.vit.sbp) Object.assign(S.vit, NORMAL_ROSC, { hr: RHY[a.r][2] || 98 });
         if (!S.pulse) { S.vit.sbp = 0; S.vit.dbp = 0; S.vit.spo2 = 0; }
         log(e, S.show ? `監視器：${RHY[a.r][0]}` : "（監視器畫面改變）", { xt: `心律 → ${RHY[a.r][0]}${S.pulse ? "（有脈搏）" : "（無脈搏）"}`, g: "rhythm", quiet: !S.show }); continue; }
-      if (a.type === "pulse") { S.pulse = !!a.p; if (S.pulse && !S.vit.sbp) Object.assign(S.vit, NORMAL_ROSC, { hr: S.vit.hr || 98 }); if (!S.pulse) { S.vit.sbp = 0; S.vit.dbp = 0; S.vit.spo2 = 0; }
+      if (a.type === "pulse") { S.trend = null; S.pulse = !!a.p; if (S.pulse && !S.vit.sbp) Object.assign(S.vit, NORMAL_ROSC, { hr: S.vit.hr || 98 }); if (!S.pulse) { S.vit.sbp = 0; S.vit.dbp = 0; S.vit.spo2 = 0; }
         log(e, "（教師調整）", { xt: S.pulse ? "設定：摸得到脈搏" : "設定：摸不到脈搏", hide: true }); continue; }
-      if (a.type === "vitals") { const v = a.v || {}; ["hr", "sbp", "dbp", "spo2", "rr", "etco2"].forEach(k => { if (v[k] !== undefined && v[k] !== "") S.vit[k] = Math.max(0, Math.round(+v[k] || 0)); }); if (v.temp !== undefined && v.temp !== "") S.vit.temp = +(+v.temp).toFixed(1);
-        log(e, "（生命徵象改變）", { xt: `生命徵象：HR ${S.vit.hr}、BP ${S.vit.sbp}/${S.vit.dbp}、SpO₂ ${S.vit.spo2}、RR ${S.vit.rr}、ETCO₂ ${S.vit.etco2}、T ${S.vit.temp}`, quiet: true }); continue; }
+      if (a.type === "state" && STATE_BY[a.id]) { const st = STATE_BY[a.id], from = Object.assign({}, curVit(S, t), st.from || {});
+        S.rhythm = st.r; S.pulse = st.pulse; S.stateId = st.id;
+        const to = Object.assign({}, S.vit, st.pulse ? {} : { sbp: 0, dbp: 0, spo2: 0 }, { hr: RHY[st.r][2] || S.vit.hr }, st.v || {});
+        S.vit = to; S.trend = st.dur && st.pulse ? { from, to, t0: t, dur: st.dur } : null;
+        log(e, S.show ? `監視器：${RHY[st.r][0]}` : "（監視器畫面改變）", { xt: `情境模組：${st.n}${st.dur ? `（${st.dur} 秒內變化）` : ""}`, g: "rhythm", quiet: !S.show }); continue; }
+      if (a.type === "vitals") { const v = a.v || {}, from = curVit(S, t); ["hr", "sbp", "dbp", "spo2", "rr", "etco2"].forEach(k => { if (v[k] !== undefined && v[k] !== "") S.vit[k] = Math.max(0, Math.round(+v[k] || 0)); }); if (v.temp !== undefined && v.temp !== "") S.vit.temp = +(+v.temp).toFixed(1);
+        S.trend = a.dur ? { from, to: Object.assign({}, S.vit), t0: t, dur: +a.dur } : null;
+        log(e, "（生命徵象改變）", { xt: `${a.dur ? `（${a.dur} 秒內慢慢變成）` : ""}生命徵象：HR ${S.vit.hr}、BP ${S.vit.sbp}/${S.vit.dbp}、SpO₂ ${S.vit.spo2}、RR ${S.vit.rr}、ETCO₂ ${S.vit.etco2}、T ${S.vit.temp}`, quiet: true }); continue; }
+      if (a.type === "monitor") { S.monitor = !!a.on; log(e, S.monitor ? "病人已接上監視器" : "（監視器拔除）", { g: "pads", sp: S.monitor ? "監視器已接上" : null, quiet: !S.monitor }); continue; }
       if (a.type === "show") { S.show = !!a.on; log(e, S.show ? "教師：開放顯示心律名稱" : "教師：隱藏心律名稱", { hide: !S.show, quiet: true }); continue; }
       if (a.type === "clue") { const x = String(a.x || "").slice(0, 120); if (!x) continue; S.clues.push({ t, x }); log(e, `線索：${x}`, { g: "clue", sp: x }); continue; }
       if (a.type === "reply") { const q = S.asks.find(q => q.id === a.id); const x = String(a.x || "").slice(0, 200);
@@ -1652,7 +1740,7 @@ function derive(meta, events){
     if (a.type === "ask" && role === "L") { const it = ASK_BY[a.k]; const label = it ? it[1] : String(a.x || "").slice(0, 40); if (!label) continue;
       const q = { id: "q" + (S.asks.length + 1), k: it ? a.k : "free", label, t, reply: null }; S.asks.push(q);
       log(e, `Leader 評估：${label}`, { g: "ask", ask: q.id, sp: `請評估：${label}` });
-      if (S.mode === "auto") { const c = CASE_BY[S.caseId] || CASE_BY.vf, x = (c.clue && c.clue[q.k]) || (it ? it[2] : "（教師未回覆）"); q.reply = { t, x, voice: "" }; log({ t, w: "T", a: {}, i: e.i }, `${label}：${x}`, { g: "reply", sp: x, ask: q.id }); }
+      if (S.mode === "auto") { const x = (it && suggest(S, q.k)) || "（沒有教師，請自行判斷）"; q.reply = { t, x, voice: "" }; log({ t, w: "T", a: {}, i: e.i }, `${label}：${x}`, { g: "reply", sp: x, ask: q.id }); }
       continue; }
     if (a.type === "proc" && role === "L" && PROC_BY[a.k]) { S.procs.push({ k: a.k, t }); log(e, `Leader 決定：${PROC_BY[a.k][1]}`, { g: "proc", sp: PROC_BY[a.k][1] }); continue; }
     if (a.type === "ht" && role === "L") { const h = HT.find(h => h[0] === a.k); if (!h) continue; S.ht[a.k] = a.on ? t : 0; if (a.on) log(e, `Leader 懷疑：${h[1]}`, { g: "ht", sp: `懷疑${h[1]}` }); continue; }
@@ -1689,7 +1777,7 @@ function derive(meta, events){
         log(e, `${sync ? "同步" : "非同步"}電擊 ${S.defib.j} 焦耳${cleared ? "" : "（沒有先喊離開）"}`, { g: "shock", sp: "電擊完成，繼續壓胸", xt: `${sync ? "同步" : "非同步"}電擊 ${S.defib.j} J；當時心律 ${RHY[r][0]}（${ok ? "適當" : "不適當"}）${cleared ? "" : "；沒有先喊離開"}` });
         cmdDone("D", "shock", t); cmdDone("D", "sync", t);
         if (S.mode === "auto") { const n = S.shocks.filter(s => s.delivered && s.ok).length, epi = S.drugs.some(d => d.k === "epi"), am = S.drugs.some(d => d.k.startsWith("amio"));
-          if (S.rhythm === "vf" && n >= 3 && epi && am) { S.rhythm = "sinus"; S.pulse = true; Object.assign(S.vit, NORMAL_ROSC); log({ t, w: "S", a: {}, i: e.i }, "（監視器畫面改變）", { g: "rhythm", xt: "自動：ROSC（竇性心律、有脈搏）", quiet: true }); } }
+          if (S.rhythm === "vf" && n >= 3 && epi && am) { const st = STATE_BY.rosc; S.rhythm = st.r; S.pulse = true; S.vit = Object.assign({}, S.vit, st.v); S.trend = { from: Object.assign({}, S.vit, st.from), to: Object.assign({}, S.vit), t0: t, dur: st.dur }; log({ t, w: "S", a: {}, i: e.i }, "（監視器畫面改變）", { g: "rhythm", xt: "自動：ROSC（竇性心律、有脈搏）", quiet: true }); } }
         continue; }
       if (a.type === "call" && RHY[a.r]) { const ok = a.r === S.rhythm || (a.r === "pea" && !S.pulse && ["sinus", "stach", "brady", "pea", "sine"].includes(S.rhythm)); S.calls.push({ t, r: a.r, actual: S.rhythm, ok });
         log(e, `判讀心律：${RHY[a.r][0]}`, { g: "call", sp: `判讀：${RHY[a.r][0]}`, xt: `判讀：${RHY[a.r][0]}（實際 ${RHY[S.rhythm][0]}，${ok ? "正確" : "錯誤"}）` }); cmdDone("D", "call", t); continue; }
@@ -1710,6 +1798,13 @@ function derive(meta, events){
     }
   }
   return S;
+}
+/* 目前生命徵象（漸變中就內插） */
+function curVit(S, now){
+  const T = S.trend; if (!T || now >= T.t0 + T.dur * 1000) return S.vit;
+  const k = Math.max(0, Math.min(1, (now - T.t0) / (T.dur * 1000))), o = {};
+  Object.keys(T.to).forEach(x => { const a = +T.from[x], b = +T.to[x]; o[x] = isFinite(a) && isFinite(b) ? (x === "temp" ? +(a + (b - a) * k).toFixed(1) : Math.round(a + (b - a) * k)) : T.to[x]; });
+  return o;
 }
 const mmss = ms => { ms = Math.max(0, ms); const s = Math.floor(ms / 1000); return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`; };
 
@@ -1748,6 +1843,7 @@ function summarize(S){
 function logRows(S){ const t0 = S.t0 || 0; return S.ev.filter(e => e.g !== "join").map(e => [Math.max(0, Math.round((e.t - t0) / 1000)), e.w, e.xt || e.x]); }
 
 /* ================= 共用小工具 ================= */
+const SIM_VER = "2026.10.16-c";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -1790,7 +1886,7 @@ async function pull(){
 function startRoom(code, ...fns){
   stopRoom(); ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
   ST.poll = setInterval(pull, LIVE() ? 1500 : 700);
-  ST.tick = setInterval(() => { if (ST.S && ST.S.status === "run") paintTimers(ST.S); }, 1000);
+  ST.tick = setInterval(() => { if (ST.S && ST.S.status !== "end") paintTimers(ST.S); }, 1000);
   return pull();
 }
 const NOW = () => Date.now() + ST.off;
@@ -1802,6 +1898,7 @@ async function act(a, extra){
 }
 function paintTimers(S){
   const t = NOW();
+  document.querySelectorAll(".monv").forEach(m => { const v = vitText(m.dataset.t ? Object.assign({}, S, { monitor: true }) : S); m.querySelectorAll("[data-vk]").forEach(b => { if (b.textContent !== v[b.dataset.vk]) b.textContent = v[b.dataset.vk]; }); });
   document.querySelectorAll("[data-tm]").forEach(el => {
     const k = el.dataset.tm;
     if (k === "run") el.textContent = S.t0 ? mmss((S.t1 || t) - S.t0) : "00:00";
@@ -1844,10 +1941,10 @@ function monitorMount(cv, getS){
       t += 1 / speed; x = (x + 1) % W;
       ctx.fillStyle = "#06120F"; ctx.fillRect(x, 0, 10 * devicePixelRatio, H);
       let v = 0;
-      if (S && S.monitor) { v = waveAt(S.rhythm, t, S.vit.hr || RHY[S.rhythm][2]); if (S.cpr) v = v * .35 + Math.sin(t * 2 * Math.PI * 110 / 60) * .75 + Math.sin(t * 9) * .08; }
+      if (S && (S.monitor || cv.dataset.teacher)) { v = waveAt(S.rhythm, t, S.vit.hr || RHY[S.rhythm][2]); if (S.cpr) v = v * .35 + Math.sin(t * 2 * Math.PI * 110 / 60) * .75 + Math.sin(t * 9) * .08; }
       else v = Math.sin(t * 3) * .01;
       const y = H / 2 - v * H * .36;
-      ctx.strokeStyle = S && S.monitor ? "#45E39B" : "#2B5A49"; ctx.lineWidth = 2 * devicePixelRatio; ctx.beginPath();
+      ctx.strokeStyle = S && S.monitor ? "#45E39B" : cv.dataset.teacher ? "#3E9C78" : "#2B5A49"; ctx.lineWidth = 2 * devicePixelRatio; ctx.beginPath();
       if (py !== null && x > 0) { ctx.moveTo(x - 1, py); ctx.lineTo(x, y); ctx.stroke(); }
       py = y;
     }
@@ -1856,14 +1953,16 @@ function monitorMount(cv, getS){
   requestAnimationFrame(step);
 }
 function vitText(S){
-  const v = S.vit, on = S.monitor;
+  const v = curVit(S, NOW()), on = S.monitor;
   const hr = !on ? "—" : ["vf", "asys"].includes(S.rhythm) ? "---" : S.cpr ? "110" : String(v.hr || RHY[S.rhythm][2]);
   return { hr, bp: on && S.pulse && v.sbp ? `${v.sbp}/${v.dbp}` : "—", spo2: on && S.pulse && v.spo2 ? String(v.spo2) : "—", rr: on && S.pulse && v.rr ? String(v.rr) : "—", et: S.etco2On ? String(v.etco2) : "—" };
 }
 function monitorHTML(S, opt = {}){
-  const v = vitText(S), label = !S.monitor ? "尚未接監視器" : S.show || opt.teacher ? RHY[S.rhythm][0] + (opt.teacher ? (S.pulse ? "・有脈搏" : "・無脈搏") : "") : S.cpr ? "壓胸中（看不清心律）" : "心律：請判讀";
-  return `<div class="mon ${opt.small ? "sm" : ""}"><canvas class="moncv" aria-label="監視器"></canvas><div class="monlab ${!S.monitor ? "off" : ""}">${esc(label)}</div>
-    <div class="monv"><span><small>HR</small><b class="g">${v.hr}</b></span><span><small>SpO₂</small><b class="c">${v.spo2}</b></span><span><small>BP</small><b class="r">${v.bp}</b></span><span><small>ETCO₂</small><b class="y">${v.et}</b></span>${opt.small ? "" : `<span><small>RR</small><b class="w">${v.rr}</b></span>`}</div></div>`;
+  const v = vitText(opt.teacher ? Object.assign({}, S, { monitor: true }) : S);
+  const label = opt.teacher ? RHY[S.rhythm][0] + (S.pulse ? "・有脈搏" : "・無脈搏") + (S.monitor ? "" : "（學員端還沒接監視器）")
+    : !S.monitor ? "尚未接監視器（請電擊手按「貼電擊片、接監視器」）" : S.show ? RHY[S.rhythm][0] : S.cpr ? "壓胸中（看不清心律）" : "心律：請判讀";
+  return `<div class="mon ${opt.small ? "sm" : ""}"><canvas class="moncv" aria-label="監視器" ${opt.teacher ? "data-teacher=1" : ""}></canvas><div class="monlab ${!S.monitor ? "off" : ""}">${esc(label)}</div>
+    <div class="monv" ${opt.teacher ? "data-t=1" : ""}><span><small>HR</small><b class="g" data-vk="hr">${v.hr}</b></span><span><small>SpO₂</small><b class="c" data-vk="spo2">${v.spo2}</b></span><span><small>BP</small><b class="r" data-vk="bp">${v.bp}</b></span><span><small>ETCO₂</small><b class="y" data-vk="et">${v.et}</b></span>${opt.small ? "" : `<span><small>RR</small><b class="w" data-vk="rr">${v.rr}</b></span>`}</div></div>`;
 }
 function mountMonitors(root){ (root || document).querySelectorAll(".moncv:not([data-on])").forEach(cv => { cv.dataset.on = 1; monitorMount(cv, () => ST.S); }); }
 
@@ -1895,7 +1994,7 @@ function landing(code, msg){
         <a class="link" href="#rec">演練紀錄 ›</a>
       </section>
     </div>
-    <p class="foot">只做教學，不記錄病人資料。內容依 AHA 2025 ACLS 與本院急救室配置。</p>`;
+    <p class="foot">只做教學，不記錄病人資料。內容依 AHA 2025 ACLS 與本院急救室配置。・版本 ${SIM_VER}</p>`;
   let pick = "", force = "";
   $("view").onclick = async e => {
     if (e.target.closest("#mk")) { const mode = (document.querySelector("[name=md]:checked") || {}).value;
@@ -2003,7 +2102,7 @@ function player(code){
   ST.seat = seat; const role = seat.role, info = ROLES[role];
   setBar(`${info[0]}・房間 ${code}`, info[1], "");
   $("view").innerHTML = `<div class="note" id="offline" hidden></div>
-    <section class="panel me" style="--rc:${info[2]}"><span class="badge">${esc(info[0])}</span><div><b>${esc(seat.name)}</b><small id="meSt"></small></div>
+    <section class="panel me" style="--rc:${info[2]}"><span class="badge">${esc(info[0])}</span><div><b>${esc(seat.name)}</b><small id="meSt"></small><small class="ver">版本 ${SIM_VER}</small></div>
       <button class="mini" id="swRole">換角色</button></section>
     <div id="pBody" style="--rc:${info[2]}"></div>`;
   $("swRole").onclick = () => { if (!confirm("離開「" + info[0] + "」，換一個角色？")) return; seatSet(code, null); go("j-" + code); };
@@ -2011,6 +2110,7 @@ function player(code){
   const paint = S => {
     const cur = S.seats[role]; if (cur && cur.name !== seat.name) { seatSet(code, null); stopRoom(); toast(`「${info[0]}」已由 ${cur.name} 接手，請重新選角色`, true); return go("j-" + code); }
     $("meSt").textContent = S.status === "wait" ? "等待主持人開始…" : S.status === "run" ? "演練中" : "演練結束";
+    if (ui.dragging) return;
     const key = P.key ? P.key(S, ui) : JSON.stringify([S.status, S.ev.length]);
     if (key === ui.lastKey) return; ui.lastKey = key;
     const keepScroll = scrollY, focus = document.activeElement && document.activeElement.id, vals = {};
@@ -2020,10 +2120,18 @@ function player(code){
     mountMonitors($("pBody")); paintTimers(S); reArm();
     if (focus && $(focus)) $(focus).focus(); scrollTo(0, keepScroll);
   };
-  $("pBody").oninput = e => { if (e.target.tagName === "TEXTAREA") { ui.edited = ui.edited || {}; ui.edited[e.target.id] = 1; } };
+  $("pBody").oninput = e => {
+    if (e.target.tagName === "TEXTAREA") { ui.edited = ui.edited || {}; ui.edited[e.target.id] = 1; }
+    if (e.target.dataset.sl) { const k = e.target.dataset.sl; ui.draft = Object.assign({}, ui.draft || curVit(ST.S, NOW())); ui.draft[k] = +e.target.value; const o = $("slv-" + k); if (o) o.textContent = e.target.value; $("applyBtn") && ($("applyBtn").disabled = false); }
+  };
+  $("pBody").addEventListener("pointerdown", e => { if (e.target.dataset && e.target.dataset.sl) ui.dragging = true; });
+  addEventListener("pointerup", () => { if (ui.dragging) { ui.dragging = false; ui.lastKey = ""; ST.S && paint(ST.S); } });
   $("pBody").onchange = async e => {
+    if (e.target.dataset.sl) { ui.dragging = false; ui.lastKey = ""; return paint(ST.S); }
+    if (e.target.id === "slowOn") { ui.slow = e.target.checked; return; }
     if (e.target.id === "caseSel" && e.target.value) { if (ST.S.caseId && !confirm("換病例會重設心律與生命徵象，確定？")) { ui.lastKey = ""; return paint(ST.S); } await act({ type: "case", id: e.target.value }); }
     if (e.target.id === "showName") await act({ type: "show", on: e.target.checked });
+    if (e.target.id === "monOn") await act({ type: "monitor", on: e.target.checked });
   };
   $("pBody").onclick = async e => {
     const t = e.target.closest("[data-tab]"); if (t) { ui.tab = t.dataset.tab; try { localStorage.setItem("sim2-tab-" + role, ui.tab); } catch (x) {} ui.lastKey = ""; return paint(ST.S); }
@@ -2048,17 +2156,20 @@ function recent(S, role, n = 5){ const list = S.ev.filter(e => e.w === role && !
 const PANELS = {
   /* ---------- Leader ---------- */
   L: {
-    key: (S, ui) => JSON.stringify([S.status, ui.tab, ui.to, S.cmds.map(c => [c.ack, c.done]), S.asks.map(q => !!q.reply), S.ht, S.procs.length, S.rhythm, S.monitor, S.cpr, S.show, S.vit]),
+    key: (S, ui) => JSON.stringify([S.status, ui.tab, ui.to, ui.zone, S.cmds.map(c => [c.ack, c.done]), S.asks.map(q => !!q.reply), S.ht, S.procs.length, S.rhythm, S.monitor, S.cpr, S.show, S.vit]),
     html(S, ui){
       const tab = ui.tab || "cmd", to = ui.to || "C";
       let body = "";
-      if (tab === "cmd") body = `<section class="panel"><div class="seg">${ROLE_ORDER.filter(k => k !== "L").map(k => `<button data-to="${k}" class="${to === k ? "on" : ""}" style="--rc:${ROLES[k][2]}">${ROLES[k][0]}${S.seats[k] ? "" : "<small>（沒人）</small>"}</button>`).join("")}</div>
+      if (tab === "cmd") body = `<section class="panel"><div class="sseg">${ROLE_ORDER.filter(k => k !== "L").map(k => `<button data-to="${k}" class="${to === k ? "on" : ""}" style="--rc:${ROLES[k][2]}">${ROLES[k][0]}${S.seats[k] ? "" : "<small>（沒人）</small>"}</button>`).join("")}</div>
         <div class="grid2">${CMDS[to].map(([g, x]) => btn({ type: "cmd", to, g, x }, x)).join("")}</div>
         <div class="free"><input id="cmdX" maxlength="50" placeholder="自己打指令給「${ROLES[to][0]}」"><button class="btn" data-free="cmd">送出</button></div></section>
         <section class="panel"><h3 class="h3">已下的指令</h3>${S.cmds.length ? `<ol class="cmdlist">${S.cmds.slice(-10).reverse().map(c => `<li class="${c.done ? "done" : c.ack ? "ack" : ""}"><span class="tag" style="--rc:${ROLES[c.to][2]}">${ROLES[c.to][0]}</span>${esc(c.x)}<em>${c.done ? "✓ 完成" : c.ack ? "收到" : "等待"}</em></li>`).join("")}</ol>` : `<p class="hint">還沒下指令。</p>`}</section>`;
-      if (tab === "ask") body = `<section class="panel"><p class="hint">按下去＝你要評估這一項，教師會回覆結果。</p><div class="grid3">${ASK.map(a => btn({ type: "ask", k: a[0] }, a[1], S.asks.some(q => q.k === a[0]) ? "used" : "")).join("")}</div>
+      if (tab === "ask") { const z = BODY_ZONES.find(x => x.id === ui.zone), used = k => S.asks.some(q => q.k === k) ? "used" : "";
+        body = `<section class="panel"><h3 class="h3">身體評估：點病人身上的部位</h3><div class="bodyw">${bodySVG(ui.zone, S)}
+          <div class="zpick">${z ? `<b>${esc(z.n)}</b><div class="grid1">${z.items.map(k => btn({ type: "ask", k }, ASK_BY[k][1], used(k))).join("")}</div>` : `<p class="hint">先點左邊人形的部位（頭、頸、左右胸、心臟、腹部、手、腳），再選要評估什麼。左右是「病人的」左右。</p>`}</div></div></section>
+        <section class="panel"><h3 class="h3">檢查與病史</h3><div class="grid2">${["hx", "med", "look", "lung", "temp", "glu", "abg", "lab", "ekg", "echo", "lus", "ivc"].map(k => btn({ type: "ask", k }, ASK_BY[k][1], used(k))).join("")}</div>
         <div class="free"><input id="askX" maxlength="40" placeholder="其他評估（例如：看一下引流袋）"><button class="btn" data-free="ask">送出</button></div></section>
-        <section class="panel"><h3 class="h3">回覆</h3>${S.asks.length ? `<div class="asks">${S.asks.slice().reverse().map(q => `<div class="askrow ${q.reply ? "done" : ""}"><b>${esc(q.label)}</b><span>${q.reply ? esc(q.reply.x || "（語音）") + (q.reply.voice ? ` <button class="mini" data-voice="${esc(q.reply.voice)}">▶ 播放</button>` : "") : "等待回覆…"}</span></div>`).join("")}</div>` : `<p class="hint">還沒有評估。</p>`}</section>`;
+        <section class="panel"><h3 class="h3">回覆</h3>${S.asks.length ? `<div class="asks">${S.asks.slice().reverse().map(q => `<div class="askrow ${q.reply ? "done" : ""}"><b>${esc(q.label)}</b><span>${q.reply ? esc(q.reply.x || "（語音）") + (q.reply.voice ? ` <button class="mini" data-voice="${esc(q.reply.voice)}">▶ 播放</button>` : "") : "等待回覆…"}</span></div>`).join("")}</div>` : `<p class="hint">還沒有評估。</p>`}</section>`; }
       if (tab === "ht") body = `<section class="panel"><h3 class="h3">懷疑的病因（5H5T）</h3><p class="hint">點一下標記你懷疑的病因，再點一下取消。</p><div class="grid2">${HT.map(h => `<button class="abtn ${S.ht[h[0]] ? "on" : ""}" data-ht="${h[0]}"><small>${h[2]}</small> ${h[1]}</button>`).join("")}</div></section>
         <section class="panel"><h3 class="h3">處置決策</h3><div class="grid2">${PROC.map(p => btn({ type: "proc", k: p[0] }, p[1], S.procs.some(x => x.k === p[0]) ? "used" : "")).join("")}</div>
         <div class="free"><input id="sayX" maxlength="60" placeholder="對全隊說（例如：大家注意，準備換手）"><button class="btn" data-free="say">說</button></div></section>`;
@@ -2066,6 +2177,7 @@ const PANELS = {
     },
     async click(e, S, ui, re){
       const to = e.target.closest("[data-to]"); if (to) { ui.to = to.dataset.to; return re(); }
+      const zn = e.target.closest("[data-zone]"); if (zn) { ui.zone = zn.dataset.zone; return re(); }
       const ht = e.target.closest("[data-ht]"); if (ht) return act({ type: "ht", k: ht.dataset.ht, on: !S.ht[ht.dataset.ht] });
       const f = e.target.closest("[data-free]"); if (f) { const k = f.dataset.free, inp = $(k + "X"), x = inp.value.trim(); if (!x) return toast("先打字再送出", true);
         if (S.status !== "run") return toast("演練還沒開始", true);
@@ -2105,7 +2217,7 @@ const PANELS = {
       <section class="panel"><h3 class="h3">判讀心律</h3><p class="hint">看監視器，選你判讀的心律（壓胸中看不清楚，要先請壓胸手暫停）。</p>
         <div class="grid2">${RHY_CALL.map(r => btn({ type: "call", r }, RHY[r][0], "sm")).join("")}</div></section>
       <section class="panel"><h3 class="h3">電擊器</h3>
-        <div class="seg two"><button data-sync="0" class="${!S.defib.sync ? "on" : ""}">非同步</button><button data-sync="1" class="${S.defib.sync ? "on sync" : ""}">同步 SYNC</button></div>
+        <div class="sseg two"><button data-sync="0" class="${!S.defib.sync ? "on" : ""}">非同步</button><button data-sync="1" class="${S.defib.sync ? "on sync" : ""}">同步 SYNC</button></div>
         <div class="label">能量（焦耳）</div><div class="chips">${JOULES.map(j => `<button data-j="${j}" class="${S.defib.j === j ? "on" : ""}">${j}</button>`).join("")}</div>
         <div class="defst">${S.defib.sync ? "同步" : "非同步"}・${S.defib.j} J・${S.defib.charged ? `<b class="warn">已充電</b>` : "未充電"}</div>
         <div class="grid3">${btn({ type: "charge" }, "充電", "big")}${btn({ type: "clear" }, "所有人離開！", "big")}${btn({ type: "shock" }, "⚡ 電擊", "big red", "data-confirm=1")}</div>
@@ -2146,27 +2258,35 @@ const PANELS = {
   },
   /* ---------- 臨床教師 ---------- */
   T: {
-    key: (S, ui) => JSON.stringify([S.status, ui.tab, S.caseId, S.rhythm, S.pulse, S.show, S.vit, S.asks.map(q => !!q.reply), S.clues.length, ui.draft, ui.rec, S.ev.length]),
+    key: (S, ui) => JSON.stringify([S.status, ui.tab, S.caseId, S.rhythm, S.pulse, S.show, S.monitor, S.stateId, ui.slow, S.vit, S.asks.map(q => !!q.reply), S.clues.length, ui.draft, ui.rec, S.ev.length]),
     html(S, ui){
       const tab = ui.tab || "pt", c = CASE_BY[S.caseId];
       const pending = S.asks.filter(q => !q.reply).length;
       let body = "";
       if (tab === "pt") {
-        const v = ui.draft || S.vit;
+        const v = ui.draft || curVit(S, NOW()), slow = ui.slow !== false;
         const step = (k, n, d) => `<div class="stp"><span>${n}</span><button data-st="${k}" data-d="-${d}">−</button><b>${v[k]}</b><button data-st="${k}" data-d="${d}">＋</button></div>`;
+        const slider = (k, n, min, max, st) => `<div class="sld"><div class="sldh"><span>${n}</span><b id="slv-${k}">${v[k]}</b></div><div class="sldr"><button data-st="${k}" data-d="-${st}">−</button><input type="range" data-sl="${k}" min="${min}" max="${max}" step="1" value="${v[k]}"><button data-st="${k}" data-d="${st}">＋</button></div></div>`;
         body = `<section class="panel">${S.status === "wait" ? `<button class="btn big" data-h="start">開始演練</button>` : S.status === "run" ? `<button class="btn ghost" data-h="end">結束演練</button>` : ""}
           <div class="label">病例（學員看不到）</div><select id="caseSel"><option value="">— 選病例 —</option>${["標準", "5H", "5T", "其他"].map(g => `<optgroup label="${g}">${CASES.filter(x => x.g === g).map(x => `<option value="${x.id}" ${S.caseId === x.id ? "selected" : ""}>${esc(x.n)}</option>`).join("")}</optgroup>`).join("")}</select>
           ${c ? `<p class="brief">${esc(c.brief)}<br><b>期待處置：</b>${c.tx.map(TX_NAME).join("、")}</p>` : ""}</section>
           <section class="panel">${monitorHTML(S, { small: true, teacher: true })}
-          <label class="sw"><input type="checkbox" id="showName" ${S.show ? "checked" : ""}> 讓學員看到心律名稱（預設不給，讓他們判讀）</label>
-          ${RHY_GROUPS.map(([g, list]) => `<div class="label">${g}</div><div class="chips rh">${list.map(r => `<button data-r="${r}" class="${S.rhythm === r ? "on" : ""}">${RHY[r][0]}</button>`).join("")}</div>`).join("")}
-          <div class="seg two"><button data-p="1" class="${S.pulse ? "on" : ""}">有脈搏</button><button data-p="0" class="${!S.pulse ? "on" : ""}">沒有脈搏</button></div></section>
-          <section class="panel"><h3 class="h3">生命徵象 ${ui.draft ? `<small class="warn">（還沒套用）</small>` : ""}</h3>
-          <div class="stps">${step("hr", "HR", 5)}${step("sbp", "收縮壓", 5)}${step("dbp", "舒張壓", 5)}${step("spo2", "SpO₂", 1)}${step("rr", "呼吸", 2)}${step("etco2", "ETCO₂", 2)}${step("temp", "體溫", .5)}</div>
-          <div class="chips">${[["CPR 好（ETCO₂ 18）", { etco2: 18 }], ["CPR 差（ETCO₂ 8）", { etco2: 8 }], ["ROSC（ETCO₂ 跳到 42）", { etco2: 42, hr: 104, sbp: 98, dbp: 60, spo2: 93, rr: 14 }], ["休克", { hr: 132, sbp: 72, dbp: 40, spo2: 90, rr: 28 }], ["低血氧", { spo2: 78, rr: 34 }]].map(([n, p], i) => `<button data-pre="${i}">${n}</button>`).join("")}</div>
-          <div class="row"><button class="btn" data-apply="1" ${ui.draft ? "" : "disabled"}>套用到監視器</button>${ui.draft ? `<button class="btn ghost" data-cancel="1">取消</button>` : ""}</div></section>`;
+          <label class="sw"><input type="checkbox" id="monOn" ${S.monitor ? "checked" : ""}> 病人已接監視器（不勾＝要等電擊手貼片才有波形）</label>
+          <label class="sw"><input type="checkbox" id="showName" ${S.show ? "checked" : ""}> 讓學員看到心律名稱（預設不給，讓他們判讀）</label></section>
+          <section class="box"><div class="boxh"><b>情境模組</b><small>一鍵同時改心律、脈搏、生命徵象；有標「漸變」的會慢慢變化</small></div>
+            <div class="stgrid">${STATES.map(x => `<button class="stcard ${S.stateId === x.id ? "on" : ""} ${x.pulse ? "p" : "np"}" data-state="${x.id}"><b>${esc(x.n)}</b><small>${RHY[x.r][0]}${x.pulse ? "・有脈搏" : "・無脈搏"}${x.dur ? `・漸變 ${x.dur} 秒` : ""}</small></button>`).join("")}</div></section>
+          <section class="box"><div class="boxh"><b>手動調心律</b><small>只換心律；沒脈搏時血壓、血氧自動變成「—」</small></div>
+            ${RHY_GROUPS.map(([g, list]) => `<div class="label">${g}</div><div class="chips rh">${list.map(r => `<button data-r="${r}" class="${S.rhythm === r ? "on" : ""}">${RHY[r][0]}</button>`).join("")}</div>`).join("")}
+            <div class="sseg two" style="margin-top:12px"><button data-p="1" class="${S.pulse ? "on" : ""}">有脈搏</button><button data-p="0" class="${!S.pulse ? "on" : ""}">沒有脈搏</button></div></section>
+          <section class="box"><div class="boxh"><b>生命徵象</b>${ui.draft ? `<small class="warn">已調整，還沒套用</small>` : `<small>拉滑桿或按 −／＋，再按「套用」</small>`}</div>
+            ${slider("sbp", "收縮壓", 0, 240, 2)}${slider("dbp", "舒張壓", 0, 140, 2)}${slider("spo2", "SpO₂", 50, 100, 1)}
+            <div class="stps">${step("hr", "HR", 5)}${step("rr", "呼吸", 2)}${step("etco2", "ETCO₂", 2)}${step("temp", "體溫", .5)}</div>
+            <div class="label">快速組合（按了再套用）</div>
+            <div class="chips pre">${[["CPR 好（ETCO₂ 18）"], ["CPR 差（ETCO₂ 8）"], ["ETCO₂ 跳到 42"], ["休克"], ["低血氧"]].map(([n], i) => `<button data-pre="${i}">${n}</button>`).join("")}</div>
+            <label class="sw"><input type="checkbox" id="slowOn" ${slow ? "checked" : ""}> 30 秒內慢慢變化（不勾＝立即改變）</label>
+            <div class="row"><button class="btn" id="applyBtn" data-apply="1" ${ui.draft ? "" : "disabled"}>套用到監視器</button>${ui.draft ? `<button class="btn ghost" data-cancel="1">取消</button>` : ""}</div></section>`;
       }
-      if (tab === "ask") body = `<section class="panel">${S.asks.length ? S.asks.slice().reverse().map(q => { const sug = (c && c.clue && c.clue[q.k]) || (ASK_BY[q.k] ? ASK_BY[q.k][2] : "");
+      if (tab === "ask") body = `<section class="panel">${S.asks.length ? S.asks.slice().reverse().map(q => { const sug = suggest(S, q.k);
           return `<div class="tq ${q.reply ? "done" : ""}"><b>${esc(q.label)}</b>${q.reply ? `<span class="hint">已回覆：${esc(q.reply.x || "（語音）")}</span>` : `<textarea id="rp-${q.id}" rows="2">${esc(sug)}</textarea>
             <div class="row"><button class="btn" data-reply="${q.id}">送出回覆</button><button class="btn ghost" data-rec="${q.id}">${ui.rec === q.id ? "■ 停止並送出" : "🎙 錄音回覆"}</button>${ASK_BY[q.k] && sug !== ASK_BY[q.k][2] ? `<button class="mini" data-normal="${q.id}">改成一般回答</button>` : ""}</div>`}</div>`; }).join("") : `<p class="hint">Leader 按「評估」後會出現在這裡。建議答案已依病例填好，可以修改再送。</p>`}</section>`;
       if (tab === "clue") body = `<section class="panel"><h3 class="h3">丟線索給大家（會出現在大面板並播報）</h3>${c && c.push.length ? `<div class="grid1">${c.push.map((p, i) => `<button class="abtn" data-push="${i}">${esc(p)}</button>`).join("")}</div>` : ""}
@@ -2180,9 +2300,10 @@ const PANELS = {
       const h = e.target.closest("[data-h]"); if (h) { if (h.dataset.h === "end" && !armed(h)) return toast("再按一次結束演練"); return hostAct({ type: h.dataset.h }); }
       const r = e.target.closest("[data-r]"); if (r) return act({ type: "rhythm", r: r.dataset.r });
       const p = e.target.closest("[data-p]"); if (p) return act({ type: "pulse", p: p.dataset.p === "1" });
-      const st = e.target.closest("[data-st]"); if (st) { const k = st.dataset.st; ui.draft = Object.assign({}, ui.draft || S.vit); ui.draft[k] = Math.max(0, Math.round((+ui.draft[k] + +st.dataset.d) * 10) / 10); return re(); }
-      const pre = e.target.closest("[data-pre]"); if (pre) { const P = [{ etco2: 18 }, { etco2: 8 }, { etco2: 42, hr: 104, sbp: 98, dbp: 60, spo2: 93, rr: 14 }, { hr: 132, sbp: 72, dbp: 40, spo2: 90, rr: 28 }, { spo2: 78, rr: 34 }][+pre.dataset.pre]; ui.draft = Object.assign({}, ui.draft || S.vit, P); return re(); }
-      if (e.target.closest("[data-apply]")) { const d = ui.draft; ui.draft = null; return act({ type: "vitals", v: d }); }
+      const st = e.target.closest("[data-st]"); if (st) { const k = st.dataset.st; ui.draft = Object.assign({}, ui.draft || curVit(S, NOW())); ui.draft[k] = Math.max(0, Math.round((+ui.draft[k] + +st.dataset.d) * 10) / 10); return re(); }
+      const pre = e.target.closest("[data-pre]"); if (pre) { const P = [{ etco2: 18 }, { etco2: 8 }, { etco2: 42 }, { hr: 132, sbp: 72, dbp: 40, spo2: 90, rr: 28 }, { spo2: 78, rr: 34 }][+pre.dataset.pre]; ui.draft = Object.assign({}, ui.draft || curVit(S, NOW()), P); return re(); }
+      const stt = e.target.closest("[data-state]"); if (stt) { ui.draft = null; return act({ type: "state", id: stt.dataset.state }); }
+      if (e.target.closest("[data-apply]")) { const d = ui.draft; ui.draft = null; return act({ type: "vitals", v: d, dur: ui.slow !== false ? 30 : 0 }); }
       if (e.target.closest("[data-cancel]")) { ui.draft = null; return re(); }
       const rp = e.target.closest("[data-reply]"); if (rp) { const x = $("rp-" + rp.dataset.reply).value.trim(); if (!x) return toast("先寫回覆", true); return act({ type: "reply", id: rp.dataset.reply, x }); }
       const nm = e.target.closest("[data-normal]"); if (nm) { const q = S.asks.find(q => q.id === nm.dataset.normal); if (q && ASK_BY[q.k]) $("rp-" + q.id).value = ASK_BY[q.k][2]; return; }
@@ -2193,6 +2314,25 @@ const PANELS = {
     }
   }
 };
+/* Leader 評估用全身圖（病人面向你：病人的右邊在畫面左邊） */
+function bodySVG(sel, S){
+  const asked = new Set(S.asks.map(q => q.k));
+  const zone = (id, shape, lx, ly) => { const z = BODY_ZONES.find(x => x.id === id), done = z.items.some(k => asked.has(k));
+    return `<g class="zone ${sel === id ? "sel" : ""} ${done ? "done" : ""}" data-zone="${id}" role="button" tabindex="0" aria-label="${z.n}">${shape}<text x="${lx}" y="${ly}" text-anchor="middle">${z.n}</text></g>`; };
+  return `<svg class="bodysvg" viewBox="0 0 220 420" aria-label="全身評估圖">
+    <text x="20" y="16" class="side">病人右</text><text x="200" y="16" class="side" text-anchor="end">病人左</text>
+    ${zone("head", `<circle cx="110" cy="44" r="28"/>`, 110, 48)}
+    ${zone("neck", `<rect x="96" y="72" width="28" height="22" rx="6"/>`, 110, 87)}
+    ${zone("armR", `<path d="M58 104 Q40 112 34 150 L24 230 Q22 240 32 242 L42 242 L56 160 L66 120Z"/>`, 38, 190)}
+    ${zone("armL", `<path d="M162 104 Q180 112 186 150 L196 230 Q198 240 188 242 L178 242 L164 160 L154 120Z"/>`, 182, 190)}
+    ${zone("chR", `<path d="M62 100 Q86 94 108 96 L108 170 L66 170 Q60 130 62 100Z"/>`, 86, 138)}
+    ${zone("chL", `<path d="M158 100 Q134 94 112 96 L112 170 L154 170 Q160 130 158 100Z"/>`, 134, 128)}
+    ${zone("heart", `<path d="M124 140 q8 -10 16 -2 q8 -8 14 2 q2 10 -15 22 q-17 -12 -15 -22Z"/>`, 139, 153)}
+    ${zone("abd", `<path d="M66 174 L154 174 Q158 214 150 244 L70 244 Q62 214 66 174Z"/>`, 110, 214)}
+    ${zone("legR", `<path d="M72 248 L108 248 L104 404 Q102 412 92 412 L82 412 Q76 410 76 400Z"/>`, 90, 330)}
+    ${zone("legL", `<path d="M112 248 L148 248 L144 400 Q144 410 138 412 L128 412 Q118 412 116 404Z"/>`, 130, 330)}
+  </svg>`;
+}
 /* 教師錄音回覆（8 秒內） */
 let REC = null;
 async function record(id, ui, re){
