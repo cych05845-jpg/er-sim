@@ -1629,6 +1629,21 @@ button.dst{cursor:pointer}.dst i{font-style:normal;font-weight:900;font-family:u
 .apcard b{font-size:17px}.apcard small{color:var(--ink-2);line-height:1.5}.apcard em{font-style:normal;font-size:12px;font-weight:800;color:#6650C0}
 .apcard.on{border-color:#14202B;box-shadow:0 0 0 3px color-mix(in oklab,#14202B 18%,transparent)}
 .fmpick{margin-top:12px}.fmpick button{font:inherit;font-weight:800;padding:10px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}.fmpick button small{display:block;font-weight:500;font-size:11px;opacity:.8}
+/* ---------- 對內頻道（上方固定） ---------- */
+.tstrip{position:sticky;top:60px;z-index:40;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:stretch;background:#14202B;color:#fff;border-radius:16px;padding:8px;margin:0 0 12px;box-shadow:0 10px 24px -14px rgba(0,0,0,.6)}
+.tstrip[hidden]{display:none}
+.tstrip.ping{animation:tsping .9s ease}
+@keyframes tsping{0%{box-shadow:0 0 0 0 rgba(255,180,90,.9)}100%{box-shadow:0 0 0 14px rgba(255,180,90,0)}}
+.tsmsg{font:inherit;text-align:left;background:transparent;color:#fff;border:none;padding:2px 6px;display:grid;gap:4px;cursor:pointer;min-width:0}
+.tsh{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px}.tsh small{font-weight:500;opacity:.7;font-size:11px;margin-left:auto}
+.tsh b{background:#C63D2F;border-radius:999px;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px;padding:0 6px}.tsh b[hidden]{display:none}
+.tsl{display:grid;gap:3px;min-width:0}.tsl .muted{font-style:normal;opacity:.7;font-size:13px}
+.tsm{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}.tsm b{color:color-mix(in oklab,var(--rc) 55%,#fff);margin-right:6px}
+.tsv{font-style:normal;font-weight:800;background:#1D74A0;border-radius:999px;padding:1px 8px;margin-right:6px;font-size:12px}.tsv.on{background:#C63D2F}
+.ptt.round{width:76px;padding:8px 4px;border-radius:14px;place-items:center;align-content:center}.ptt.round b{font-size:26px}.ptt.round small{font-size:11px}
+.mini.vplay.on{background:#C63D2F;color:#fff;border-color:#C63D2F}
+.sndgate{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:65;background:#B7790A;color:#fff;font-weight:800;text-align:center;border-radius:14px;padding:12px;box-shadow:0 10px 24px -8px rgba(0,0,0,.5)}
+.sndgate[hidden]{display:none}
 
 </style>
 </head>
@@ -2888,53 +2903,74 @@ function autoPickHTML(S){
 const CD = { seen: -1, open: false, q: [], playing: false, stream: null, rec: null };
 const cdPlayOn = () => { try { return localStorage.getItem("sim2-cdplay") !== "0"; } catch (e) { return true; } };
 const cdWho = (S, m) => m.w === "H" ? "主持" : m.w === "T" ? "臨床教師" : `${roleName(m.w)}${S.seats[m.w] ? "・" + S.seats[m.w].name : ""}`;
-const cdItem = (S, m) => `<li class="${m.w === "T" || m.w === "H" ? "tch" : ""} ${ST.seat && m.w === ST.seat.role ? "me" : ""}" style="--rc:${(ROLES[m.w] || ["", "", "#334155"])[2]}"><span class="who">${esc(cdWho(S, m))}</span><span class="x">${m.voice ? `<button class="mini vplay" data-voice="${esc(m.voice)}">▶ 語音${m.sec ? " " + m.sec + " 秒" : ""}</button> ` : ""}${esc(m.x)}</span><time>${S.t0 ? mmss(m.t - S.t0) : ""}</time></li>`;
+const cdItem = (S, m) => `<li class="${m.w === "T" || m.w === "H" ? "tch" : ""} ${ST.seat && m.w === ST.seat.role ? "me" : ""}" style="--rc:${(ROLES[m.w] || ["", "", "#334155"])[2]}"><span class="who">${esc(cdWho(S, m))}</span><span class="x">${m.voice ? `<button class="mini vplay ${CD.now === m.voice ? "on" : ""}" data-voice="${esc(m.voice)}">${CD.now === m.voice ? "🔊 播放中" : "▶ 語音"}${m.sec ? " " + m.sec + " 秒" : ""}</button> ` : ""}${esc(m.x)}</span><time>${S.t0 ? mmss(m.t - S.t0) : ""}</time></li>`;
 const cdMsgs = S => S.chat.filter(m => m.w !== "S" && (m.ph === "run" || !fCase(S)));
-/* 角色手機：右下角按鈕＋對話面板 */
+/* 角色手機：上方固定「對內頻道」（看最新訊息＋按住說話），點開看全部 */
+function chatStripHTML(){
+  return `<section class="tstrip" id="tStrip"><button class="tsmsg" id="tsOpen" aria-label="打開對內頻道"><span class="tsh">📻 對內頻道<b id="cdN" hidden></b><small>點這裡看全部・打字</small></span><span class="tsl" id="tsList"><i class="muted">還沒有訊息</i></span></button>
+    <button class="ptt round" id="tsPtt" aria-label="按住說話"><b>🎙</b><small>按住說</small></button></section>
+    <div class="sndgate" id="sndGate" hidden>🔈 點一下畫面任何地方，開啟對內頻道的聲音</div>`;
+}
 function chatDockHTML(){
-  return `<button class="cdfab" id="cdFab" aria-label="隊內對話">💬<span>隊內對話</span><b id="cdN" hidden></b></button>
-  <div class="cdsheet" id="cdSheet" hidden role="dialog" aria-label="隊內對話">
-    <div class="cdh"><b>💬 隊內對話</b><label class="sw"><input type="checkbox" id="cdPlay" ${cdPlayOn() ? "checked" : ""}> 自動播放別人的語音</label><button class="btn ghost" id="cdX">收起</button></div>
+  return `<div class="cdsheet" id="cdSheet" hidden role="dialog" aria-label="對內頻道">
+    <div class="cdh"><b>📻 對內頻道</b><label class="sw"><input type="checkbox" id="cdPlay" ${cdPlayOn() ? "checked" : ""}> 自動播放別人的語音</label><button class="btn ghost" id="cdX">收起</button></div>
     <ol class="chat" id="cdList"></ol>
     <div class="free cdin"><input id="cdT" maxlength="200" placeholder="輸入訊息（例如：複誦，Epi 1 mg 已給）" enterkeyhint="send"><button class="mic" data-mic="cdT" aria-label="語音轉文字">🎤</button><button class="btn" id="cdSend">送出</button></div>
-    <button class="ptt" id="cdPtt"><b>按住說話</b><small>放開就送出・最多 8 秒・大面板會播放</small></button>
+    <button class="ptt" id="cdPtt"><b>按住說話</b><small>放開就送出・最多 8 秒・全隊手機與大面板會播放</small></button>
   </div>`;
 }
-function chatWire(root){
-  const sheet = $("cdSheet"), fab = $("cdFab");
-  fab.onclick = () => { CD.open = true; sheet.hidden = false; fab.hidden = true; chatPaint(ST.S, true); const l = $("cdList"); l.scrollTop = l.scrollHeight; };
-  $("cdX").onclick = () => { CD.open = false; sheet.hidden = true; fab.hidden = false; };
+/* 手機瀏覽器要先有一次點擊才准播放聲音：第一次點畫面時把播放器「解鎖」，之後語音就能自動播 */
+const SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=";
+function audioUnlock(){
+  if (CD.unlocked) return; CD.player = CD.player || new Audio();
+  CD.player.src = SILENT; const p = CD.player.play(); const ok = () => { CD.unlocked = true; const g = $("sndGate"); if (g) g.hidden = true; };
+  if (p && p.then) p.then(ok).catch(() => {}); else ok();
+}
+function chatWire(){
+  const sheet = $("cdSheet");
+  const open = () => { CD.open = true; sheet.hidden = false; chatPaint(ST.S, true); const l = $("cdList"); l.scrollTop = l.scrollHeight; };
+  $("tsOpen").onclick = e => { const v = e.target.closest("[data-voice]"); if (v) { cdPlay(v.dataset.voice, true); return; } open(); };
+  $("cdX").onclick = () => { CD.open = false; sheet.hidden = true; };
   $("cdPlay").onchange = e => { try { localStorage.setItem("sim2-cdplay", e.target.checked ? "1" : "0"); } catch (x) {} };
   const send = async () => { const x = $("cdT").value.trim(); if (!x) return toast("先輸入內容", true); $("cdT").value = ""; if (!(await act({ type: "chat", x }))) $("cdT").value = x; };
   $("cdSend").onclick = send; $("cdT").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); send(); } };
-  sheet.onclick = e => { const v = e.target.closest("[data-voice]"); if (v) cdPlay(v.dataset.voice, true); };
-  pttWire($("cdPtt"));
+  const vclick = e => { const v = e.target.closest("[data-voice]"); if (v) { e.preventDefault(); e.stopPropagation(); cdPlay(v.dataset.voice, true); } };
+  sheet.addEventListener("click", vclick);
+  pttWire($("cdPtt")); pttWire($("tsPtt"));
+  if (!CD.gateOn) { CD.gateOn = 1; document.addEventListener("pointerdown", audioUnlock, true); }
+  setTimeout(() => { const g = $("sndGate"); if (g && !CD.unlocked && cdPlayOn()) g.hidden = false; }, 400);
 }
-/* 有新訊息：更新列表、未讀數、自動播放別人的語音 */
+/* 有新訊息：更新頻道、未讀數、自動播放別人的語音 */
 function chatPaint(S, force){
-  if (!S || !$("cdFab")) return;
+  if (!S || !$("tStrip")) return;
   const hold = fHold(S), list = cdMsgs(S);
-  $("cdFab").hidden = hold || CD.open; if (hold && CD.open) { CD.open = false; $("cdSheet").hidden = true; }
+  $("tStrip").hidden = hold; if (hold && CD.open) { CD.open = false; $("cdSheet").hidden = true; }
   if (CD.seen < 0 || list.length < CD.seen) CD.seen = list.length;
   const fresh = list.slice(CD.seen);
   if (fresh.length) { CD.seen = list.length; fresh.filter(m => m.voice && !(ST.seat && m.w === ST.seat.role)).forEach(m => { if (cdPlayOn()) cdPlay(m.voice); });
-    if (!CD.open) { const n = (+$("cdN").textContent || 0) + fresh.filter(m => !(ST.seat && m.w === ST.seat.role)).length; $("cdN").textContent = n; $("cdN").hidden = !n; } }
+    if (!CD.open) { const n = (+$("cdN").textContent || 0) + fresh.filter(m => !(ST.seat && m.w === ST.seat.role)).length; $("cdN").textContent = n || ""; $("cdN").hidden = !n; }
+    if (fresh.some(m => !(ST.seat && m.w === ST.seat.role))) { const t = $("tStrip"); t.classList.remove("ping"); void t.offsetWidth; t.classList.add("ping"); } }
   if (CD.open) { $("cdN").textContent = ""; $("cdN").hidden = true; }
+  const last = list.slice(-2).map(m => `<span class="tsm" style="--rc:${(ROLES[m.w] || ["", "", "#334155"])[2]}"><b>${esc(m.w === "T" ? "教師" : m.w === "H" ? "主持" : roleName(m.w))}</b>${m.voice ? `<em class="tsv ${CD.now === m.voice ? "on" : ""}" data-voice="${esc(m.voice)}">${CD.now === m.voice ? "🔊 播放中" : "▶ 語音"}${m.sec ? " " + m.sec + "″" : ""}</em>` : ""}${esc(m.x)}</span>`).join("") || `<i class="muted">還沒有訊息。按住右邊的 🎙 說話，全隊都會聽到。</i>`;
+  if ($("tsList")._h !== last) { $("tsList").innerHTML = last; $("tsList")._h = last; }
   const h = list.slice(-60).map(m => cdItem(S, m)).join("") || `<li class="muted">還沒有訊息。打字、按 🎤 語音轉文字，或按住下面的按鈕直接說。</li>`;
   const L = $("cdList"); if (L._h !== h || force) { const atEnd = L.scrollHeight - L.scrollTop - L.clientHeight < 60; L.innerHTML = h; L._h = h; if (atEnd || force) L.scrollTop = L.scrollHeight; }
 }
-/* 語音一則一則播，不重疊 */
+/* 語音一則一則播（用同一個已解鎖的播放器），不重疊 */
+function cdMark(){ document.querySelectorAll("[data-voice]").forEach(b => { const on = b.dataset.voice === CD.now; b.classList.toggle("on", on); if (b.classList.contains("tsv") || b.classList.contains("vplay")) b.firstChild && (b.firstChild.nodeValue = on ? "🔊 播放中" : "▶ 語音"); }); }
 function cdPlay(id, now){
-  if (now) { playVoice(id); return; }
-  CD.q.push(id); if (CD.playing) return;
-  const next = async () => { const v = CD.q.shift(); if (!v) { CD.playing = false; return; } CD.playing = true;
+  if (now) { CD.q = [id].concat(CD.q.filter(x => x !== id)); if (CD.player && !CD.player.paused && CD.playing) { CD.player.pause(); CD.playing = false; } }
+  else CD.q.push(id);
+  if (CD.playing) return;
+  const next = async () => { const v = CD.q.shift(); if (!v) { CD.playing = false; CD.now = ""; cdMark(); return; } CD.playing = true; CD.now = v; cdMark();
     const r = await api("simVoiceGet", { code: ST.code, id: v });
-    if (r && r.ok) { try { const a = new Audio(`data:${r.mime};base64,${r.data}`); a.onended = a.onerror = () => next(); await a.play(); return; } catch (e) {} }
+    if (r && r.ok) { try { const a = CD.player = CD.player || new Audio(); a.onended = a.onerror = () => next(); a.src = `data:${r.mime};base64,${r.data}`; await a.play(); return; } catch (e) { const g = $("sndGate"); if (g) g.hidden = false; } }
     next(); };
   next();
 }
 /* 按住說話：按下開始錄、放開送出；太短（< 0.6 秒）不送 */
 function pttWire(b){
+  const R = b.classList.contains("round"), IDLE = b.querySelector("small").textContent;
   const stop = () => { if (CD.rec && CD.rec.mr.state === "recording") CD.rec.mr.stop(); };
   b.addEventListener("contextmenu", e => e.preventDefault());
   b.addEventListener("pointerdown", async e => {
@@ -2946,16 +2982,16 @@ function pttWire(b){
     try { b.setPointerCapture(e.pointerId); } catch (x) {}
     const mime = ["audio/webm;codecs=opus", "audio/mp4", "audio/webm"].find(m => MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) || "";
     const mr = new MediaRecorder(CD.stream, mime ? { mimeType: mime, audioBitsPerSecond: 24000 } : undefined), chunks = [], t0 = Date.now();
-    CD.rec = { mr }; b.classList.add("on"); b.querySelector("b").textContent = "錄音中…放開就送出";
-    const tick = setInterval(() => { const s = (Date.now() - t0) / 1000; b.querySelector("small").textContent = `${s.toFixed(1)} 秒／最多 8 秒`; if (s >= 8) stop(); }, 100);
+    CD.rec = { mr }; b.classList.add("on"); b.querySelector("b").textContent = R ? "🔴" : "錄音中…放開就送出";
+    const tick = setInterval(() => { const s = (Date.now() - t0) / 1000; b.querySelector("small").textContent = R ? `${s.toFixed(1)}″` : `${s.toFixed(1)} 秒／最多 8 秒`; if (s >= 8) stop(); }, 100);
     mr.ondataavailable = ev => ev.data && ev.data.size && chunks.push(ev.data);
-    mr.onstop = async () => { clearInterval(tick); CD.rec = null; b.classList.remove("on"); b.querySelector("b").textContent = "按住說話"; b.querySelector("small").textContent = "放開就送出・最多 8 秒・大面板會播放";
+    mr.onstop = async () => { clearInterval(tick); CD.rec = null; b.classList.remove("on"); b.querySelector("b").textContent = R ? "🎙" : "按住說話"; b.querySelector("small").textContent = IDLE;
       const sec = Math.round((Date.now() - t0) / 100) / 10; if (sec < .6) return toast("太短了，要按住再說");
       const blob = new Blob(chunks, { type: mr.mimeType || "audio/webm" });
       const b64 = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(",")[1]); fr.readAsDataURL(blob); });
-      b.classList.add("busy"); b.querySelector("small").textContent = "傳送中…";
+      b.classList.add("busy"); b.querySelector("small").textContent = R ? "傳送…" : "傳送中…";
       const up = await api("simVoice", { code: ST.code, key: ST.seat.key, data: b64, mime: (mr.mimeType || "audio/webm").split(";")[0] });
-      b.classList.remove("busy"); b.querySelector("small").textContent = "放開就送出・最多 8 秒・大面板會播放";
+      b.classList.remove("busy"); b.querySelector("small").textContent = IDLE;
       if (!up || !up.ok) return toast((up && up.error) || "語音傳送失敗", true);
       await act({ type: "chat", voice: up.id, sec: Math.min(8, Math.round(sec)) }); };
     mr.start();
@@ -3130,7 +3166,7 @@ async function rpSync(playing){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.19-d";
+const SIM_VER = "2026.10.19-e";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -3490,7 +3526,7 @@ function player(code){
       <button class="mini" id="swRole">換角色</button>
       ${role !== "T" ? `<div class="rsw">${[{ role }, ...more].map(s => `<button class="${s.role === role ? "on" : ""}" data-sw="${s.role}" style="--rc:${ROLES[s.role][2]}">${ROLES[s.role][0]}</button>`).join("")}<button class="add" id="addRole">＋兼任</button></div>
       <div class="rsadd" id="rsAdd" hidden><small>人少時一個人可以兼兩、三個角色，上面切換畫面：</small><div class="chips">${ROLE_ORDER.filter(k => k !== role && !more.some(s => s.role === k)).map(k => `<button data-add="${k}" style="--rc:${ROLES[k][2]}">${ROLES[k][0]}</button>`).join("")}</div></div>` : ""}</section>
-    <div id="pBody" style="--rc:${info[2]}"></div>${chatDockHTML()}`;
+    ${chatStripHTML()}<div id="pBody" style="--rc:${info[2]}"></div>${chatDockHTML()}`;
   CD.seen = -1; CD.open = false; chatWire();
   $("swRole").onclick = () => { if (!confirm("離開「" + info[0] + "」，換一個角色？")) return; seatSet(code, null); go("j-" + code); };
   /* 兼任：切換畫面＝換用那個角色的身分送出 */
