@@ -1589,6 +1589,46 @@ button.dst{cursor:pointer}.dst i{font-style:normal;font-weight:900;font-family:u
 .fend{display:grid;gap:12px}
 @media (min-width:1100px){.fend{grid-template-columns:1.5fr 1fr}.chatp.big .chat{max-height:62vh}}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cuenow,:root:not([data-theme="light"]) .chat li.cue{background:#3a2c0e;color:#FBE7BF}:root:not([data-theme="light"]) .chat li.cue.trm{background:#25204a;color:#E3DEFF}:root:not([data-theme="light"]) .chat li.cue.judge{background:#0f2a38;color:#D3ECF7}:root:not([data-theme="light"]) .pendc{background:#3a2c0e;color:#FBE7BF}}
+/* ---------- 隊內對話 ---------- */
+.cdfab{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:6px;font:inherit;font-weight:800;font-size:15px;border:none;border-radius:999px;padding:12px 16px;background:#14202B;color:#fff;box-shadow:0 10px 24px -8px rgba(0,0,0,.5);cursor:pointer}
+.cdfab[hidden]{display:none}.cdfab b{background:#C63D2F;border-radius:999px;min-width:22px;height:22px;display:grid;place-items:center;font-size:12px;padding:0 6px}.cdfab b[hidden]{display:none}
+.cdsheet{position:fixed;left:0;right:0;bottom:0;z-index:70;max-height:78vh;display:flex;flex-direction:column;gap:8px;background:var(--surface);border-top:3px solid #14202B;border-radius:18px 18px 0 0;padding:12px 14px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -16px 40px -12px rgba(0,0,0,.45)}
+.cdsheet[hidden]{display:none}
+.cdh{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.cdh b{font-size:17px;margin-right:auto}.cdh .sw{font-size:13px}
+.cdsheet .chat{flex:1;min-height:120px;max-height:none;margin:0}
+.cdsheet .chat time{grid-row:1}
+.ptt{font:inherit;border:none;border-radius:16px;padding:16px;background:#1D74A0;color:#fff;display:grid;gap:2px;cursor:pointer;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.ptt b{font-size:18px}.ptt small{font-size:12px;opacity:.85}.ptt.on{background:#C63D2F;transform:scale(.98)}.ptt.busy{opacity:.7}
+.bchat .chh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px}.bchat .chh small{color:var(--ink-2);font-size:12px}
+.bchat .chat{max-height:340px;font-size:17px}
+@media (min-width:1100px){.cdsheet{left:auto;right:16px;bottom:16px;width:440px;border-radius:18px;border:3px solid #14202B}}
+#pBody{padding-bottom:70px}
+/* ---------- 回顧 ---------- */
+.rphead{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}.rphead small{color:var(--ink-2)}.rphead .h2{margin:4px 0 8px}
+.rphead #rpPrint{grid-column:1 / -1;justify-self:start}
+.rpseat{display:flex;flex-wrap:wrap;gap:6px}.rpseat span{font-size:13px;border:1.5px solid color-mix(in oklab,var(--rc) 45%,var(--line));border-radius:999px;padding:3px 10px}.rpseat b{color:var(--rc);margin-right:4px}
+.rpres{text-align:center;border-radius:14px;padding:8px 14px;background:var(--surface-2);display:grid}.rpres b{font-size:22px;color:#B42318}.rpres.ok b{color:#1B7D63}
+.rpctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.rptime{margin-left:auto;font:600 20px "IBM Plex Mono",monospace}
+#rpSl{width:100%;margin:12px 0}
+.rpgrid{display:grid;gap:12px}@media (min-width:900px){.rpgrid{grid-template-columns:1.2fr 1fr}}
+.rpchips{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px;margin-top:10px}.rpchips span{background:var(--surface-2);border-radius:10px;padding:6px 10px}.rpchips span.on{background:#FDECEA}.rpchips small{display:block;font-size:11px;color:var(--ink-2)}
+#rpFeed li{cursor:pointer}#rpFeed li.now{outline:2px solid #1D74A0}
+.rpchat .phsep{background:none;border:none;padding:6px 0 0;display:block}.rpchat .phsep b{font-size:12px;color:var(--ink-2)}
+.hist{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.histb{display:grid;gap:2px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;text-decoration:none;color:var(--ink)}.histb small{color:var(--ink-2)}.histb em{font-style:normal;font-weight:800;color:#1D74A0;font-size:13px}
+@media print{.noprint,.appbar,#cdFab,.cdfab{display:none!important}.panel{break-inside:avoid}}
+#rpBody .rplink{display:none}
+/* ---------- 錄音 ---------- */
+.recbar{background:#B42318;color:#fff;font-weight:800;font-size:14px;border-radius:12px;padding:8px 14px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.recst{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;background:var(--surface);border:1.5px solid #B42318;border-radius:12px;padding:8px 14px;margin:-4px 0 12px}
+.recst .warn{color:#B42318;font-weight:700}
+.btn.recon{background:#B42318;color:#fff;border-color:#B42318}
+.recsegs{display:grid;gap:8px}.recseg{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:var(--surface-2);border-radius:10px;padding:8px 12px}.recseg small{color:var(--ink-2);font-family:"IBM Plex Mono",monospace}.recseg audio{width:100%}
+.apcards{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.apcard{font:inherit;text-align:left;display:grid;gap:6px;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:14px;padding:14px;cursor:pointer}
+.apcard b{font-size:17px}.apcard small{color:var(--ink-2);line-height:1.5}.apcard em{font-style:normal;font-size:12px;font-weight:800;color:#6650C0}
+.apcard.on{border-color:#14202B;box-shadow:0 0 0 3px color-mix(in oklab,#14202B 18%,transparent)}
+.fmpick{margin-top:12px}.fmpick button{font:inherit;font-weight:800;padding:10px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}.fmpick button small{display:block;font-weight:500;font-size:11px;opacity:.8}
 
 </style>
 </head>
@@ -2249,7 +2289,9 @@ const DEMO = {
       if (!w) return { ok: false, error: "請重新加入房間", rejoin: true };
       const e = push(w, b.a); DEMO.save(M); return { ok: true, room: DEMO.pub(M), i: e.i, now }; }
     if (action === "simVoice") { try { localStorage.setItem("sim2v:" + b.code + ":" + now, JSON.stringify({ mime: b.mime, data: b.data })); } catch (e) { return { ok: false, error: "這台電腦空間不足，語音存不下" }; } return { ok: true, id: String(now) }; }
+    if (action === "simAudioGet") { try { const v = JSON.parse(localStorage.getItem(b.fid ? "sim2a:" + b.fid : "sim2v:" + b.code + ":" + b.vid) || "null"); return v ? Object.assign({ ok: true }, v) : { ok: false, error: "找不到錄音" }; } catch (e) { return { ok: false, error: "找不到錄音" }; } }
     if (action === "simVoiceGet") { try { const v = JSON.parse(localStorage.getItem("sim2v:" + b.code + ":" + b.id) || "null"); return v ? Object.assign({ ok: true }, v) : { ok: false }; } catch (e) { return { ok: false }; } }
+    if (action === "simAudio") { const fid = "demo" + now.toString(36); try { localStorage.setItem("sim2a:" + fid, JSON.stringify({ mime: b.mime, data: b.data })); } catch (e) { return { ok: false, error: "這台電腦空間不足，錄音存不下（示範模式）" }; } return { ok: true, fid }; }
     if (action === "simMine" || action === "simList") return { ok: false, error: "示範模式沒有存檔" };
     return { ok: false, error: "未知動作" };
   }
@@ -2272,7 +2314,7 @@ function blankState(meta){
     caseId: meta.mode === "auto" ? "vf" : "", rhythm: "none", pulse: false, vit: { hr: 0, sbp: 0, dbp: 0, spo2: 0, rr: 0, etco2: 12, temp: 36.4 }, show: false,
     monitor: false, etco2On: false, cpr: false, cprSince: 0, pauseAt: 0, pauses: [], defib: { sync: false, j: 200, charged: 0, clearAt: 0 },
     airway: { dev: "", ett: null, confirm: false }, iv: "", trend: null, stateId: "", custom: {}, cmds: [], asks: [], drugs: [], shocks: [], calls: [], pcalls: [], procs: [], ht: {}, clues: [],
-    ev: [], epiLast: 0, o2: null, hints: [], rhy: [], dstep: 0, fb: null, fbPub: 0, refl: {}, arrestAt: 0, vfAt: 0, syncAt: 0, bradyAt: 0, fm: "exam", fclue: {}, views: {}, orders: [], fixAt: 0, roscAt: 0, fph: "", fphAt: 0, chat: [], cues: {}, saved: meta.saved, saveErr: meta.saveErr, n: meta.n };
+    ev: [], epiLast: 0, o2: null, hints: [], rhy: [], dstep: 0, fb: null, fbPub: 0, refl: {}, arrestAt: 0, vfAt: 0, syncAt: 0, bradyAt: 0, fm: meta.mode === "auto" ? "practice" : "exam", fclue: {}, views: {}, orders: [], fixAt: 0, roscAt: 0, fph: "", fphAt: 0, chat: [], cues: {}, rec: false, recs: [], recDone: 0, saved: meta.saved, saveErr: meta.saveErr, n: meta.n };
 }
 function applyCase(S, id){
   const c = CASE_BY[id]; if (!c) return;
@@ -2309,6 +2351,11 @@ function derive(meta, events){
     if (S.pulse && ["brady", "avb2b", "avb3"].includes(S.rhythm) && v.sbp && v.sbp < 90 && !S.bradyAt) S.bradyAt = t; };
   const hist = t => { const L = S.rhy[S.rhy.length - 1]; if (S.status === "wait" || S.rhythm === "none") return;
     if (!L || L.r !== S.rhythm || L.p !== S.pulse) S.rhy.push({ t: Math.max(t, S.t0 || t), r: S.rhythm, p: S.pulse }); };
+  /* 隊內對話：文字或按住說話的語音（演練前、中、後都可以） */
+  const chatAdd = (e, a) => { const w = e.w; if (!(ROLES[w] || w === "H")) return;
+    const x = String(a.x || "").trim().slice(0, 200), voice = String(a.voice || "").slice(0, 40); if (!x && !voice) return;
+    const sec = Math.min(8, Math.max(0, +a.sec || 0)); S.chat.push({ t: e.t, w, x, voice, sec, ph: S.status === "end" ? S.fph || "end" : "run" });
+    log(e, voice ? `🎙 ${x || `語音訊息${sec ? `（${sec} 秒）` : ""}`}` : `💬 ${x}`, { g: "chat", sp: voice ? null : x, voice, quiet: S.status === "end" }); };
   for (const e of events) { derive1(e); track(e.t); if (S.status === "run") hist(e.t); }
   return S;
   function derive1(e) {
@@ -2319,6 +2366,8 @@ function derive(meta, events){
     if (a.type === "end" && host && S.status === "run") { S.status = "end"; S.t1 = t; if (S.cpr) S.cpr = false;
       const F = fCase(S); if (F) { S.fph = S.fm === "exam" ? "team" : "ans"; S.fphAt = t; }
       log(e, a.auto ? "時間到（15 分鐘），演練結束" : "結束演練", { sp: F ? (S.fm === "exam" ? "演練結束。請團隊進入 debrief 聊天室，三分鐘。" : "演練結束，請看解題。") : "結束演練" }); return; }
+    if (a.type === "recmode" && host) { S.rec = !!a.on; if (S.rec) S.recDone = 0; log(e, S.rec ? "🔴 本場錄音：開（語音訊息與現場聲音會保存）" : "本場錄音：關", { g: "rec", quiet: true }); return; }
+    if (a.type === "recfile" && host) { if (a.stop) { S.recDone = t; return; } if (a.fid) S.recs.push({ fid: String(a.fid).slice(0, 80), at: +a.at || t, dur: +a.dur || 0, seg: +a.seg || 0 }); return; }
     if (a.type === "fmode" && host && S.status === "wait") { S.fm = a.k === "practice" ? "practice" : "exam"; log(e, S.fm === "exam" ? "模式：正式評核（15＋3＋2 分鐘）" : "模式：班內練習（15 分鐘＋解題）", { g: "fmode", quiet: true }); return; }
     /* ---- 結束後：講評（教師控制段落、寫回饋；學員自評） ---- */
     if (S.status === "end") {
@@ -2327,7 +2376,7 @@ function derive(meta, events){
       if (a.type === "fph" && host && F_PH[a.k] && a.k !== S.fph) { S.fph = a.k; S.fphAt = t; log(e, `進入：${F_PH[a.k]}`, { g: "fph", sp: a.k === "judge" ? "團隊 debrief 時間到。請評審提問，兩分鐘。" : a.k === "ans" ? "請看解題" : null }); return; }
       if (a.type === "cue" && host) { const k = String(a.id || ""); if (k && S.cues[k]) return; const x = String(a.x || "").slice(0, 200); if (!x) return; if (k) S.cues[k] = t;
         S.chat.push({ t, w: "S", x, cue: CUE_N[a.kind] ? a.kind : "judge", ph: S.fph }); log(e, `引導：${x}`, { g: "cue", quiet: true, sp: x }); return; }
-      if (a.type === "chat" && (ROLES[w] || w === "H")) { const x = String(a.x || "").trim().slice(0, 200); if (!x) return; S.chat.push({ t, w, x, ph: S.fph }); log(e, `💬 ${x}`, { g: "chat", quiet: true }); return; }
+      if (a.type === "chat") return chatAdd(e, a);
       if (a.type === "doc") { const F = fCase(S); if (F && F.docs.some(d => d.k === a.k)) { S.views[a.k] = S.views[a.k] || { t, w }; } return; }
       if (a.type === "refl" && ROLES[w] && w !== "T") { const c = x => String(x || "").slice(0, 120); S.refl[w] = { feel: c(a.feel), good: c(a.good), next: c(a.next), t }; log(e, `${roleName(w)} 完成自評`, { g: "refl", quiet: true }); }
       return; }
@@ -2370,6 +2419,7 @@ function derive(meta, events){
         else if (!q && (x || a.voice)) log(e, `教師：${x || "（語音）"}`, { g: "reply", sp: x || null, voice: a.voice || "" });
         return; }
     }
+    if (a.type === "chat") return chatAdd(e, a);
     if (S.status !== "run") return;
     const role = w;
     /* ---- 指令（Leader → 角色）與閉環 ---- */
@@ -2453,7 +2503,7 @@ function derive(meta, events){
           else hint(e, `電擊 ${S.defib.j} J：病因還沒處理（正式教案會維持 ${RHY[r][0]}）`, [["維持原心律", null]]); }
         else if (!S.pulse && ok) hint(e, `電擊 ${S.defib.j} J（${RHY[r][0]}）→ 2 分鐘後檢查心律`, [["仍是原心律", null], ["轉成 ROSC", { type: "state", id: "rosc" }], ["轉成 PEA", { type: "state", id: "pea" }], ["轉成 Asystole", { type: "state", id: "asys" }]]);
         else if (S.pulse && !sync) hint(e, `有脈搏卻用非同步電擊（${RHY[r][0]}）`, [["誘發 VF", { type: "state", id: "vf" }], ["沒有變化", null]]);
-        if (S.mode === "auto") { const n = S.shocks.filter(s => s.delivered && s.ok).length, epi = S.drugs.some(d => d.k === "epi"), am = S.drugs.some(d => d.k.startsWith("amio"));
+        if (S.mode === "auto" && !fCase(S)) { const n = S.shocks.filter(s => s.delivered && s.ok).length, epi = S.drugs.some(d => d.k === "epi"), am = S.drugs.some(d => d.k.startsWith("amio"));
           if (S.rhythm === "vf" && n >= 3 && epi && am) { const st = STATE_BY.rosc; S.rhythm = st.r; S.pulse = true; S.vit = Object.assign({}, S.vit, st.v); S.trend = { from: Object.assign({}, S.vit, st.from), to: Object.assign({}, S.vit), t0: t, dur: st.dur }; log({ t, w: "S", a: {}, i: e.i }, "（監視器畫面改變）", { g: "rhythm", xt: "自動：ROSC（竇性心律、有脈搏）", quiet: true }); } }
         return; }
       if (a.type === "call" && RHY[a.r]) { const ok = sameCall(a.r, S.rhythm) || (a.r === "pea" && !S.pulse && ["sinus", "stach", "brady", "pea", "sine"].includes(S.rhythm)); S.calls.push({ t, r: a.r, actual: S.rhythm, ok });
@@ -2687,7 +2737,7 @@ function fbRows(S, fb){
 }
 
 /* ================= 正式教案：畫面 ================= */
-const fKey = (S, ui) => JSON.stringify([S.caseId, S.fm, S.fph, S.chat.length, Object.keys(S.views), S.orders.map(o => [o.id, NOW() >= o.due]), Object.keys(S.fclue).length, S.fixAt, S.roscAt, ui && ui.rt]);
+const fKey = (S, ui) => JSON.stringify([S.rec, S.recDone, S.caseId, S.fm, S.fph, S.chat.length, Object.keys(S.views), S.orders.map(o => [o.id, NOW() >= o.due]), Object.keys(S.fclue).length, S.fixAt, S.roscAt, ui && ui.rt]);
 /* 團隊 debrief／評審提問期間先不揭曉答案 */
 const fHold = S => !!fCase(S) && S.status === "end" && ["team", "judge"].includes(S.fph);
 /* 上方狀態條：模式、階段、倒數 */
@@ -2726,11 +2776,11 @@ function openRes(S, id){ const F = fCase(S), o = S.orders.find(x => x.id === id)
 const chatWho = (S, m) => m.w === "S" ? `引導・${CUE_N[m.cue] || ""}` : m.w === "H" ? "主持" : m.w === "T" ? "教師／評審" : `${roleName(m.w)}${S.seats[m.w] ? "・" + S.seats[m.w].name : ""}`;
 function chatHTML(S, role, opt = {}){
   const F = fCase(S); if (!F) return "";
-  const list = S.chat.slice(opt.big ? -14 : -40), lastCue = S.chat.slice().reverse().find(m => m.w === "S");
+  const list = S.chat.filter(m => m.ph !== "run").slice(opt.big ? -14 : -40), lastCue = S.chat.slice().reverse().find(m => m.w === "S");
   const can = ST.seat && (ROLES[ST.seat.role] || ST.seat.role === "H");
   return `<section class="panel chatp ${opt.big ? "big" : ""}"><div class="chh"><h3 class="h3">💬 ${S.fph === "judge" ? "評審提問" : "團隊 debrief"}聊天室</h3><small>${S.fph === "team" ? "引導題每 40 秒出一題；全隊在手機上回答（也可以用說的）" : S.fph === "judge" ? "評審提問，團隊回答" : "聊天紀錄"}</small></div>
     ${lastCue && !opt.big && ["team", "judge"].includes(S.fph) ? `<div class="cuenow"><small>現在的題目</small><b>${esc(lastCue.x)}</b></div>` : ""}
-    <ol class="chat" id="chatList">${list.map(m => `<li class="${m.w === "S" ? "cue " + m.cue : m.w === "T" || m.w === "H" ? "tch" : ""} ${ST.seat && m.w === ST.seat.role ? "me" : ""}" style="--rc:${(ROLES[m.w] || ["", "", "#6650C0"])[2]}"><span class="who">${esc(chatWho(S, m))}</span><span class="x">${esc(m.x)}</span><time>${mmss(m.t - (S.t1 || S.t0))}</time></li>`).join("") || `<li class="muted">還沒有訊息。</li>`}</ol>
+    <ol class="chat" id="chatList">${list.map(m => `<li class="${m.w === "S" ? "cue " + m.cue : m.w === "T" || m.w === "H" ? "tch" : ""} ${ST.seat && m.w === ST.seat.role ? "me" : ""}" style="--rc:${(ROLES[m.w] || ["", "", "#6650C0"])[2]}"><span class="who">${esc(chatWho(S, m))}</span><span class="x">${m.voice ? `<button class="mini" data-voice="${esc(m.voice)}">▶ 語音${m.sec ? " " + m.sec + " 秒" : ""}</button> ` : ""}${esc(m.x)}</span><time>${mmss(m.t - (S.t1 || S.t0))}</time></li>`).join("") || `<li class="muted">還沒有訊息。</li>`}</ol>
     ${can && !opt.readonly ? `<div class="free"><input id="chatX" maxlength="200" placeholder="${role === "T" ? "評審提問或回饋" : "輸入回答…"}" enterkeyhint="send"><button class="mic" data-mic="chatX" aria-label="語音輸入">🎤</button><button class="btn" data-chat="1">送出</button></div>` : ""}</section>`;
 }
 /* 大面板／教師：引導詞一覽 */
@@ -2786,7 +2836,7 @@ function boardRecHTML(S){
     <div class="chips">${ready.slice(0, -1).reverse().map(o => `<button data-res="${o.id}">${esc(F.orders[o.k].n)}${o.n > 1 ? ` #${o.n}` : ""}</button>`).join("")}${seen.map(k => `<button data-doc="${k}">📄 ${esc(fDocName(S, k))}</button>`).join("")}</div></div>`;
 }
 /* 共用點擊 */
-const chatRows = S => S.chat.map(m => [Math.max(0, Math.round((m.t - (S.t1 || S.t0)) / 1000)), m.w, F_PH[m.ph] || "", (m.w === "S" ? `【引導・${CUE_N[m.cue] || ""}】` : "") + m.x]);
+const chatRows = S => S.chat.map(m => [Math.max(0, Math.round((m.t - (S.t1 || S.t0)) / 1000)), m.w, F_PH[m.ph] || (m.ph === "run" ? "演練中" : ""), (m.w === "S" ? `【引導・${CUE_N[m.cue] || ""}】` : "") + (m.voice ? `（語音${m.sec ? " " + m.sec + " 秒" : ""}）` : "") + m.x]);
 async function fClick(e, S, ui, re){
   if (!S) return false;
   const rt = e.target.closest("[data-rt]"); if (rt && ui) { ui.rt = rt.dataset.rt; re && re(); return true; }
@@ -2813,6 +2863,8 @@ function fTick(S){
   if (S.status === "end" && S.fph === "team") { const el = (t - S.fphAt) / 1000;
     fCues(F).forEach((c, i) => { if (el >= i * 40 && !S.cues["c" + i]) once("q" + i, () => act({ type: "cue", id: "c" + i, kind: c[0], x: c[1] })); });
     if (el >= F_TEAM) once("judge", () => act({ type: "fph", k: "judge" })); }
+  /* 沒有教師（系統自動）：評審題也自動出 */
+  if (S.status === "end" && S.fph === "judge" && S.mode === "auto") { const el = (t - S.fphAt) / 1000; F.judge.slice(0, 3).forEach((x, i) => { if (el >= i * 40 && !S.cues["j" + i]) once("j" + i, () => act({ type: "cue", id: "j" + i, kind: "judge", x })); }); }
   if (S.status === "end" && S.fph === "judge" && (t - S.fphAt) / 1000 >= F_JUDGE) once("ans", () => act({ type: "fph", k: "ans" }, { chat: chatRows(S) }));
 }
 /* 報告出來時，大面板播報 */
@@ -2822,8 +2874,263 @@ function fAnnounce(S){
   S.orders.forEach(o => { const k = ST.code + o.id; if (t >= o.due && !FREADY[k]) { FREADY[k] = 1; if (t - o.due < 8000) announce({ w: "S", g: "result", x: `${F.orders[o.k].n} 報告出來了`, sp: `${F.orders[o.k].n}，報告出來了` }); } });
 }
 
+/* 系統自動模式：大面板選病例（標準 VF 或正式教案） */
+const AUTO_CASES = ["vf", "f_hk", "f_hypok"];
+function autoPickHTML(S){
+  const F = fCase(S);
+  return `<section class="panel apick"><h3 class="h3">選擇病例（系統自動，沒有教師）</h3>
+    <div class="apcards">${AUTO_CASES.map(id => { const c = CASE_BY[id], f = c.formal; return `<button class="apcard ${S.caseId === id ? "on" : ""}" data-apick="${id}"><b>${esc(f ? c.n.replace("正式教案", "教案") : "標準：單純 VF")}</b><small>${esc(f ? `${f.pt.split("・").slice(1).join("・")}。前兩輪標準 VF，第 3 輪起找病因；處置對了就 ROSC。` : "標準 ACLS 流程：電擊 3 次＋Epinephrine＋Amiodarone 後 ROSC。")}</small><em>${f ? "15 分鐘・報告自動出・結束看解題" : "流程練習"}</em></button>`; }).join("")}</div>
+    ${F ? `<div class="sseg two fmpick"><button data-fm="practice" class="${S.fm === "practice" ? "on" : ""}">班內練習<small>演練 15 分鐘 → 直接解題</small></button><button data-fm="exam" class="${S.fm === "exam" ? "on" : ""}">模擬正式評核<small>15 → 團隊 debrief 3 → 評審題 2（自動出題）</small></button></div>` : ""}
+    <p class="hint">病因不會顯示在學員手機上。選好後按上方「開始演練」。</p></section>`;
+}
+
+/* ================= 隊內對話：文字＋按住說話（不用離開演練畫面） ================= */
+const CD = { seen: -1, open: false, q: [], playing: false, stream: null, rec: null };
+const cdPlayOn = () => { try { return localStorage.getItem("sim2-cdplay") !== "0"; } catch (e) { return true; } };
+const cdWho = (S, m) => m.w === "H" ? "主持" : m.w === "T" ? "臨床教師" : `${roleName(m.w)}${S.seats[m.w] ? "・" + S.seats[m.w].name : ""}`;
+const cdItem = (S, m) => `<li class="${m.w === "T" || m.w === "H" ? "tch" : ""} ${ST.seat && m.w === ST.seat.role ? "me" : ""}" style="--rc:${(ROLES[m.w] || ["", "", "#334155"])[2]}"><span class="who">${esc(cdWho(S, m))}</span><span class="x">${m.voice ? `<button class="mini vplay" data-voice="${esc(m.voice)}">▶ 語音${m.sec ? " " + m.sec + " 秒" : ""}</button> ` : ""}${esc(m.x)}</span><time>${S.t0 ? mmss(m.t - S.t0) : ""}</time></li>`;
+const cdMsgs = S => S.chat.filter(m => m.w !== "S" && (m.ph === "run" || !fCase(S)));
+/* 角色手機：右下角按鈕＋對話面板 */
+function chatDockHTML(){
+  return `<button class="cdfab" id="cdFab" aria-label="隊內對話">💬<span>隊內對話</span><b id="cdN" hidden></b></button>
+  <div class="cdsheet" id="cdSheet" hidden role="dialog" aria-label="隊內對話">
+    <div class="cdh"><b>💬 隊內對話</b><label class="sw"><input type="checkbox" id="cdPlay" ${cdPlayOn() ? "checked" : ""}> 自動播放別人的語音</label><button class="btn ghost" id="cdX">收起</button></div>
+    <ol class="chat" id="cdList"></ol>
+    <div class="free cdin"><input id="cdT" maxlength="200" placeholder="輸入訊息（例如：複誦，Epi 1 mg 已給）" enterkeyhint="send"><button class="mic" data-mic="cdT" aria-label="語音轉文字">🎤</button><button class="btn" id="cdSend">送出</button></div>
+    <button class="ptt" id="cdPtt"><b>按住說話</b><small>放開就送出・最多 8 秒・大面板會播放</small></button>
+  </div>`;
+}
+function chatWire(root){
+  const sheet = $("cdSheet"), fab = $("cdFab");
+  fab.onclick = () => { CD.open = true; sheet.hidden = false; fab.hidden = true; chatPaint(ST.S, true); const l = $("cdList"); l.scrollTop = l.scrollHeight; };
+  $("cdX").onclick = () => { CD.open = false; sheet.hidden = true; fab.hidden = false; };
+  $("cdPlay").onchange = e => { try { localStorage.setItem("sim2-cdplay", e.target.checked ? "1" : "0"); } catch (x) {} };
+  const send = async () => { const x = $("cdT").value.trim(); if (!x) return toast("先輸入內容", true); $("cdT").value = ""; if (!(await act({ type: "chat", x }))) $("cdT").value = x; };
+  $("cdSend").onclick = send; $("cdT").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); send(); } };
+  sheet.onclick = e => { const v = e.target.closest("[data-voice]"); if (v) cdPlay(v.dataset.voice, true); };
+  pttWire($("cdPtt"));
+}
+/* 有新訊息：更新列表、未讀數、自動播放別人的語音 */
+function chatPaint(S, force){
+  if (!S || !$("cdFab")) return;
+  const hold = fHold(S), list = cdMsgs(S);
+  $("cdFab").hidden = hold || CD.open; if (hold && CD.open) { CD.open = false; $("cdSheet").hidden = true; }
+  if (CD.seen < 0 || list.length < CD.seen) CD.seen = list.length;
+  const fresh = list.slice(CD.seen);
+  if (fresh.length) { CD.seen = list.length; fresh.filter(m => m.voice && !(ST.seat && m.w === ST.seat.role)).forEach(m => { if (cdPlayOn()) cdPlay(m.voice); });
+    if (!CD.open) { const n = (+$("cdN").textContent || 0) + fresh.filter(m => !(ST.seat && m.w === ST.seat.role)).length; $("cdN").textContent = n; $("cdN").hidden = !n; } }
+  if (CD.open) { $("cdN").textContent = ""; $("cdN").hidden = true; }
+  const h = list.slice(-60).map(m => cdItem(S, m)).join("") || `<li class="muted">還沒有訊息。打字、按 🎤 語音轉文字，或按住下面的按鈕直接說。</li>`;
+  const L = $("cdList"); if (L._h !== h || force) { const atEnd = L.scrollHeight - L.scrollTop - L.clientHeight < 60; L.innerHTML = h; L._h = h; if (atEnd || force) L.scrollTop = L.scrollHeight; }
+}
+/* 語音一則一則播，不重疊 */
+function cdPlay(id, now){
+  if (now) { playVoice(id); return; }
+  CD.q.push(id); if (CD.playing) return;
+  const next = async () => { const v = CD.q.shift(); if (!v) { CD.playing = false; return; } CD.playing = true;
+    const r = await api("simVoiceGet", { code: ST.code, id: v });
+    if (r && r.ok) { try { const a = new Audio(`data:${r.mime};base64,${r.data}`); a.onended = a.onerror = () => next(); await a.play(); return; } catch (e) {} }
+    next(); };
+  next();
+}
+/* 按住說話：按下開始錄、放開送出；太短（< 0.6 秒）不送 */
+function pttWire(b){
+  const stop = () => { if (CD.rec && CD.rec.mr.state === "recording") CD.rec.mr.stop(); };
+  b.addEventListener("contextmenu", e => e.preventDefault());
+  b.addEventListener("pointerdown", async e => {
+    e.preventDefault(); if (CD.rec) return;
+    if (!ST.seat) return toast("請先加入房間", true);
+    if (!navigator.mediaDevices || !window.MediaRecorder) return toast("這支手機不支援錄音，請用打字或 🎤", true);
+    try { if (!CD.stream || !CD.stream.active) CD.stream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+    catch (err) { return toast("沒有麥克風權限：請在瀏覽器允許麥克風", true); }
+    try { b.setPointerCapture(e.pointerId); } catch (x) {}
+    const mime = ["audio/webm;codecs=opus", "audio/mp4", "audio/webm"].find(m => MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) || "";
+    const mr = new MediaRecorder(CD.stream, mime ? { mimeType: mime, audioBitsPerSecond: 24000 } : undefined), chunks = [], t0 = Date.now();
+    CD.rec = { mr }; b.classList.add("on"); b.querySelector("b").textContent = "錄音中…放開就送出";
+    const tick = setInterval(() => { const s = (Date.now() - t0) / 1000; b.querySelector("small").textContent = `${s.toFixed(1)} 秒／最多 8 秒`; if (s >= 8) stop(); }, 100);
+    mr.ondataavailable = ev => ev.data && ev.data.size && chunks.push(ev.data);
+    mr.onstop = async () => { clearInterval(tick); CD.rec = null; b.classList.remove("on"); b.querySelector("b").textContent = "按住說話"; b.querySelector("small").textContent = "放開就送出・最多 8 秒・大面板會播放";
+      const sec = Math.round((Date.now() - t0) / 100) / 10; if (sec < .6) return toast("太短了，要按住再說");
+      const blob = new Blob(chunks, { type: mr.mimeType || "audio/webm" });
+      const b64 = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(",")[1]); fr.readAsDataURL(blob); });
+      b.classList.add("busy"); b.querySelector("small").textContent = "傳送中…";
+      const up = await api("simVoice", { code: ST.code, key: ST.seat.key, data: b64, mime: (mr.mimeType || "audio/webm").split(";")[0] });
+      b.classList.remove("busy"); b.querySelector("small").textContent = "放開就送出・最多 8 秒・大面板會播放";
+      if (!up || !up.ok) return toast((up && up.error) || "語音傳送失敗", true);
+      await act({ type: "chat", voice: up.id, sec: Math.min(8, Math.round(sec)) }); };
+    mr.start();
+  });
+  ["pointerup", "pointercancel", "lostpointercapture"].forEach(k => b.addEventListener(k, stop));
+}
+/* 大面板：最近的對話（投影）；主持端可以打字 */
+function boardChatHTML(S, host){
+  const list = cdMsgs(S); if (fHold(S) || (S.status === "end" && fCase(S))) return "";
+  return `<div class="bchat"><div class="chh"><h3 class="h3">💬 隊內對話</h3><small>手機右下角「隊內對話」：打字、語音轉文字，或按住說話；聲音開著時大面板會播放</small></div>
+    <ol class="chat">${list.slice(-8).map(m => cdItem(S, m)).join("") || `<li class="muted">還沒有訊息。</li>`}</ol>
+    ${host ? `<div class="free"><input id="bChatX" maxlength="200" placeholder="主持人對全隊說…"><button class="btn" data-bchat="1">送出</button></div>` : ""}</div>`;
+}
+
+/* ================= 演練回顧：從存檔的事件重建整場（總覽、重播、講評、對話、解題） ================= */
+const RP = { ev: [], meta: null, S: null, cur: null, tc: 0, play: 0, speed: 4, tab: "sum" };
+const replayLink = (meta, date) => `#r-${meta && meta.created ? meta.created : date}-${meta ? meta.code : ""}`;
+/* 這台裝置主持或參加過的場次（沒登入也找得到自己主持的） */
+const histGet = () => { try { return JSON.parse(localStorage.getItem("sim2-hist") || "[]"); } catch (e) { return []; } };
+function histAdd(o){ try { const L = histGet().filter(x => !(x.code === o.code && x.day === o.day)); L.unshift(o); localStorage.setItem("sim2-hist", JSON.stringify(L.slice(0, 30))); } catch (e) {} }
+async function replay(key, code){
+  stopRoom(); clearInterval(RP.play); RP.play = 0; setBar(`演練回顧・房間 ${code}`, "團隊擬真", "rec");
+  const v = $("view"); v.innerHTML = `<p class="hint">讀取演練紀錄中…</p>`;
+  let r;
+  if (!LIVE()) { const M = DEMO.load(code); r = M ? { ok: true, m: DEMO.pub(M), ev: M.ev } : { ok: false, error: "這台電腦找不到這場（示範模式只存在本機，房間清掉就沒了）" }; }
+  else { const h = hostGet(code); r = await api("simReplay", Object.assign({ code, hostKey: h ? h.key : "" }, /^\d{13}$/.test(key) ? { id: key } : { date: key })); }
+  if (!r || !r.ok) { v.innerHTML = `<section class="panel stack"><div class="bmsg err">${esc((r && r.error) || "讀取失敗")}</div><p class="hint">回顧資料在演練結束時自動存檔；2026/10/19 以前的場次只有摘要，沒有完整重播。</p><a class="btn ghost" href="#rec">回演練紀錄</a></section>`; return; }
+  RP.meta = Object.assign({ saved: 1 }, r.m); RP.ev = (r.ev || []).slice().sort((a, b) => a.i - b.i);
+  RP.S = derive(RP.meta, RP.ev); RP.tc = 0; RP.tab = "sum"; RP.auth = { code, id: /^\d{13}$/.test(key) ? key : String(RP.meta.created || ""), hostKey: (hostGet(code) || {}).key || "" };
+  ST.code = code; ST.S = RP.S;
+  const S = RP.S, c = CASE_BY[S.caseId], day = new Date(RP.meta.created || S.t0 || Date.now());
+  v.innerHTML = `<section class="panel rphead"><div><small>${day.toLocaleDateString("zh-TW")} ${day.toLocaleTimeString("zh-TW", { hour: "2-digit", minute: "2-digit" })}・房間 ${esc(code)}${RP.meta.host ? `・主持 ${esc(RP.meta.host)}` : ""}</small>
+      <h2 class="h2">${esc(c ? c.n : "（未設定病例）")}</h2>
+      <div class="rpseat">${ROLE_ORDER.concat("T").filter(k => S.seats[k]).map(k => `<span style="--rc:${ROLES[k][2]}"><b>${ROLES[k][0]}</b>${esc(S.seats[k].name)}</span>`).join("")}</div></div>
+      <div class="rpres ${S.pulse && S.status === "end" ? "ok" : ""}"><small>結果</small><b>${S.status !== "end" ? "未結束" : S.pulse ? "ROSC" : "未 ROSC"}</b><small>${S.t0 ? mmss((S.t1 || S.ev[S.ev.length - 1].t) - S.t0) : ""}</small></div>
+      <button class="btn ghost noprint" id="rpPrint">列印／存 PDF</button></section>
+    <div class="noprint">${tabs([["sum", "總覽"], ["play", "重播"], ["fb", "講評與自評"], ["chat", `對話（${S.chat.length}）`], ...(fCase(S) ? [["ans", "解題"]] : [])], RP.tab)}</div><div id="rpBody"></div>`;
+  $("rpPrint").onclick = () => window.print();
+  v.onclick = async e => {
+    const t = e.target.closest("[data-tab]"); if (t) { RP.tab = t.dataset.tab; v.querySelectorAll(".tabs2 button").forEach(b => b.classList.toggle("on", b === t)); return rpBody(); }
+    const vo = e.target.closest("[data-voice]"); if (vo) return rpVoice(vo.dataset.voice);
+    const rs2 = e.target.closest("[data-recseg]"); if (rs2) { rs2.textContent = "載入中…"; const u = await rpAudioURL({ fid: rs2.dataset.recseg }); if (!u) { rs2.textContent = "讀取失敗"; return; } const au = rs2.parentElement.querySelector("audio"); au.src = u; au.hidden = false; rs2.remove(); try { await au.play(); } catch (x) {} return; }
+    const d = e.target.closest("[data-doc]"); if (d) return openDocK(RP.S, d.dataset.doc);
+    const rs = e.target.closest("[data-res]"); if (rs) return openRes(RP.S, rs.dataset.res);
+    const j = e.target.closest("[data-jump]"); if (j) { rpPause(); RP.tc = +j.dataset.jump; return rpPaint(); }
+    if (e.target.closest("#rpPlay")) { if (RP.play) return rpPause(); if (RP.tc >= rpDur()) RP.tc = 0; RP.play = setInterval(() => { RP.tc = Math.min(rpDur(), RP.tc + 250 * RP.speed); rpPaint(); rpSync(true); if (RP.tc >= rpDur()) rpPause(); }, 250); rpPaint(); rpSync(true); return; }
+    const sp = e.target.closest("[data-speed]"); if (sp) { RP.speed = +sp.dataset.speed; v.querySelectorAll("[data-speed]").forEach(b => b.classList.toggle("on", b === sp)); return; }
+    const st = e.target.closest("[data-step]"); if (st) { rpPause(); const T = RP.ev.filter(x => x.t > RP.S.t0 && x.a && x.a.type !== "join").map(x => x.t - RP.S.t0), now = RP.tc;
+      RP.tc = +st.dataset.step > 0 ? (T.find(x => x > now) ?? rpDur()) : ([...T].reverse().find(x => x < now) ?? 0); return rpPaint(); }
+  };
+  v.oninput = e => { if (e.target.id === "rpSl") { rpPause(); RP.tc = +e.target.value; rpPaint(); } };
+  rpBody();
+}
+const rpDur = () => { const S = RP.S; return S.t0 ? Math.max(1000, (S.t1 || S.ev[S.ev.length - 1].t) - S.t0) : 1000; };
+function rpPause(){ clearInterval(RP.play); RP.play = 0; if (window.RPA && RPA.audio) { RPA.audio.pause(); RPA.seg = null; } const b = $("rpPlay"); if (b) b.textContent = "▶ 播放"; }
+function rpBody(){
+  rpPause(); const S = RP.S, b = $("rpBody"), t0 = S.t0;
+  if (RP.tab === "sum") b.innerHTML = rpRecHTML(S) + (t0 ? `<section class="panel"><h3 class="h3">時間軸</h3>${timelineSVG(S)}</section>` : "") + debriefHTML(S, true) + checklistHTML(S, "");
+  if (RP.tab === "fb") { const fb = S.fbPub && S.fb, seated = ROLE_ORDER.filter(r => S.seats[r]);
+    b.innerHTML = `<section class="panel"><h3 class="h3">教師講評</h3>${fb ? `${fb.take.filter(Boolean).length ? `<div class="take"><small>帶走三件事</small><ol>${fb.take.filter(Boolean).map(x => `<li>${esc(x)}</li>`).join("")}</ol></div>` : ""}${scoreBars(fb)}
+        <div class="fbg">${seated.filter(r => fb.roles[r]).map(r => `<div class="fbc" style="--rc:${ROLES[r][2]}"><b>${ROLES[r][0]}・${esc(S.seats[r].name)}</b>${fb.roles[r][0] ? `<p>👍 ${esc(fb.roles[r][0])}</p>` : ""}${fb.roles[r][1] ? `<p>🔧 ${esc(fb.roles[r][1])}</p>` : ""}</div>`).join("")}</div>${fb.note ? `<div class="note">${esc(fb.note)}</div>` : ""}` : `<p class="hint">這場沒有發布教師講評。</p>`}</section>
+      <section class="panel"><h3 class="h3">學員自評</h3>${seated.filter(r => S.refl[r]).map(r => `<div class="trf" style="--rc:${ROLES[r][2]}"><b>${ROLES[r][0]}・${esc(S.seats[r].name)}</b><span>感受：${esc(S.refl[r].feel || "—")}</span><span>👍 ${esc(S.refl[r].good || "—")}</span><span>🔧 ${esc(S.refl[r].next || "—")}</span></div>`).join("") || `<p class="hint">沒有人填自評。</p>`}</section>`; }
+  if (RP.tab === "chat") { const ph = m => m.ph === "run" ? "演練中" : F_PH[m.ph] || "結束後";
+    b.innerHTML = `<section class="panel"><h3 class="h3">對話紀錄</h3>${S.chat.length ? `<ol class="chat rpchat">${S.chat.map((m, i) => `${i === 0 || ph(S.chat[i - 1]) !== ph(m) ? `<li class="phsep"><b>${ph(m)}</b></li>` : ""}<li class="${m.w === "S" ? "cue " + m.cue : m.w === "T" || m.w === "H" ? "tch" : ""}" style="--rc:${(ROLES[m.w] || ["", "", "#6650C0"])[2]}"><span class="who">${esc(m.w === "S" ? chatWho(S, m) : cdWho(S, m))}</span><span class="x">${m.voice ? `<button class="mini" data-voice="${esc(m.voice)}">▶ 語音${m.sec ? " " + m.sec + " 秒" : ""}</button> ` : ""}${esc(m.x)}</span><time>${t0 ? mmss(m.t - t0) : ""}</time></li>`).join("")}</ol><p class="hint">語音訊息只保留 6 小時，之後只剩文字紀錄。</p>` : `<p class="hint">這場沒有對話。</p>`}</section>`; }
+  if (RP.tab === "ans") b.innerHTML = ansHTML(S, true) + recHTML(S, "", { rt: "stat" });
+  if (RP.tab === "play") {
+    if (!t0) { b.innerHTML = `<p class="hint">這場沒有開始演練。</p>`; return; }
+    b.innerHTML = `<section class="panel rpplay"><div class="rpctl"><button class="btn" id="rpPlay">▶ 播放</button><button class="btn ghost" data-step="-1">⏮ 上一步</button><button class="btn ghost" data-step="1">下一步 ⏭</button>
+        <span class="chips">${[1, 4, 8, 16].map(x => `<button data-speed="${x}" class="${RP.speed === x ? "on" : ""}">×${x}</button>`).join("")}</span><b class="rptime" id="rpT">00:00</b></div>${S.recs.length ? `<p class="hint">🎧 這場有錄音：用 ×1 播放時，現場聲音會跟著時間軸同步播放。</p>` : ""}
+        <input type="range" id="rpSl" min="0" max="${rpDur()}" step="500" value="0">
+        <div class="rpgrid"><div><div class="mon"><canvas class="moncv" aria-label="監視器"></canvas><div class="monlab" id="rpLab"></div><div class="monv" id="rpV"></div></div><div id="rpSt"></div></div><ol class="feed sm" id="rpFeed"></ol></div></section>`;
+    const cv = b.querySelector(".moncv"); cv.dataset.on = 1; monitorMount(cv, () => Object.assign({}, RP.cur || RP.S, { monitor: true, show: true }));
+    rpPaint();
+  }
+}
+/* 重播：取到某個時間點為止的事件重新推算 */
+function rpPaint(){
+  const S0 = RP.S, tAbs = S0.t0 + RP.tc, ev = RP.ev.filter(e => e.t <= tAbs), S = RP.cur = derive(RP.meta, ev);
+  if (!$("rpT")) return;
+  $("rpT").textContent = mmss(RP.tc) + " / " + mmss(rpDur()); $("rpSl").value = RP.tc; $("rpPlay").textContent = RP.play ? "⏸ 暫停" : "▶ 播放";
+  const v = curVit(S, tAbs), on = S.rhythm !== "none";
+  $("rpLab").textContent = on ? `${RHY[S.rhythm][0]}${S.pulse ? "・有脈搏" : "・無脈搏"}${S.cpr ? "・壓胸中" : ""}` : "尚未出現心律";
+  $("rpV").innerHTML = [["HR", "g", !on ? "—" : S.pulse ? v.hr : S.cpr ? "CPR" : "---"], ["SpO₂", "c", S.pulse && v.spo2 ? v.spo2 : "—"], ["BP", "r", S.pulse && v.sbp ? `${v.sbp}/${v.dbp}` : "—"], ["ETCO₂", "y", S.etco2On ? v.etco2 : "—"], ["RR", "w", S.pulse && v.rr ? v.rr : "—"]].map(x => `<span><small>${x[0]}</small><b class="${x[1]}">${x[2]}</b></span>`).join("");
+  const F = fCase(S);
+  $("rpSt").innerHTML = `<div class="rpchips">${[["壓胸", S.cpr ? `${(S.seats[S.comp] && S.seats[S.comp].name) || roleName(S.comp)}` : "暫停", S.cpr], ["電擊", S.shocks.filter(x => x.delivered).length + " 次"], ["Epi", S.drugs.filter(d => d.k === "epi").length + " 次"], ["呼吸道", S.airway.ett ? "ETT" : S.airway.dev || "—"], ["管路", S.iv ? S.iv + (S.line ? "＋N/S" : "") : "—"], ["Leader 懷疑", HT.filter(h => S.ht[h[0]]).map(h => h[1]).join("、") || "—"], ...(F ? [["病因處理", S.fixAt ? mmss(S.fixAt - S.t0) : "還沒"], ["報告", `${S.orders.filter(o => tAbs >= o.due).length} 份`]] : [])].map(c => `<span class="${c[2] ? "on" : ""}"><small>${c[0]}</small><b>${esc(String(c[1]))}</b></span>`).join("")}</div>`;
+  const list = S.ev.filter(e => e.g !== "join" && e.t >= S0.t0).slice(-14).reverse();
+  $("rpFeed").innerHTML = list.map((e, i) => `<li style="--rc:${(ROLES[e.w] || ["", "", "#8897A3"])[2]}" class="${i === 0 ? "now" : ""} ${e.hide ? "hid" : ""}" data-jump="${e.t - S0.t0}"><time>${mmss(e.t - S0.t0)}</time><span class="who">${esc(e.w === "S" ? "系統" : roleName(e.w))}</span><span>${esc(e.xt || e.x)}</span></li>`).join("") || `<li class="muted">按播放，或拖拉時間軸。</li>`;
+}
+
+/* ================= 本場錄音：大面板（主持端）分段錄下現場聲音，每段約 3 分鐘上傳 ================= */
+const RECX = { stream: null, mr: null, seg: 0, segAt: 0, up: 0, fail: [], busy: 0, err: "" };
+const REC_SEG = 180000, REC_MAX = 45 * 60000;
+const recBanner = S => S.rec && !S.recDone ? `<div class="recbar">🔴 本場錄音中：語音訊息與現場聲音會保存，供回顧與教學使用</div>` : "";
+/* 該不該錄：開始演練後錄，正式教案錄到解題前；一般病例錄到教師發布講評，或結束後 10 分鐘 */
+function recWant(S, t){
+  if (!S.rec || !S.t0 || S.recDone) return false;
+  if (t - S.t0 > REC_MAX) return false;
+  if (S.status === "run") return true;
+  if (S.status !== "end") return false;
+  if (fCase(S)) return ["team", "judge"].includes(S.fph);
+  return !S.fbPub && t - S.t1 < 600000;
+}
+async function recMic(){
+  if (RECX.stream && RECX.stream.active) return true;
+  if (!navigator.mediaDevices || !window.MediaRecorder) { RECX.err = "這台電腦的瀏覽器不支援錄音"; return false; }
+  try { RECX.stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: true, autoGainControl: true } }); RECX.err = ""; return true; }
+  catch (e) { RECX.err = "沒有麥克風權限：請允許這個網頁使用麥克風"; return false; }
+}
+function recStartSeg(){
+  const mime = ["audio/webm;codecs=opus", "audio/mp4", "audio/webm"].find(m => MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) || "";
+  const mr = new MediaRecorder(RECX.stream, mime ? { mimeType: mime, audioBitsPerSecond: 24000 } : undefined), chunks = [], at = NOW(), seg = ++RECX.seg;
+  mr.ondataavailable = e => e.data && e.data.size && chunks.push(e.data);
+  mr.onstop = () => recUpload(new Blob(chunks, { type: mr.mimeType || "audio/webm" }), at, NOW() - at, seg, mr.mimeType || "audio/webm");
+  RECX.mr = mr; RECX.segAt = at; mr.start(1000);
+}
+async function recUpload(blob, at, dur, seg, mime){
+  RECX.busy++;
+  const b64 = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(",")[1]); fr.readAsDataURL(blob); });
+  let r = null; for (let k = 0; k < 3 && !(r && r.ok); k++) { r = await api("simAudio", { code: ST.code, key: ST.seat.key, data: b64, mime: mime.split(";")[0], seg }); if (!(r && r.ok)) await new Promise(x => setTimeout(x, 1500)); }
+  RECX.busy--;
+  if (r && r.ok) { RECX.up++; await act({ type: "recfile", fid: r.fid, at, dur: Math.round(dur), seg }); }
+  else { RECX.fail.push({ blob, seg, mime }); RECX.err = (r && r.error) || "錄音上傳失敗"; toast(`第 ${seg} 段錄音上傳失敗，可以在大面板下載保存`, true); }
+  if (!RECX.mr && !RECX.busy && ST.S && !recWant(ST.S, NOW()) && !ST.S.recDone && RECX.up) act({ type: "recfile", stop: 1 });
+}
+/* 主持端每秒檢查一次 */
+async function recTick(S){
+  if (!S || !ST.seat || ST.seat.role !== "H" || !window.MediaRecorder) return;
+  const t = NOW(), want = recWant(S, t);
+  if (want && !RECX.mr) { if (RECX.starting) return; RECX.starting = 1; const ok = await recMic(); RECX.starting = 0; if (ok && recWant(ST.S, NOW()) && !RECX.mr) recStartSeg(); return; }
+  if (RECX.mr && (!want || t - RECX.segAt >= REC_SEG)) { const mr = RECX.mr; RECX.mr = null; try { mr.stop(); } catch (e) {} if (want) recStartSeg(); }
+}
+function recStatusHTML(S){
+  if (!S.rec) return "";
+  const live = !!RECX.mr, n = S.recs.length;
+  return `<div class="recst">${live ? `<b>🔴 錄音中</b><span>第 ${RECX.seg} 段・<span data-recs="1">${mmss(NOW() - RECX.segAt)}</span></span>` : S.recDone ? `<b>✓ 錄音完成</b>` : `<b>⏺ 錄音待命</b><span>${S.status === "wait" ? "按「開始演練」就會開始錄" : ""}</span>`}<span>已存 ${n} 段</span>
+    ${RECX.err ? `<span class="warn">${esc(RECX.err)}</span><button class="mini" id="recMic">允許麥克風</button>` : ""}${RECX.fail.length ? `<button class="mini" id="recDl">下載未上傳的 ${RECX.fail.length} 段</button>` : ""}</div>`;
+}
+async function recToggle(S){
+  if (!S.rec) {
+    if (!confirm("開啟本場錄音？\n\n・大面板會用這台電腦的麥克風錄下現場聲音（開始演練到 debrief 結束）\n・大家按住說話的語音訊息也會保存\n・存到雲端硬碟，只有參加者與有權限的人可以在回顧時聽\n\n請先口頭告知所有學員本場會錄音。")) return;
+    if (ST.seat && ST.seat.role === "H" && !(await recMic())) toast(RECX.err + "（還是可以先開，之後再按「允許麥克風」）", true);
+    if (await act({ type: "recmode", on: true })) toast("本場錄音已開啟，所有手機會顯示「錄音中」");
+  } else { if (!confirm("停止錄音？目前這段會先存起來。")) return; await act({ type: "recmode", on: false }); }
+}
+function recDownload(){ RECX.fail.forEach(f => { const a = document.createElement("a"); a.href = URL.createObjectURL(f.blob); a.download = `演練錄音_${ST.code}_第${f.seg}段.${/mp4/.test(f.mime) ? "m4a" : "webm"}`; document.body.appendChild(a); a.click(); setTimeout(() => a.remove(), 500); }); }
+
+/* ---------- 回顧：讀錄音、跟時間軸同步 ---------- */
+const RPA = { cache: {}, audio: null, seg: null };
+async function rpAudioURL(q){
+  const k = q.fid || "v:" + q.vid; if (RPA.cache[k]) return RPA.cache[k];
+  let r = q.vid ? await api("simVoiceGet", { code: RP.meta.code, id: q.vid }) : null;
+  if (!(r && r.ok)) r = await api("simAudioGet", Object.assign({}, RP.auth, q));
+  if (!(r && r.ok)) return "";
+  const bin = atob(r.data), u8 = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+  return (RPA.cache[k] = URL.createObjectURL(new Blob([u8], { type: r.mime || "audio/webm" })));
+}
+async function rpVoice(id){ const u = await rpAudioURL({ vid: id }); if (!u) return toast("找不到這則語音（沒有開錄音的場次，語音只保留 6 小時）", true); try { await new Audio(u).play(); } catch (e) {} }
+function rpRecHTML(S){
+  if (!S.recs.length) return S.rec ? `<section class="panel"><h3 class="h3">🎧 整場錄音</h3><p class="hint">這場有開錄音，但沒有成功存到錄音段（大面板可能沒有允許麥克風）。</p></section>` : "";
+  return `<section class="panel"><h3 class="h3">🎧 整場錄音（${S.recs.length} 段）</h3><p class="hint">到「重播」用 ×1 播放時，錄音會跟時間軸同步。</p>
+    <div class="recsegs">${S.recs.map(r => `<div class="recseg"><b>第 ${r.seg} 段</b><small>${mmss(r.at - S.t0)} – ${mmss(r.at + r.dur - S.t0)}</small><button class="mini" data-recseg="${esc(r.fid)}">載入播放</button><audio controls preload="none" hidden></audio></div>`).join("")}</div></section>`;
+}
+/* 重播 ×1 時：找到那個時間點的錄音段、對齊播放 */
+async function rpSync(playing){
+  const S = RP.S; if (!S.recs.length) return;
+  const tAbs = S.t0 + RP.tc, seg = playing && RP.speed === 1 ? S.recs.find(r => tAbs >= r.at && tAbs < r.at + r.dur) : null;
+  if (!seg) { if (RPA.audio) RPA.audio.pause(); RPA.seg = null; return; }
+  if (RPA.seg !== seg.fid) { RPA.seg = seg.fid; const u = await rpAudioURL({ fid: seg.fid }); if (!u || RPA.seg !== seg.fid) return;
+    RPA.audio = RPA.audio || new Audio(); RPA.audio.src = u; RPA.audio.currentTime = (tAbs - seg.at) / 1000; try { await RPA.audio.play(); } catch (e) {} return; }
+  const want = (tAbs - seg.at) / 1000; if (RPA.audio && Math.abs(RPA.audio.currentTime - want) > 1.5) RPA.audio.currentTime = want;
+  if (RPA.audio && RPA.audio.paused) { try { await RPA.audio.play(); } catch (e) {} }
+}
+
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.18-f";
+const SIM_VER = "2026.10.19-d";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -2871,15 +3178,16 @@ async function pull1(){
   if (!r || !r.ok) { const o = $("offline"); if (o) { o.hidden = false; o.textContent = r && r.gone ? "房間已過期或不存在" : "連線中斷，正在重試…"; } ST.gone = !!(r && r.gone); return; }
   const o = $("offline"); if (o) o.hidden = true;
   ST.off = r.now - Date.now(); ST.meta = r.room;
+  if (ST.seat && !ST.histDone && r.room && r.room.created) { ST.histDone = 1; const d = new Date(r.room.created); histAdd({ code: ST.code, created: r.room.created, day: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`, role: ST.seat.role === "H" ? "主持（大面板）" : roleName(ST.seat.role) }); }
   if (r.ev && r.ev.length) { const have = new Set(ST.events.map(e => e.i)); r.ev.forEach(e => { if (!have.has(e.i)) ST.events.push(e); }); ST.events.sort((a, b) => a.i - b.i); }
   /* 保險：事件編號要從 0 連續；有缺就整份重拿 */
   const real = ST.events.filter(e => !e.tmp); if (real.some((e, k) => e.i !== k)) { ST.events = ST.events.filter(e => e.tmp); ST.again = true; return; }
   repaint();
 }
 function startRoom(code, ...fns){
-  stopRoom(); ST.gen = (ST.gen || 0) + 1; ST.busy = null; ST.again = false; ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
+  stopRoom(); ST.histDone = 0; ST.gen = (ST.gen || 0) + 1; ST.busy = null; ST.again = false; ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
   ST.poll = setInterval(() => { if (!document.hidden) pull(); }, LIVE() ? 1000 : 600);
-  ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); } catch (e) { console.error(e); } }, 1000);
+  ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); recTick(ST.S); } catch (e) { console.error(e); } }, 1000);
   return pull();
 }
 const NOW = () => Date.now() + ST.off;
@@ -2896,6 +3204,7 @@ async function act(a, extra){
 function paintTimers(S){
   const t = NOW();
   document.querySelectorAll(".monv").forEach(m => { const v = vitText(m.dataset.t ? Object.assign({}, S, { monitor: true }) : S); m.querySelectorAll("[data-vk]").forEach(b => { if (b.textContent !== v[b.dataset.vk]) b.textContent = v[b.dataset.vk]; }); });
+  document.querySelectorAll("[data-recs]").forEach(el => { el.textContent = RECX.mr ? mmss(t - RECX.segAt) : "—"; });
   document.querySelectorAll("[data-due]").forEach(el => { const r = +el.dataset.due - t; el.textContent = r > 0 ? mmss(r) : "報告出來了"; });
   document.querySelectorAll("[data-tm]").forEach(el => {
     const k = el.dataset.tm;
@@ -3037,7 +3346,7 @@ function landing(code, msg){
       </section>
       <section class="panel stack"><h2 class="h2">建立房間（投影的電腦）</h2>
         <div class="modes"><label><input type="radio" name="md" value="teacher" checked><span><b>臨床教師控制</b><small>教師手機選病例、調整心律與生命徵象、回覆 Leader 的評估</small></span></label>
-          <label><input type="radio" name="md" value="auto"><span><b>系統自動推進（標準 VF）</b><small>沒有教師時用：評估自動回覆，電擊 3 次＋Epi＋Amiodarone 後 ROSC</small></span></label></div>
+          <label><input type="radio" name="md" value="auto"><span><b>系統自動推進（沒有教師）</b><small>評估自動回覆；可選標準 VF，或正式教案①②（第 3 輪找病因、報告自動出、處置對了就 ROSC、結束看解題）</small></span></label></div>
         <button class="btn big" id="mk">建立房間</button>
         <a class="link" href="#rec">演練紀錄 ›</a>
       </section>
@@ -3094,11 +3403,12 @@ function board(code){
       <div class="bjoin"><small>手機加入</small><span>${esc(SITE.replace(/^https?:\/\//, ""))}　輸入 <b>${esc(code)}</b></span>${host ? `<span>教師碼 <b>${esc(host.pin)}</b></span>` : ""}</div>
       <div class="qr" id="qr"></div>
       <div class="bctl" id="bctl"></div></section>
-    <div id="bF"></div>
+    <div id="bF"></div><div id="bRecSt"></div><div id="bPick"></div>
     <div class="ann" id="ann" hidden></div>
     <div id="bDeb2"></div>
     <div class="bgrid"><section class="panel" id="bMon"></section><section class="panel" id="bSide">${timersHTML()}<div id="bInfo"></div></section></div>
     <section class="panel" id="bAsk"></section>
+    <section class="panel" id="bChat" hidden></section>
     <section class="panel" id="bRec" hidden></section>
     <details class="panel mapw" open><summary>團隊運作圖</summary><div id="bMap"></div></details>
     <div id="bDeb"></div>
@@ -3109,7 +3419,7 @@ function board(code){
     const ctl = `<span class="pill ${S.status}">${{ wait: "等待開始", run: "演練中", end: "已結束" }[S.status]}</span>
       ${host && S.status === "wait" ? `<button class="btn" data-h="start">開始演練</button>` : ""}${host && S.status === "run" ? `<button class="btn ghost" data-h="end">結束演練</button>` : ""}
       <button class="btn ghost" id="snd">${sound() ? "聲音：開" : "聲音：關"}</button>
-      ${S.voice ? `<a class="btn" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 語音室</a>` : ""}${host ? `<button class="btn ghost" id="vset">${S.voice ? "換語音室" : "🎧 開語音室"}</button><button class="btn ghost" id="omode">${S.oral ? "指令：口頭" : "指令：手機"}</button>` : ""}`;
+      ${S.voice ? `<a class="btn" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 語音室</a>` : ""}${host ? `<button class="btn ${S.rec ? "recon" : "ghost"}" id="recset">${S.rec ? "🔴 本場錄音中" : "⏺ 本場錄音"}</button>` : ""}${host ? `<button class="btn ghost" id="vset">${S.voice ? "換語音室" : "🎧 開語音室"}</button><button class="btn ghost" id="omode">${S.oral ? "指令：口頭" : "指令：手機"}</button>` : ""}`;
     if ($("bctl").dataset.k !== ctl) { $("bctl").innerHTML = ctl; $("bctl").dataset.k = ctl; reArm(); }
     const key = JSON.stringify([S.rhythm, S.monitor, S.show, S.cpr, S.pulse, S.vit, S.etco2On]);
     if (key !== lastKey) { lastKey = key; const cv = $("bMon").querySelector(".moncv");
@@ -3121,9 +3431,12 @@ function board(code){
     const askHTML = `<h3 class="h3">Leader 評估與回覆</h3>${qs.length ? `<div class="asks">${qs.map(q => `<div class="askrow ${q.reply ? "done" : ""}"><b>${esc(q.label)}</b><span>${q.reply ? esc(q.reply.x || "（語音回覆）") + (q.reply.voice ? ` <button class="mini" data-voice="${esc(q.reply.voice)}">▶ 播放</button>` : "") : "等待教師回覆…"}</span>${q.reply && q.reply.img ? imgHTML(q.reply.img) : ""}</div>`).join("")}</div>` : `<p class="hint">Leader 在手機按「評估」的項目會出現在這裡。</p>`}
       ${S.clues.length ? `<div class="clues">${S.clues.slice(-3).reverse().map(c => `<div class="clue">🔎 ${esc(c.x)}</div>`).join("")}</div>` : ""}`;
     if ($("bAsk")._h !== askHTML) { $("bAsk").innerHTML = askHTML; $("bAsk")._h = askHTML; }
+    const rs = recBanner(S) + (host ? recStatusHTML(S) : ""); if ($("bRecSt")._h !== rs) { $("bRecSt").innerHTML = rs; $("bRecSt")._h = rs; }
+    const pk = host && S.mode === "auto" && S.status === "wait" ? autoPickHTML(S) : ""; if ($("bPick")._h !== pk) { $("bPick").innerHTML = pk; $("bPick")._h = pk; }
     const fb = fBarHTML(S); if ($("bF")._h !== fb) { $("bF").innerHTML = fb; $("bF")._h = fb; }
     const br = boardRecHTML(S); $("bRec").hidden = !br; if ($("bRec")._h !== br) { $("bRec").innerHTML = br; $("bRec")._h = br; }
     fAnnounce(S);
+    const bc = boardChatHTML(S, !!host); $("bChat").hidden = !bc; if ($("bChat")._h !== bc) { const v = $("bChatX") ? $("bChatX").value : "", f = document.activeElement && document.activeElement.id === "bChatX"; $("bChat").innerHTML = bc; $("bChat")._h = bc; if ($("bChatX")) { $("bChatX").value = v; if (f) $("bChatX").focus(); } const cl = $("bChat").querySelector(".chat"); if (cl) cl.scrollTop = cl.scrollHeight; }
     const pub = S.ev.filter(e => !e.hide && e.g !== "join");
     $("bFeed").innerHTML = pub.slice(-14).reverse().map(e => feedLi(e, S)).join("") || `<li class="muted">還沒有紀錄</li>`;
     if (seen < 0) seen = S.ev.length;
@@ -3135,15 +3448,20 @@ function board(code){
   };
   $("view").onclick = async e => {
     if (await fClick(e, ST.S, null, null)) return;
+    if (e.target.closest("[data-bchat]")) { const x = $("bChatX").value.trim(); if (!x) return; if (await act({ type: "chat", x })) $("bChatX").value = ""; return; }
     const h = e.target.closest("[data-h]"); if (h) { if (h.dataset.h === "end" && !armed(h)) return toast("再按一次結束演練"); await hostAct({ type: h.dataset.h }); return; }
     const ds = e.target.closest("[data-dstep]"); if (ds && host) return act({ type: "dstep", k: +ds.dataset.dstep });
     if (e.target.closest("#vset")) return voiceSetup();
+    const ap = e.target.closest("[data-apick]"); if (ap) { await act({ type: "case", id: ap.dataset.apick }); return; }
+    if (e.target.closest("#recset")) return recToggle(ST.S);
+    if (e.target.closest("#recMic")) { if (await recMic()) { toast("麥克風已允許"); $("bRecSt")._h = ""; } else toast(RECX.err, true); return; }
+    if (e.target.closest("#recDl")) return recDownload();
     if (e.target.closest("#omode")) { await hostAct({ type: "cmdmode", oral: !(ST.S && ST.S.oral) }); toast(ST.S.oral ? "口頭指令：醫囑直接講、直接做" : "手機指令：Leader 用手機下指令"); return; }
     if (e.target.closest("#snd")) { const on = !sound(); try { localStorage.setItem("sim2-sound", on ? "1" : "0"); } catch (x) {} if (on) { beep(true); speak("聲音已開啟"); } $("bctl").dataset.k = ""; ST.S && paint(ST.S); return; }
     const v = e.target.closest("[data-voice]"); if (v) return playVoice(v.dataset.voice);
     if (e.target.closest("[data-csv]")) return csv(ST.S);
   };
-  $("view").onkeydown = e => { if (e.key === "Enter" && e.target.id === "chatX") { e.preventDefault(); const b = $("view").querySelector("[data-chat]"); b && b.click(); } };
+  $("view").onkeydown = e => { if (e.key === "Enter" && e.target.id === "bChatX") { e.preventDefault(); $("view").querySelector("[data-bchat]").click(); return; } if (e.key === "Enter" && e.target.id === "chatX") { e.preventDefault(); const b = $("view").querySelector("[data-chat]"); b && b.click(); } };
   startRoom(code, paint);
 }
 async function hostAct(a){
@@ -3172,7 +3490,8 @@ function player(code){
       <button class="mini" id="swRole">換角色</button>
       ${role !== "T" ? `<div class="rsw">${[{ role }, ...more].map(s => `<button class="${s.role === role ? "on" : ""}" data-sw="${s.role}" style="--rc:${ROLES[s.role][2]}">${ROLES[s.role][0]}</button>`).join("")}<button class="add" id="addRole">＋兼任</button></div>
       <div class="rsadd" id="rsAdd" hidden><small>人少時一個人可以兼兩、三個角色，上面切換畫面：</small><div class="chips">${ROLE_ORDER.filter(k => k !== role && !more.some(s => s.role === k)).map(k => `<button data-add="${k}" style="--rc:${ROLES[k][2]}">${ROLES[k][0]}</button>`).join("")}</div></div>` : ""}</section>
-    <div id="pBody" style="--rc:${info[2]}"></div>`;
+    <div id="pBody" style="--rc:${info[2]}"></div>${chatDockHTML()}`;
+  CD.seen = -1; CD.open = false; chatWire();
   $("swRole").onclick = () => { if (!confirm("離開「" + info[0] + "」，換一個角色？")) return; seatSet(code, null); go("j-" + code); };
   /* 兼任：切換畫面＝換用那個角色的身分送出 */
   const me = $("view").querySelector(".me");
@@ -3191,6 +3510,7 @@ function player(code){
     const cur = S.seats[role]; if (cur && cur.name !== seat.name) { stopRoom(); toast(`「${info[0]}」已由 ${cur.name} 接手`, true);
       if (more.length) { const o = more[0]; seatSet(code, { role: o.role, key: o.key, name: seat.name, more: more.slice(1) }); return player(code); }
       seatSet(code, null); return go("j-" + code); }
+    chatPaint(S);
     $("meSt").textContent = S.status === "wait" ? "等待主持人開始…" : S.status === "run" ? "演練中" : "演練結束";
     if (ui.seen === undefined || S.ev.length < ui.seen) ui.seen = S.ev.length;
     else if (S.ev.length > ui.seen) { const nw = S.ev.slice(ui.seen); ui.seen = S.ev.length;
@@ -3200,7 +3520,7 @@ function player(code){
     if (key === ui.lastKey) return; ui.lastKey = key;
     const keepScroll = scrollY, focus = document.activeElement && document.activeElement.id, vals = {};
     $("pBody").querySelectorAll("input[id],textarea[id]").forEach(el => { if (el.type !== "checkbox") vals[el.id] = el.value; });
-    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + fBarHTML(S) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" && role !== "C" ? compBar(S, role) : "") + (role !== "T" ? myCmds(S, role) : "") + P.html(S, ui) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
+    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + recBanner(S) + fBarHTML(S) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" && role !== "C" ? compBar(S, role) : "") + (role !== "T" ? myCmds(S, role) : "") + P.html(S, ui) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
     Object.entries(vals).forEach(([id, v]) => { const el = $(id); if (el && v !== undefined && el.dataset.keep !== "0" && (el.tagName !== "TEXTAREA" || ui.edited && ui.edited[id])) el.value = v; });
     mountMonitors($("pBody")); paintTimers(S); reArm();
     if (focus && $(focus)) $(focus).focus(); scrollTo(0, keepScroll); const cl = $("chatList"); if (cl) cl.scrollTop = cl.scrollHeight;
@@ -3218,6 +3538,7 @@ function player(code){
     if (e.target.id === "showName") await act({ type: "show", on: e.target.checked });
     if (e.target.id === "monOn") await act({ type: "monitor", on: e.target.checked });
     if (e.target.id === "oralOn") await act({ type: "cmdmode", oral: e.target.checked });
+    if (e.target.id === "recOn") { await recToggle(ST.S); ui.lastKey = ""; paint(ST.S); }
     if (e.target.id === "ttsOn") { try { localStorage.setItem("sim2-tts", e.target.checked ? "1" : "0"); } catch (x) {} if (e.target.checked) speak("教師的回覆會用語音念出來"); }
   };
   $("pBody").onkeydown = e => { if (e.key === "Enter" && e.target.id === "chatX") { e.preventDefault(); const b = $("pBody").querySelector("[data-chat]"); b && b.click(); } };
@@ -3442,6 +3763,7 @@ const PANELS = {
           ${c ? `<div class="label">病例線索（評估時的答案）</div><ul class="cluel">${Object.entries(c.clue).map(([k, x]) => `<li><b>${esc(ASK_BY[k] ? ASK_BY[k][1] : k)}</b>${esc(x)}</li>`).join("")}</ul>` : ""}
           <div class="free"><input id="clueX" maxlength="120" placeholder="自己打線索，例如：家屬拿來藥袋"><button class="mic" data-mic="clueX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-clue="1">丟出</button></div>
           <div class="free"><input id="sayT" maxlength="120" placeholder="以教師身分說話（不算評估回覆）"><button class="mic" data-mic="sayT" aria-label="語音輸入" title="用說的">🎤</button><button class="btn ghost" data-sayt="1">說</button></div>
+          <label class="sw"><input type="checkbox" id="recOn" ${S.rec ? "checked" : ""}> 🔴 這場錄音（保留語音訊息＋大面板錄下現場聲音，供回顧）</label>
           <label class="sw"><input type="checkbox" id="oralOn" ${S.oral ? "checked" : ""}> 口頭指令（醫囑直接講、直接做；講評不算手機閉環）</label>
           <button class="btn ghost wide" data-vset="1">${S.voice ? "🎧 換語音室連結" : "🎧 開語音室（Meet／LINE）"}</button>
           <button class="btn wide" data-rec="all">${ui.rec === "all" ? "■ 停止並送出" : "🎙 錄音對大家說（8 秒內，大面板播放）"}</button></section>${recHTML(S, "T", ui)}`;
@@ -3594,7 +3916,7 @@ function debriefHTML(S, full){
     </div>
     ${full && shocks.length ? `<div class="label">每次電擊</div><ol class="feed sm">${shocks.map(s => `<li><time>${mmss(s.t - S.t0)}</time><span>${s.sync ? "同步" : "非同步"} ${s.j} J・${esc(RHY[s.r][0])}・${s.delivered ? (s.ok ? "適當" : "不適當") : "沒有放電"}${s.cleared ? "" : "・沒喊離開"}</span></li>`).join("")}</ol>` : ""}
     ${full && S.calls.length ? `<div class="label">心律判讀</div><ol class="feed sm">${S.calls.map(x => `<li><time>${mmss(x.t - S.t0)}</time><span>判讀 ${esc(RHY[x.r][0])}／實際 ${esc(RHY[x.actual][0])}・${x.ok ? "✓" : "✗"}</span></li>`).join("")}</ol>` : ""}
-    <div class="row"><button class="btn ghost" data-csv="1">下載本場紀錄（CSV）</button><span class="hint">${LIVE() ? (S.saved ? "已存到「er-learn 紀錄」試算表" : S.saveErr ? "存檔失敗：" + esc(S.saveErr) : "存檔中…") : "示範模式不存檔"}</span></div>
+    <div class="row"><a class="btn rplink" href="${replayLink(ST.meta)}" target="_blank" rel="noopener">📼 回顧這場（重播）</a><button class="btn ghost" data-csv="1">下載本場紀錄（CSV）</button><span class="hint">${LIVE() ? (S.saved ? "已存到「er-learn 紀錄」試算表" : S.saveErr ? "存檔失敗：" + esc(S.saveErr) : "存檔中…") : "示範模式不存檔"}</span></div>
     <p class="hint">參考：辨識後 10 秒內開始壓胸、每 2 分鐘換手、中斷 < 10 秒、Epinephrine 每 3–5 分鐘、VF／pVT 儘早非同步電擊。講評請由臨床教師帶領。</p></section>`;
 }
 function csv(S){
@@ -3608,9 +3930,10 @@ function csv(S){
 /* ================= 演練紀錄 ================= */
 async function records(){
   stopRoom(); setBar("演練紀錄", "團隊擬真", "home"); const v = $("view");
-  if (!LIVE()) { v.innerHTML = `<div class="note">示範模式沒有存檔。</div>`; return; }
+  const H = histGet(), local = `<section class="panel stack"><b>這台裝置最近的場次（${H.length}）</b>${H.length ? `<div class="hist">${H.map(x => `<a class="histb" href="#r-${x.created || x.day}-${x.code}"><b>${esc(x.day)}・房間 ${esc(x.code)}</b><small>${esc(x.role || "")}</small><em>回顧 ›</em></a>`).join("")}</div>` : `<p class="hint">還沒有。用這台裝置主持或參加演練後會出現在這裡。</p>`}<p class="hint">${LIVE() ? "用暱稱參加的人要用員編登入才能回顧；主持的那台電腦（大面板）不用登入也可以回顧自己主持的場次。" : "示範模式的紀錄只存在這台電腦。"}</p></section>`;
+  if (!LIVE()) { v.innerHTML = local; return; }
   const u = me();
-  if (!u) { v.innerHTML = `<section class="panel stack"><b>請先用員編登入</b><p class="hint">紀錄依員編歸到個人；用暱稱參加的場次不會出現在個人紀錄。</p><button class="btn" id="lg">登入</button></section>`; $("lg").onclick = () => ACC && ACC.goLogin && ACC.goLogin(); return; }
+  if (!u) { v.innerHTML = `<section class="panel stack"><b>請先用員編登入</b><p class="hint">紀錄依員編歸到個人；用暱稱參加的場次不會出現在個人紀錄。</p><button class="btn" id="lg">登入</button></section>` + local; $("lg").onclick = () => ACC && ACC.goLogin && ACC.goLogin(); return; }
   v.innerHTML = `<p class="hint">讀取中…</p>`;
   const all = await api("simList", { limit: 200 }), r = all.ok ? all : await api("simMine", {});
   if (!r.ok) { v.innerHTML = `<div class="bmsg err">${esc(r.error)}</div>`; return; }
@@ -3618,7 +3941,7 @@ async function records(){
   const head = { myRole: "我的角色", "到首次電擊(秒)": "到電擊 秒", "心律判讀(對/總)": "判讀", "期待處置完成": "處置", "懷疑對病因": "找到病因" };
   const mine = all.ok ? await api("simMine", {}) : r, fbs = (mine && mine.ok && mine.fb) || [];
   v.innerHTML = `<section class="panel stack"><b>老師給我的回饋（${fbs.length}）</b>${fbs.length ? fbs.map(o => `<div class="fbc" style="--rc:#6650C0"><b>${esc(o["日期"])}・房 ${esc(o["房號"])}・${esc(o["對象"])}・${esc(o["病例"] || "")}</b>${o["做得好"] ? `<p>👍 ${esc(o["做得好"])}</p>` : ""}${o["可以更好"] ? `<p>🔧 ${esc(o["可以更好"])}</p>` : ""}${o.team && o.team["帶走三件事"] ? `<p>📌 帶走：${esc(o.team["帶走三件事"])}</p>` : ""}${o["學員自評"] ? `<p class="hint">我的自評：${esc(o["學員自評"])}</p>` : ""}<small class="hint">教師 ${esc(o["教師"] || "")}</small></div>`).join("") : `<p class="hint">還沒有收到講評。</p>`}</section>
-  <section class="panel stack"><b>${all.ok ? "全部演練" : esc(u.name) + " 的演練"}（${r.rows.length} 場）</b>${r.rows.length ? `<div class="tblw"><table><thead><tr>${cols.map(c => `<th>${esc(head[c] || c)}</th>`).join("")}</tr></thead><tbody>${r.rows.map(o => `<tr>${cols.map(c => `<td>${esc(o[c] || "—")}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : `<p class="hint">還沒有紀錄。</p>`}</section>`;
+  <section class="panel stack"><b>${all.ok ? "全部演練" : esc(u.name) + " 的演練"}（${r.rows.length} 場）</b>${r.rows.length ? `<div class="tblw"><table><thead><tr>${cols.map(c => `<th>${esc(head[c] || c)}</th>`).join("")}<th></th></tr></thead><tbody>${r.rows.map(o => `<tr>${cols.map(c => `<td>${esc(o[c] || "—")}</td>`).join("")}<td><a class="mini" href="#r-${esc(String(o["場次"] || o["日期"]))}-${esc(String(o["房號"]))}">回顧</a></td></tr>`).join("")}</tbody></table></div>` : `<p class="hint">還沒有紀錄。</p>`}</section>` + local;
 }
 
 /* ================= 路由 ================= */
@@ -3630,6 +3953,7 @@ function render(){
   if ((m = h.match(/^p-(\d{4})$/))) return player(m[1]);
   if ((m = h.match(/^j-(\d{4})$/))) { const s = seatGet(m[1]); return s ? go("p-" + m[1]) : landing(m[1]); }
   if (h === "rec") return records();
+  if ((m = h.match(/^r-(\d{13}|\d{4}-\d{2}-\d{2})-(\d{4})$/))) { ST.seat = null; return replay(m[1], m[2]); }
   return landing("");
 }
 function acctUI(){
