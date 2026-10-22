@@ -1644,6 +1644,7 @@ button.dst{cursor:pointer}.dst i{font-style:normal;font-weight:900;font-family:u
 .mini.vplay.on{background:#C63D2F;color:#fff;border-color:#C63D2F}
 .sndgate{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:65;background:#B7790A;color:#fff;font-weight:800;text-align:center;border-radius:14px;padding:12px;box-shadow:0 10px 24px -8px rgba(0,0,0,.5)}
 .sndgate[hidden]{display:none}
+.aibox{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:color-mix(in oklab,#6650C0 8%,var(--surface));border:1.5px dashed #6650C0;border-radius:12px;padding:10px 12px;margin:8px 0 12px}.aibox small{color:var(--ink-2);flex:1;min-width:200px}
 
 </style>
 </head>
@@ -2430,7 +2431,7 @@ function derive(meta, events){
       if (a.type === "clue") { const x = String(a.x || "").slice(0, 120); if (!x) return; S.clues.push({ t, x }); log(e, `線索：${x}`, { g: "clue", sp: x }); return; }
       if (a.type === "reply") { const q = S.asks.find(q => q.id === a.id); const x = String(a.x || "").slice(0, 200);
         const img = IMGS[a.img] ? a.img : "";
-        if (q && !q.reply) { q.reply = { t, x, voice: a.voice || "", img }; log(e, `${q.label}：${x || (img ? IMGS[img][0] : "（語音回覆）")}`, { g: "reply", sp: x || null, voice: a.voice || "", ask: q.id, img }); }
+        if (q && !q.reply) { q.reply = { t, x, voice: a.voice || "", img, ai: !!a.ai }; log(e, `${q.label}：${x || (img ? IMGS[img][0] : "（語音回覆）")}`, { g: "reply", sp: x || null, voice: a.voice || "", ask: q.id, img, xt: a.ai ? `${q.label}：${x}（AI 回答）` : undefined }); }
         else if (!q && (x || a.voice)) log(e, `教師：${x || "（語音）"}`, { g: "reply", sp: x || null, voice: a.voice || "" });
         return; }
     }
@@ -2460,6 +2461,7 @@ function derive(meta, events){
     if (a.type === "ask" && role === "L") { const it = ASK_BY[a.k]; const label = it ? it[1] : String(a.x || "").slice(0, 40); if (!label) return;
       const q = { id: "q" + (S.asks.length + 1), k: it ? a.k : "free", label, t, reply: null }; S.asks.push(q);
       log(e, `Leader 評估：${label}`, { g: "ask", ask: q.id, sp: `請評估：${label}` });
+      if (S.mode === "auto" && !it) { q.ai = 1; return; }   // 自由輸入：交給主持端的 AI 回答
       if (S.mode === "auto") { const x = (it && suggest(S, q.k)) || "（沒有教師，請自行判斷）", img = suggestImg(S, q.k); q.reply = { t, x, voice: "", img }; log({ t, w: "T", a: {}, i: e.i }, `${label}：${x}`, { g: "reply", sp: x, ask: q.id }); }
       return; }
     if (a.type === "proc" && role === "L" && PROC_BY[a.k]) { S.procs.push({ k: a.k, t }); log(e, `Leader 決定：${PROC_BY[a.k][1]}`, { g: "proc", sp: PROC_BY[a.k][1] });
@@ -2698,7 +2700,8 @@ function boardDebHTML(S, host){
     ${S.fbPub && S.fb ? `<h3 class="h3">教師回饋</h3><div class="fbg">${ROLE_ORDER.filter(r => S.fb.roles[r]).map(r => `<div class="fbc" style="--rc:${ROLES[r][2]}"><b>${ROLES[r][0]}${S.seats[r] ? `・${esc(S.seats[r].name)}` : ""}</b>${S.fb.roles[r][0] ? `<p>👍 ${esc(S.fb.roles[r][0])}</p>` : ""}${S.fb.roles[r][1] ? `<p>🔧 ${esc(S.fb.roles[r][1])}</p>` : ""}</div>`).join("")}</div>` : ""}`;
   if (S.dstep === 3) body = `${S.fbPub && S.fb && S.fb.take.filter(Boolean).length ? `<div class="take"><small>帶走三件事</small><ol>${S.fb.take.filter(Boolean).map(x => `<li>${esc(x)}</li>`).join("")}</ol></div>` : `<div class="dprompt">${st[2].map(q => `<p>${esc(q)}</p>`).join("")}</div>`}
     ${S.fbPub && S.fb ? `<h3 class="h3">團隊表現</h3>${scoreBars(S.fb)}${S.fb.note ? `<div class="note">${esc(S.fb.note)}</div>` : ""}` : `<p class="hint">教師發布講評後，這裡會出現帶走三件事與團隊評分。</p>`}`;
-  return `<section class="panel dboard"><div class="dtop"><h2 class="h2">講評｜${esc(st[0])}</h2><small>${host ? "點上面的段落切換；教師手機也可以控制" : "由教師手機控制段落"}</small></div>${dstepBar(S, host)}${body}</section>`;
+  const aib = host && S.mode === "auto" && !S.fbPub ? `<div class="aibox"><button class="btn" data-aifbpub="1">🤖 AI 講評並發布</button><small>沒有教師時：AI 依紀錄、達成清單、對話與自評，寫各角色回饋與帶走三件事（建議學員先填自評）</small></div>` : "";
+  return `${aib}<section class="panel dboard"><div class="dtop"><h2 class="h2">講評｜${esc(st[0])}</h2><small>${host ? "點上面的段落切換；教師手機也可以控制" : "由教師手機控制段落"}</small></div>${dstepBar(S, host)}${body}</section>`;
 }
 
 /* 學員手機：自評＋老師給我的回饋 */
@@ -2729,6 +2732,7 @@ function teacherDebHTML(S, ui){
     <section class="box"><div class="boxh"><b>團隊評分</b><small>1 需加強 … 5 優秀</small></div>
       ${FB_SCORE.map(s => `<div class="scrow"><div><b>${s[1]}</b><small>${s[2]}</small></div><div class="chips">${[1, 2, 3, 4, 5].map(v => `<button data-sc="${s[0]}" data-v="${v}" class="${sc[s[0]] === v ? "on" : ""}">${v}</button>`).join("")}</div></div>`).join("")}</section>
     <section class="box"><div class="boxh"><b>各角色回饋</b><small>已依達成清單先帶入，修改後再發布；可以按 🎤 用說的</small></div>
+      <div class="aibox"><button class="btn ghost" data-aifb="1">🤖 AI 產生講評草稿</button><small>AI 依紀錄、達成清單、對話與學員自評寫草稿，連同評分與帶走三件事一起帶入；學員還看不到，請修改後再發布</small></div>
       ${seated.map(r => `<div class="tfb" style="--rc:${ROLES[r][2]}"><b>${ROLES[r][0]}・${esc(S.seats[r].name)}</b>
         <label>👍 做得好<div class="free"><textarea id="fb-g-${r}" rows="2">${esc(pre(r)[0])}</textarea>${micB("fb-g-" + r)}</div></label>
         <label>🔧 可以更好<div class="free"><textarea id="fb-b-${r}" rows="2">${esc(pre(r)[1])}</textarea>${micB("fb-b-" + r)}</div></label></div>`).join("") || `<p class="hint">沒有學員加入。</p>`}</section>
@@ -3165,8 +3169,50 @@ async function rpSync(playing){
   if (RPA.audio && RPA.audio.paused) { try { await RPA.audio.play(); } catch (e) {} }
 }
 
+/* ================= AI（Gemini，經 Apps Script 後端；金鑰不在網頁上） ================= */
+const docText = d => [d.tbl ? d.tbl.map(r => `${r[0]} ${r[1]}${r[2] ? `（${r[2]}）` : ""}`).join("、") : "", d.list ? d.list.join("；") : "", d.txt || ""].filter(Boolean).join("；");
+/* 病人資料＋目前狀態（給「回答評估」用） */
+function aiCtx(S){
+  const c = CASE_BY[S.caseId], F = fCase(S), t = NOW(), v = curVit(S, t);
+  const L = [`【虛擬病例】${c ? c.n : "未設定"}`, c ? `背景：${(F && F.pt) || ""} ${c.brief}` : ""];
+  if (c && c.clue) L.push("【評估資料】" + Object.entries(c.clue).map(([k, x]) => `${ASK_BY[k] ? ASK_BY[k][1] : k}：${x}`).join("\n"));
+  if (S.custom && Object.keys(S.custom).length) L.push("【教師自訂答案】" + Object.entries(S.custom).map(([k, x]) => `${ASK_BY[k] ? ASK_BY[k][1] : k}：${x}`).join("\n"));
+  if (F) L.push("【病歷】" + F.docs.map(d => `${d.n}：${docText(d.d())}`).join("\n"));
+  L.push(`【目前狀態】演練 ${S.t0 ? mmss(t - S.t0) : "未開始"}；心律 ${RHY[S.rhythm] ? RHY[S.rhythm][0] : "—"}；${S.pulse ? `有脈搏，HR ${v.hr}、BP ${v.sbp}/${v.dbp}、SpO₂ ${v.spo2}、RR ${v.rr}` : "沒有脈搏（心跳停止）"}；${S.cpr ? "壓胸中" : "沒有在壓胸"}；ETCO₂ ${S.etco2On ? v.etco2 : "未接"}；呼吸道 ${S.airway.ett ? `ETT ${S.airway.ett.size} 號 ${S.airway.ett.depth} 公分` : S.airway.dev || "無"}；管路 ${S.iv || "無"}；已給藥 ${S.drugs.map(d => d.name.split("（")[0]).join("、") || "無"}；電擊 ${S.shocks.filter(x => x.delivered).length} 次${S.roscAt ? "；已 ROSC" : ""}`);
+  L.push("【已回答過】" + S.asks.filter(q => q.reply && q.reply.x).slice(-8).map(q => `${q.label}→${q.reply.x}`).join("\n"));
+  return L.filter(Boolean).join("\n");
+}
+async function aiAsk(S, q){ const r = await api("simAI", { code: ST.code, key: ST.seat.key, kind: "ask", q, ctx: aiCtx(S) }); return r || { ok: false, error: "連線失敗" }; }
+/* 整場紀錄（給「講評草稿」用） */
+function aiFbCtx(S){
+  const c = CASE_BY[S.caseId], F = fCase(S), m = summarize(S), k = checklist(S), who = r => `${ROLES[r] ? ROLES[r][0] : roleName(r)}${S.seats[r] ? "・" + S.seats[r].name : ""}`;
+  const L = [`【病例】${c ? c.n : "未設定"}${F ? `；病因：${F.cause}` : c ? `；${c.brief}` : ""}`, `【參加者】${ROLE_ORDER.filter(r => S.seats[r]).map(r => `${r}=${who(r)}`).join("、")}`,
+    `【指標】` + ["結果", "到壓胸(秒)", "到首次電擊(秒)", "電擊次數", "電擊不當", "沒喊離開就電擊", "到首劑Epi(秒)", "Epi間隔(秒)", "心律判讀(對/總)", "脈搏判斷(對/總)", "最長壓胸中斷(秒)", "評估次數", "Leader懷疑病因", "懷疑對病因", "閉環完成率", "開始找病因(秒)", "病因處理(秒)", "ROSC(秒)", "教案關鍵(做到/總)"].filter(x => m[x] !== undefined && m[x] !== "").map(x => `${x} ${m[x]}`).join("；"),
+    `【達成清單】` + Object.entries(k.groups).filter(([, a]) => a.length).map(([r, a]) => `${r === "F" ? "教案關鍵" : r}：` + a.map(x => `${x[1] ? "✓" : "✗"}${x[0]}${x[2] ? `（${x[2]}）` : ""}`).join("、")).join("\n"),
+    `【事件紀錄】\n` + S.ev.filter(e => e.g !== "join" && e.t >= S.t0).slice(0, 160).map(e => `${mmss(e.t - S.t0)} ${e.w === "S" ? "系統" : e.w} ${e.xt || e.x}`).join("\n")];
+  if (S.chat.length) L.push(`【對話】\n` + S.chat.slice(0, 80).map(x => `${x.w === "S" ? "引導" : x.w}：${x.voice && !x.x ? "（語音）" : x.x}`).join("\n"));
+  const rf = ROLE_ORDER.filter(r => S.refl[r]); if (rf.length) L.push(`【學員自評】\n` + rf.map(r => `${r}：感受 ${S.refl[r].feel}；做得好 ${S.refl[r].good}；下次 ${S.refl[r].next}`).join("\n"));
+  return L.join("\n");
+}
+async function aiFb(S){
+  const r = await api("simAI", { code: ST.code, key: ST.seat.key, kind: "fb", ctx: aiFbCtx(S) });
+  if (!r || !r.ok) return { error: (r && r.error) || "連線失敗" };
+  const f = r.fb || {}, roles = {};
+  ROLE_ORDER.filter(x => S.seats[x]).forEach(x => { const o = (f.roles || {})[x]; if (o) roles[x] = [String(o.good || ""), String(o.better || "")]; });
+  return { fb: cleanFb({ roles, scores: f.scores || {}, take: (f.take || []).map(String), note: String(f.note || "") }) };
+}
+/* 主持端（系統自動模式）：Leader 自由輸入的評估，交給 AI 回答；失敗就用預設話 */
+const AIQ = {};
+function aiTick(S){
+  if (!S || S.mode !== "auto" || !ST.seat || ST.seat.role !== "H") return;
+  S.asks.filter(q => q.ai && !q.reply && !AIQ[ST.code + q.id]).forEach(async q => { AIQ[ST.code + q.id] = 1;
+    const r = await aiAsk(ST.S, q.label);
+    await act({ type: "reply", id: q.id, x: r.ok ? r.x : "（沒有教師，請自行判斷）", ai: r.ok ? 1 : 0 });
+    if (!r.ok) toast("AI 回答失敗：" + r.error, true); });
+}
+
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.19-e";
+const SIM_VER = "2026.10.22-a";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -3223,7 +3269,7 @@ async function pull1(){
 function startRoom(code, ...fns){
   stopRoom(); ST.histDone = 0; ST.gen = (ST.gen || 0) + 1; ST.busy = null; ST.again = false; ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
   ST.poll = setInterval(() => { if (!document.hidden) pull(); }, LIVE() ? 1000 : 600);
-  ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); recTick(ST.S); } catch (e) { console.error(e); } }, 1000);
+  ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); recTick(ST.S); aiTick(ST.S); } catch (e) { console.error(e); } }, 1000);
   return pull();
 }
 const NOW = () => Date.now() + ST.off;
@@ -3487,6 +3533,8 @@ function board(code){
     if (e.target.closest("[data-bchat]")) { const x = $("bChatX").value.trim(); if (!x) return; if (await act({ type: "chat", x })) $("bChatX").value = ""; return; }
     const h = e.target.closest("[data-h]"); if (h) { if (h.dataset.h === "end" && !armed(h)) return toast("再按一次結束演練"); await hostAct({ type: h.dataset.h }); return; }
     const ds = e.target.closest("[data-dstep]"); if (ds && host) return act({ type: "dstep", k: +ds.dataset.dstep });
+    const ap2 = e.target.closest("[data-aifbpub]"); if (ap2 && host) { ap2.disabled = true; ap2.textContent = "🤖 整理中…（約 10–20 秒）"; const r = await aiFb(ST.S);
+      if (r.error) { ap2.disabled = false; ap2.textContent = "🤖 AI 講評並發布"; return toast(r.error, true); } const x = fbRows(ST.S, r.fb); if (await act({ type: "fbpub", fb: r.fb }, { fbRows: x.rows, fbTeam: x.team })) toast("AI 講評已發布到每支手機"); return; }
     if (e.target.closest("#vset")) return voiceSetup();
     const ap = e.target.closest("[data-apick]"); if (ap) { await act({ type: "case", id: ap.dataset.apick }); return; }
     if (e.target.closest("#recset")) return recToggle(ST.S);
@@ -3794,7 +3842,7 @@ const PANELS = {
           ui.img = ui.img || {}; if (g && ui.img[q.id] === undefined) ui.img[q.id] = suggestImg(S, q.k);
           const pick = g ? `<div class="label">附超音波示意圖</div><div class="chips">${[["", "不附圖"], ...Object.entries(IMGS).filter(([, v]) => v[1] === g).map(([k, v]) => [k, v[0]])].map(([k, n]) => `<button data-img="${k}" data-q="${q.id}" class="${(ui.img[q.id] || "") === k ? "on" : ""}">${esc(n)}</button>`).join("")}</div>${ui.img[q.id] ? imgHTML(ui.img[q.id]) : ""}` : "";
           return `<div class="tq ${q.reply ? "done" : ""}"><b>${esc(q.label)}</b>${q.reply ? `<span class="hint">已回覆：${esc(q.reply.x || "（語音）")}${q.reply.img ? `（附圖：${esc(IMGS[q.reply.img][0])}）` : ""}</span>` : `<textarea id="rp-${q.id}" rows="2">${esc(sug)}</textarea>${pick}
-            <div class="row"><button class="btn" data-reply="${q.id}">送出回覆</button><button class="btn ghost" data-mic="rp-${q.id}">🎤 用說的</button><button class="btn ghost" data-rec="${q.id}">${ui.rec === q.id ? "■ 停止並送出" : "🎙 錄音回覆"}</button>${ASK_BY[q.k] && sug !== ASK_BY[q.k][2] ? `<button class="mini" data-normal="${q.id}">改成一般回答</button>` : ""}</div>`}</div>`; }).join("") : `<p class="hint">Leader 按「評估」後會出現在這裡。建議答案已依病例填好，可以修改再送。</p>`}</section>` + teacherBody(S, ui);
+            <div class="row"><button class="btn" data-reply="${q.id}">送出回覆</button><button class="btn ghost" data-aisug="${q.id}">🤖 AI 建議</button><button class="btn ghost" data-mic="rp-${q.id}">🎤 用說的</button><button class="btn ghost" data-rec="${q.id}">${ui.rec === q.id ? "■ 停止並送出" : "🎙 錄音回覆"}</button>${ASK_BY[q.k] && sug !== ASK_BY[q.k][2] ? `<button class="mini" data-normal="${q.id}">改成一般回答</button>` : ""}</div>`}</div>`; }).join("") : `<p class="hint">Leader 按「評估」後會出現在這裡。建議答案已依病例填好，可以修改再送。</p>`}</section>` + teacherBody(S, ui);
       if (tab === "clue") body = `<section class="panel"><h3 class="h3">丟線索給大家（會出現在大面板並播報）</h3>${c && c.push.length ? `<div class="grid1">${c.push.map((p, i) => `<button class="abtn" data-push="${i}">${esc(p)}</button>`).join("")}</div>` : ""}
           ${c ? `<div class="label">病例線索（評估時的答案）</div><ul class="cluel">${Object.entries(c.clue).map(([k, x]) => `<li><b>${esc(ASK_BY[k] ? ASK_BY[k][1] : k)}</b>${esc(x)}</li>`).join("")}</ul>` : ""}
           <div class="free"><input id="clueX" maxlength="120" placeholder="自己打線索，例如：家屬拿來藥袋"><button class="mic" data-mic="clueX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-clue="1">丟出</button></div>
@@ -3825,6 +3873,13 @@ const PANELS = {
       if (e.target.closest("[data-cancel]")) { ui.draft = null; return re(); }
       const im = e.target.closest("[data-img]"); if (im) { ui.img = ui.img || {}; ui.img[im.dataset.q] = im.dataset.img; return re(); }
       const rp = e.target.closest("[data-reply]"); if (rp) { const id = rp.dataset.reply, x = $("rp-" + id).value.trim(), img = (ui.img || {})[id] || ""; if (!x && !img) return toast("先寫回覆", true); return act({ type: "reply", id, x, img }); }
+      const ag = e.target.closest("[data-aisug]"); if (ag) { const q = S.asks.find(x => x.id === ag.dataset.aisug); if (!q) return; ag.disabled = true; ag.textContent = "🤖 思考中…";
+        const r = await aiAsk(S, q.label); ag.disabled = false; ag.textContent = "🤖 AI 建議"; if (!r.ok) return toast(r.error, true);
+        const ta = $("rp-" + q.id); if (ta) { ta.value = r.x; ui.edited = ui.edited || {}; ui.edited["rp-" + q.id] = 1; } toast("AI 建議已填入，確認後按「送出回覆」"); return; }
+      const af = e.target.closest("[data-aifb]"); if (af) { if (S.fb && !confirm("AI 草稿會取代目前存的講評內容，確定？")) return; af.disabled = true; af.textContent = "🤖 整理中…（約 10–20 秒）";
+        const r = await aiFb(S); af.disabled = false; af.textContent = "🤖 AI 產生講評草稿"; if (r.error) return toast(r.error, true);
+        ui.sc = Object.assign({}, r.fb.scores); ui.edited = {};
+        if (await act({ type: "fb", fb: r.fb })) { [0, 1, 2].forEach(i => { const el = $("fb-t" + i); if (el) el.value = r.fb.take[i] || ""; }); ROLE_ORDER.forEach(k => { const g = $("fb-g-" + k), b = $("fb-b-" + k); if (r.fb.roles[k]) { if (g) g.value = r.fb.roles[k][0]; if (b) b.value = r.fb.roles[k][1]; } }); if ($("fb-note")) $("fb-note").value = r.fb.note || ""; toast("AI 草稿已帶入（學員還看不到），請修改後再發布"); } return; }
       const nm = e.target.closest("[data-normal]"); if (nm) { const q = S.asks.find(q => q.id === nm.dataset.normal); if (q && ASK_BY[q.k]) $("rp-" + q.id).value = ASK_BY[q.k][2]; return; }
       const rc = e.target.closest("[data-rec]"); if (rc) return record(rc.dataset.rec, ui, re);
       const zn = e.target.closest("[data-zone]"); if (zn) { ui.zone = zn.dataset.zone; ui.titem = ""; return re(); }
