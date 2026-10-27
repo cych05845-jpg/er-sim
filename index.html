@@ -3774,12 +3774,14 @@ function chatPaint(S, force){
 }
 /* 語音一則一則播（用同一個已解鎖的播放器），不重疊 */
 function cdMark(){ document.querySelectorAll("[data-voice]").forEach(b => { const on = b.dataset.voice === CD.now; b.classList.toggle("on", on); if (b.classList.contains("tsv") || b.classList.contains("vplay")) b.firstChild && (b.firstChild.nodeValue = on ? "🔊 播放中" : "▶ 語音"); }); }
+/* 語音快取：同步時伺服器順便帶回的音檔、自己剛錄的音檔 */
+const VCACHE = {};
 function cdPlay(id, now){
   if (now) { CD.q = [id].concat(CD.q.filter(x => x !== id)); if (CD.player && !CD.player.paused && CD.playing) { CD.player.pause(); CD.playing = false; } }
   else CD.q.push(id);
   if (CD.playing) return;
   const next = async () => { const v = CD.q.shift(); if (!v) { CD.playing = false; CD.now = ""; cdMark(); return; } CD.playing = true; CD.now = v; cdMark();
-    const r = await api("simVoiceGet", { code: ST.code, id: v });
+    const r = VCACHE[v] ? Object.assign({ ok: true }, VCACHE[v]) : await api("simVoiceGet", { code: ST.code, id: v });
     if (r && r.ok) { try { const a = CD.player = CD.player || new Audio(); a.onended = a.onerror = () => next(); a.src = `data:${r.mime};base64,${r.data}`; await a.play(); return; } catch (e) { const g = $("sndGate"); if (g) g.hidden = false; } }
     next(); };
   next();
@@ -3797,7 +3799,7 @@ function pttWire(b){
     catch (err) { return toast("沒有麥克風權限：請在瀏覽器允許麥克風", true); }
     try { b.setPointerCapture(e.pointerId); } catch (x) {}
     const mime = ["audio/webm;codecs=opus", "audio/mp4", "audio/webm"].find(m => MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) || "";
-    const mr = new MediaRecorder(CD.stream, mime ? { mimeType: mime, audioBitsPerSecond: 24000 } : undefined), chunks = [], t0 = Date.now();
+    const mr = new MediaRecorder(CD.stream, mime ? { mimeType: mime, audioBitsPerSecond: 16000 } : undefined), chunks = [], t0 = Date.now();
     CD.rec = { mr }; b.classList.add("on"); b.querySelector("b").textContent = R ? "🔴" : "錄音中…放開就送出";
     const tick = setInterval(() => { const s = (Date.now() - t0) / 1000; b.querySelector("small").textContent = R ? `${s.toFixed(1)}″` : `${s.toFixed(1)} 秒／最多 8 秒`; if (s >= 8) stop(); }, 100);
     mr.ondataavailable = ev => ev.data && ev.data.size && chunks.push(ev.data);
@@ -3806,10 +3808,15 @@ function pttWire(b){
       const blob = new Blob(chunks, { type: mr.mimeType || "audio/webm" });
       const b64 = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(",")[1]); fr.readAsDataURL(blob); });
       b.classList.add("busy"); b.querySelector("small").textContent = R ? "傳送…" : "傳送中…";
-      const up = await api("simVoice", { code: ST.code, key: ST.seat.key, data: b64, mime: (mr.mimeType || "audio/webm").split(";")[0] });
+      const mime2 = (mr.mimeType || "audio/webm").split(";")[0], s2 = Math.min(8, Math.round(sec));
+      /* 自己的手機先顯示（不用等伺服器） */
+      const tmp = { i: 1e9 + Date.now() % 1e6, t: NOW(), w: ST.seat.role, a: { type: "chat", voice: "", sec: s2, x: "（傳送中…）" }, tmp: 1 }; ST.events.push(tmp); repaint();
+      const up = await api("simVoice", { code: ST.code, key: ST.seat.key, data: b64, mime: mime2, chat: { sec: s2 } });
+      ST.events = ST.events.filter(e => e !== tmp);
       b.classList.remove("busy"); b.querySelector("small").textContent = IDLE;
-      if (!up || !up.ok) return toast((up && up.error) || "語音傳送失敗", true);
-      await act({ type: "chat", voice: up.id, sec: Math.min(8, Math.round(sec)) }); };
+      if (!up || !up.ok) { repaint(); return toast((up && up.error) || "語音傳送失敗", true); }
+      VCACHE[up.id] = { mime: mime2, data: b64 };
+      if (!up.sent) await act({ type: "chat", voice: up.id, sec: s2 }); else await pull(); };
     mr.start();
   });
   ["pointerup", "pointercancel", "lostpointercapture"].forEach(k => b.addEventListener(k, stop));
@@ -4329,7 +4336,7 @@ function guideBarHTML(S, role, g){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.27-d";
+const SIM_VER = "2026.10.27-e";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -4378,6 +4385,7 @@ async function pull1(){
   const o = $("offline"); if (o) o.hidden = true;
   ST.off = r.now - Date.now(); ST.meta = r.room;
   if (ST.seat && !ST.histDone && r.room && r.room.created) { ST.histDone = 1; const d = new Date(r.room.created); histAdd({ code: ST.code, created: r.room.created, day: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`, role: ST.seat.role === "H" ? "主持（大面板）" : roleName(ST.seat.role) }); }
+  if (r.vd) Object.assign(VCACHE, r.vd);
   if (r.ev && r.ev.length) { const have = new Set(ST.events.map(e => e.i)); r.ev.forEach(e => { if (!have.has(e.i)) ST.events.push(e); }); ST.events.sort((a, b) => a.i - b.i); }
   /* 保險：事件編號要從 0 連續；有缺就整份重拿 */
   const real = ST.events.filter(e => !e.tmp); if (real.some((e, k) => e.i !== k)) { ST.events = ST.events.filter(e => e.tmp); ST.again = true; return; }
@@ -4386,7 +4394,7 @@ async function pull1(){
 function startRoom(code, ...fns){
   stopRoom(); ST.histDone = 0; ST.gen = (ST.gen || 0) + 1; ST.busy = null; ST.again = false; ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
   /* 演練中每秒同步；等待開始、結束後放慢到 2–3 秒（減少 Apps Script 排隊，演練中的動作就更快） */
-  let skip = 0; ST.poll = setInterval(() => { if (document.hidden) return; const S = ST.S; if (S && S.status !== "run" && (skip++ % (LIVE() ? 3 : 2))) return; pull(); }, LIVE() ? 1000 : 600);
+  let skip = 0; ST.poll = setInterval(() => { if (document.hidden) return; const S = ST.S, hot = S && S.chat.length && NOW() - S.chat[S.chat.length - 1].t < 30000; if (S && S.status !== "run" && !hot && (skip++ % (LIVE() ? 3 : 2))) return; pull(); }, LIVE() ? 1000 : 600);
   ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); recTick(ST.S); aiTick(ST.S); } catch (e) { console.error(e); } }, 1000);
   return pull();
 }
