@@ -1275,6 +1275,64 @@ body.lcfull .wrap{zoom:1}
 .eflame{background:var(--surface)}
 .clock{background:conic-gradient(var(--zz) calc(var(--p) * 360deg),var(--zt2) 0)}
 .clock span{background:var(--surface);color:var(--zi)}
+
+/* ---------- 我的寵物 ---------- */
+.petsvg,.petimg{width:100%;height:auto;display:block}
+.tmcard{border-radius:22px;border:1.5px solid color-mix(in oklab,#E0A526 35%,var(--line));background:linear-gradient(135deg,color-mix(in oklab,#E0A526 12%,var(--surface)),var(--surface) 60%);padding:12px 16px;margin-top:12px}
+.tmhead{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;text-decoration:none;color:var(--ink)}
+.tmorb{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:radial-gradient(circle at 32% 28%,#fff8d6,#F2C14E 45%,#B9801A);box-shadow:inset -3px -4px 8px rgba(0,0,0,.18),0 4px 10px rgba(185,128,26,.35)}
+.tmhead small{display:block;color:var(--ink-2);font-size:12.5px}.tmhead b{font-size:17px}.tmhead .go{font-weight:800;color:#A86F10;white-space:nowrap}
+.tmhint{margin:8px 0 0;color:var(--ink-2);font-size:13.5px}
+.tmmine{display:flex;gap:12px;align-items:center;margin-top:10px;padding:8px 10px;border-radius:14px;background:color-mix(in oklab,#E0A526 14%,var(--surface))}
+.tmbig{font-weight:900;font-size:18px;white-space:nowrap}.tmmine b{display:block}.tmmine small{color:var(--ink-2);font-size:12.5px}
+.tmtop{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:4px}
+.tmtop li{display:grid;grid-template-columns:22px 28px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:14px;padding:3px 6px;border-radius:10px}
+.tmtop li.me{background:color-mix(in oklab,#E0A526 18%,transparent);outline:1.5px solid #E0A526}
+.tmtop em{font-style:normal;font-weight:900;color:#A86F10;text-align:center}.tmtop span{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 28%,#fff,color-mix(in oklab,var(--tc) 60%,#fff) 50%,var(--tc));font-size:14px}
+.tmtop b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tmtop i{font-style:normal;color:var(--ink-2);font-size:12.5px;white-space:nowrap}
+.tmlinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.tmlinks a{flex:1 1 auto;text-align:center;text-decoration:none;font-weight:700;font-size:13.5px;padding:7px 10px;border-radius:999px;border:1.5px solid color-mix(in oklab,#E0A526 40%,var(--line));color:var(--ink);background:var(--surface)}
+.petcard{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:14px;align-items:center;text-decoration:none;color:var(--ink);background:linear-gradient(135deg,color-mix(in oklab,var(--pc,#3B5BA9) 12%,var(--surface)),var(--surface));border:1.5px solid color-mix(in oklab,var(--pc,#3B5BA9) 30%,var(--line));border-radius:22px;padding:12px 16px}
+.petcard .pcart{width:96px}.petcard b{font-size:17px}.petcard .go{font-weight:800;color:var(--pc,#3B5BA9);white-space:nowrap}
+.petcard.adopt span{display:block;color:var(--ink-2);font-size:13.5px;margin-top:2px}
+.pch{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}.pclv{font-size:12.5px;font-weight:800;color:#fff;background:var(--pc,#3B5BA9);border-radius:999px;padding:2px 10px}
+.pcbar{height:8px;border-radius:99px;background:color-mix(in oklab,var(--pc,#3B5BA9) 16%,var(--surface-2));overflow:hidden;margin:8px 0 4px}.pcbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--pc,#3B5BA9),color-mix(in oklab,var(--pc,#3B5BA9) 55%,#fff))}.pcbar.big{height:12px}
+.pcm small{color:var(--ink-2);font-size:12.5px}.pcsay{display:block;font-size:13.5px;margin-top:4px}
+@media (max-width:520px){.petcard{grid-template-columns:76px minmax(0,1fr)}.petcard .pcart{width:76px}.petcard .go{grid-column:1 / -1;justify-self:end}}
+.petgain{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:color-mix(in oklab,#E8A317 12%,var(--surface));border:1.5px dashed #E8A317;border-radius:16px;padding:8px 14px;margin-top:10px;text-align:left}.petgain .pgi{width:64px}.petgain small{display:block;color:var(--ink-2)}
+.pethero{display:grid;gap:18px;background:linear-gradient(160deg,color-mix(in oklab,var(--pc) 14%,var(--surface)),var(--surface));border:1.5px solid color-mix(in oklab,var(--pc) 28%,var(--line));border-radius:24px;padding:18px;margin-bottom:16px}
+@media (min-width:860px){.pethero{grid-template-columns:minmax(260px,380px) minmax(0,1fr);align-items:center}}
+.petstage{position:relative;cursor:pointer;max-width:380px;justify-self:center;width:100%;-webkit-tap-highlight-color:transparent}
+.petstage>svg,.petstage>img{filter:drop-shadow(0 12px 18px rgba(0,0,0,.12))}
+.bounce{animation:pbounce .6s ease}@keyframes pbounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-16px) scale(1.03)}60%{transform:translateY(0) scale(.98)}}
+@media (prefers-reduced-motion:no-preference){.petstage>svg,.petstage>img{animation:pbreath 3.6s ease-in-out infinite}}@keyframes pbreath{50%{transform:scale(1.015,.99)}}
+.petbub{position:absolute;top:2%;left:50%;transform:translateX(-50%);background:var(--surface);border:2px solid var(--pc);border-radius:16px;padding:8px 14px;font-weight:800;font-size:15px;white-space:nowrap;box-shadow:0 10px 20px -12px rgba(0,0,0,.4)}
+.petbub.pop{animation:popin .2s ease}
+.pheart{position:absolute;bottom:40%;font-style:normal;color:#E5484D;font-size:22px;animation:pheart 1.4s ease-out forwards;pointer-events:none}@keyframes pheart{to{transform:translateY(-120px);opacity:0}}
+.pih{display:flex;align-items:center;gap:10px}.pih h2{margin:0;font-size:26px}
+.pitag{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:6px 0}.pitag b{font-size:17px}.pitag small{color:var(--ink-2)}
+.paff{display:flex;align-items:center;gap:4px;margin:8px 0}.paff i{font-style:normal;font-size:20px;color:var(--line)}.paff i.on{color:#E5484D}.paff small{margin-left:8px;color:var(--ink-2);font-size:12px}
+.pfeed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.pfb{display:grid;justify-items:center;gap:2px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:16px;padding:10px 6px;cursor:pointer;font:inherit}.pfb i{font-style:normal;font-size:28px}.pfb b{font-size:15px}.pfb small{font-size:11px;color:var(--ink-2);text-align:center}
+.pfb:not(:disabled):hover{border-color:var(--pc);transform:translateY(-1px)}.pfb:disabled{opacity:.45;cursor:default}
+.pgate{display:grid;gap:4px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--surface-2);font-size:14px}.pgate span{color:var(--ink-2)}.pgate span.y{color:#1B7D63;font-weight:700}.pgate.ok{background:color-mix(in oklab,#E8A317 14%,var(--surface))}.pgate .btn{margin-top:6px;justify-self:start}
+.pevo{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}@media (max-width:640px){.pevo{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pev{display:grid;gap:4px;justify-items:center;text-align:center;border:1.5px solid var(--line);border-radius:16px;padding:10px;background:var(--surface)}.pev.now{border-color:var(--pc);box-shadow:0 0 0 3px color-mix(in oklab,var(--pc) 22%,transparent)}
+.pev .lvb{font-size:12px;font-weight:800;color:#fff;background:var(--pc);border-radius:999px;padding:2px 10px}.pev:not(.on) .lvb{background:var(--ink-2)}.pev small{font-size:12.5px}.pev em{font-style:normal;font-size:11px;color:var(--ink-2)}
+.plock{filter:brightness(0) opacity(.18)}
+.pdex{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.pdc{display:grid;gap:3px;justify-items:center;text-align:center;border-radius:16px;padding:10px;background:color-mix(in oklab,var(--pc) 9%,var(--surface));border:1.5px solid color-mix(in oklab,var(--pc) 25%,var(--line))}.pdc.lock{background:var(--surface-2);border-color:var(--line)}
+.pdc .pda{width:110px}.pdc small{color:var(--ink-2);font-size:12px}.pdc p{margin:4px 0 0;font-size:12.5px;line-height:1.5;text-align:left}
+.phow{margin:0;padding-left:4px;list-style:none;display:grid;gap:6px}
+.padopt{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin:14px 0}
+.pac{display:grid;gap:4px;justify-items:center;text-align:center;font:inherit;color:var(--ink);background:var(--surface);border:2px solid color-mix(in oklab,var(--pc) 30%,var(--line));border-radius:20px;padding:12px;cursor:pointer}
+.pac .pacart{width:130px}.pac b{font-size:17px}.pac span{font-size:13px;font-weight:700;color:var(--pc)}.pac small{font-size:12px;color:var(--ink-2)}
+.pac.on{border-color:var(--pc);box-shadow:0 0 0 4px color-mix(in oklab,var(--pc) 25%,transparent);background:color-mix(in oklab,var(--pc) 8%,var(--surface))}
+.pevov{position:fixed;inset:0;z-index:90;background:rgba(10,16,22,.7);display:grid;place-items:center;padding:16px}
+.pevbox{background:var(--surface);border-radius:24px;padding:22px;max-width:420px;width:100%;display:grid;gap:8px;justify-items:center;text-align:center}
+.pevart{position:relative;width:240px;height:252px}.pevart>div{position:absolute;inset:0}
+.pevfrom{animation:pevout 1.6s ease forwards}.pevto{opacity:0;animation:pevin 1.6s ease .9s forwards}
+@keyframes pevout{0%{opacity:1;filter:brightness(1)}60%{opacity:1;filter:brightness(3) blur(1px)}100%{opacity:0;transform:scale(.8)}}
+@keyframes pevin{0%{opacity:0;transform:scale(.6);filter:brightness(3)}100%{opacity:1;transform:scale(1);filter:brightness(1)}}
 /* ===== er-sim v2 ===== */
 body{padding-left:0!important}
 .wrap{max-width:1180px;margin:0 auto;padding:14px 16px 90px}
@@ -1680,6 +1738,137 @@ button.dst{cursor:pointer}.dst i{font-style:normal;font-weight:900;font-family:u
 .tiers{display:flex;flex-wrap:wrap;gap:8px}.tiers span{display:grid;justify-items:center;border-radius:12px;padding:6px 12px;color:#fff;background:var(--tr)}.tiers small{opacity:.85;font-size:11px}
 .lvt{width:100%;border-collapse:collapse;font-size:14px}.lvt th,.lvt td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}.lvt select{font-size:14px;padding:4px 6px;width:auto}
 .hint.warn,small.warn{color:#B42318}
+/* ---------- 排行榜：故事＋3D ---------- */
+.orb{position:relative;display:inline-grid;place-items:center;width:var(--sz);height:var(--sz);border-radius:50%;flex:none;background:radial-gradient(circle at 34% 28%,#fff 0 6%,color-mix(in oklab,var(--tc) 35%,#fff) 14%,var(--tc) 55%,color-mix(in oklab,var(--tc) 55%,#000) 100%);box-shadow:inset -6px -8px 14px rgba(0,0,0,.28),inset 4px 5px 10px rgba(255,255,255,.35),0 10px 18px -8px color-mix(in oklab,var(--tc) 70%,#000)}
+.orb i{font-style:normal;font-size:calc(var(--sz) * .5);filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
+.saga{position:relative;overflow:hidden;color:#fff;border-radius:24px;padding:22px;margin-bottom:16px;background:linear-gradient(160deg,var(--s1),var(--s2));display:grid;gap:14px;box-shadow:0 20px 40px -24px rgba(0,0,0,.7)}
+.sagabg{position:absolute;inset:0;pointer-events:none}.sagabg i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.7;animation:twk 2.8s ease-in-out infinite}@keyframes twk{50%{opacity:.15}}
+.sagat{position:relative}.sagat small{opacity:.8;font-weight:800;letter-spacing:.08em}.sagat h2{margin:2px 0 4px;font-size:30px;font-weight:900;text-shadow:0 3px 0 rgba(0,0,0,.25)}.sagat p{margin:0;opacity:.92;max-width:640px}
+.lamp{position:relative;display:grid;grid-template-columns:64px 1fr;column-gap:12px;align-items:center}.lamp b{font-size:18px}.lamp small{opacity:.85;grid-column:2}
+.lampg{grid-row:span 2;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:radial-gradient(circle,rgba(255,214,102,calc(.25 + var(--p) * .75)) 0,rgba(255,170,60,calc(var(--p) * .5)) 45%,transparent 70%);animation:glow 2.4s ease-in-out infinite}@keyframes glow{50%{transform:scale(1.06)}}
+.chaps{position:relative;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.chaps li{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:10px 12px;display:grid;gap:2px;backdrop-filter:blur(4px)}.chaps li span{font-size:11px;opacity:.75;font-weight:800}.chaps li small{opacity:.85;font-size:12.5px}
+.chaps li.on{background:rgba(255,236,170,.2);border-color:rgba(255,224,130,.6)}.chaps li:not(.on){opacity:.6}
+.saga select{position:absolute;top:16px;right:16px;font:inherit;font-size:13px;padding:4px 8px;border-radius:10px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);width:auto}.saga select option{color:#000}
+.mybar{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;border-radius:18px;padding:12px 16px;margin-bottom:16px;border:2px solid var(--tc);background:linear-gradient(90deg,color-mix(in oklab,var(--tc) 14%,var(--surface)),var(--surface))}
+.mybar small{display:block;color:var(--ink-2);font-size:12px}.mybar b{font-size:18px}.mybar span{display:block;font-size:13px;color:var(--ink-2)}.mybar em{font-style:normal;font-weight:800;text-align:right}.mybar em b{color:var(--tc);font-size:22px}
+@media (max-width:560px){.mybar{grid-template-columns:auto 1fr}.mybar em{grid-column:1 / -1;text-align:left}}
+.podium{display:grid;grid-template-columns:1fr 1.15fr 1fr;align-items:end;gap:10px;margin:8px 0 18px;perspective:900px;padding-top:30px}
+.pcol{display:grid;justify-items:center;gap:8px;transform-style:preserve-3d}
+.phead{display:grid;justify-items:center;gap:4px;text-align:center}.phead b{font-size:15px;line-height:1.2}.phead em{font:900 28px "IBM Plex Mono",monospace;font-style:normal;color:var(--tc)}
+@media (prefers-reduced-motion:no-preference){.phead .orb{animation:flt 3s ease-in-out infinite}.r2 .phead .orb{animation-delay:.6s}.r3 .phead .orb{animation-delay:1.2s}}@keyframes flt{50%{transform:translateY(-8px)}}
+.crown{font-size:30px;margin-bottom:-14px;filter:drop-shadow(0 3px 2px rgba(0,0,0,.3));z-index:1}
+.pblk{position:relative;width:100%;display:grid;justify-items:center;align-content:start;padding-top:12px;color:#fff;border-radius:6px 6px 0 0;transform:rotateX(14deg);transform-origin:bottom;background:linear-gradient(180deg,color-mix(in oklab,var(--tc,#8897A3) 75%,#fff),var(--tc,#8897A3) 40%,color-mix(in oklab,var(--tc,#8897A3) 65%,#000));box-shadow:0 22px 30px -18px rgba(0,0,0,.55),inset 0 2px 0 rgba(255,255,255,.4)}
+.pblk::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,color-mix(in oklab,var(--tc,#8897A3) 40%,#fff),color-mix(in oklab,var(--tc,#8897A3) 70%,#fff));transform:perspective(200px) rotateX(55deg);transform-origin:bottom}
+.pblk b{font:900 40px "IBM Plex Mono",monospace;text-shadow:0 3px 0 rgba(0,0,0,.25)}.pblk small{opacity:.9;font-size:12px}
+.r1 .pblk{height:150px}.r2 .pblk{height:112px}.r3 .pblk{height:86px}.pcol.empty .pblk{opacity:.35}
+.hilite{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.hilite div{display:grid;justify-items:center;text-align:center;gap:3px;border-radius:18px;padding:12px 8px;background:linear-gradient(170deg,color-mix(in oklab,var(--tc) 12%,var(--surface)),var(--surface));border:1px solid color-mix(in oklab,var(--tc) 30%,var(--line));box-shadow:0 12px 20px -16px rgba(0,0,0,.5)}
+.hilite i{font-style:normal;font-size:20px}.hilite small{color:var(--ink-2);font-size:12px;font-weight:800}.hilite b{font-size:14px}.hilite em{font-style:normal;font-weight:900;color:var(--tc)}
+.tower{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:16px}
+.floors{display:grid;gap:8px;perspective:1000px}
+.floor{display:grid;grid-template-columns:44px 90px 44px 1fr;align-items:center;gap:8px;min-height:58px;padding:8px 12px;border-radius:14px;color:#fff;background:linear-gradient(90deg,var(--tr),color-mix(in oklab,var(--tr) 60%,#000));transform:rotateX(8deg) translateZ(calc(var(--d) * -2px));box-shadow:0 10px 0 -2px color-mix(in oklab,var(--tr) 55%,#000),0 18px 24px -14px rgba(0,0,0,.6);margin:0 calc((5 - var(--d)) * 1.2%)}
+.floor .fl{font:900 16px "IBM Plex Mono",monospace;opacity:.8}.floor b{font-size:15px}.floor small{opacity:.8;font-size:11px}
+.ftok{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}.tok.me .orb{outline:3px solid #FFE066;outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){.tok .orb{animation:rise .7s ease both}}@keyframes rise{from{transform:translateY(24px);opacity:0}}
+@media (max-width:560px){.floor{grid-template-columns:36px 1fr;margin:0}.floor small{display:none}.ftok{grid-column:1 / -1;justify-content:flex-start}}
+.lb3{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.lb3 li{display:grid;grid-template-columns:34px auto 1fr auto;gap:10px;align-items:center;padding:10px 12px;border-radius:16px;background:var(--surface);border:1.5px solid var(--line);border-left:6px solid var(--tc);transition:transform .2s;box-shadow:0 10px 18px -16px rgba(0,0,0,.5)}
+.lb3 li:hover{transform:perspective(600px) rotateX(4deg) translateY(-2px)}.lb3 li.me{border-color:#E8A317;background:#FFF8E6}
+.lb3 .rk{font:900 20px "IBM Plex Mono",monospace;color:var(--ink-2);text-align:center}.lb3 b{display:block}.lb3 small{color:var(--ink-2);font-size:12px}.lb3 em{font:900 24px "IBM Plex Mono",monospace;font-style:normal;color:var(--tc)}
+.lbar{height:6px;border-radius:99px;background:var(--surface-2);margin-top:4px;overflow:hidden}.lbar i{display:block;height:100%;background:var(--tc);border-radius:99px}
+.idle{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}.idle span{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+
+/* ===== 首頁 3D 動畫 ===== */
+@keyframes riseIn{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+.rise{animation:riseIn .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes flashP{0%{box-shadow:0 0 0 0 color-mix(in oklab,var(--z-resus) 60%,transparent)}100%{box-shadow:0 0 0 18px transparent}}
+.panel.flash{animation:flashP .9s ease-out}
+.h2i{display:inline-grid;place-items:center;width:34px;height:34px;margin-right:8px;border-radius:50%;font-size:18px;vertical-align:-6px;background:radial-gradient(circle at 32% 28%,#fff,color-mix(in oklab,var(--z-resus) 25%,#fff) 55%,color-mix(in oklab,var(--z-resus) 55%,#fff));box-shadow:inset -2px -3px 6px rgba(0,0,0,.12),0 3px 8px rgba(0,0,0,.12)}
+.lhero{--px:0;--py:0;position:relative;display:grid;grid-template-columns:1.1fr 1fr;gap:10px;align-items:center;margin-bottom:14px;border-radius:26px;overflow:hidden;color:#EAF2FA;
+  background:radial-gradient(120% 90% at 20% 10%,#24476E 0%,#14263C 48%,#0B1624 100%);box-shadow:0 18px 40px -18px rgba(8,20,40,.6),inset 0 1px 0 rgba(255,255,255,.08);padding:18px 22px}
+.lh-stage{position:relative;height:300px;perspective:900px;transform-style:preserve-3d}
+.lh-floor{position:absolute;left:-10%;right:-10%;bottom:-40px;height:190px;transform:rotateX(72deg);transform-origin:50% 100%;
+  background:repeating-linear-gradient(90deg,rgba(120,190,255,.16) 0 1px,transparent 1px 38px),repeating-linear-gradient(0deg,rgba(120,190,255,.16) 0 1px,transparent 1px 38px);
+  -webkit-mask:radial-gradient(60% 70% at 50% 60%,#000 30%,transparent 75%);mask:radial-gradient(60% 70% at 50% 60%,#000 30%,transparent 75%);animation:floorRun 6s linear infinite}
+@keyframes floorRun{to{background-position:0 38px,0 38px}}
+.lh-glow{position:absolute;left:50%;top:52%;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:50%;background:radial-gradient(circle,rgba(60,220,170,.28),transparent 65%);animation:glowC 8s infinite}
+@keyframes glowC{0%,44%{background:radial-gradient(circle,rgba(255,80,80,.3),transparent 65%)}48%{background:radial-gradient(circle,rgba(255,230,120,.7),transparent 65%)}55%,100%{background:radial-gradient(circle,rgba(60,220,170,.3),transparent 65%)}}
+.lh-mon{position:absolute;left:50%;top:50%;width:min(300px,78%);margin-left:calc(min(300px,78%) / -2);transform:translateY(-50%) rotateY(calc(-16deg + var(--px) * 18deg)) rotateX(calc(8deg - var(--py) * 12deg));transform-style:preserve-3d;transition:transform .25s ease-out;animation:monBob 5s ease-in-out infinite}
+@keyframes monBob{50%{translate:0 -6px}}
+.lh-scr{position:relative;border-radius:16px;padding:10px 12px;background:linear-gradient(160deg,#0A1A14,#04100B);border:6px solid #2A3644;box-shadow:0 0 0 2px #46586C,0 26px 34px -12px rgba(0,0,0,.7),inset 0 0 30px rgba(40,255,170,.08);font-family:"IBM Plex Mono",monospace}
+.lh-side{position:absolute;top:8px;bottom:8px;right:-14px;width:14px;background:linear-gradient(90deg,#334255,#1A2430);transform:rotateY(90deg);transform-origin:left center;border-radius:0 6px 6px 0}
+.lh-scr svg{display:block;width:100%;height:96px}
+.lh-grid{stroke:rgba(80,255,180,.08);stroke-width:1;fill:none}
+.lh-ecg{fill:none;stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1000;filter:drop-shadow(0 0 4px currentColor)}
+.lh-ecg.vf{color:#FF6B6B;stroke:#FF7A7A;animation:ecgVF 8s linear infinite}
+.lh-ecg.ok{color:#3DF5A6;stroke:#4CF7B0;animation:ecgOK 8s linear infinite}
+@keyframes ecgVF{0%{stroke-dashoffset:1000;opacity:1}44%{stroke-dashoffset:0;opacity:1}46%,100%{stroke-dashoffset:0;opacity:0}}
+@keyframes ecgOK{0%,49%{stroke-dashoffset:1000;opacity:0}50%{stroke-dashoffset:1000;opacity:1}96%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.lh-top,.lh-bot{display:flex;gap:10px;align-items:center;font-size:12px;color:#9FE8C8}
+.lh-top{justify-content:space-between}.lh-bot{margin-top:4px}.lh-bot b,.lh-hr b{font-size:16px;margin-left:3px}
+.lh-tag{font-weight:700;padding:1px 8px;border-radius:999px;font-size:12px}
+.lh-tag.vf,.lh-scr b.vf{animation:showVF 8s steps(1) infinite}.lh-tag.ok,.lh-scr b.ok{animation:showOK 8s steps(1) infinite}
+.lh-tag.vf{background:#FF5A5A;color:#fff}.lh-tag.ok{background:#22C48A;color:#04140C}
+.lh-scr b.vf{color:#FF8A8A}.lh-scr b.ok{color:#5CF7B8}
+.sw2{display:inline-grid}.sw2>*{grid-area:1/1;justify-self:start}
+@keyframes showVF{0%{opacity:1}47%{opacity:0}}
+@keyframes showOK{0%{opacity:0}47%{opacity:1}}
+.lh-heart{margin-left:auto;color:#5CF7B8;font-size:16px;animation:beat .62s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}20%{transform:scale(1.35)}}
+.lh-zap{position:absolute;inset:0;display:grid;place-items:center;font:900 30px "Noto Sans TC",sans-serif;color:#2A1A00;border-radius:10px;background:radial-gradient(circle,#FFF6C8,#FFD23F 60%,rgba(255,180,0,.2));opacity:0;animation:zap 8s infinite}
+@keyframes zap{0%,44.5%{opacity:0;transform:scale(.6)}46%{opacity:1;transform:scale(1.04)}49%{opacity:0;transform:scale(1.2)}100%{opacity:0}}
+.lh-orb{position:absolute;display:grid;justify-items:center;gap:3px;transform:translate(calc(var(--px) * -26px),calc(var(--py) * -18px));transition:transform .3s ease-out;z-index:2}
+.lh-orb i{font-style:normal;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:23px;
+  background:radial-gradient(circle at 32% 26%,#fff 0%,color-mix(in oklab,var(--rc) 45%,#fff) 30%,var(--rc) 72%,color-mix(in oklab,var(--rc) 70%,#000) 100%);
+  box-shadow:inset -4px -6px 10px rgba(0,0,0,.25),0 10px 18px -6px color-mix(in oklab,var(--rc) 70%,#000),0 0 0 3px rgba(255,255,255,.12);animation:orbBob 3.6s ease-in-out infinite;animation-delay:calc(var(--i) * -.6s)}
+.lh-orb small{font-size:11.5px;font-weight:700;color:#DCE8F5;background:rgba(10,20,34,.55);padding:1px 7px;border-radius:999px;backdrop-filter:blur(4px)}
+@keyframes orbBob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+.lh-txt{position:relative;z-index:3}
+.lh-eye{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#8FD3FF;background:rgba(143,211,255,.12);padding:3px 10px;border-radius:999px}
+.lh-txt h2{margin:10px 0 6px;font-size:clamp(24px,3.4vw,34px);line-height:1.25;font-weight:900;background:linear-gradient(180deg,#fff,#BFD9F2);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 2px 18px rgba(80,170,255,.25)}
+.lh-txt p{margin:0 0 14px;color:#B8C9DB;font-size:14.5px}
+.lh-cta{display:flex;flex-wrap:wrap;gap:10px}
+.lh-cta a{position:relative;overflow:hidden;text-decoration:none;font-weight:800;font-size:15px;padding:11px 16px;border-radius:14px;transition:transform .15s,box-shadow .15s}
+.lh-b1{color:#fff;background:linear-gradient(180deg,#FF6B5A,#D7372A);box-shadow:0 5px 0 #8E1F16,0 12px 20px -6px rgba(215,55,42,.6)}
+.lh-b2{color:#0B1624;background:linear-gradient(180deg,#F3F8FD,#C9DAEA);box-shadow:0 5px 0 #7E95AC,0 12px 20px -8px rgba(0,0,0,.5)}
+.lh-cta a:hover{transform:translateY(-2px)}.lh-cta a:active{transform:translateY(4px)}
+.lh-b1:active{box-shadow:0 1px 0 #8E1F16}.lh-b2:active{box-shadow:0 1px 0 #7E95AC}
+.lh-cta a::after,.btn.shine::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);animation:shine 3.8s ease-in-out infinite}
+.btn.shine{position:relative;overflow:hidden}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+.lh-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lh-chips a{text-decoration:none;color:#DCE8F5;font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);transition:background .15s}
+.lh-chips a:hover{background:rgba(255,255,255,.16)}
+/* 角色鍵：立體按鍵＋滑鼠傾斜 */
+.roles{perspective:700px}
+.rolebtn{--tx:0;--ty:0;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px;border-left-width:1.5px;
+  background:linear-gradient(160deg,color-mix(in oklab,var(--rc) 7%,var(--surface)),var(--surface));
+  box-shadow:0 4px 0 color-mix(in oklab,var(--rc) 45%,var(--line)),0 10px 16px -10px color-mix(in oklab,var(--rc) 60%,transparent);
+  transform:rotateX(calc(var(--ty) * -14deg)) rotateY(calc(var(--tx) * 14deg));transition:transform .18s ease-out,box-shadow .18s;
+  animation:riseIn .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.25s + var(--i) * .06s)}
+.rolebtn:hover{box-shadow:0 6px 0 color-mix(in oklab,var(--rc) 50%,var(--line)),0 16px 22px -10px color-mix(in oklab,var(--rc) 70%,transparent)}
+.rolebtn:active{transform:translateY(4px);box-shadow:0 0 0 color-mix(in oklab,var(--rc) 45%,var(--line))}
+.rolebtn .rtx{display:grid;gap:3px}
+.rorb{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:20px;
+  background:radial-gradient(circle at 32% 26%,#fff 0%,color-mix(in oklab,var(--rc) 35%,#fff) 35%,var(--rc) 80%,color-mix(in oklab,var(--rc) 70%,#000));box-shadow:inset -3px -4px 7px rgba(0,0,0,.22),0 4px 8px -2px color-mix(in oklab,var(--rc) 60%,transparent);transition:transform .25s}
+.rolebtn:hover .rorb{transform:translateZ(20px) scale(1.1) rotate(-8deg)}
+.rolebtn.on .rorb{animation:beat .9s ease-in-out infinite}
+.modes label{transition:transform .15s,box-shadow .15s}.modes label:has(input:checked){box-shadow:0 4px 0 color-mix(in oklab,var(--z-resus) 40%,var(--line))}
+.modes label:hover{transform:translateY(-2px)}
+#jCode{font-family:"IBM Plex Mono",monospace;font-size:24px;letter-spacing:.5em;text-align:center;font-weight:600}
+#jCode::placeholder{font-family:"Noto Sans TC",sans-serif;letter-spacing:.05em;font-size:16px;font-weight:500}
+@media (max-width:820px){.lhero{grid-template-columns:1fr;padding:12px 14px 18px}.lh-stage{height:220px}.lh-orb i{width:40px;height:40px;font-size:19px}.lh-orb small{font-size:10.5px}.lh-mon{width:min(240px,64%);margin-left:calc(min(240px,64%) / -2)}.lh-scr svg{height:70px}}
+@media (prefers-reduced-motion:reduce){.lhero *,.rise,.rolebtn{animation:none!important;transition:none!important}.lh-ecg.vf,.lh-tag.vf,.lh-scr b.vf,.lh-zap{display:none}.lh-ecg.ok,.lh-tag.ok,.lh-scr b.ok{opacity:1}.lh-ecg{stroke-dashoffset:0}}
+.lgrid>.panel{align-content:start}
+@media (max-width:820px){
+  .lh-mon{width:min(230px,56%);margin-left:calc(min(230px,56%) / -2)}
+  .lh-orb:nth-of-type(1){left:2%!important;top:6%!important}.lh-orb:nth-of-type(2){left:2%!important;top:66%!important}
+  .lh-orb:nth-of-type(3){left:84%!important;top:4%!important}.lh-orb:nth-of-type(4){left:84%!important;top:66%!important}
+  .lh-orb:nth-of-type(5){left:2%!important;top:36%!important}.lh-orb:nth-of-type(6){left:84%!important;top:35%!important}
+  .lh-cta a{flex:1 1 100%;text-align:center}}
+#joinP,#mkP{scroll-margin-top:84px}
+@media (max-width:820px){.lh-stage{height:250px}.lh-orb i{width:38px;height:38px;font-size:18px}}
 
 </style>
 </head>
@@ -3321,28 +3510,59 @@ async function teamPage(){
     if (e.target.closest("#leave")) { if (!confirm("確定退出隊伍？（隊長退出會交給下一位隊員；最後一人退出＝解散）")) return; await run("gameTeamLeave", {}); return; }
   };
 }
-/* ---------- 頁面：排行榜（不用登入，只顯示團名，不顯示個人） ---------- */
+/* ---------- 頁面：排行榜（賽季故事＋3D 頒獎台＋守護之塔；不顯示個人） ---------- */
+const STORY = {
+  Q1: { t: "春節守夜", sky: ["#3B1E5A", "#C2185B"], intro: "過年是急診最長的一夜：年夜飯後的胸痛、返鄉車潮的創傷、擠滿候診區的發燒孩子。", ch: [["除夕夜", "年夜飯後，胸悶冒冷汗的阿伯被推進急救室。"], ["初一車潮", "國道連環追撞，創傷病人一床接一床。"], ["流感來襲", "候診區擠滿發燒的孩子，檢傷台一刻不停。"], ["元宵平安", "燈籠亮起，大家都平安回家了。"]] },
+  Q2: { t: "梅雨與腸病毒", sky: ["#1B4D5C", "#2A9D8F"], intro: "梅雨鋒面一波波，兒科候診區擠滿流口水、手腳長疹子的小朋友。", ch: [["鋒面報到", "濕冷的夜，氣喘的孩子一個接一個。"], ["腸病毒高峰", "嗜睡、肌躍型抽搐：重症前兆要早點發現。"], ["淹水夜", "停電、淹水，洗腎病人沒辦法洗腎。"], ["雨過天青", "孩子們退燒了，又能去上學。"]] },
+  Q3: { t: "夏日熱浪", sky: ["#7A2E0E", "#F08A3C"], intro: "38 度的熱浪、海邊溺水、機車擦撞：夏天的急診一刻也不安靜。", ch: [["熱浪來襲", "工地工人中暑倒下，核心體溫 41 度。"], ["溺水救援", "海邊送來沒有呼吸的少年，CPR 不能停。"], ["颱風夜", "斷電、土石流，災難應變啟動。"], ["夏夜微風", "颱風過後，星星出來了。"]] },
+  Q4: { t: "寒冬守護戰", sky: ["#14233F", "#3B66B8"], intro: "冬天來了：心肌梗塞、獨居長輩低體溫、流感一波波湧進急診。", ch: [["第一道寒流", "清晨，獨居的阿嬤被發現倒在地上，全身冰冷。"], ["心臟的冬天", "胸痛、冒冷汗，VF 倒在檢傷台前。"], ["流感高峰", "候診 4 小時，留觀區滿床，大家咬牙撐住。"], ["平安夜", "最後一位病人笑著出院，急診的燈還亮著。"]] }
+};
+const CH_AT = [5, 15, 30, 50];   // 全部隊伍的星星加總，點亮守護燈、解鎖故事
+const DEMO_BOARD = () => ({ ok: true, season: "示範 Q4", seasons: ["示範 Q4"], cases: 2, demo: 1, teams: [
+  { id: "a", name: "電擊旋風隊", emoji: "🦊", color: "#C63D2F", avg: 88, games: 6, stars: 5, best: { "正式教案①": { score: 92, stars: 3 }, "正式教案②": { score: 84, stars: 2 } }, badges: ["10 秒內開始壓胸", "ROSC", "電擊零失誤"], levels: ["Leader", "檢傷", "急救區", "治療區"], ok: true },
+  { id: "b", name: "藍鵲守護隊", emoji: "🦅", color: "#1D74A0", avg: 81, games: 4, stars: 4, best: { "正式教案①": { score: 86, stars: 3 }, "正式教案②": { score: 76, stars: 2 } }, badges: ["ROSC", "6 分鐘內處理病因"], levels: ["Leader", "檢傷", "急救區"], ok: true },
+  { id: "c", name: "夜班不睡隊", emoji: "🦉", color: "#6650C0", avg: 67, games: 5, stars: 3, best: { "正式教案①": { score: 78, stars: 2 }, "正式教案②": { score: 56, stars: 1 } }, badges: ["閉環 ≥ 90%"], levels: ["Leader", "檢傷", "急救區", "兒科"], ok: true },
+  { id: "d", name: "黑熊急先鋒", emoji: "🐻", color: "#334155", avg: 52, games: 2, stars: 2, best: { "正式教案①": { score: 70, stars: 2 }, "正式教案②": { score: 34, stars: 0 } }, badges: ["ROSC"], levels: ["Leader", "檢傷", "急救區"], ok: true },
+  { id: "e", name: "穿山甲盾牌", emoji: "🛡", color: "#1B7D63", avg: 31, games: 1, stars: 1, best: { "正式教案①": { score: 62, stars: 1 } }, badges: [], levels: ["Leader", "檢傷", "急救區"], ok: true },
+  { id: "f", name: "新星小隊", emoji: "⭐", color: "#B7790A", avg: 0, games: 0, stars: 0, best: {}, badges: [], levels: ["Leader", "急救區"], ok: false }] });
+const orb = (t, size = 64) => `<span class="orb" style="--tc:${esc(t.color)};--sz:${size}px"><i>${esc(t.emoji)}</i></span>`;
 async function boardPage(season){
   stopRoom(); setBar("排行榜", "團隊賽・正式教案積分", "home"); const v = $("view");
-  if (!LIVE()) { v.innerHTML = `<div class="note">示範模式沒有排行榜。</div>`; return; }
   v.innerHTML = `<p class="hint">讀取中…</p>`;
-  const r = await api("gameBoard", { season: season || "" });
+  const [r, mine] = LIVE() ? await Promise.all([api("gameBoard", { season: season || "" }), me() ? api("gameMe", {}) : null]) : [DEMO_BOARD(), { ok: true, team: { id: "c" } }];
   if (!r || !r.ok) { v.innerHTML = `<div class="bmsg err">${esc((r && r.error) || "讀取失敗")}</div>`; return; }
-  const top = r.teams.filter(t => t.games), rest = r.teams.filter(t => !t.games);
-  const row = (t, i) => { const tier = tierOf(t.avg); return `<li class="lbr ${i < 3 && t.games ? "top" + (i + 1) : ""}" style="--tc:${esc(t.color)}"><span class="rk">${t.games ? ["🥇", "🥈", "🥉"][i] || i + 1 : "—"}</span>
-      <span class="temo">${esc(t.emoji)}</span><div class="lbn"><b>${esc(t.name)}</b><small>${t.levels.filter(Boolean).map(l => LV_IC[l] || "").join("")}${t.ok ? "" : " ・未達保底"}</small></div>
-      <span class="tier" style="--tr:${tier[2]}">${tier[1]}</span><div class="lbs"><b>${t.avg}</b><small>${t.games} 場・★${t.stars}</small></div>
-      <div class="lbc">${Object.entries(t.best).map(([k, x]) => `<span><small>${esc((k.match(/[①②③④⑤⑥⑦⑧⑨]/) || [""])[0] ? "教案" + k.match(/[①②③④⑤⑥⑦⑧⑨]/)[0] : k.slice(0, 10))}</small>${x.score} ${starHTML(x.stars)}</span>`).join("")}</div>
-      ${t.badges.length ? `<div class="lbb">${t.badges.map(b => { const k = Object.keys(BADGES).find(x => BADGES[x][1] === b); return k ? `<i title="${esc(b)}">${BADGES[k][0]}</i>` : ""; }).join("")}</div>` : ""}</li>`; };
-  v.innerHTML = `<section class="panel lbhead"><div><h2 class="h2">🏆 ${esc(r.season)} 賽季</h2><small>每隊每個正式教案取本季最高分，平均（沒打的教案算 0 分）</small></div>
-      <select id="ssel">${r.seasons.map(s => `<option ${s === r.season ? "selected" : ""}>${esc(s)}</option>`).join("")}</select></section>
-    <section class="panel"><ol class="lb">${top.map(row).join("") || `<li class="muted">這季還沒有計分的場次。</li>`}</ol>
-      ${rest.length ? `<details><summary>還沒出賽的隊伍（${rest.length}）</summary><ol class="lb">${rest.map((t, i) => row(t, 99)).join("")}</ol></details>` : ""}</section>
+  const myId = mine && mine.ok && mine.team ? mine.team.id : "";
+  const play = r.teams.filter(t => t.games), idle = r.teams.filter(t => !t.games), q = (String(r.season).match(/Q([1-4])/) || [0, "4"])[1], SS = STORY["Q" + q];
+  const sumStars = play.reduce((a, t) => a + t.stars, 0), chN = CH_AT.filter(x => sumStars >= x).length, nextAt = CH_AT[chN];
+  const top = play.slice(0, 3), rest = play.slice(3), mi = play.findIndex(t => t.id === myId), my = mi >= 0 ? play[mi] : r.teams.find(t => t.id === myId);
+  const hi = (() => { if (!play.length) return []; const bestOne = t => Math.max(0, ...Object.values(t.best).map(x => x.score));
+    const a = play.slice().sort((x, y) => bestOne(y) - bestOne(x))[0], b = play.slice().sort((x, y) => y.games - x.games)[0], c = play.slice().sort((x, y) => y.badges.length - x.badges.length)[0];
+    return [["🔥", "單場最高", a, `${bestOne(a)} 分`], ["💪", "最勤練", b, `${b.games} 場`], ["🏅", "徽章最多", c, `${c.badges.length} 枚`]]; })();
+  const podCol = (t, rank) => !t ? `<div class="pcol r${rank} empty"><div class="pblk"><b>${rank}</b></div></div>` : `<div class="pcol r${rank}" style="--tc:${esc(t.color)}">
+      <div class="phead">${rank === 1 ? `<span class="crown">👑</span>` : ""}${orb(t, rank === 1 ? 92 : 74)}<b>${esc(t.name)}</b><span class="tier" style="--tr:${tierOf(t.avg)[2]}">${tierOf(t.avg)[1]}</span><em data-count="${t.avg}">0</em></div>
+      <div class="pblk"><b>${rank}</b><small>${t.games} 場・★${t.stars}</small></div></div>`;
+  v.innerHTML = `${r.demo ? `<div class="note">示範資料（還沒連上 Apps Script）：正式上線後會顯示各隊真實積分。</div>` : ""}
+    <section class="saga" style="--s1:${SS.sky[0]};--s2:${SS.sky[1]}"><div class="sagabg">${[...Array(26)].map((_, i) => `<i style="left:${(i * 37) % 100}%;top:${(i * 53) % 70}%;animation-delay:${(i % 7) * .4}s"></i>`).join("")}</div>
+      <div class="sagat"><small>${esc(r.season)} 賽季</small><h2>${esc(SS.t)}</h2><p>${esc(SS.intro)}</p></div>
+      <div class="lamp"><div class="lampg" style="--p:${Math.min(1, sumStars / CH_AT[3])}"><span>🏮</span></div><b>守護燈 ★${sumStars}</b><small>${nextAt ? `全隊合力再 ${nextAt - sumStars} 顆星，解鎖下一章` : "全部章節已解鎖！"}</small></div>
+      <ol class="chaps">${SS.ch.map((c, i) => `<li class="${i < chN ? "on" : ""}"><span>第 ${i + 1} 章</span><b>${i < chN ? esc(c[0]) : "？？？"}</b><small>${i < chN ? esc(c[1]) : `全部隊伍合計 ★${CH_AT[i]} 解鎖`}</small></li>`).join("")}</ol>
+      <select id="ssel" aria-label="賽季">${r.seasons.map(s => `<option ${s === r.season ? "selected" : ""}>${esc(s)}</option>`).join("")}</select></section>
+    ${my ? `<section class="mybar" style="--tc:${esc(my.color)}">${orb(my, 54)}<div><small>你的隊伍</small><b>${esc(my.name)}</b><span>${mi >= 0 ? `第 ${mi + 1} 名・平均 ${my.avg} 分・${tierOf(my.avg)[1]}` : "這季還沒出賽"}</span></div>
+      <em>${mi > 0 ? `再 <b>${play[mi - 1].avg - my.avg + 1}</b> 分就超越 ${esc(play[mi - 1].emoji)} ${esc(play[mi - 1].name)}` : mi === 0 ? "👑 目前第一名，守住王座！" : "打一場正式教案就能上榜"}</em></section>` : ""}
+    <section class="podium">${podCol(top[1], 2)}${podCol(top[0], 1)}${podCol(top[2], 3)}</section>
+    ${hi.length ? `<section class="hilite">${hi.map(h => `<div style="--tc:${esc(h[2].color)}"><i>${h[0]}</i><small>${h[1]}</small>${orb(h[2], 40)}<b>${esc(h[2].name)}</b><em>${h[3]}</em></div>`).join("")}</section>` : ""}
+    <section class="tower"><h3 class="h3">🗼 守護之塔</h3><p class="hint">平均分數越高，爬得越高；登頂成為「急診傳奇」。</p>
+      <div class="floors">${TIERS.slice().reverse().map((tr, k) => { const lo = tr[0], hiT = (TIERS[TIERS.length - k] || [101])[0], here = play.filter(t => t.avg >= lo && t.avg < hiT);
+        return `<div class="floor" style="--tr:${tr[2]};--d:${k}"><span class="fl">${TIERS.length - k}F</span><b>${tr[1]}</b><small>${lo}+</small><div class="ftok">${here.map(t => `<span class="tok ${t.id === myId ? "me" : ""}" title="${esc(t.name)} ${t.avg}">${orb(t, 38)}</span>`).join("")}</div></div>`; }).join("")}</div></section>
+    ${rest.length ? `<section class="panel"><ol class="lb3">${rest.map((t, i) => `<li class="${t.id === myId ? "me" : ""}" style="--tc:${esc(t.color)}"><span class="rk">${i + 4}</span>${orb(t, 46)}<div><b>${esc(t.name)}</b><small>${tierOf(t.avg)[1]}・${t.games} 場・★${t.stars}</small><div class="lbar"><i style="width:${t.avg}%"></i></div></div><em>${t.avg}</em></li>`).join("")}</ol></section>` : ""}
+    ${idle.length ? `<details class="panel"><summary>還沒出賽的隊伍（${idle.length}）</summary><div class="idle">${idle.map(t => `<span>${orb(t, 34)}${esc(t.name)}</span>`).join("")}</div></details>` : ""}
     <section class="panel"><h3 class="h3">段位</h3><div class="tiers">${TIERS.map(t => `<span style="--tr:${t[2]}"><b>${t[1]}</b><small>${t[0]}+</small></span>`).join("")}</div>
       <h3 class="h3">徽章</h3><div class="gbadges">${Object.values(BADGES).map(b => `<span><i>${b[0]}</i>${b[1]}</span>`).join("")}</div>
-      <p class="hint">計分方式：關鍵處置達成 60 分＋ROSC 20 分＋6 分鐘內處理病因 20 分（9 分鐘內 12、12 分鐘內 6）－失誤扣分（不當電擊、沒喊離開、中斷 > 10 秒，最多扣 20）。</p></section>
+      <p class="hint">計分：關鍵處置 60＋ROSC 20＋病因處理速度 20－失誤扣分（最多 20）。每隊每個正式教案取本季最高分，再平均（沒打的教案算 0）。排行榜只比隊伍，不公開個人。</p></section>
     <a class="link" href="#team">我的隊伍 ›</a>`;
   $("ssel").onchange = e => boardPage(e.target.value);
+  /* 分數往上跳 */
+  v.querySelectorAll("[data-count]").forEach(el => { const to = +el.dataset.count, t0 = performance.now(); const f = n => { const k = Math.min(1, (n - t0) / 1200); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); });
 }
 /* ---------- 頁面：能階設定（護理長） ---------- */
 async function levelPage(){
@@ -3368,7 +3588,7 @@ async function levelPage(){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.27-a";
+const SIM_VER = "2026.10.27-b";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -3563,17 +3783,47 @@ const tts = () => { try { return localStorage.getItem("sim2-tts") === "1"; } cat
 async function playVoice(id){ if (!id) return; const r = await api("simVoiceGet", { code: ST.code, id }); if (r && r.ok) { try { const a = new Audio(`data:${r.mime};base64,${r.data}`); await a.play(); } catch (e) {} } }
 
 /* ================= 首頁：建立／加入 ================= */
+const ROLE_IC = { L: "🧭", C: "🫀", A: "🫁", D: "⚡", M: "💉", R: "📝", T: "🎓" };
+/* 首頁上方的 3D 急救室：監視器 VF → 電擊 → ROSC 循環，六個角色球浮在周圍 */
+function heroHTML(){
+  const pos = [[8, 20], [20, 70], [80, 14], [90, 62], [6, 58], [76, 82]];
+  const sin = Array.from({ length: 4 }, (_, i) => { const x = i * 80; return `M${x} 52 h18 q4 -6 8 0 h6 l3 5 l5 -38 l5 46 l4 -13 h10 q9 -13 18 0 h3`; }).join(" ");
+  let vf = "M0 50"; for (let x = 4; x <= 320; x += 4) vf += ` L${x} ${50 + Math.round(Math.sin(x / 7.3) * 14 + Math.sin(x / 2.9) * 7)}`;
+  return `<section class="lhero rise" style="--d:0s"><div class="lh-stage" id="lhStage" aria-hidden="true">
+      <div class="lh-floor"></div><div class="lh-glow"></div>
+      <div class="lh-mon"><div class="lh-scr">
+        <div class="lh-top"><span class="sw2"><span class="lh-tag vf">VF</span><span class="lh-tag ok">ROSC</span></span><span class="lh-hr">HR <span class="sw2"><b class="vf">---</b><b class="ok">96</b></span></span></div>
+        <svg viewBox="0 0 320 90" preserveAspectRatio="none"><path class="lh-grid" d="${Array.from({ length: 16 }, (_, i) => `M${i * 20} 0 V90`).join(" ")} M0 30 H320 M0 60 H320"/><path class="lh-ecg vf" pathLength="1000" d="${vf}"/><path class="lh-ecg ok" pathLength="1000" d="${sin}"/></svg>
+        <div class="lh-bot"><span>SpO₂ <span class="sw2"><b class="vf">--</b><b class="ok">95</b></span></span><span>EtCO₂ <span class="sw2"><b class="vf">12</b><b class="ok">38</b></span></span><span class="lh-heart">♥</span></div>
+        <div class="lh-zap">⚡ 200 J</div></div><i class="lh-side"></i></div>
+      ${ROLE_ORDER.map((k, i) => `<span class="lh-orb" style="--rc:${ROLES[k][2]};--i:${i};left:${pos[i][0]}%;top:${pos[i][1]}%"><i>${ROLE_IC[k]}</i><small>${ROLES[k][0].replace(/／.*/, "")}</small></span>`).join("")}
+    </div>
+    <div class="lh-txt"><span class="lh-eye">多人連線・6 個角色・同一個病人</span>
+      <h2>一支隊伍，<br>一起把病人救回來</h2>
+      <p>每個人用自己的手機站上自己的位置，大螢幕即時看到整個團隊的動作。</p>
+      <div class="lh-cta"><a href="#" class="lh-b1" data-goto="joinP">📱 我是隊員・加入房間</a><a href="#" class="lh-b2" data-goto="mkP">🖥️ 我要主持・建立房間</a></div>
+      <div class="lh-chips"><a href="#lb">🏆 排行榜</a><a href="#team">👥 我的隊伍</a><a href="#rec">📼 演練紀錄</a></div></div></section>`;
+}
+function heroWire(){
+  const st = $("lhStage"), hero = st && st.closest(".lhero"); if (!hero || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  hero.onpointermove = e => { const r = hero.getBoundingClientRect(); hero.style.setProperty("--px", ((e.clientX - r.left) / r.width - .5).toFixed(3)); hero.style.setProperty("--py", ((e.clientY - r.top) / r.height - .5).toFixed(3)); };
+  hero.onpointerleave = () => { hero.style.setProperty("--px", 0); hero.style.setProperty("--py", 0); };
+  if (matchMedia("(hover: hover)").matches) document.querySelectorAll(".rolebtn").forEach(b => {
+    b.onpointermove = e => { const r = b.getBoundingClientRect(); b.style.setProperty("--tx", ((e.clientX - r.left) / r.width - .5).toFixed(3)); b.style.setProperty("--ty", ((e.clientY - r.top) / r.height - .5).toFixed(3)); };
+    b.onpointerleave = () => { b.style.setProperty("--tx", 0); b.style.setProperty("--ty", 0); }; });
+}
 function landing(code, msg){
   stopRoom(); setBar("團隊擬真", "嘉基急診・多人連線急救演練", "");
   const u = me();
   $("view").innerHTML = `
     ${LIVE() ? "" : `<div class="note">示範模式：同一台電腦開多個分頁就能練習，不會存檔。</div>`}
     ${msg ? `<div class="bmsg err">${esc(msg)}</div>` : ""}
+    ${heroHTML()}
     <div class="lgrid">
-      <section class="panel stack"><h2 class="h2">加入房間（手機）</h2>
+      <section class="panel stack rise" id="joinP" style="--d:.15s"><h2 class="h2"><span class="h2i" aria-hidden="true">📱</span>加入房間（手機）</h2>
         <label class="fld">房間號碼<input id="jCode" inputmode="numeric" maxlength="4" value="${esc(code || "")}" placeholder="4 位數字"></label>
         <label class="fld">名字<input id="jName" maxlength="12" value="${esc(u ? u.name : (localStorage.getItem("sim2-name") || ""))}" ${u ? "readonly" : ""} placeholder="暱稱或姓名">${u ? `<small>已用員編登入：${esc(u.empId)}</small>` : `<small>用員編登入，紀錄會存到你名下</small>`}</label>
-        <div class="roles">${[...ROLE_ORDER, "T"].map(k => `<button class="rolebtn ${k === "T" ? "t" : ""}" data-role="${k}" style="--rc:${ROLES[k][2]}"><b>${ROLES[k][0]}</b><small>${ROLES[k][1]}</small></button>`).join("")}</div>
+        <div class="roles">${[...ROLE_ORDER, "T"].map((k, i) => `<button class="rolebtn ${k === "T" ? "t" : ""}" data-role="${k}" style="--rc:${ROLES[k][2]};--i:${i}"><span class="rorb" aria-hidden="true">${ROLE_IC[k]}</span><span class="rtx"><b>${ROLES[k][0]}</b><small>${ROLES[k][1]}</small></span></button>`).join("")}</div>
         <details class="few"><summary>人不夠 6 個怎麼辦？</summary><ul>
           <li>一個人可以<b>兼任</b>：加入後按上方「＋兼任」，再切換畫面。</li>
           <li><b>壓胸可以輪流</b>：每支手機上方都有「我接手壓胸」，兩分鐘到會閃。</li>
@@ -3582,17 +3832,19 @@ function landing(code, msg){
           <li>壓胸手也可以兼任給藥：換手下來後切到「給藥」畫面給藥。</li></ul></details>
         <label class="fld" id="pinW" hidden>教師碼（大面板上有顯示）<input id="jPin" inputmode="numeric" maxlength="4"></label>
       </section>
-      <section class="panel stack"><h2 class="h2">建立房間（投影的電腦）</h2>
+      <section class="panel stack rise" id="mkP" style="--d:.28s"><h2 class="h2"><span class="h2i" aria-hidden="true">🖥️</span>建立房間（投影的電腦）</h2>
         <div class="modes"><label><input type="radio" name="md" value="teacher" checked><span><b>臨床教師控制</b><small>教師手機選病例、調整心律與生命徵象、回覆 Leader 的評估</small></span></label>
           <label><input type="radio" name="md" value="auto"><span><b>系統自動推進（沒有教師）</b><small>評估自動回覆；可選標準 VF，或正式教案①②（第 3 輪找病因、報告自動出、處置對了就 ROSC、結束看解題）</small></span></label></div>
         <label class="sw tsw" id="teamW" hidden><input type="checkbox" id="asTeam" checked> <span>隊伍出賽：<b id="teamNm"></b><small>只有正式教案計分；上場的人都要是隊員並用員編登入</small></span></label>
-        <button class="btn big" id="mk">建立房間</button>
+        <button class="btn big shine" id="mk">建立房間</button>
         <div class="glinks"><a class="link" href="#rec">演練紀錄 ›</a><a class="link" href="#lb">🏆 排行榜 ›</a><a class="link" href="#team">👥 我的隊伍 ›</a></div>
       </section>
     </div>
     <p class="foot">只做教學，不記錄病人資料。內容依 AHA 2025 ACLS 與本院急救室配置。・版本 ${SIM_VER}</p>`;
   let pick = "", force = "";
+  heroWire();
   $("view").onclick = async e => {
+    const gt = e.target.closest("[data-goto]"); if (gt) { e.preventDefault(); const t = $(gt.dataset.goto); if (t) { t.scrollIntoView({ behavior: "smooth", block: "start" }); t.classList.remove("flash"); void t.offsetWidth; t.classList.add("flash"); const f = t.querySelector(gt.dataset.goto === "joinP" ? "#jCode" : "#mk"); if (f) setTimeout(() => f.focus({ preventScroll: true }), 450); } return; }
     if (e.target.closest("#mk")) { const mode = (document.querySelector("[name=md]:checked") || {}).value;
       const mk = $("mk"), lab = mk.textContent; mk.disabled = true; mk.textContent = "建立中…（伺服器剛睡醒時要等 5–10 秒）"; const r = await api("simCreate", { mode, team: $("asTeam") && !$("teamW").hidden && $("asTeam").checked ? $("teamW").dataset.id : "" }); mk.disabled = false; mk.textContent = lab;
       if (!r || !r.ok) return toast((r && r.error) || "建立失敗", true);
