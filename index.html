@@ -588,7 +588,10 @@ body.navopen .side{transform:none;box-shadow:8px 0 30px rgba(0,0,0,.18)}
 .scrim{position:fixed;inset:0;z-index:45;background:rgba(10,20,26,.42)}
 .sbrand{display:flex;align-items:center;gap:10px;padding:16px 16px 12px;font-weight:900;font-size:16px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);margin-bottom:6px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
 .sbrand img{width:30px;height:30px}
-.sgrp{font-size:11.5px;font-weight:800;letter-spacing:.08em;color:var(--ink-2);padding:12px 18px 4px}
+.sgrp{display:flex;align-items:center;justify-content:space-between;width:calc(100% - 20px);margin:10px 10px 2px;padding:8px 10px;border:0;border-radius:10px;background:transparent;font:inherit;font-size:14.5px;font-weight:900;letter-spacing:.04em;color:var(--ink);cursor:pointer;text-align:left}
+.sgrp:hover{background:var(--surface-2)}.sgrp i{font-style:normal;font-size:12px;color:var(--ink-2);transition:transform .15s}.sgrp[aria-expanded="false"] i{transform:rotate(-90deg)}
+.sgrp[aria-expanded="false"]{color:var(--ink-2)}.sgi[hidden]{display:none}
+.crumbs{display:flex!important;flex-wrap:wrap;align-items:center;gap:2px 6px}.crumbs a{color:var(--ink-2);text-decoration:none;font-weight:700;border-bottom:1px dashed color-mix(in oklab,var(--ink-2) 50%,transparent)}.crumbs a:hover{color:var(--ink)}.crumbs b{font-weight:700;color:var(--ink-2)}.crumbs .sep{opacity:.5}
 .sitem{display:flex;align-items:center;gap:10px;margin:2px 10px;padding:9px 10px;border-radius:12px;color:var(--ink);text-decoration:none;font-size:15px;font-weight:700;position:relative}
 .sitem img{width:26px;height:26px;flex:none}
 .sitem:hover{background:var(--surface-2)}
@@ -1147,7 +1150,7 @@ body.lcfull .lfig svg{max-height:46vh}
 @media (min-width:1100px){
   .wrap,.appbar .in{max-width:1120px}
   .wrap{zoom:1.08}.appbar .in{zoom:1.06}
-  .sitem{font-size:17px;padding:10px 10px}.sitem img{width:28px;height:28px}.sgrp{font-size:13px}.sbrand{font-size:17.5px}
+  .sitem{font-size:17px;padding:10px 10px}.sitem img{width:28px;height:28px}.sgrp{font-size:16px}.sbrand{font-size:17.5px}
   .homtop{grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);align-items:start}
   .homr{position:sticky;top:84px}
   .extras.hubx{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -1155,7 +1158,7 @@ body.lcfull .lfig svg{max-height:46vh}
 }
 @media (min-width:1400px){ .wrap{zoom:1.14}.appbar .in{zoom:1.1}
   .side{width:284px}body{padding-left:284px}.tabs,.dock{left:284px}.backmenu{left:304px}
-  .sitem{font-size:18px;padding:11px 12px;gap:12px}.sitem img{width:30px;height:30px}.sgrp{font-size:13.5px;padding:14px 20px 5px}.sbrand{font-size:18.5px}.sbrand img{width:34px;height:34px} }
+  .sitem{font-size:18px;padding:11px 12px;gap:12px}.sitem img{width:30px;height:30px}.sgrp{font-size:17px;padding:9px 12px}.sbrand{font-size:18.5px}.sbrand img{width:34px;height:34px} }
 @media (min-width:1800px){ .side{width:300px}body{padding-left:300px}.tabs,.dock{left:300px}.backmenu{left:320px}.sitem{font-size:19px}
   .wrap,.appbar .in{max-width:1180px}.wrap{zoom:1.22}.appbar .in{zoom:1.16} }
 body.lcfull .wrap{zoom:1}
@@ -1645,6 +1648,38 @@ button.dst{cursor:pointer}.dst i{font-style:normal;font-weight:900;font-family:u
 .sndgate{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:65;background:#B7790A;color:#fff;font-weight:800;text-align:center;border-radius:14px;padding:12px;box-shadow:0 10px 24px -8px rgba(0,0,0,.5)}
 .sndgate[hidden]{display:none}
 .aibox{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;background:color-mix(in oklab,#6650C0 8%,var(--surface));border:1.5px dashed #6650C0;border-radius:12px;padding:10px 12px;margin:8px 0 12px}.aibox small{color:var(--ink-2);flex:1;min-width:200px}
+/* ---------- 團隊賽 ---------- */
+.glinks{display:flex;flex-wrap:wrap;gap:6px 16px}
+.tsw{align-items:flex-start}.tsw span{display:grid;gap:2px}.tsw small{color:var(--ink-2);font-size:12px}
+.tteam{display:inline-flex;align-items:center;gap:6px;font-weight:900;color:var(--tc)}.tteam i{font-style:normal;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:color-mix(in oklab,var(--tc) 16%,var(--surface))}
+.tbanner{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;border:2px solid var(--tc);border-radius:14px;padding:8px 14px;margin:0 0 12px;background:color-mix(in oklab,var(--tc) 7%,var(--surface));font-size:18px}.tbanner small{color:var(--ink-2);font-size:13px}
+.stars{display:inline-flex;gap:1px}.stars i{font-style:normal;color:var(--line)}.stars i.on{color:#E8A317}
+.gres{border:2px solid var(--tc);background:linear-gradient(160deg,color-mix(in oklab,var(--tc) 10%,var(--surface)),var(--surface))}
+.grh{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:18px}.grh small{color:var(--ink-2);font-size:13px}
+.grm{display:flex;align-items:center;gap:18px;margin:8px 0}.grs b{font:900 56px/1 "IBM Plex Mono",monospace;color:var(--tc)}.grs small{font-weight:800;margin-left:4px}.grm .stars{font-size:38px}
+.grp{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}.grp div{background:var(--surface);border-radius:10px;padding:6px 10px;display:grid}.grp small{font-size:11px;color:var(--ink-2)}.grp em{font-style:normal;font-weight:900;color:var(--tc)}
+.gbadges{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.gbadges span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border:1.5px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--surface)}.gbadges i{font-style:normal;font-size:16px}
+.meline{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}.meline b{font-size:18px}.meline .lv{font-weight:800}.meline small{color:var(--ink-2)}
+.tcard{border-top:6px solid var(--tc)}.tch{display:flex;gap:12px;align-items:center}.temo{font-size:34px;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:color-mix(in oklab,var(--tc) 16%,var(--surface));flex:none}.tch small{color:var(--ink-2)}
+.comp{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0;padding:10px;border-radius:12px;background:#FDECEA}.comp.ok{background:color-mix(in oklab,#1B7D63 10%,var(--surface))}
+.comp span{display:grid;justify-items:center;min-width:86px;padding:6px 8px;border-radius:10px;border:1.5px dashed var(--line);background:var(--surface);opacity:.6}.comp span.on{opacity:1;border-style:solid;border-color:#1B7D63}.comp span i{font-style:normal;font-size:20px}.comp small{font-size:11px;color:var(--ink-2)}
+.comp em{font-style:normal;font-weight:800;margin-left:auto}.comp.ok em{color:#1B7D63}.comp:not(.ok) em{color:#B42318}
+.mems{list-style:none;padding:0;margin:0 0 10px;display:grid;gap:6px}.mems li{display:grid;grid-template-columns:28px 1fr auto;column-gap:8px;align-items:center;padding:6px 10px;border-radius:10px;background:var(--surface-2)}.mems i{font-style:normal;font-size:18px;grid-row:span 2}.mems small{color:var(--ink-2);grid-column:2}.mems .mini{grid-row:1 / span 2;grid-column:3}
+.chips.emo button{font-size:22px;padding:4px 8px}.chips.col button{width:34px;height:34px;border-radius:50%;border:3px solid transparent}.chips.col button.on{border-color:var(--ink)}
+.tedit2{display:grid;gap:6px;margin-top:8px}
+.lbhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}.lbhead small{color:var(--ink-2)}
+.lb{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.lbr{display:grid;grid-template-columns:44px 48px minmax(0,1fr) auto auto;gap:6px 12px;align-items:center;padding:10px 12px;border-radius:14px;border:1.5px solid var(--line);border-left:6px solid var(--tc);background:var(--surface)}
+.lbr .rk{font:900 22px "IBM Plex Mono",monospace;text-align:center}.lbr .temo{width:44px;height:44px;font-size:26px;border-radius:12px}
+.lbr.top1{background:linear-gradient(90deg,#FFF6D8,var(--surface))}.lbr.top2{background:linear-gradient(90deg,#F0F2F5,var(--surface))}.lbr.top3{background:linear-gradient(90deg,#FBEBDD,var(--surface))}
+.lbn b{font-size:17px;display:block}.lbn small{color:var(--ink-2)}
+.tier{font-size:12px;font-weight:900;color:#fff;background:var(--tr);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.lbs{text-align:right}.lbs b{font:900 26px "IBM Plex Mono",monospace;display:block}.lbs small{color:var(--ink-2);font-size:11px}
+.lbc,.lbb{grid-column:3 / -1;display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px}.lbc span{display:inline-flex;align-items:center;gap:4px;background:var(--surface-2);border-radius:8px;padding:2px 8px}.lbc small{color:var(--ink-2)}.lbb i{font-style:normal;font-size:18px}
+@media (max-width:560px){.lbr{grid-template-columns:34px 40px minmax(0,1fr) auto}.lbr .tier{grid-column:3;justify-self:start}.lbs{grid-row:1;grid-column:4}}
+.tiers{display:flex;flex-wrap:wrap;gap:8px}.tiers span{display:grid;justify-items:center;border-radius:12px;padding:6px 12px;color:#fff;background:var(--tr)}.tiers small{opacity:.85;font-size:11px}
+.lvt{width:100%;border-collapse:collapse;font-size:14px}.lvt th,.lvt td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}.lvt select{font-size:14px;padding:4px 6px;width:auto}
+.hint.warn,small.warn{color:#B42318}
 
 </style>
 </head>
@@ -3211,8 +3246,129 @@ function aiTick(S){
     if (!r.ok) toast("AI 回答失敗：" + r.error, true); });
 }
 
+/* ================= 團隊賽：固定隊、能階保底、積分、排行榜 ================= */
+const TIERS = [[0, "治療區", "#56677A"], [30, "兒科", "#00838F"], [50, "急救區", "#C63D2F"], [65, "檢傷", "#B7790A"], [80, "Leader", "#6650C0"], [92, "急診傳奇", "#14202B"]];
+const tierOf = avg => TIERS.filter(t => avg >= t[0]).pop();
+const LV_IC = { "治療區": "🩹", "兒科": "🧸", "急救區": "🫀", "檢傷": "🚦", "Leader": "📣" };
+const BADGES = { cpr10: ["⏱", "10 秒內開始壓胸"], nopause: ["✋", "壓胸中斷都 < 10 秒"], fast: ["🔎", "6 分鐘內處理病因"], loop: ["🔁", "閉環 ≥ 90%"], clean: ["⚡", "電擊零失誤"], rosc: ["💓", "ROSC"] };
+/* 本場分數：關鍵達成 60＋ROSC 20＋病因處理速度 20－失誤扣分（最多扣 20） */
+function gameScore(S){
+  const F = fCase(S); if (!F) return { caseId: S.caseId, caseName: (CASE_BY[S.caseId] || {}).n || "", score: 0, stars: 0, badges: "", detail: "一般病例" };
+  const k = F.keys(S), ok = k.filter(x => x[1]).length, base = Math.round(ok / k.length * 60);
+  const fix = S.fixAt ? (S.fixAt - S.t0) / 1000 : 0, speed = !fix ? 0 : fix <= 360 ? 20 : fix <= 540 ? 12 : fix <= 720 ? 6 : 0, rosc = S.roscAt ? 20 : 0;
+  const sh = S.shocks.filter(x => x.delivered), longest = S.pauses.reduce((m, p) => Math.max(m, (p[1] - p[0]) / 1000), 0);
+  const ded = Math.min(20, sh.filter(x => !x.ok).length * 5 + sh.filter(x => !x.cleared).length * 3 + (longest > 10 ? 5 : 0) + S.shocks.filter(x => !x.delivered).length * 3);
+  const score = Math.max(0, Math.min(100, base + rosc + speed - ded)), stars = score >= 85 ? 3 : score >= 65 ? 2 : score >= 40 ? 1 : 0;
+  const cpr = S.ev.find(e => e.g === "cpr"), done = S.cmds.filter(c => c.done).length, b = [];
+  if (cpr && S.arrestAt && cpr.t - S.arrestAt <= 10000) b.push("cpr10");
+  if (S.pauses.length && longest <= 10) b.push("nopause");
+  if (fix && fix <= 360) b.push("fast");
+  if (!S.oral && S.cmds.length >= 5 && done / S.cmds.length >= .9) b.push("loop");
+  if (sh.length && sh.every(x => x.ok && x.cleared) && !S.shocks.some(x => !x.delivered)) b.push("clean");
+  if (S.roscAt) b.push("rosc");
+  return { caseId: S.caseId, caseName: CASE_BY[S.caseId].n, score, stars, badges: b.map(x => BADGES[x][1]).join("、"), badgeKeys: b,
+    parts: { base, ok, n: k.length, rosc, speed, ded }, detail: `關鍵 ${ok}/${k.length}（${base}）＋ROSC ${rosc}＋速度 ${speed}－扣分 ${ded}` };
+}
+const starHTML = n => `<span class="stars">${[1, 2, 3].map(i => `<i class="${i <= n ? "on" : ""}">★</i>`).join("")}</span>`;
+const teamTag = t => t ? `<span class="tteam" style="--tc:${esc(t.color)}"><i>${esc(t.emoji)}</i>${esc(t.name)}</span>` : "";
+/* 結束後：本場結算（大面板與手機） */
+function resultHTML(S, meta){
+  const t = meta && meta.team; if (!t || S.status !== "end") return "";
+  const g = gameScore(S), sv = meta.game;
+  return `<section class="panel gres" style="--tc:${esc(t.color)}"><div class="grh">${teamTag(t)}<small>${sv ? (sv.ranked ? `${esc(sv.season)} 賽季・已計分` : "本場不計分") : "結算中…"}</small></div>
+    <div class="grm"><div class="grs"><b>${g.score}</b><small>分</small></div>${starHTML(g.stars)}</div>
+    ${g.parts ? `<div class="grp">${[["關鍵處置", `${g.parts.ok}/${g.parts.n}`, `+${g.parts.base}`], ["ROSC", g.parts.rosc ? "有" : "沒有", `+${g.parts.rosc}`], ["病因處理速度", S.fixAt ? mmss(S.fixAt - S.t0) : "—", `+${g.parts.speed}`], ["失誤扣分", "", g.parts.ded ? `−${g.parts.ded}` : "0"]].map(x => `<div><small>${x[0]}</small><b>${esc(x[1])}</b><em>${x[2]}</em></div>`).join("")}</div>` : ""}
+    ${g.badgeKeys && g.badgeKeys.length ? `<div class="gbadges">${g.badgeKeys.map(k => `<span><i>${BADGES[k][0]}</i>${BADGES[k][1]}</span>`).join("")}</div>` : ""}
+    ${sv && !sv.ranked ? `<p class="hint warn">不計分原因：${esc(sv.reason)}</p>` : ""}
+    <a class="mini" href="#lb" target="_blank" rel="noopener">看排行榜 ›</a></section>`;
+}
+/* ---------- 頁面：我的隊伍 ---------- */
+async function teamPage(){
+  stopRoom(); setBar("我的隊伍", "團隊賽・固定隊", "home"); const v = $("view");
+  if (!LIVE()) { v.innerHTML = `<div class="note">示範模式沒有隊伍與排行榜（要連上 Apps Script）。</div>`; return; }
+  if (!me()) { v.innerHTML = `<section class="panel stack"><b>請先用員編登入</b><p class="hint">隊伍與積分都依員編記錄。</p><button class="btn" id="lg">登入</button></section>`; $("lg").onclick = () => ACC && ACC.goLogin && ACC.goLogin(); return; }
+  v.innerHTML = `<p class="hint">讀取中…</p>`;
+  let G = await api("gameMe", {}), pick = {};
+  const paint = () => {
+    if (!G || !G.ok) { v.innerHTML = `<div class="bmsg err">${esc((G && G.error) || "讀取失敗")}</div>`; return; }
+    const t = G.team, m = G.me, cap = t && t.cap === m.emp;
+    pick.emoji = pick.emoji || (t ? t.emoji : G.emoji[0]); pick.color = pick.color || (t ? t.color : G.colors[0]);
+    const editor = `<div class="tedit2"><label class="fld">團名（2–12 字）<input id="tName" maxlength="12" value="${esc(t ? t.name : "")}" placeholder="例如：電擊旋風隊"></label>
+      <div class="label">隊徽</div><div class="chips emo">${G.emoji.map(x => `<button data-emo="${x}" class="${pick.emoji === x ? "on" : ""}">${x}</button>`).join("")}</div>
+      <div class="label">隊色</div><div class="chips col">${G.colors.map(x => `<button data-col="${x}" class="${pick.color === x ? "on" : ""}" style="background:${x}" aria-label="${x}"></button>`).join("")}</div>
+      <button class="btn" id="tSave">${t ? "儲存" : "建立隊伍"}</button></div>`;
+    v.innerHTML = `<section class="panel"><div class="meline"><b>${esc(m.name)}</b><span class="lv">${m.level ? `${LV_IC[m.level] || ""} ${esc(m.level)} 級` : "能階未設定"}</span>${m.src ? `<small>（${esc(m.src)}）</small>` : ""}${G.admin ? `<a class="mini" href="#lv">設定能階 ›</a>` : ""}</div>
+        ${m.level ? "" : `<p class="hint">能階由護理長設定；完成急救室、檢傷、小組長手冊結訓也會自動升階。</p>`}</section>
+      ${t ? `<section class="panel tcard" style="--tc:${esc(t.color)}"><div class="tch"><span class="temo">${esc(t.emoji)}</span><div><h2 class="h2">${esc(t.name)}</h2><small>${t.members.length} 人・隊長 ${esc((t.members.find(x => x.emp === t.cap) || {}).name || t.cap)}</small></div></div>
+          <div class="comp ${t.ok ? "ok" : ""}">${G.need.map(n => { const x = t.members.find(y => y.slot === n); return `<span class="${x ? "on" : ""}"><i>${LV_IC[n]}</i><b>${n} 級</b><small>${x ? esc(x.name || x.emp) : "缺"}</small></span>`; }).join("")}<em>${t.ok ? "✓ 符合保底，可以計分" : `還缺：${esc(t.miss.join("、"))}`}</em></div>
+          <ul class="mems">${t.members.map(x => `<li><i>${LV_IC[x.level] || "·"}</i><b>${esc(x.name || "（尚未登入過）")}</b><small>${esc(x.emp)}・${esc(x.level || "能階未設定")}${x.emp === t.cap ? "・隊長" : ""}</small>${cap && x.emp !== t.cap ? `<button class="mini" data-rm="${esc(x.emp)}">移除</button>` : ""}</li>`).join("")}</ul>
+          ${cap ? `<div class="free"><input id="addEmp" inputmode="numeric" maxlength="8" placeholder="輸入隊友員編"><button class="btn" id="addBtn">加入隊伍</button></div>` : ""}
+          <details ${cap ? "" : "hidden"}><summary>修改團名、隊徽、隊色</summary>${editor}</details>
+          <button class="mini" id="leave">退出隊伍</button></section>
+        <section class="panel"><h3 class="h3">本隊戰績</h3>${G.games.length ? `<ol class="feed sm">${G.games.map(x => `<li><time>${esc(String(x.at).slice(5, 16))}</time><span>${esc(x.case)}・<b>${x.score} 分</b> ${starHTML(x.stars)} ${x.ranked ? "" : `<small class="hint">不計分：${esc(x.reason)}</small>`}${x.badges ? `<small class="hint">🏅 ${esc(x.badges)}</small>` : ""}</span></li>`).join("")}</ol>` : `<p class="hint">還沒有出賽紀錄。建立房間時勾「隊伍出賽」，打正式教案就會計分。</p>`}</section>`
+      : `<section class="panel"><h2 class="h2">建立隊伍</h2><p class="hint">固定隊整季一起出賽。保底：至少 1 位 Leader 級＋1 位檢傷級＋1 位急救區級（不同人）。建立後用員編加入隊友。</p>${editor}</section>
+         <p class="hint">要加入別人的隊伍：請隊長用你的員編（${esc(m.emp)}）把你加進去。</p>`}
+      <a class="link" href="#lb">看排行榜 ›</a>`;
+  };
+  paint();
+  v.onclick = async e => {
+    const em = e.target.closest("[data-emo]"); if (em) { pick.emoji = em.dataset.emo; const n = $("tName") && $("tName").value; paint(); if (n !== undefined && $("tName")) $("tName").value = n; const d = v.querySelector("details"); if (d) d.open = true; return; }
+    const co = e.target.closest("[data-col]"); if (co) { pick.color = co.dataset.col; const n = $("tName") && $("tName").value; paint(); if (n !== undefined && $("tName")) $("tName").value = n; const d = v.querySelector("details"); if (d) d.open = true; return; }
+    const run = async (action, b) => { const r = await api(action, b); if (!r || !r.ok) return toast((r && r.error) || "失敗", true); G = r; paint(); return r; };
+    if (e.target.closest("#tSave")) { if (await run("gameTeamSave", { name: $("tName").value, emoji: pick.emoji, color: pick.color })) toast("已儲存"); return; }
+    if (e.target.closest("#addBtn")) { const emp = $("addEmp").value.trim(); if (!emp) return toast("請輸入員編", true); if (await run("gameTeamMember", { op: "add", emp })) toast("已加入隊伍"); return; }
+    const rm = e.target.closest("[data-rm]"); if (rm) { if (!armed(rm)) return toast("再按一次移除"); if (await run("gameTeamMember", { op: "remove", emp: rm.dataset.rm })) toast("已移除"); return; }
+    if (e.target.closest("#leave")) { if (!confirm("確定退出隊伍？（隊長退出會交給下一位隊員；最後一人退出＝解散）")) return; await run("gameTeamLeave", {}); return; }
+  };
+}
+/* ---------- 頁面：排行榜（不用登入，只顯示團名，不顯示個人） ---------- */
+async function boardPage(season){
+  stopRoom(); setBar("排行榜", "團隊賽・正式教案積分", "home"); const v = $("view");
+  if (!LIVE()) { v.innerHTML = `<div class="note">示範模式沒有排行榜。</div>`; return; }
+  v.innerHTML = `<p class="hint">讀取中…</p>`;
+  const r = await api("gameBoard", { season: season || "" });
+  if (!r || !r.ok) { v.innerHTML = `<div class="bmsg err">${esc((r && r.error) || "讀取失敗")}</div>`; return; }
+  const top = r.teams.filter(t => t.games), rest = r.teams.filter(t => !t.games);
+  const row = (t, i) => { const tier = tierOf(t.avg); return `<li class="lbr ${i < 3 && t.games ? "top" + (i + 1) : ""}" style="--tc:${esc(t.color)}"><span class="rk">${t.games ? ["🥇", "🥈", "🥉"][i] || i + 1 : "—"}</span>
+      <span class="temo">${esc(t.emoji)}</span><div class="lbn"><b>${esc(t.name)}</b><small>${t.levels.filter(Boolean).map(l => LV_IC[l] || "").join("")}${t.ok ? "" : " ・未達保底"}</small></div>
+      <span class="tier" style="--tr:${tier[2]}">${tier[1]}</span><div class="lbs"><b>${t.avg}</b><small>${t.games} 場・★${t.stars}</small></div>
+      <div class="lbc">${Object.entries(t.best).map(([k, x]) => `<span><small>${esc((k.match(/[①②③④⑤⑥⑦⑧⑨]/) || [""])[0] ? "教案" + k.match(/[①②③④⑤⑥⑦⑧⑨]/)[0] : k.slice(0, 10))}</small>${x.score} ${starHTML(x.stars)}</span>`).join("")}</div>
+      ${t.badges.length ? `<div class="lbb">${t.badges.map(b => { const k = Object.keys(BADGES).find(x => BADGES[x][1] === b); return k ? `<i title="${esc(b)}">${BADGES[k][0]}</i>` : ""; }).join("")}</div>` : ""}</li>`; };
+  v.innerHTML = `<section class="panel lbhead"><div><h2 class="h2">🏆 ${esc(r.season)} 賽季</h2><small>每隊每個正式教案取本季最高分，平均（沒打的教案算 0 分）</small></div>
+      <select id="ssel">${r.seasons.map(s => `<option ${s === r.season ? "selected" : ""}>${esc(s)}</option>`).join("")}</select></section>
+    <section class="panel"><ol class="lb">${top.map(row).join("") || `<li class="muted">這季還沒有計分的場次。</li>`}</ol>
+      ${rest.length ? `<details><summary>還沒出賽的隊伍（${rest.length}）</summary><ol class="lb">${rest.map((t, i) => row(t, 99)).join("")}</ol></details>` : ""}</section>
+    <section class="panel"><h3 class="h3">段位</h3><div class="tiers">${TIERS.map(t => `<span style="--tr:${t[2]}"><b>${t[1]}</b><small>${t[0]}+</small></span>`).join("")}</div>
+      <h3 class="h3">徽章</h3><div class="gbadges">${Object.values(BADGES).map(b => `<span><i>${b[0]}</i>${b[1]}</span>`).join("")}</div>
+      <p class="hint">計分方式：關鍵處置達成 60 分＋ROSC 20 分＋6 分鐘內處理病因 20 分（9 分鐘內 12、12 分鐘內 6）－失誤扣分（不當電擊、沒喊離開、中斷 > 10 秒，最多扣 20）。</p></section>
+    <a class="link" href="#team">我的隊伍 ›</a>`;
+  $("ssel").onchange = e => boardPage(e.target.value);
+}
+/* ---------- 頁面：能階設定（護理長） ---------- */
+async function levelPage(){
+  stopRoom(); setBar("能階設定", "團隊賽・護理長", "team"); const v = $("view");
+  if (!LIVE() || !me()) { v.innerHTML = `<div class="note">請用員編登入（需要護理長權限）。</div>`; return; }
+  v.innerHTML = `<p class="hint">讀取中…</p>`;
+  let R = await api("gameLevels", {}), q = "";
+  const paint = () => {
+    if (!R || !R.ok) { v.innerHTML = `<div class="bmsg err">${esc((R && R.error) || "讀取失敗")}</div>`; return; }
+    const rows = R.rows.filter(x => !q || (x.emp + x.name + x.team).includes(q));
+    v.innerHTML = `<section class="panel stack"><b>批次貼上</b><p class="hint">從 Excel 複製「員編、姓名、能階」三欄貼上（能階填：${R.levels.join("、")}）。姓名可以空白。</p>
+        <textarea id="bulk" rows="5" placeholder="05845\t翁秀霞\tLeader\n11872\t劉逸靚\t檢傷"></textarea><button class="btn" id="bulkSave">匯入</button></section>
+      <section class="panel"><div class="free"><input id="lq" placeholder="搜尋員編、姓名、隊伍" value="${esc(q)}"></div>
+        <table class="lvt"><thead><tr><th>員編</th><th>姓名</th><th>能階</th><th>隊伍</th></tr></thead><tbody>${rows.map(x => `<tr><td>${esc(x.emp)}</td><td>${esc(x.name)}</td><td><select data-lv="${esc(x.emp)}"><option value="">—</option>${R.levels.map(l => `<option ${x.level === l ? "selected" : ""}>${l}</option>`).join("")}</select>${x.src === "手冊結訓" ? `<small class="hint">手冊結訓</small>` : ""}</td><td>${esc(x.team)}</td></tr>`).join("") || `<tr><td colspan="4" class="muted">沒有資料。人員第一次登入「我的隊伍」會自動出現在這裡，也可以批次貼上。</td></tr>`}</tbody></table>
+        <p class="hint">能階＝護理長設定與手冊結訓（急救室→急救區、檢傷→檢傷、小組長→Leader）取較高者。</p></section>`;
+  };
+  paint();
+  v.oninput = e => { if (e.target.id === "lq") { q = e.target.value.trim(); const pos = e.target.selectionStart; paint(); $("lq").focus(); $("lq").setSelectionRange(pos, pos); } };
+  v.onchange = async e => { const s = e.target.closest("[data-lv]"); if (!s) return; const r = await api("gameLevelSet", { rows: [{ emp: s.dataset.lv, level: s.value }] }); if (!r || !r.ok) return toast((r && r.error) || "失敗", true); R = r; toast("已更新"); paint(); };
+  v.onclick = async e => { if (!e.target.closest("#bulkSave")) return; const rows = $("bulk").value.split(/\n/).map(l => l.split(/\t|,|，/).map(x => x.trim())).filter(x => /\d/.test(x[0] || ""))
+      .map(x => ({ emp: x[0], name: x.length > 2 ? x[1] : "", level: x.length > 2 ? x[2] : x[1] || "" }));
+    if (!rows.length) return toast("沒有讀到資料", true); const r = await api("gameLevelSet", { rows }); if (!r || !r.ok) return toast((r && r.error) || "失敗", true); R = r; toast(`已匯入 ${r.saved} 筆`); paint(); };
+}
+
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.22-a";
+const SIM_VER = "2026.10.27-a";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -3429,15 +3585,16 @@ function landing(code, msg){
       <section class="panel stack"><h2 class="h2">建立房間（投影的電腦）</h2>
         <div class="modes"><label><input type="radio" name="md" value="teacher" checked><span><b>臨床教師控制</b><small>教師手機選病例、調整心律與生命徵象、回覆 Leader 的評估</small></span></label>
           <label><input type="radio" name="md" value="auto"><span><b>系統自動推進（沒有教師）</b><small>評估自動回覆；可選標準 VF，或正式教案①②（第 3 輪找病因、報告自動出、處置對了就 ROSC、結束看解題）</small></span></label></div>
+        <label class="sw tsw" id="teamW" hidden><input type="checkbox" id="asTeam" checked> <span>隊伍出賽：<b id="teamNm"></b><small>只有正式教案計分；上場的人都要是隊員並用員編登入</small></span></label>
         <button class="btn big" id="mk">建立房間</button>
-        <a class="link" href="#rec">演練紀錄 ›</a>
+        <div class="glinks"><a class="link" href="#rec">演練紀錄 ›</a><a class="link" href="#lb">🏆 排行榜 ›</a><a class="link" href="#team">👥 我的隊伍 ›</a></div>
       </section>
     </div>
     <p class="foot">只做教學，不記錄病人資料。內容依 AHA 2025 ACLS 與本院急救室配置。・版本 ${SIM_VER}</p>`;
   let pick = "", force = "";
   $("view").onclick = async e => {
     if (e.target.closest("#mk")) { const mode = (document.querySelector("[name=md]:checked") || {}).value;
-      const mk = $("mk"), lab = mk.textContent; mk.disabled = true; mk.textContent = "建立中…（伺服器剛睡醒時要等 5–10 秒）"; const r = await api("simCreate", { mode }); mk.disabled = false; mk.textContent = lab;
+      const mk = $("mk"), lab = mk.textContent; mk.disabled = true; mk.textContent = "建立中…（伺服器剛睡醒時要等 5–10 秒）"; const r = await api("simCreate", { mode, team: $("asTeam") && !$("teamW").hidden && $("asTeam").checked ? $("teamW").dataset.id : "" }); mk.disabled = false; mk.textContent = lab;
       if (!r || !r.ok) return toast((r && r.error) || "建立失敗", true);
       hostSet(r.code, { key: r.hostKey, pin: r.pin }); go("b-" + r.code); return; }
     const b = e.target.closest("[data-role]"); if (!b) return;
@@ -3457,6 +3614,7 @@ function landing(code, msg){
     seatSet(c, { role, key: r.key, name: r.name }); go("p-" + c);
   }
   if (code) setTimeout(() => $("jName").value ? null : $("jName").focus(), 50);
+  if (LIVE() && u) api("gameMe", {}).then(g => { if (!g || !g.ok || !g.team || !$("teamW")) return; $("teamW").hidden = false; $("teamW").dataset.id = g.team.id; $("teamNm").innerHTML = teamTag(g.team) + (g.team.ok ? "" : ` <small class="warn">（未達保底：缺 ${esc(g.team.miss.join("、"))}）</small>`); });
   /* 先叫醒伺服器（Apps Script 閒置後第一次呼叫較慢），按下建立或加入時就快了 */
   if (LIVE()) try { fetch(API, { mode: "no-cors" }).catch(() => {}); } catch (e) {}
 }
@@ -3485,7 +3643,7 @@ function board(code){
       <div class="bjoin"><small>手機加入</small><span>${esc(SITE.replace(/^https?:\/\//, ""))}　輸入 <b>${esc(code)}</b></span>${host ? `<span>教師碼 <b>${esc(host.pin)}</b></span>` : ""}</div>
       <div class="qr" id="qr"></div>
       <div class="bctl" id="bctl"></div></section>
-    <div id="bF"></div><div id="bRecSt"></div><div id="bPick"></div>
+    <div id="bTeam"></div><div id="bF"></div><div id="bRecSt"></div><div id="bPick"></div>
     <div class="ann" id="ann" hidden></div>
     <div id="bDeb2"></div>
     <div class="bgrid"><section class="panel" id="bMon"></section><section class="panel" id="bSide">${timersHTML()}<div id="bInfo"></div></section></div>
@@ -3518,6 +3676,7 @@ function board(code){
     const fb = fBarHTML(S); if ($("bF")._h !== fb) { $("bF").innerHTML = fb; $("bF")._h = fb; }
     const br = boardRecHTML(S); $("bRec").hidden = !br; if ($("bRec")._h !== br) { $("bRec").innerHTML = br; $("bRec")._h = br; }
     fAnnounce(S);
+    const tm = ST.meta && ST.meta.team ? (S.status === "end" ? resultHTML(S, ST.meta) : `<div class="tbanner" style="--tc:${esc(ST.meta.team.color)}">${teamTag(ST.meta.team)}<small>隊伍出賽${fCase(S) ? "・正式教案計分" : "・一般病例只練習、不計分"}</small></div>`) : ""; if ($("bTeam")._h !== tm) { $("bTeam").innerHTML = tm; $("bTeam")._h = tm; }
     const bc = boardChatHTML(S, !!host); $("bChat").hidden = !bc; if ($("bChat")._h !== bc) { const v = $("bChatX") ? $("bChatX").value : "", f = document.activeElement && document.activeElement.id === "bChatX"; $("bChat").innerHTML = bc; $("bChat")._h = bc; if ($("bChatX")) { $("bChatX").value = v; if (f) $("bChatX").focus(); } const cl = $("bChat").querySelector(".chat"); if (cl) cl.scrollTop = cl.scrollHeight; }
     const pub = S.ev.filter(e => !e.hide && e.g !== "join");
     $("bFeed").innerHTML = pub.slice(-14).reverse().map(e => feedLi(e, S)).join("") || `<li class="muted">還沒有紀錄</li>`;
@@ -3550,7 +3709,8 @@ function board(code){
 }
 async function hostAct(a){
   const S = ST.S; const extra = {};
-  if (a.type === "end" && S) { const fin = derive(ST.meta, ST.events.concat([{ i: 1e9, t: NOW(), w: ST.seat.role === "H" ? "H" : "T", a: { type: "end" } }])); extra.summary = summarize(fin); extra.log = logRows(fin); }
+  if (a.type === "end" && S) { const fin = derive(ST.meta, ST.events.concat([{ i: 1e9, t: NOW(), w: ST.seat.role === "H" ? "H" : "T", a: { type: "end" } }])); extra.summary = summarize(fin); extra.log = logRows(fin);
+    if (ST.meta && ST.meta.team) { const g = gameScore(fin); extra.game = { caseId: g.caseId, caseName: g.caseName, score: g.score, stars: g.stars, badges: g.badges, detail: g.detail }; } }
   return act(a, extra);
 }
 function announce(e){
@@ -3600,11 +3760,11 @@ function player(code){
     else if (S.ev.length > ui.seen) { const nw = S.ev.slice(ui.seen); ui.seen = S.ev.length;
       if (role === "L" && tts()) nw.filter(e => e.g === "reply" || e.g === "clue").forEach(e => e.voice ? playVoice(e.voice) : speak(e.sp || e.x)); }
     if (ui.dragging) return;
-    const key = fKey(S, ui) + (P.key ? P.key(S, ui) : JSON.stringify([S.status, S.ev.length])) + JSON.stringify([S.cpr, S.comp, !!S.arrestAt, S.seats, S.voice]) + (S.status === "end" ? JSON.stringify([S.dstep, S.fbPub, S.fb, S.refl, ui.reedit]) : "");
+    const key = JSON.stringify(ST.meta && ST.meta.game || 0) + fKey(S, ui) + (P.key ? P.key(S, ui) : JSON.stringify([S.status, S.ev.length])) + JSON.stringify([S.cpr, S.comp, !!S.arrestAt, S.seats, S.voice]) + (S.status === "end" ? JSON.stringify([S.dstep, S.fbPub, S.fb, S.refl, ui.reedit]) : "");
     if (key === ui.lastKey) return; ui.lastKey = key;
     const keepScroll = scrollY, focus = document.activeElement && document.activeElement.id, vals = {};
     $("pBody").querySelectorAll("input[id],textarea[id]").forEach(el => { if (el.type !== "checkbox") vals[el.id] = el.value; });
-    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + recBanner(S) + fBarHTML(S) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" && role !== "C" ? compBar(S, role) : "") + (role !== "T" ? myCmds(S, role) : "") + P.html(S, ui) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
+    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + recBanner(S) + fBarHTML(S) + resultHTML(S, ST.meta) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" && role !== "C" ? compBar(S, role) : "") + (role !== "T" ? myCmds(S, role) : "") + P.html(S, ui) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
     Object.entries(vals).forEach(([id, v]) => { const el = $(id); if (el && v !== undefined && el.dataset.keep !== "0" && (el.tagName !== "TEXTAREA" || ui.edited && ui.edited[id])) el.value = v; });
     mountMonitors($("pBody")); paintTimers(S); reArm();
     if (focus && $(focus)) $(focus).focus(); scrollTo(0, keepScroll); const cl = $("chatList"); if (cl) cl.scrollTop = cl.scrollHeight;
@@ -4044,6 +4204,9 @@ function render(){
   if ((m = h.match(/^p-(\d{4})$/))) return player(m[1]);
   if ((m = h.match(/^j-(\d{4})$/))) { const s = seatGet(m[1]); return s ? go("p-" + m[1]) : landing(m[1]); }
   if (h === "rec") return records();
+  if (h === "team") return teamPage();
+  if (h === "lb") return boardPage();
+  if (h === "lv") return levelPage();
   if ((m = h.match(/^r-(\d{13}|\d{4}-\d{2}-\d{2})-(\d{4})$/))) { ST.seat = null; return replay(m[1], m[2]); }
   return landing("");
 }
