@@ -1977,6 +1977,58 @@ details.scenep summary{cursor:pointer;font-weight:800}
 .dtag2{font-style:normal;font-size:11.5px;font-weight:800;color:#fff;background:var(--dc);padding:1px 7px;border-radius:999px}.ptsup{color:#1B7D63}
 /* 排行榜故事區：手機上章節改橫向捲動，名次早一點看到 */
 @media (max-width:600px){.saga .chaps{display:flex;overflow-x:auto;gap:8px;scroll-snap-type:x mandatory;padding-bottom:4px}.saga .chaps li{flex:0 0 72%;scroll-snap-align:start}.saga .sagat p{font-size:13px}}
+.sumt th{white-space:nowrap;text-align:left;color:var(--ink-2);font-weight:700;padding:5px 10px}.sumt td{padding:5px 10px}.mini.ghost{opacity:.75}
+/* ===== 教案工坊 ===== */
+.aunew .row2,.aupage .row2,.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.aulist{display:grid;gap:8px}
+.aucase{font:inherit;text-align:left;display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:4px 8px;align-items:center;padding:10px 12px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.aucase small{grid-column:1/-1;color:var(--ink-2);font-size:12.5px}.aucase:hover{border-color:var(--z-resus)}
+.austa{font-size:12px;font-weight:800;color:#fff;background:var(--sc);padding:2px 9px;border-radius:999px;white-space:nowrap}
+.auchk{border-radius:14px;padding:10px 14px;display:grid;gap:4px}.auchk ul{margin:0;padding-left:1.2em;font-size:13.5px}.auchk small{color:var(--ink-2)}
+.auchk.ok{background:#E6F7EE;border:1px solid #9BD8B6}.auchk.warn{background:#FFF6DD;border:1px solid #E9C96B}.auchk.bad{background:#FDECEA;border:1px solid #F0A39B}
+.aubox{display:grid;gap:6px;padding:10px 12px;border:1px dashed var(--line);border-radius:14px}.aubox small{color:var(--ink-2);font-size:12.5px}.aubox code{background:var(--surface-2,#F1F4F7);padding:1px 6px;border-radius:6px}
+.fld.tl{display:grid;grid-template-columns:minmax(90px,150px) minmax(0,1fr);gap:8px;align-items:center}.fld.tl span{font-size:12.5px;color:var(--ink-2)}
+#auJson{width:100%;font:12px ui-monospace,monospace}
+.aubtns{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.aubtns input{flex:1 1 180px;min-width:0}
+.bk{font-style:normal;font-weight:800;color:#1D74A0}.bk.live{color:#1B7D63}
+@media (max-width:600px){.row2{grid-template-columns:1fr}.fld.tl{grid-template-columns:1fr}}
+/* ===== 每月報告 ===== */
+.rphead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center}.rphead small{color:var(--ink-2)}
+.rpkpi{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-bottom:12px}
+.rpkpi>div{display:grid;gap:2px;padding:12px 14px;border-radius:16px;background:var(--surface);border:1.5px solid var(--line)}
+.rpkpi>div.ok{border-color:#9BD8B6;background:linear-gradient(170deg,#EDF9F2,var(--surface))}.rpkpi>div.bad{border-color:#F0A39B;background:linear-gradient(170deg,#FDF0EE,var(--surface))}
+.rpkpi small{color:var(--ink-2);font-size:12.5px}.rpkpi b{font:800 24px "IBM Plex Mono","Noto Sans TC",monospace}.rpkpi em{font-style:normal;font-size:11.5px;color:var(--ink-2)}
+.dl{font-size:12px}.dl.up{color:#1B7D63}.dl.down{color:#C63D2F}
+.rpt th,.rpt td{padding:6px 10px;text-align:left;vertical-align:middle}.rpt tbody th{color:var(--ink);white-space:nowrap}
+.rpbar{position:relative;display:block;min-width:160px;height:20px;border-radius:99px;background:color-mix(in oklab,var(--c) 12%,var(--surface))}.rpbar i{position:absolute;inset:0 auto 0 0;border-radius:99px;background:var(--c)}.rpbar b{position:relative;padding-left:8px;font-size:12.5px;line-height:20px;color:var(--ink)}
+.rpgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media (max-width:760px){.rpgrid{grid-template-columns:1fr}}
+.rpmiss{margin:0;padding-left:1.4em;display:grid;gap:4px}.rpmiss li span{display:inline-block;min-width:60%}.rpmiss b{float:right;color:var(--ink-2)}
+.rpwk{width:100%;max-width:320px;height:auto}
+#rpTxt{width:100%;font:15px/1.7 "Noto Sans TC",sans-serif}
+@media print{.appbar,#rpAI,#rpCopy,#rpCsv,#rpPrint,#rpM,.note{display:none!important}.panel,.rpkpi>div{box-shadow:none!important;break-inside:avoid}}
+.myfb2 .mfb{display:grid;gap:6px;padding:10px 12px;border-radius:14px;background:var(--surface-2,#F4F7FA);margin-top:8px}
+.myfb2 .mfb>b{color:var(--rc)}.myfb2 ul{margin:0;padding:0;list-style:none;display:grid;gap:4px}.myfb2 li{font-size:14.5px}.myfb2 li.bad{color:#8E2318}
+.mfbq{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.mfbq a{font-size:13px;font-weight:800;text-decoration:none;padding:4px 10px;border-radius:999px;background:#E7F0FA;color:#1D74A0}
+.commp .dbr small{display:block;font-size:11.5px;color:var(--ink-2);font-weight:500}
+.commai{margin-top:10px;padding:12px 14px;border-radius:14px;background:#F3F0FB;border:1px solid #D6CCF2;line-height:1.75;font-size:14.5px}
+.whos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}.whos button{font:inherit;font-size:13.5px;font-weight:700;padding:6px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}.whos button.on{background:#6650C0;border-color:#6650C0;color:#fff}
+.vcmd{display:grid;gap:2px;justify-items:center;margin:6px 0}.vcmd small{font-size:12px;font-weight:500;opacity:.85}.vcmd.on{background:#C63D2F}
+/* ===== 字級加大（每月報告、教案工坊、溝通分析、個人回饋、選題） ===== */
+.rphead h2{font-size:24px}.rphead small{font-size:14px}
+.rpkpi{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}.rpkpi small{font-size:15px}.rpkpi b{font-size:30px}.rpkpi em,.dl{font-size:13.5px}
+.rpt th,.rpt td{font-size:16px;padding:8px 12px}.rpbar{height:26px}.rpbar b{font-size:14.5px;line-height:26px}
+.rpmiss li{font-size:16px;line-height:1.7}.rpwk text{font-size:12px}
+#rpTxt{font-size:17px;line-height:1.8}
+.rphead~.panel .hint,.rphead~p.hint{font-size:14.5px}
+.aunew .h2{font-size:22px}.aunew p.hint,.aubox small,.auchk small{font-size:14.5px}
+.aunew .fld,.aupage .fld,#view .aubox .fld,.fld.tl span{font-size:15px}
+#view textarea[data-auf],#view textarea[data-aul],#view input[data-autl],#view input[data-auc],#auCause,#auNote{font-size:16.5px;line-height:1.6}
+.aucase b{font-size:16.5px}.aucase small{font-size:13.5px}.austa{font-size:13.5px}.auchk ul{font-size:15.5px}
+.commp .dbr span,.commp .dbr b{font-size:16px}.commp .dbr small{font-size:13px}.commai{font-size:16.5px;line-height:1.85}
+.myfb2 li{font-size:16.5px;line-height:1.6}.myfb2 .mfb>b{font-size:16px}.mfbq a{font-size:14.5px;padding:6px 12px}
+.dcard b{font-size:21px}.dcard em{font-size:26px}.dcard>small{font-size:13.5px}.dcard span{font-size:14px}.apsel{font-size:16px}.apsel small{font-size:14px}
+.gmsel>span{font-size:16px}.gmsel small{font-size:14px}.whos button{font-size:15px;padding:8px 12px}
+.rphead~.panel .h3,.rphead~.rpgrid .h3,.commp .h3,.myfb2 .h3,.apick .h3{font-size:19px}.rphead~.panel .btn{font-size:15.5px}
 
 </style>
 </head>
@@ -2159,7 +2211,7 @@ const DRUG_TABS = ["急救", "電解質", "解毒", "休克"];
 /* Leader 處置決策 */
 const PROC = [
   ["needle", "針刺減壓"], ["chesttube", "放置胸管"], ["pericardio", "心包膜穿刺"], ["surgery", "通知外科／開胸"],
-  ["rewarm", "積極復溫"], ["pci", "啟動心導管"], ["ct", "安排腦部 CT"], ["neuro", "會診神經外科"],
+  ["rewarm", "積極復溫"], ["cool", "積極降溫（冰水／冰敷＋噴霧）"], ["pci", "啟動心導管"], ["ct", "安排腦部 CT"], ["neuro", "會診神經外科"],
   ["dialysis", "聯絡緊急洗腎"], ["decon", "除污（脫衣、沖洗）"], ["ecpr", "評估 ECPR"], ["tor", "考慮終止急救"]
 ];
 const PROC_BY = Object.fromEntries(PROC.map(p => [p[0], p]));
@@ -3080,6 +3132,26 @@ const ROLES = {
   T: ["臨床教師", "控制病人、回覆評估、丟線索", "#334155"]
 };
 const ROLE_ORDER = ["L", "C", "A", "D", "M", "R"];
+/* Leader 用說的下指令：從一句話判斷「給誰、做什麼」（規則比對，不用 AI） */
+const CMD_DRUG = [["amio150", /(amio|胺碘|安美達).*(150)|150.*(amio|胺碘)/i], ["amio300", /amio|胺碘|安美達/i], ["epidrip", /(epi|腎上腺).*(滴注|drip|pump)/i], ["epi", /epi|腎上腺素|bosmin(?!.*肌肉)/i], ["atropine", /atropine|阿托品/i], ["adeno12", /adeno\w*.*12|腺苷.*12/i], ["adeno6", /adeno|腺苷/i],
+  ["nahco3", /nahco|bicarb|碳酸氫|小蘇打/i], ["ca", /calcium|鈣/i], ["mg", /mgso|magnes|鎂/i], ["kcl", /kcl|補鉀|氯化鉀/i], ["insulin", /insulin|胰島素|\bri\b/i], ["d50", /d50|五十|葡萄糖/i], ["naloxone", /naloxone|納洛酮/i], ["pam", /\bpam\b|解磷/i],
+  ["alteplase", /alteplase|rt-?pa|血栓溶解/i], ["blood", /輸血|備血/i], ["ns", /\bns\b|生理食鹽水|輸液|大量給水/i], ["norepi", /norepi|levophed|升壓/i], ["bosmin", /bosmin.*(肌肉|im)|肌肉.*bosmin/i], ["vena", /vena/i], ["oradexon", /oradexon|類固醇/i], ["abx", /抗生素/i]];
+function parseCmd(t){
+  t = String(t || ""); const has = re => re.test(t);
+  const j = (t.match(/(\d{2,3})\s*(j|焦耳|焦)/i) || [])[1];
+  if (has(/電擊|充電|焦耳|貼片|監視器|判讀|心律|節律器/)) {
+    if (has(/貼片|監視器/)) return { to: "D", g: "pads" }; if (has(/節律器/)) return { to: "D", g: "pace" }; if (has(/判讀|心律/) && !j) return { to: "D", g: "call" };
+    if (j || has(/電擊/)) { const sync = has(/(?<!非)同步|sync/i); return { to: "D", g: "shock", p: { sync, j: +(j || 200) } }; }
+    return { to: "D", g: "charge" }; }
+  if (has(/提醒|計時|時間|記錄/)) return { to: "R", g: has(/epi/i) ? "tepi" : has(/兩分鐘|換手/) ? "tcyc" : "note" };
+  const d = CMD_DRUG.find(x => x[1].test(t)); if (d) return { to: "M", g: d[0] };
+  if (has(/iv|io|打針|建立管路|骨內/i)) return { to: "M", g: "iv" };
+  if (has(/換手/)) return { to: "C", g: "swap" }; if (has(/暫停|檢查脈搏|摸脈搏|停一下/)) return { to: "C", g: "hold" }; if (has(/繼續壓/)) return { to: "C", g: "resume" }; if (has(/壓胸|cpr/i)) return { to: "C", g: "cpr" };
+  if (has(/插管/)) return { to: "A", g: "ett" }; if (has(/抽痰/)) return { to: "A", g: "suction" }; if (has(/etco|二氧化碳|確認管/i)) return { to: "A", g: "etco2" }; if (has(/bvm|面罩|甦醒球|通氣/i)) return { to: "A", g: "bvm" }; if (has(/給氧|氧氣/)) return { to: "A", g: "o2" };
+  return null;
+}
+/* 自由提問可以指定問誰（系統自動時由 AI 扮演） */
+const WHO = { family: ["🧑‍🦳", "問家屬"], witness: ["🚑", "問目擊者／救護員"], consult: ["🩺", "電話會診"], nurse: ["🏥", "問床邊護理師"] };
 const roleName = k => ROLES[k] ? ROLES[k][0] : k === "H" ? "主持" : "系統";
 
 const DEMO = {
@@ -3262,8 +3334,8 @@ function derive(meta, events){
       log(e, `下單：${o.n}${n > 1 ? `（第 ${n} 次）` : ""}${o.dly ? `，約 ${o.dly >= 60 ? Math.round(o.dly / 60) + " 分鐘" : o.dly + " 秒"}後出報告` : ""}`, { g: "order", sp: `${o.n}，已下單` }); return; }
     if (a.type === "say") { const x = String(a.x || "").slice(0, 80); if (x) log(e, x, { g: "say", sp: x }); return; }
     /* ---- Leader：評估、處置、懷疑病因 ---- */
-    if (a.type === "ask" && role === "L") { const it = ASK_BY[a.k]; const label = it ? it[1] : String(a.x || "").slice(0, 40); if (!label) return;
-      const q = { id: "q" + (S.asks.length + 1), k: it ? a.k : "free", label, t, reply: null }; S.asks.push(q);
+    if (a.type === "ask" && role === "L") { const it = ASK_BY[a.k], who = !it && WHO[a.who] ? a.who : ""; const label = it ? it[1] : (who ? WHO[who][1] + "：" : "") + String(a.x || "").slice(0, 60); if (!label) return;
+      const q = { id: "q" + (S.asks.length + 1), k: it ? a.k : "free", label, t, reply: null, who }; S.asks.push(q);
       log(e, `Leader 評估：${label}`, { g: "ask", ask: q.id, sp: `請評估：${label}` });
       if (S.mode === "auto" && !it) { q.ai = 1; return; }   // 自由輸入：交給主持端的 AI 回答
       if (S.mode === "auto") { const x = (it && suggest(S, q.k)) || "（沒有教師，請自行判斷）", img = suggestImg(S, q.k); q.reply = { t, x, voice: "", img }; log({ t, w: "T", a: {}, i: e.i }, `${label}：${x}`, { g: "reply", sp: x, ask: q.id }); }
@@ -3706,12 +3778,12 @@ function autoPickHTML(S, ui){
   return `<section class="panel apick"><h3 class="h3">選擇難度（系統自動，沒有教師）</h3><p class="hint">選一個難度，系統從裡面隨機抽一題；病因不會顯示，結束後解題才揭曉。</p>
     <div class="dcards">${DIFF_ORDER.map(k => { const D = DIFF[k], n = AUTO_CASES.filter(id => CASE_DIFF[id] === k).length;
       return `<button class="dcard ${cd === k ? "on" : ""}" data-apick="__rand:${k}" style="--dc:${D[3]}"><i>${D[1]}</i><b>${D[0]}</b><em>${D[2].toLocaleString()}<small> 分</small></em><small>${esc(D[4])}</small><span>${n} 題・🎲 抽一題</span></button>`; }).join("")}</div>
-    ${F ? `<div class="apsel" style="--dc:${cd ? DIFF[cd][3] : "#334155"}"><span class="dtag">${cd ? DIFF[cd][1] + " " + DIFF[cd][0] : ""}</span>已抽到：<b>${esc(apDesc(cur))}</b><small>${esc(KIND_N[F.kind] || "心跳停止・VF")}${cd ? `・滿分 ${DIFF[cd][2].toLocaleString()} 積分` : ""}</small><button class="mini" data-apick="__rand:${cd || "low"}">🎲 換一題</button></div>
+    ${F ? `<div class="apsel" style="--dc:${cd ? DIFF[cd][3] : "#334155"}"><span class="dtag">${cd ? DIFF[cd][1] + " " + DIFF[cd][0] : ""}</span>已抽到：<b>${esc(apDesc(cur))}</b><small>${esc(KIND_N[F.kind] || "心跳停止・VF")}${cd ? `・滿分 ${DIFF[cd][2].toLocaleString()} 積分` : ""}${cur.bank && cur.bank.status !== "上架" ? `・${esc(cur.bank.status)}（不計分）` : ""}</small><button class="mini" data-apick="__rand:${cd || "low"}">🎲 換一題</button></div>
       <div class="sseg two fmpick"><button data-fm="practice" class="${S.fm === "practice" ? "on" : ""}">班內練習<small>演練 15 分鐘 → 直接解題</small></button><button data-fm="exam" class="${S.fm === "exam" ? "on" : ""}">模擬正式評核<small>15 → 團隊 debrief 3 → 評審題 2（自動出題）</small></button></div>` : ""}
     ${guideModeHTML(S)}
     <details class="aplist" ${open ? "open" : ""}><summary>自己挑題目（${AUTO_CASES.length} 題）</summary>
       ${DIFF_ORDER.map(k => `<div class="apg"><b class="apgh" style="--dc:${DIFF[k][3]}">${DIFF[k][1]} ${DIFF[k][0]}<small>${DIFF[k][2].toLocaleString()} 分</small></b><div class="apcards">${AUTO_CASES.filter(id => CASE_DIFF[id] === k).map(id => { const c = CASE_BY[id], f = c.formal || c.std;
-        return `<button class="apcard ${S.caseId === id ? "on" : ""}" data-apick="${id}"><b>${esc(apDesc(c))}</b><small>${esc(KIND_N[f.kind] || "心跳停止・VF")}</small></button>`; }).join("")}</div></div>`).join("")}</details>
+        return `<button class="apcard ${S.caseId === id ? "on" : ""}" data-apick="${id}"><b>${esc(apDesc(c))}</b><small>${esc(KIND_N[f.kind] || "心跳停止・VF")}${c.bank ? `・<i class="bk ${c.bank.status === "上架" ? "live" : ""}">${c.bank.status === "上架" ? "自訂教案" : c.bank.status + "・不計分"}</i>` : ""}</small></button>`; }).join("")}</div></div>`).join("")}</details>
     <p class="hint">選好後按上方「開始演練」。</p></section>`;
 }
 
@@ -3841,7 +3913,9 @@ async function replay(key, code){
   let r;
   if (!LIVE()) { const M = DEMO.load(code); r = M ? { ok: true, m: DEMO.pub(M), ev: M.ev } : { ok: false, error: "這台電腦找不到這場（示範模式只存在本機，房間清掉就沒了）" }; }
   else { const h = hostGet(code); r = await api("simReplay", Object.assign({ code, hostKey: h ? h.key : "" }, /^\d{13}$/.test(key) ? { id: key } : { date: key })); }
-  if (!r || !r.ok) { v.innerHTML = `<section class="panel stack"><div class="bmsg err">${esc((r && r.error) || "讀取失敗")}</div><p class="hint">回顧資料在演練結束時自動存檔；2026/10/19 以前的場次只有摘要，沒有完整重播。</p><a class="btn ghost" href="#rec">回演練紀錄</a></section>`; return; }
+  if (!r || !r.ok) { const sm = r && r.sum, ks = sm ? Object.keys(sm).filter(k => !/^_|員編|場次/.test(k) && sm[k] !== "") : [];
+    v.innerHTML = sm ? `<section class="panel stack"><div class="note">📄 ${esc(r.error)}</div><h3 class="h3">這場的摘要</h3><div class="tblw"><table class="sumt"><tbody>${ks.map(k => `<tr><th>${esc(k)}</th><td>${esc(sm[k])}</td></tr>`).join("")}</tbody></table></div><a class="btn ghost" href="#rec">回演練紀錄</a></section>`
+      : `<section class="panel stack"><div class="bmsg ${r && r.noReplay ? "" : "err"}">${esc((r && r.error) || "讀取失敗")}</div><p class="hint">完整重播在演練「結束」時自動存到雲端：任何一台裝置主持或參加過、並用員編登入的人都看得到。示範模式（沒連後端）的場次只存在那台電腦。</p><a class="btn ghost" href="#rec">回演練紀錄</a></section>`; return; }
   RP.meta = Object.assign({ saved: 1 }, r.m); RP.ev = (r.ev || []).slice().sort((a, b) => a.i - b.i);
   RP.S = derive(RP.meta, RP.ev); RP.tc = 0; RP.tab = "sum"; RP.auth = { code, id: /^\d{13}$/.test(key) ? key : String(RP.meta.created || ""), hostKey: (hostGet(code) || {}).key || "" };
   ST.code = code; ST.S = RP.S;
@@ -4001,7 +4075,7 @@ function aiCtx(S){
   L.push("【已回答過】" + S.asks.filter(q => q.reply && q.reply.x).slice(-8).map(q => `${q.label}→${q.reply.x}`).join("\n"));
   return L.filter(Boolean).join("\n");
 }
-async function aiAsk(S, q){ const r = await api("simAI", { code: ST.code, key: ST.seat.key, kind: "ask", q, ctx: aiCtx(S) }); return r || { ok: false, error: "連線失敗" }; }
+async function aiAsk(S, q, who){ const r = await api("simAI", { code: ST.code, key: ST.seat.key, kind: "ask", q, who: who || "", ctx: aiCtx(S) }); return r || { ok: false, error: "連線失敗" }; }
 /* 整場紀錄（給「講評草稿」用） */
 function aiFbCtx(S){
   const c = CASE_BY[S.caseId], F = fCase(S), m = summarize(S), k = checklist(S), who = r => `${ROLES[r] ? ROLES[r][0] : roleName(r)}${S.seats[r] ? "・" + S.seats[r].name : ""}`;
@@ -4025,7 +4099,7 @@ const AIQ = {};
 function aiTick(S){
   if (!S || S.mode !== "auto" || !ST.seat || ST.seat.role !== "H") return;
   S.asks.filter(q => q.ai && !q.reply && !AIQ[ST.code + q.id]).forEach(async q => { AIQ[ST.code + q.id] = 1;
-    const r = await aiAsk(ST.S, q.label);
+    const r = await aiAsk(ST.S, q.label.replace(/^[^：]+：/, q.who ? "" : "$&"), q.who);
     await act({ type: "reply", id: q.id, x: r.ok ? r.x : "（沒有教師，請自行判斷）", ai: r.ok ? 1 : 0 });
     if (!r.ok) toast("AI 回答失敗：" + r.error, true); });
 }
@@ -4217,6 +4291,368 @@ async function levelPage(){
     if (!rows.length) return toast("沒有讀到資料", true); const r = await api("gameLevelSet", { rows }); if (!r || !r.ok) return toast((r && r.error) || "失敗", true); R = r; toast(`已匯入 ${r.saved} 筆`); paint(); };
 }
 
+/* ================= 教案工坊：AI 出題草稿 → 人工修改 → 審核 → 試用／上架 =================
+   上架或試用的教案存在「er-learn 紀錄」的 sim_cases 分頁；每台裝置演練前都會載入（題庫）。
+   病人一律虛擬；臨床內容、用藥一定要人審過才上架。 */
+const BANK = { list: [], loaded: false };
+const AU = { role: "", me: null, cases: [], cur: null, left: 0, busy: false };
+/* ---------- 題庫：載入並註冊成病例（與標準化病例同一套引擎） ---------- */
+function defNorm(d){
+  d = JSON.parse(JSON.stringify(d || {}));
+  const A = (x, f) => Array.isArray(x) ? x : f;
+  d.kind = ["pea", "shock", "pulse"].includes(d.kind) ? d.kind : "pea";
+  d.fix = d.fix || {}; d.fix.all = A(d.fix.all, []); d.fix.any = A(d.fix.any, []);
+  d.timeline = A(d.timeline, []).filter(t => t && t.x).map(t => Object.assign({}, t, { at: Math.max(30, Math.min(840, +t.at || 240)) }));
+  d.lab = A(d.lab, []).filter(r => Array.isArray(r) && r.length >= 2).map(r => r.map(String));
+  d.keyAsk = A(d.keyAsk, []).filter(k => ASK_BY[k]); d.foundAsk = A(d.foundAsk, []).filter(k => ASK_BY[k]);
+  d.chg = A(d.chg, []).filter(r => Array.isArray(r) && r.length >= 4).map(r => r.slice(0, 4).map(String));
+  d.coach = d.coach || {}; d.coach.dx = A(d.coach.dx, ["你們是怎麼找到病因的？"]); d.coach.tx = A(d.coach.tx, ["處置的順序和理由是什麼？"]);
+  d.judge = A(d.judge, []); d.teach = A(d.teach, []); d.tx = A(d.tx, []); d.clue = d.clue || {}; d.img = d.img || {}; d.after = d.after || {};
+  d.cxr = d.cxr && typeof d.cxr === "object" ? d.cxr : { ctr: .48 }; d.cxrTxt = d.cxrTxt || "心肺沒有特別發現。";
+  d.start = d.start || {}; if (!RHY[d.start.rhythm]) d.start.rhythm = d.kind === "shock" ? "vf" : d.kind === "pulse" ? "stach" : "pea";
+  if (d.kind === "pulse") d.start.pulse = true;
+  if (d.kind === "pulse" && !(d.post && RHY[d.post.r])) d.post = { r: "sinus", v: { hr: 92, sbp: 118, dbp: 70, spo2: 97, rr: 18, etco2: 35 }, dur: 30 };
+  if (d.ekg && !(d.ekg.o && typeof d.ekg.o === "object")) delete d.ekg;
+  return d;
+}
+function bankAdd(x, tag){
+  const id = "u_" + x.id, d = defNorm(x.def);
+  const c = { id, g: "自訂", n: d.n || x.title || "自訂教案", ht: HT.some(h => h[0] === d.ht) ? d.ht : "", brief: d.brief || "", start: d.start, clue: d.clue, push: d.timeline.map(t => t.x), tx: d.tx, img: d.img, bank: { status: x.status, diff: x.diff, tag: tag || "", author: x.author } };
+  c.std = stdBuild(c, d);
+  const old = CASES.findIndex(y => y.id === id); if (old >= 0) CASES[old] = c; else CASES.push(c);
+  CASE_BY[id] = c; CASE_DIFF[id] = DIFF[x.diff] ? x.diff : "mid";
+  if (!AUTO_CASES.includes(id)) AUTO_CASES.push(id);
+}
+async function bankLoad(force){
+  /* 示範模式：教案工坊按「試玩」時放進來的那一題 */
+  try { const t = JSON.parse(localStorage.getItem("sim2-try") || "null"); if (t && t.def) bankAdd({ id: "try", def: t.def, diff: t.diff, status: "試玩", title: t.def.n }, "試玩"); } catch (e) {}
+  if (!LIVE()) { BANK.loaded = true; return; }
+  try { const c = JSON.parse(localStorage.getItem("sim2-bank") || "null"); if (c && !force) c.forEach(x => { try { bankAdd(x); } catch (e) {} }); } catch (e) {}
+  const r = await api("caseBank", {});
+  if (r && r.ok) { BANK.list = r.cases; r.cases.forEach(x => { try { bankAdd(x); } catch (e) { console.warn("教案載入失敗", x.id, e); } }); try { localStorage.setItem("sim2-bank", JSON.stringify(r.cases)); } catch (e) {} }
+  BANK.loaded = true;
+}
+window.BANKP = Promise.resolve().then(() => bankLoad()).catch(e => console.warn("題庫載入失敗", e));
+
+/* ---------- 檢查：AI 草稿常見問題 ---------- */
+const TXOK = k => !!(DRUG_BY[k] || PROC_BY[k] || ["defib", "suction", "ett", "bvm", "sga"].includes(k));
+function defCheck(d){
+  const E = [], W = [];
+  if (!d.n) E.push("缺標題（n）"); if (!/虛擬病人/.test(d.pt || "")) E.push("病人資料要寫「（虛擬病人）」");
+  if (!d.cause) E.push("缺病因（cause）"); if (!d.why) E.push("缺解題說明（why）"); if (!d.fixText) E.push("缺處置說明（fixText）");
+  if (!d.fix.all.length && !d.fix.any.length) E.push("沒有設定「做了什麼算處理病因」（fix）");
+  [...d.fix.all, ...d.fix.any].filter(k => !TXOK(k)).forEach(k => E.push(`處置代碼不存在：${k}`));
+  d.tx.filter(k => !TXOK(k)).forEach(k => W.push(`期待處置代碼不存在（已略過）：${k}`));
+  if (d.timeline.length < 2) W.push("自動線索少於 2 則");
+  d.timeline.filter(t => t.st && !STATE_BY[t.st]).forEach(t => E.push(`線索的情境模組不存在：${t.st}`));
+  Object.keys(d.clue).filter(k => !ASK_BY[k]).forEach(k => W.push(`評估項目不存在（不會用到）：${k}`));
+  Object.values(d.img).filter(k => !IMGS[k]).forEach(k => W.push(`超音波圖不存在：${k}`));
+  if (!d.lab.length) W.push("沒有檢驗報告"); if (!d.keyAsk.length) W.push("沒有設定關鍵評估（keyAsk）");
+  if (d.teach.length < 2) W.push("「帶回臨床」少於 2 點"); if (d.judge.length < 2) W.push("評審題少於 2 題");
+  const all = JSON.stringify(d);
+  [["Tenecteplase", "本院沒有 Tenecteplase（用 Alteplase）"], ["Zofran", "本院沒有 Zofran"], ["Ondansetron", "本院沒有 Ondansetron（Zofran）"], ["Calcium chloride", "本院現在用 Calcium gluconate（原液 10 mL）"], ["CaCl", "本院現在用 Calcium gluconate"]]
+    .forEach(([k, m]) => { if (all.includes(k)) W.push("用藥提醒：" + m); });
+  if (/\d{2,}\s*歲.*(先生|小姐|女士)/.test(all) && !/○○/.test(d.pt || "")) W.push("病人姓名請用 ○○ 遮掉");
+  return { E, W };
+}
+
+/* ---------- 給 AI 的出題規則（含標準格式範例、可用代碼、本院用藥） ---------- */
+function genPrompt(){
+  const ex = Object.assign({ n: "張力性氣胸：車禍胸部外傷", brief: CASE_BY.tension.brief, ht: "tension", start: CASE_BY.tension.start, img: CASE_BY.tension.img, clue: CASE_BY.tension.clue, tx: CASE_BY.tension.tx }, STD.tension);
+  const voc = {
+    drugs: DRUGS.map(d => `${d[0]}=${d[1]}`).join("；"), procs: PROC.map(p => `${p[0]}=${p[1]}`).join("；") + "；defib=電擊；suction=抽痰；ett=插管；bvm=BVM 通氣；sga=聲門上呼吸道",
+    asks: ASK.map(a => `${a[0]}=${a[1]}`).join("；"), rhythms: Object.keys(RHY).filter(k => k !== "none").map(k => `${k}=${RHY[k][0]}`).join("；"),
+    states: STATES.map(s => `${s.id}=${s.n}`).join("；"), imgs: Object.keys(IMGS).map(k => `${k}=${IMGS[k][0]}`).join("；"), ht: HT.map(h => `${h[0]}=${h[1]}`).join("；")
+  };
+  return `你是急診護理擬真教案設計者（台灣、嘉義基督教醫院急診）。依照要求，產生一份「無教師模式」可以自動運作的團隊擬真教案，只輸出 JSON。
+規則：
+1. 病人一律虛擬：pt 寫「姓○○（虛擬病人）・年齡性別・情境」。不可出現真實人名、醫院個資。
+2. 繁體中文、台灣醫院用語；檢驗數值合理且彼此一致；只寫有把握的醫學內容。
+3. kind：pea（無脈搏、不可電擊；病因處理後下一次暫停檢查 ROSC）、shock（VF／VT；病因處理後下一次電擊 ROSC）、pulse（有脈搏，處置對了就穩定，拖太久會惡化）。
+4. timeline 2–3 則自動線索：心跳停止題放在約 240、360、510 秒；有脈搏題放在 150（惡化，可加 v 生命徵象或 st 情境模組）、300（st 用 pea 或 vf 代表心跳停止）、420。unless 用 "found"（已找到病因就不出）或 "fixed"（已處理就不出）。
+5. fix 是「做了什麼才算處理病因」：all＝全部要做、any＝至少一項；只能用下面的處置代碼。tx 是期待處置（也只能用代碼）。
+6. clue 的 key 只能用下面的評估代碼，內容是 Leader 評估時看到的結果；要讓團隊能靠評估、檢驗找到病因，但不要直接寫出診斷名稱。
+7. lab 每列 [項目, 數值, 參考值, 旗標(H/L/C/空字串), 處置後數值(可省略)]；chg 每列 [項目, 處置前, 處置後, ROSC或穩定後]。
+8. 本院用藥：Calcium 用 Calcium gluconate 原液 10 mL 緩慢靜注；過敏立即 Vena＋Oradexon，組織腫脹、喘鳴、低血壓立即 Bosmin；血栓溶解用 Alteplase（沒有 Tenecteplase）；沒有 Zofran；PAM 依本院注射指引 IVD；低血糖意識不清先 D50W。
+9. pulse 題要有 post：{"r":心律代碼,"v":{hr,sbp,dbp,spo2,rr,etco2},"dur":30}，也要有 open（開場一句話）。
+可用代碼：
+處置／藥物：${voc.drugs}；${voc.procs}
+評估：${voc.asks}
+心律：${voc.rhythms}
+情境模組（st）：${voc.states}
+超音波圖（img 的值；key 可用 echo、ivc、lus）：${voc.imgs}
+5H5T（ht）：${voc.ht}
+輸出格式完全照這個範例（欄位一樣，內容換成新的病例）：
+${JSON.stringify(ex)}`;
+}
+
+/* ---------- 頁面 ---------- */
+const ST_COL = { 草稿: "#56677A", 送審: "#B7790A", 退回: "#C63D2F", 試用: "#1D74A0", 上架: "#1B7D63", 下架: "#334155" };
+async function authorPage(){
+  stopRoom(); setBar("教案工坊", "AI 出題草稿・審核・上架", "home"); const v = $("view");
+  if (!LIVE()) { v.innerHTML = `<div class="note">教案工坊要連上 Apps Script（示範模式不能用）。</div>`; return; }
+  if (!me()) { v.innerHTML = `<section class="panel stack"><b>請先用員編登入</b><button class="btn" id="lg">登入</button></section>`; $("lg").onclick = () => ACC && ACC.goLogin && ACC.goLogin(); return; }
+  v.innerHTML = `<div class="skel"><i></i><i></i></div>`;
+  const r = await api("caseMine", {});
+  if (!r || !r.ok) { v.innerHTML = `<section class="panel stack"><div class="bmsg ${r && r.noPerm ? "" : "err"}">${esc((r && r.error) || "讀取失敗")}</div><p class="hint">出題權限由護理長在帳號中心設定。</p></section>`; return; }
+  Object.assign(AU, { role: r.role, me: r.me, cases: r.cases, left: r.left, twoMan: r.twoMan });
+  auList();
+}
+function auList(){
+  const v = $("view"), mine = AU.cases.filter(c => c.authorEmp === AU.me.emp), wait = AU.cases.filter(c => c.status === "送審");
+  const row = c => `<button class="aucase" data-auopen="${esc(c.id)}"><span class="austa" style="--sc:${ST_COL[c.status] || "#56677A"}">${esc(c.status)}</span>${DIFF[c.diff] ? `<i class="dtag2" style="--dc:${DIFF[c.diff][3]}">${DIFF[c.diff][1]} ${DIFF[c.diff][0]}</i>` : ""}<b>${esc(c.title)}</b><small>${esc(c.author)}・${esc(String(c.upd || "").slice(5, 16))}${c.reviewer ? `・審核 ${esc(c.reviewer)}` : ""}${c.note ? `・${esc(c.note)}` : ""}</small></button>`;
+  v.innerHTML = `<section class="panel stack aunew"><h2 class="h2">✍️ 用 AI 出一題新教案</h2>
+      <p class="hint">輸入病因和難度，AI 會照標準格式產生草稿（約 20–40 秒）。草稿一定要看過、修改，再送審；${AU.role === "pub" ? "你有上架權限，可以直接試用或上架。" : "審核者通過才會上架。"}今天還能產生 <b>${AU.left}</b> 份。</p>
+      <label class="fld">病因／主題<input id="auCause" maxlength="60" placeholder="例如：上腸胃道出血合併低血容、熱中暑、毒蛇咬傷…"></label>
+      <div class="row2"><label class="fld">難度<select id="auDiff">${DIFF_ORDER.map(k => `<option value="${k}" ${k === "mid" ? "selected" : ""}>${DIFF[k][1]} ${DIFF[k][0]}（${DIFF[k][2].toLocaleString()} 分）</option>`).join("")}</select></label>
+        <label class="fld">開場<select id="auKind"><option value="pea">心跳停止・PEA</option><option value="shock">心跳停止・VF／VT</option><option value="pulse">有脈搏・會惡化</option></select></label></div>
+      <label class="fld">補充要求（選填）<textarea id="auNote" rows="2" maxlength="300" placeholder="例如：要有 12 導程判讀、適合 N1 程度、病人是兒童…"></textarea></label>
+      <button class="btn big" id="auGen" ${AU.left > 0 ? "" : "disabled"}>🤖 產生草稿</button></section>
+    ${AU.role === "pub" && wait.length ? `<section class="panel"><h3 class="h3">等你審核（${wait.length}）</h3><div class="aulist">${wait.map(row).join("")}</div></section>` : ""}
+    <section class="panel"><h3 class="h3">我的教案（${mine.length}）</h3>${mine.length ? `<div class="aulist">${mine.map(row).join("")}</div>` : `<p class="hint">還沒有。</p>`}</section>
+    ${AU.role === "pub" ? `<section class="panel"><h3 class="h3">全部教案（${AU.cases.length}）</h3><div class="aulist">${AU.cases.map(row).join("") || `<p class="hint">還沒有。</p>`}</div></section>` : ""}
+    <p class="hint">上架＝無教師模式可以選、團隊賽計分；試用＝可以選、不計分（先練幾場確認沒問題）。</p>`;
+  v.onclick = async e => {
+    const o = e.target.closest("[data-auopen]"); if (o) { const c = AU.cases.find(x => x.id === o.dataset.auopen); if (c) auEdit({ id: c.id, status: c.status, diff: c.diff, def: defNorm(c.def), author: c.author, authorEmp: c.authorEmp, note: c.note }); return; }
+    if (e.target.closest("#auGen")) return auGen();
+  };
+}
+async function auGen(){
+  const cause = $("auCause").value.trim(), diff = $("auDiff").value, kind = $("auKind").value, note = $("auNote").value.trim();
+  if (!cause) { $("auCause").focus(); return toast("請先寫病因或主題", true); }
+  const b = $("auGen"); b.disabled = true; let s = 0; const t = setInterval(() => b.textContent = `🤖 AI 出題中…（${++s} 秒）`, 1000);
+  const user = `請出一題：病因／主題「${cause}」；難度「${DIFF[diff][0]}」（${DIFF[diff][4]}）；開場 kind="${kind}"。${note ? "補充要求：" + note : ""}`;
+  const r = await api("caseGen", { sys: genPrompt(), user });
+  clearInterval(t); b.disabled = false; b.textContent = "🤖 產生草稿";
+  if (!r || !r.ok) return toast((r && r.error) || "產生失敗", true);
+  AU.left = r.left; auEdit({ id: "", status: "新草稿", diff, def: defNorm(r.def), author: AU.me.name, authorEmp: AU.me.emp });
+}
+/* ---------- 編輯器 ---------- */
+function auEdit(x){
+  AU.cur = x; const v = $("view"), d = x.def, can = x.authorEmp === AU.me.emp || AU.role === "pub", pub = AU.role === "pub";
+  const chk = defCheck(d), L = (k, lab, rows = 2) => `<label class="fld">${lab}<textarea data-auf="${k}" rows="${rows}">${esc(k.split(".").reduce((o, p) => o && o[p], d) || "")}</textarea></label>`;
+  const list = (k, lab) => `<label class="fld">${lab}<small>（一行一項）</small><textarea data-aul="${k}" rows="${Math.max(2, (k.split(".").reduce((o, p) => o && o[p], d) || []).length)}">${esc((k.split(".").reduce((o, p) => o && o[p], d) || []).join("\n"))}</textarea></label>`;
+  v.innerHTML = `<section class="panel stack"><div class="row"><button class="btn ghost" id="auBack">‹ 教案列表</button><span class="austa" style="--sc:${ST_COL[x.status] || "#56677A"}">${esc(x.status)}</span><small class="hint">出題：${esc(x.author || "")}${x.note ? `・備註：${esc(x.note)}` : ""}</small></div>
+      <div class="auchk ${chk.E.length ? "bad" : chk.W.length ? "warn" : "ok"}">${chk.E.length ? `<b>❌ 要先修正（${chk.E.length}）</b><ul>${chk.E.map(m => `<li>${esc(m)}</li>`).join("")}</ul>` : `<b>✓ 格式檢查通過</b>`}${chk.W.length ? `<b>⚠️ 請確認（${chk.W.length}）</b><ul>${chk.W.map(m => `<li>${esc(m)}</li>`).join("")}</ul>` : ""}<small>格式檢查只看欄位和代碼；臨床內容與本院用藥請一定要自己看過。</small></div>
+      <div class="row2"><label class="fld">難度<select id="auDiff2" ${can ? "" : "disabled"}>${DIFF_ORDER.map(k => `<option value="${k}" ${x.diff === k ? "selected" : ""}>${DIFF[k][1]} ${DIFF[k][0]}</option>`).join("")}</select></label>
+        <label class="fld">開場<select data-auf="kind">${[["pea", "心跳停止・PEA"], ["shock", "心跳停止・VF／VT"], ["pulse", "有脈搏・會惡化"]].map(([k, n]) => `<option value="${k}" ${d.kind === k ? "selected" : ""}>${n}</option>`).join("")}</select></label></div>
+      ${L("n", "標題（只有出題者、審核者看得到）", 1)}${L("pt", "病人（大面板看得到，不能寫出病因）", 1)}${L("brief", "教師用摘要", 2)}
+      ${L("cause", "病因（解題時揭曉）", 1)}${L("why", "解題說明", 4)}${L("fixText", "處置說明（做什麼才算處理病因）", 1)}
+      <div class="aubox"><b>處理病因的判定</b><small>全部要做：${d.fix.all.map(k => `<code>${esc(STD_TXN(k))}</code>`).join("、") || "—"}；至少一項：${d.fix.any.map(k => `<code>${esc(STD_TXN(k))}</code>`).join("、") || "—"}</small><small>期待處置：${d.tx.map(k => `<code>${esc(STD_TXN(k))}</code>`).join("、") || "—"}</small></div>
+      <div class="aubox"><b>自動線索時間軸</b>${d.timeline.map((t, i) => `<label class="fld tl"><span>${mmss(t.at * 1000)}${t.unless ? `・${t.unless === "found" ? "找到病因就略過" : "處理後就略過"}` : ""}${t.st ? `・→ ${esc((STATE_BY[t.st] || { n: t.st }).n)}` : ""}</span><input data-autl="${i}" value="${esc(t.x)}"></label>`).join("")}</div>
+      <div class="aubox"><b>評估時的回答（Leader 問到才出現）</b>${Object.entries(d.clue).map(([k, t]) => `<label class="fld tl"><span>${esc(ASK_BY[k] ? ASK_BY[k][1] : k)}</span><input data-auc="${esc(k)}" value="${esc(t)}"></label>`).join("")}</div>
+      <div class="aubox"><b>檢驗報告</b><div class="tblw"><table class="labt"><thead><tr><th>項目</th><th>結果</th><th>參考值</th><th>處置後</th></tr></thead><tbody>${d.lab.map(r => `<tr class="${r[3] ? "f" + r[3] : ""}"><td>${esc(r[0])}</td><td><b>${esc(r[1])}</b>${r[3] ? `<i>${r[3] === "C" ? "危急" : r[3]}</i>` : ""}</td><td>${esc(r[2] || "")}</td><td>${esc(r[4] || "")}</td></tr>`).join("")}</tbody></table></div><small>要改數值請用下方「進階：直接改 JSON」。</small></div>
+      ${list("teach", "帶回臨床")}${list("judge", "評審題")}${list("coach.dx", "團隊 debrief 引導（診斷）")}${list("coach.tx", "團隊 debrief 引導（治療）")}
+      <details class="aubox"><summary>進階：直接改 JSON（數值、代碼、心電圖參數）</summary><textarea id="auJson" rows="16" spellcheck="false">${esc(JSON.stringify(d, null, 1))}</textarea><button class="btn ghost" id="auJsonOk">套用 JSON</button></details>
+      <div class="aubtns">${can ? `<button class="btn ghost" id="auTry">▶ 示範模式試玩</button><button class="btn ghost" data-ausave="0">💾 存草稿</button>${x.status !== "上架" && x.status !== "試用" ? `<button class="btn" data-ausave="1" ${chk.E.length ? "disabled" : ""}>📤 送審</button>` : ""}` : ""}
+        ${pub && x.id ? `<input id="auNote2" placeholder="審核備註（退回原因等）" maxlength="300"><button class="btn ghost" data-aurev="back">↩ 退回</button><button class="btn" data-aurev="trial" ${chk.E.length ? "disabled" : ""}>🧪 試用（不計分）</button><button class="btn" data-aurev="live" ${chk.E.length ? "disabled" : ""}>✅ 上架（計分）</button>${x.status === "上架" || x.status === "試用" ? `<button class="btn ghost" data-aurev="off">⏸ 下架</button>` : ""}` : ""}</div></section>`;
+  const set = (path, val) => { const ks = path.split("."); let o = d; ks.slice(0, -1).forEach(k => o = o[k] = o[k] || {}); o[ks[ks.length - 1]] = val; };
+  v.oninput = e => { const t = e.target;
+    if (t.dataset.auf) set(t.dataset.auf, t.value); if (t.dataset.aul) set(t.dataset.aul, t.value.split("\n").map(s => s.trim()).filter(Boolean));
+    if (t.dataset.autl) d.timeline[+t.dataset.autl].x = t.value; if (t.dataset.auc) d.clue[t.dataset.auc] = t.value; if (t.id === "auDiff2") x.diff = t.value; };
+  v.onchange = e => { if (e.target.dataset.auf === "kind" || e.target.id === "auDiff2") { if (e.target.id === "auDiff2") x.diff = e.target.value; else d.kind = e.target.value; x.def = defNorm(d); auEdit(x); } };
+  v.onclick = async e => {
+    if (e.target.closest("#auBack")) return authorPage();
+    if (e.target.closest("#auJsonOk")) { try { x.def = defNorm(JSON.parse($("auJson").value)); auEdit(x); toast("已套用"); } catch (er) { toast("JSON 格式錯誤：" + er.message, true); } return; }
+    if (e.target.closest("#auTry")) { try { localStorage.setItem("sim2-try", JSON.stringify({ def: defNorm(d), diff: x.diff })); } catch (er) {} window.open(location.pathname + "?local#home", "_blank"); toast("已在新分頁開示範模式：建立房間（系統自動）→ 自己挑題目 → 找「試玩」那一題"); return; }
+    const sv = e.target.closest("[data-ausave]"); if (sv) { const sub = sv.dataset.ausave === "1"; if (sub && defCheck(defNorm(d)).E.length) return toast("還有要修正的項目", true);
+      const r = await api("caseSave", { id: x.id, diff: x.diff, json: JSON.stringify(defNorm(d)), submit: sub ? 1 : 0 }); if (!r || !r.ok) return toast((r && r.error) || "存檔失敗", true);
+      x.id = r.id; x.status = r.status; toast(sub ? "已送審" : "已存草稿"); auEdit(x); return; }
+    const rv = e.target.closest("[data-aurev]"); if (rv) { const op = rv.dataset.aurev; if (["live", "off"].includes(op) && !armed(rv)) return toast("再按一次確認");
+      const sv2 = await api("caseSave", { id: x.id, diff: x.diff, json: JSON.stringify(defNorm(d)) }); if (!sv2 || !sv2.ok) return toast((sv2 && sv2.error) || "存檔失敗", true);
+      const r = await api("caseReview", { id: x.id, op, note: ($("auNote2") || {}).value || "" }); if (!r || !r.ok) return toast((r && r.error) || "失敗", true);
+      x.status = r.status; toast(`已${r.status}`); bankLoad(true); auEdit(x); return; }
+  };
+}
+
+/* ================= 每月訓練報告（有「查看全部」權限才能看） =================
+   數字一律由程式從演練摘要算出來；AI 只負責把數字寫成文字摘要與建議（送給 AI 的只有統計數字，沒有姓名、員編）。 */
+const RP_TARGET = { cpr: 10, shock: 120, epi: 300, search: 360, pause: 10 };
+const num = x => { const n = parseFloat(String(x || "").replace(/[^\d.]/g, "")); return isFinite(n) ? n : null; };
+const med = a => { a = a.filter(x => x !== null).sort((x, y) => x - y); if (!a.length) return null; const m = a.length >> 1; return a.length % 2 ? a[m] : Math.round((a[m - 1] + a[m]) / 2); };
+const frac = s => { const m = String(s || "").match(/(\d+)\s*\/\s*(\d+)/); return m ? [+m[1], +m[2]] : null; };
+const pctOf = (a, f) => { const x = a.filter(f.has || (() => true)); return x; };
+function rpStats(rows){
+  const R = rows.filter(o => o["病例"] && o["病例"] !== "（未設定）"), n = R.length;
+  const arrest = R.filter(o => num(o["到壓胸(秒)"]) !== null || /VF|PEA|心跳停止|難治|ROSC/.test(o["病例"] + o["結果"]));
+  const rate = (arr, f) => arr.length ? Math.round(arr.filter(f).length / arr.length * 100) : null;
+  const sumFrac = k => { let a = 0, b = 0; R.forEach(o => { const f = frac(o[k]); if (f) { a += f[0]; b += f[1]; } }); return b ? Math.round(a / b * 100) : null; };
+  const people = new Set(); R.forEach(o => ["Leader", "壓胸", "呼吸道", "電擊／監視器", "給藥", "紀錄"].forEach(k => { if (o[k]) people.add(o[k]); }));
+  const val = k => R.map(o => num(o[k])), hit = (k, lim) => { const v = val(k).filter(x => x !== null); return v.length ? Math.round(v.filter(x => x <= lim).length / v.length * 100) : null; };
+  const htRows = R.filter(o => o["懷疑對病因"] === "有" || o["懷疑對病因"] === "沒有");
+  const miss = {}; R.forEach(o => [o["缺少處置"], o["教案沒做到"], o["沒做到"]].join("、").split("、").map(s => s.trim()).filter(Boolean).forEach(s => miss[s] = (miss[s] || 0) + 1));
+  const cases = {}; R.forEach(o => { const c = o["病例"].replace(/^正式教案/, "教案"); cases[c] = (cases[c] || 0) + 1; });
+  const weeks = {}; R.forEach(o => { const d = new Date(o["日期"]); if (!isNaN(d)) { const w = Math.min(4, Math.floor((d.getDate() - 1) / 7)); weeks[w] = (weeks[w] || 0) + 1; } });
+  return { n, people: people.size, auto: R.filter(o => o["模式"] === "系統自動").length,
+    rosc: rate(R, o => /ROSC|有脈搏/.test(o["結果"])),
+    cpr: med(val("到壓胸(秒)")), shock: med(val("到首次電擊(秒)")), epi: med(val("到首劑Epi(秒)")), search: med(val("開始找病因(秒)")), fix: med(val("病因處理(秒)")), pause: med(val("最長壓胸中斷(秒)")),
+    callOK: sumFrac("心律判讀(對/總)"), pulseOK: sumFrac("脈搏判斷(對/總)"), txOK: sumFrac("期待處置完成"), keyOK: sumFrac("教案關鍵(做到/總)"),
+    loop: med(R.map(o => num(o["閉環完成率"]))), htHit: htRows.length ? Math.round(htRows.filter(o => o["懷疑對病因"] === "有").length / htRows.length * 100) : null,
+    badShock: R.reduce((a, o) => a + (num(o["電擊不當"]) || 0), 0), noClear: R.reduce((a, o) => a + (num(o["沒喊離開就電擊"]) || 0), 0),
+    roles: [
+      ["壓胸", [["10 秒內開始壓胸", hit("到壓胸(秒)", RP_TARGET.cpr)], ["最長中斷 ≤ 10 秒", hit("最長壓胸中斷(秒)", RP_TARGET.pause)]]],
+      ["電擊／監視器", [["2 分鐘內首次電擊", hit("到首次電擊(秒)", RP_TARGET.shock)], ["心律判讀正確", sumFrac("心律判讀(對/總)")]]],
+      ["給藥", [["5 分鐘內首劑 Epi", hit("到首劑Epi(秒)", RP_TARGET.epi)], ["期待處置完成", sumFrac("期待處置完成")]]],
+      ["Leader", [["找對病因", htRows.length ? Math.round(htRows.filter(o => o["懷疑對病因"] === "有").length / htRows.length * 100) : null], ["6 分鐘內開始找病因", hit("開始找病因(秒)", RP_TARGET.search)], ["指令閉環完成率（中位數）", med(R.map(o => num(o["閉環完成率"])))]]]
+    ],
+    miss: Object.entries(miss).sort((a, b) => b[1] - a[1]).slice(0, 8), cases: Object.entries(cases).sort((a, b) => b[1] - a[1]).slice(0, 10), weeks };
+}
+async function reportPage(month){
+  stopRoom(); setBar("每月訓練報告", "團隊擬真・品管用", "rec"); const v = $("view");
+  if (!LIVE()) { v.innerHTML = `<div class="note">每月報告要連上 Apps Script。</div>`; return; }
+  if (!me()) { v.innerHTML = `<section class="panel stack"><b>請先用員編登入</b><button class="btn" id="lg">登入</button></section>`; $("lg").onclick = () => ACC && ACC.goLogin && ACC.goLogin(); return; }
+  v.innerHTML = `<div class="skel"><i></i><i></i><i></i></div>`;
+  const r = await api("simList", { limit: 500 });
+  if (!r || !r.ok) { v.innerHTML = `<div class="bmsg err">${esc((r && r.error) || "讀取失敗")}</div><p class="hint">每月報告需要「查看全部演練紀錄」的權限。</p>`; return; }
+  const all = r.rows, months = [...new Set(all.map(o => String(o["日期"]).slice(0, 7)).filter(m => /^\d{4}-\d{2}$/.test(m)))].sort().reverse();
+  const now = new Date(), cur = month || months[0] || `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+  const prevM = (() => { const [y, m] = cur.split("-").map(Number); const d = new Date(y, m - 2, 1); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`; })();
+  const rows = all.filter(o => String(o["日期"]).startsWith(cur)), A = rpStats(rows), B = rpStats(all.filter(o => String(o["日期"]).startsWith(prevM)));
+  const fmtS = s => s === null ? "—" : s >= 60 ? `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}` : `${s} 秒`;
+  const kpi = [["場次", A.n, B.n, x => x + " 場", 0, 1], ["參與人數", A.people, B.people, x => x + " 人", 0, 1], ["ROSC／穩定", A.rosc, B.rosc, x => x + "%", 0, 1],
+    ["到開始壓胸（中位數）", A.cpr, B.cpr, fmtS, RP_TARGET.cpr, -1], ["到首次電擊（中位數）", A.shock, B.shock, fmtS, RP_TARGET.shock, -1], ["到首劑 Epi（中位數）", A.epi, B.epi, fmtS, RP_TARGET.epi, -1],
+    ["心律判讀正確率", A.callOK, B.callOK, x => x + "%", 80, 1], ["找對病因", A.htHit, B.htHit, x => x + "%", 70, 1], ["開始找病因（中位數）", A.search, B.search, fmtS, RP_TARGET.search, -1], ["指令閉環完成率", A.loop, B.loop, x => x + "%", 90, 1]];
+  const delta = (a, b, dir, f) => a === null || b === null || !B.n ? "" : a === b ? `<small class="dl">與上月相同</small>` : `<small class="dl ${(a - b) * dir > 0 ? "up" : "down"}">${(a - b) * dir > 0 ? "▲ 進步" : "▼ 退步"}（上月 ${f(b)}）</small>`;
+  const tone = (a, tgt, dir) => a === null || !tgt ? "" : (dir > 0 ? a >= tgt : a <= tgt) ? "ok" : "bad";
+  const bar = (p, c) => p === null ? `<span class="hint">—</span>` : `<span class="rpbar" style="--c:${c}"><i style="width:${p}%"></i><b>${p}%</b></span>`;
+  const statsForAI = { 月份: cur, 場次: A.n, 參與人數: A.people, 系統自動場次: A.auto, ROSC或穩定率: A.rosc, 到壓胸中位數秒: A.cpr, 到首次電擊中位數秒: A.shock, 到首劑Epi中位數秒: A.epi, 開始找病因中位數秒: A.search, 病因處理中位數秒: A.fix, 最長壓胸中斷中位數秒: A.pause,
+    心律判讀正確率: A.callOK, 脈搏判斷正確率: A.pulseOK, 期待處置完成率: A.txOK, 找對病因率: A.htHit, 閉環完成率中位數: A.loop, 電擊不當次數: A.badShock, 沒喊離開就電擊次數: A.noClear,
+    角色達成率: Object.fromEntries(A.roles.map(([r, L]) => [r, Object.fromEntries(L)])), 最常漏掉的處置: Object.fromEntries(A.miss), 上月: { 場次: B.n, ROSC或穩定率: B.rosc, 到壓胸中位數秒: B.cpr, 到首次電擊中位數秒: B.shock, 心律判讀正確率: B.callOK, 找對病因率: B.htHit, 閉環完成率中位數: B.loop }, 目標: RP_TARGET };
+  const wk = [0, 1, 2, 3, 4].map(i => A.weeks[i] || 0), wmax = Math.max(1, ...wk);
+  v.innerHTML = `<section class="panel rphead"><div><h2 class="h2">${cur.replace("-", " 年 ")} 月・團隊擬真訓練報告</h2><small>資料來源：演練摘要（${A.n} 場）・產生時間 ${new Date().toLocaleString("zh-TW")}</small></div>
+      <div class="row"><select id="rpM">${months.map(m => `<option ${m === cur ? "selected" : ""}>${m}</option>`).join("")}</select><button class="btn ghost" id="rpCsv">下載本月 CSV</button><button class="btn ghost" id="rpPrint">🖨 列印／存 PDF</button></div></section>
+    ${A.n < 5 ? `<div class="note">本月只有 ${A.n} 場，數字變動大，趨勢僅供參考。</div>` : ""}
+    <section class="rpkpi">${kpi.map(([n, a, b, f, tgt, dir]) => `<div class="${tone(a, tgt, dir)}"><small>${n}</small><b>${a === null ? "—" : f(a)}</b>${tgt ? `<em>目標 ${dir < 0 ? "≤" : "≥"} ${f(tgt)}</em>` : ""}${delta(a, b, dir, f)}</div>`).join("")}</section>
+    <section class="panel"><h3 class="h3">各角色達成率</h3><div class="tblw"><table class="rpt"><thead><tr><th>角色</th><th>指標</th><th>達成率</th></tr></thead><tbody>${A.roles.map(([r, L]) => L.map(([k, p], i) => `<tr>${i ? "" : `<th rowspan="${L.length}">${esc(r)}</th>`}<td>${esc(k)}</td><td>${bar(p, p === null ? "#999" : p >= 80 ? "#1B7D63" : p >= 60 ? "#C99A06" : "#C63D2F")}</td></tr>`).join("")).join("")}</tbody></table></div>
+      <p class="hint">綠 ≥ 80%、黃 60–79%、紅 < 60%。達成率最低的角色，就是下個月教學的重點。</p></section>
+    <div class="rpgrid"><section class="panel"><h3 class="h3">最常漏掉的處置</h3>${A.miss.length ? `<ol class="rpmiss">${A.miss.map(([k, c]) => `<li><span>${esc(k)}</span><b>${c} 場</b></li>`).join("")}</ol>` : `<p class="hint">沒有資料。</p>`}</section>
+      <section class="panel"><h3 class="h3">練了哪些病例</h3>${A.cases.length ? `<ol class="rpmiss">${A.cases.map(([k, c]) => `<li><span>${esc(k)}</span><b>${c} 場</b></li>`).join("")}</ol>` : `<p class="hint">沒有資料。</p>`}
+        <h3 class="h3">每週場次</h3><svg class="rpwk" viewBox="0 0 260 90">${wk.map((x, i) => `<rect x="${10 + i * 50}" y="${70 - x / wmax * 60}" width="34" height="${x / wmax * 60}" rx="5" fill="#1D74A0"/><text x="${27 + i * 50}" y="86" text-anchor="middle" font-size="10" fill="#56677A">第${i + 1}週</text><text x="${27 + i * 50}" y="${66 - x / wmax * 60}" text-anchor="middle" font-size="10" fill="#1D3A55">${x || ""}</text>`).join("")}</svg></section></div>
+    <section class="panel stack"><div class="row"><h3 class="h3">文字摘要與建議</h3><button class="btn" id="rpAI" ${A.n ? "" : "disabled"}>🤖 AI 產生文字摘要</button><button class="btn ghost" id="rpCopy">複製</button></div>
+      <textarea id="rpTxt" rows="12" placeholder="按「AI 產生文字摘要」，或自己寫。AI 只拿到上面的統計數字，沒有任何姓名、員編。產生後請自己確認、修改，再用在品管或醫品圈報告。">${esc((() => { try { return localStorage.getItem("sim2-rp-" + cur) || ""; } catch (e) { return ""; } })())}</textarea></section>
+    <p class="hint">指標定義：到壓胸、到首次電擊、到首劑 Epi、開始找病因都從「開始演練」起算；達成率只算有該項資料的場次。教師控制模式的一般病例沒有「找病因」時間。</p>`;
+  $("rpM").onchange = e => reportPage(e.target.value);
+  $("rpPrint").onclick = () => print();
+  $("rpTxt").oninput = e => { try { localStorage.setItem("sim2-rp-" + cur, e.target.value); } catch (x) {} };
+  $("rpCopy").onclick = async () => { try { await navigator.clipboard.writeText($("rpTxt").value); toast("已複製"); } catch (e) { $("rpTxt").select(); toast("請按 Ctrl＋C 複製"); } };
+  $("rpCsv").onclick = () => { const keys = [...new Set(rows.flatMap(o => Object.keys(o)))].filter(k => !k.startsWith("_") && k !== "myRole");
+    const csvx = "﻿" + [keys.join(","), ...rows.map(o => keys.map(k => `"${String(o[k] == null ? "" : o[k]).replace(/"/g, '""')}"`).join(","))].join("\n");
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csvx], { type: "text/csv" })); a.download = `團隊擬真_${cur}.csv`; a.click(); };
+  $("rpAI").onclick = async () => { const b = $("rpAI"); b.disabled = true; b.textContent = "🤖 撰寫中…";
+    const sys = "你是急診護理品管與教育負責人的助理。依照提供的團隊擬真月統計數字（JSON），寫一份給護理長用的月報文字。繁體中文、台灣醫院用語、條列清楚、具體。只能根據數字，不可編造沒有的資料；場次少於 5 場要提醒樣本小。格式：【本月摘要】2–3 句；【亮點】2–3 點；【待改善】2–3 點（指出是哪個角色、哪個指標、與目標差多少）；【下月建議行動】3 點（具體可執行的教學或演練安排）。不要用 Markdown 粗體符號。";
+    const r2 = await api("aiDraft", { kind: "report", sys, user: JSON.stringify(statsForAI) });
+    b.disabled = false; b.textContent = "🤖 AI 產生文字摘要";
+    if (!r2 || !r2.ok) return toast((r2 && r2.error) || "產生失敗", true);
+    if ($("rpTxt").value.trim() && !confirm("要用 AI 的版本取代目前的文字嗎？")) return;
+    $("rpTxt").value = r2.text; try { localStorage.setItem("sim2-rp-" + cur, r2.text); } catch (e) {} toast("已產生，請確認後再使用"); };
+}
+
+/* ================= 個人化回饋：依角色、依實際表現，推薦學習站關卡 =================
+   全部用規則判斷（不靠 AI 猜），每個角色最多 3 點：做得好 👍、可以更好 🔧，再推薦 1–2 個學習站關卡。 */
+const HUBQ = (z, i) => `https://cych05845-jpg.github.io/er-learn/#${z}qs-${i}`;
+const QN = { r0: "急救區・高品質 CPR", r1: "急救區・可電擊與不可電擊", r2: "急救區・急救藥物", r3: "急救區・偵探室 H's & T's", r4: "急救區・ROSC 後照護", r5: "急救區・團隊合作與溝通", r7: "急救區・AMI／STEMI", r12: "急救區・氣管插管（協助）", r14: "急救區・胸管與引流管", r15: "急救區・緊急胃鏡", r16: "急救區・ICH 術前準備", r17: "急救區・緊急洗腎", c5: "治療區・給藥安全與輸血", o0: "留觀區・早期警示與分層" };
+const CASE_Q = { mi: "r7", ich: "r16", hyperk: "r17", f_hk: "r17", hypovol: "r15", tension: "r14", sepsis: "o0", anaphylaxis: "c5" };
+function myFeedback(S, role){
+  const t0 = S.t0, sec = t => Math.round((t - t0) / 1000), out = [], q = new Set();
+  const good = x => out.push(["good", x]), bad = (x, k) => out.push(["bad", x, k]);
+  const arrestAt = S.arrestAt || (S.rhy.find(r => !r.p) || {}).t || 0, cpr = S.ev.find(e => e.g === "cpr"), shocks = S.shocks.filter(x => x.delivered);
+  const longest = S.pauses.reduce((m, p) => Math.max(m, Math.round((p[1] - p[0]) / 1000)), 0), wasShockable = S.rhy.some(r => !r.p && shockable(r.r)) || S.shocks.some(x => shockable(x.r));
+  const c = CASE_BY[S.caseId] || {}, F = fCase(S);
+  if (role === "C") {
+    if (arrestAt) { if (cpr && (cpr.t - arrestAt) / 1000 <= 10) good("心跳停止後 10 秒內就開始壓胸。"); else if (cpr) bad(`開始壓胸花了 ${Math.round((cpr.t - arrestAt) / 1000)} 秒，目標是 10 秒內。`, "r0"); else bad("這場心跳停止時沒有開始壓胸。", "r0"); }
+    if (S.pauses.length) { if (longest <= 10) good("每次暫停檢查都在 10 秒內恢復壓胸。"); else bad(`最長的壓胸中斷是 ${longest} 秒，要控制在 10 秒內。`, "r0"); }
+    const runMin = (S.t1 - t0) / 60000; if (S.cpr !== undefined && runMin > 4 && !S.ev.some(e => e.g === "swap")) bad("壓胸超過 4 分鐘都沒有換手：每 2 分鐘換手，品質才維持得住。", "r5");
+  }
+  if (role === "D") {
+    if (wasShockable) { if (shocks[0] && (shocks[0].t - (arrestAt || t0)) / 1000 <= 120) good(`第一次電擊在 ${sec(shocks[0].t)} 秒，夠快。`); else if (shocks[0]) bad(`第一次電擊在 ${sec(shocks[0].t)} 秒，目標是 2 分鐘內。`, "r1"); else bad("出現可電擊心律，但這場沒有電擊。", "r1"); }
+    const wrong = S.calls.filter(x => !x.ok); if (S.calls.length) { if (!wrong.length) good(`心律判讀 ${S.calls.length} 次全對。`); else bad(`心律判讀錯 ${wrong.length} 次（例如把 ${RHY[wrong[0].actual] ? RHY[wrong[0].actual][0] : wrong[0].actual} 判成 ${CALL_NAME(wrong[0].r)}）。`, "r1"); } else if (S.monitor) bad("這場沒有報出判讀的心律：暫停檢查時要大聲報心律。", "r1");
+    if (shocks.some(x => !x.cleared)) bad("有電擊前沒有先喊「所有人離開」。", "r1"); else if (shocks.length) good("每次電擊前都有確認所有人離開。");
+    if (shocks.some(x => !x.ok)) bad("有一次電擊不適當（心律或同步模式不對）。", "r1");
+  }
+  if (role === "M") {
+    const epi = S.drugs.filter(d => d.k === "epi");
+    if (arrestAt) { if (epi[0]) { const s = Math.round((epi[0].t - arrestAt) / 1000); if (wasShockable || s <= 300) good(`首劑 Epinephrine 在 ${sec(epi[0].t)} 秒給。`); else bad(`不可電擊心律，首劑 Epinephrine 到 ${sec(epi[0].t)} 秒才給，要盡快。`, "r2"); } else bad("心跳停止但這場沒有給 Epinephrine。", "r2"); }
+    const gaps = epi.slice(1).map((d, i) => (d.t - epi[i].t) / 1000); if (gaps.some(g => g > 330)) bad("Epinephrine 間隔超過 5 分鐘，要每 3–5 分鐘一次。", "r2"); else if (gaps.length) good("Epinephrine 間隔維持在 3–5 分鐘。");
+    const txDrugs = (c.tx || []).filter(k => DRUG_BY[k] && k !== "epi"); const miss = txDrugs.filter(k => !S.drugs.some(d => d.k === k));
+    if (txDrugs.length) { if (!miss.length) good(`這題的關鍵藥物（${txDrugs.map(k => DRUG_BY[k][1]).join("、")}）都有給。`); else bad(`這題的關鍵藥物沒給：${miss.map(k => DRUG_BY[k][1]).join("、")}。`, CASE_Q[S.caseId] || "r3"); }
+  }
+  if (role === "A") {
+    if (arrestAt) { const f = S.ev.find(e => /^air_(bvm|sga)$/.test(e.g) || e.g === "ett"); if (f && (f.t - arrestAt) / 1000 <= 60) good("1 分鐘內就開始給氧通氣。"); else if (f) bad(`到 ${sec(f.t)} 秒才開始通氣，越早越好。`, "r0"); else bad("這場沒有建立呼吸道或 BVM 通氣。", "r12"); }
+    if (S.airway.ett) { if (S.airway.ett.depth >= 24) bad(`氣管內管固定 ${S.airway.ett.depth} 公分偏深（可能進右主支氣管）。`, "r12"); if (S.airway.confirm) good("插管後有確認管路（聽診＋ETCO₂）。"); else bad("插管後沒有確認管路位置。", "r12"); }
+    if (S.pulse && !S.o2 && !S.airway.dev) bad("有脈搏、血氧低時記得給氧。", "o0");
+  }
+  if (role === "L") {
+    if (c.ht) { if (S.ht[c.ht]) good(`有找出病因方向（${(HT.find(h => h[0] === c.ht) || [0, ""])[1]}）。`); else bad("這場沒有標記到正確的病因：試著用 5H5T 一項一項排除。", "r3"); }
+    if (F && F.kind !== "pulse") { const sa = fSearchAt(S); if (sa && sa - t0 <= 360000) good(`第 ${mmss(sa - t0)} 就開始帶隊找病因。`); else bad(sa ? `到 ${mmss(sa - t0)} 才開始找病因，第 3 輪（6:00）前就要開始。` : "這場沒有帶隊找病因。", "r3"); }
+    if (!S.oral && S.cmds.length >= 3) { const r = S.cmds.filter(x => x.done).length / S.cmds.length; if (r >= .8) good(`指令閉環完成率 ${Math.round(r * 100)}%。`); else bad(`指令閉環完成率只有 ${Math.round(r * 100)}%：指令要點名、等複誦、確認完成。`, "r5"); }
+    if (S.roscAt && F && !S.orders.some(o => o.t >= S.roscAt)) bad("ROSC 後沒有安排後續檢查（12 導程、抽血）。", "r4");
+    if (CASE_Q[S.caseId] && F && !S.fixAt) q.add(CASE_Q[S.caseId]);
+  }
+  if (role === "R") {
+    const n = S.ev.filter(e => e.w === "R" && e.g === "remind").length;
+    if (n >= 3) good(`提醒了 ${n} 次（Epi 時間、換手、5H5T），幫 Leader 抓節奏。`); else bad("紀錄要主動提醒 Epi 時間、兩分鐘換手、想 5H5T。", "r5");
+  }
+  const bads = out.filter(x => x[0] === "bad").slice(0, 2), goods = out.filter(x => x[0] === "good").slice(0, 3 - Math.min(2, bads.length) >= 1 ? 3 - bads.length : 1);
+  bads.forEach(x => x[2] && q.add(x[2]));
+  return { items: [...goods.slice(0, Math.max(1, 3 - bads.length)), ...bads].slice(0, 3), quests: [...q].slice(0, 2) };
+}
+function myFbHTML(S, role){
+  if (S.status !== "end" || !ROLES[role] || role === "T" || !S.t0) return "";
+  const R = [{ role }, ...((ST.seat && ST.seat.more) || [])].map(x => x.role).filter((k, i, a) => a.indexOf(k) === i);
+  const blocks = R.map(k => { const f = myFeedback(S, k); return f.items.length ? `<div class="mfb"><b style="--rc:${ROLES[k][2]}">${esc(roleName(k))}</b><ul>${f.items.map(([t, x]) => `<li class="${t}">${t === "good" ? "👍" : "🔧"} ${esc(x)}</li>`).join("")}</ul>
+    ${f.quests.length ? `<div class="mfbq"><small>📚 推薦去學習站練：</small>${f.quests.map(k2 => `<a href="${HUBQ(k2[0], k2.slice(1))}" target="_blank" rel="noopener">${esc(QN[k2] || k2)} ›</a>`).join("")}</div>` : ""}</div>` : ""; }).join("");
+  return blocks ? `<section class="panel myfb2"><h3 class="h3">🎯 給你的回饋</h3><p class="hint">依這場的實際紀錄自動整理，教師講評會再補充。</p>${blocks}</section>` : "";
+}
+
+/* ================= 團隊溝通分析（演練後；教師／主持端看） =================
+   數字由程式從指令、複誦、對內頻道算出；AI 只把數字和對話內容寫成講評草稿，不參與計分。
+   限制：只看得到手機上的指令與對內頻道；現場口頭講的話不在紀錄裡（口頭指令模式時閉環率不適用）。 */
+const vagueCmd = c => !c.g && (c.to === "D" && !/同步|SYNC|\d+\s*J|焦耳/i.test(c.x) || c.to === "M" && !/mg|mL|g\b|單位|U\b|毫克|毫升/i.test(c.x));
+function commStats(S){
+  const C = S.cmds, done = C.filter(c => c.done), acked = C.filter(c => c.ack), avg = a => a.length ? Math.round(a.reduce((x, y) => x + y, 0) / a.length / 1000) : null;
+  const say = S.ev.filter(e => e.w === "L" && e.g === "say"), sumRe = /摘要|整理|目前|現在|我們|總結|狀況|已經/;
+  const chat = S.chat.filter(m => m.ph === "run"), byRole = {}; chat.forEach(m => byRole[m.w] = (byRole[m.w] || 0) + 1);
+  const readback = chat.filter(m => /複誦|收到|已給|完成|好的|OK/i.test(m.x)).length;
+  const toRole = {}; C.forEach(c => toRole[c.to] = (toRole[c.to] || 0) + 1);
+  const slow = C.filter(c => c.ack && (c.ack - c.t) > 15000).length, never = C.filter(c => !c.ack).length;
+  const t0 = S.t0, gaps = []; let last = t0; C.concat(say.map(e => ({ t: e.t }))).sort((a, b) => a.t - b.t).forEach(x => { gaps.push(x.t - last); last = x.t; });
+  return { n: C.length, loop: C.length ? Math.round(done.length / C.length * 100) : null, ackAvg: avg(acked.map(c => c.ack - c.t)), doneAvg: avg(done.map(c => c.done - c.t)), slow, never,
+    vague: C.filter(vagueCmd).map(c => c.x), say: say.length, summaries: say.filter(e => sumRe.test(e.x)).length, chat: chat.length, voice: chat.filter(m => m.voice).length, byRole, toRole, readback,
+    silent: gaps.length ? Math.round(Math.max(...gaps) / 1000) : null, oral: !!S.oral };
+}
+function commHTML(S, host){
+  if (S.status !== "end" || !S.t0) return "";
+  const m = commStats(S), row = (k, v, ok, tip) => `<div class="dbr ${ok === true ? "ok" : ok === false ? "bad" : ""}"><span>${k}${tip ? `<small>${tip}</small>` : ""}</span><b>${v === null || v === "" ? "—" : esc(String(v))}</b></div>`;
+  const dist = Object.entries(m.toRole).map(([k, n]) => `${roleName(k)} ${n}`).join("、") || "—";
+  return `<section class="panel commp"><h3 class="h3">📡 團隊溝通分析</h3>
+    ${m.oral ? `<p class="hint">這場是「口頭指令」模式：醫囑用講的，手機上的閉環數字只供參考；要分析口頭溝通請開「本場錄音」。</p>` : ""}
+    <div class="dbgrid">
+      ${row("Leader 下的指令", m.n + " 則", m.n >= 5 ? true : m.n ? null : false, `給：${dist}`)}
+      ${row("閉環完成率", m.loop === null ? null : m.loop + "%", m.loop === null ? null : m.loop >= 80, "收到＋完成／全部指令")}
+      ${row("平均多久回「收到」", m.ackAvg === null ? null : m.ackAvg + " 秒", m.ackAvg === null ? null : m.ackAvg <= 10)}
+      ${row("平均多久完成", m.doneAvg === null ? null : m.doneAvg + " 秒")}
+      ${row("沒人回應的指令", m.never, m.n ? m.never === 0 : null)}
+      ${row("回應超過 15 秒", m.slow, m.n ? m.slow === 0 : null)}
+      ${row("劑量／能量不完整的指令", m.vague.length, m.n ? m.vague.length === 0 : null, m.vague.slice(0, 3).map(x => "「" + x + "」").join(""))}
+      ${row("Leader 對全隊說話", m.say + " 次", null, m.summaries ? `其中像情境摘要的 ${m.summaries} 次` : "沒有看到情境摘要（Summarize）")}
+      ${row("對內頻道訊息", m.chat ? `${m.chat} 則（語音 ${m.voice}）` : "0", null, Object.entries(m.byRole).map(([k, n]) => `${roleName(k)} ${n}`).join("、"))}
+      ${row("看起來像複誦／回報的訊息", m.readback, null)}
+      ${row("最長沒有任何指令的空白", m.silent === null ? null : m.silent + " 秒", m.silent === null ? null : m.silent <= 90, "超過 90 秒，Leader 可能被卡住或在忙別的")}
+    </div>
+    ${host ? `<div class="row"><button class="btn ghost" id="commAI">🤖 AI 溝通講評草稿</button><small class="hint">只送指令與對內頻道內容（不含姓名），產生後請教師確認。</small></div><div id="commOut"></div>` : ""}</section>`;
+}
+function commCtx(S){
+  const m = commStats(S), t0 = S.t0, T = t => mmss(t - t0);
+  const lines = [...S.cmds.map(c => ({ t: c.t, x: `${T(c.t)} Leader → ${roleName(c.to)}：${c.x}${c.ack ? `（${Math.round((c.ack - c.t) / 1000)} 秒後收到）` : "（沒人回「收到」）"}${c.done ? `（${Math.round((c.done - c.t) / 1000)} 秒後完成）` : "（沒有完成）"}` })),
+    ...S.ev.filter(e => e.w === "L" && e.g === "say").map(e => ({ t: e.t, x: `${T(e.t)} Leader 對全隊：${e.x}` })),
+    ...S.chat.filter(c => c.ph === "run").map(c => ({ t: c.t, x: `${T(c.t)} ${roleName(c.w)}（對內頻道）：${c.voice && !c.x ? "（語音）" : c.x}` }))].sort((a, b) => a.t - b.t).slice(0, 120).map(x => x.x);
+  return `【溝通統計】${JSON.stringify(Object.assign({}, m, { vague: m.vague.slice(0, 5) }))}\n【時間序（演練開始起算）】\n${lines.join("\n") || "（沒有任何手機上的溝通紀錄）"}`;
+}
+async function commAI(S){
+  const r = await api("simAI", { code: ST.code, key: ST.seat.key, kind: "comm", ctx: commCtx(S) });
+  return r && r.ok ? { text: r.x } : { error: (r && r.error) || "連線失敗" };
+}
+
 /* ================= 手機畫面：分區導覽＋動態指標（下一步該按哪裡） =================
    每個角色的功能分成幾個區塊（上方小分頁），一次只看一區；
    班內練習／系統自動時，依目前狀況算出「下一步」，對應的按鈕會發光，分頁上有小紅點。
@@ -4308,7 +4744,7 @@ function guideRaw(S, role){
   if (role === "L") {
     if (!S.monitor && !S.cmds.some(c => c.g === "pads")) return { tab: S.oral ? "" : "cmd", to: "D", a: { type: "cmd", to: "D", g: "pads" }, x: "叫電擊手接監視器／貼片", why: "先看心律" };
     if (arrest && !S.cpr && !S.cmds.some(c => c.g === "cpr" && !c.done)) return { tab: S.oral ? "" : "cmd", to: "C", a: { type: "cmd", to: "C", g: "cpr" }, x: "叫壓胸手開始壓胸", why: "沒有脈搏：立刻 CPR" };
-    if (el >= 240 && !Object.values(S.ht).some(Boolean)) return { tab: "ht", x: "標記懷疑的 5H5T", why: "第 3 輪：帶全隊一起找病因" };
+    if (el >= 240 && !Object.values(S.ht).some(Boolean)) return { tab: "ht", x: "帶全隊想 5H5T", why: reasonHint(S) };
     if (el >= 120 && !S.asks.length) return { tab: "ask", x: "評估病人", why: "病史、身體評估、檢查，找可逆的原因" };
     return null;
   }
@@ -4335,8 +4771,19 @@ function guideBarHTML(S, role, g){
     : guideMode(S) === "delay" ? "" : `<div class="guideb ok"><i aria-hidden="true">✅</i><span><small>下一步</small><b>目前做得很好</b><em>繼續保持，注意 Leader 的指令</em></span><button class="mini" data-gtog="1" aria-label="關閉引導">關</button></div>`;
 }
 
+/* 臨床推理引導（班內練習）：依「看得到的狀態」提問，不說出病因 */
+function reasonHint(S){
+  const v = curVit(S, NOW()), shocks = S.shocks.filter(x => x.delivered).length, asked = new Set(S.asks.map(q => q.k));
+  if (!S.pulse && shockable(S.rhythm) && shocks >= 3) return "電擊 3 次還是 VF／VT：電解質、藥物、冠狀動脈、體溫，哪些還沒排除？";
+  if (!S.pulse && S.rhythm !== "none" && !shockable(S.rhythm) && (v.hr || RHY[S.rhythm][2]) >= 100) return "PEA 而且心跳快：哪些 H 和 T 會讓心臟「沒有東西可以打」或「被壓住」？看看頸靜脈、IVC、超音波。";
+  if (!S.pulse && S.rhythm !== "none" && !shockable(S.rhythm)) return "PEA 心跳慢：缺氧、酸中毒、電解質、中毒要先想；問病史、看血氣。";
+  if (S.pulse && v.sbp && v.sbp < 90) return "血壓低、還有脈搏：是沒水、沒力、還是血管張開？哪個檢查可以最快分辨？";
+  if (!asked.has("hx") && !asked.has("med")) return "還沒問病史和用藥：家屬、目擊者、病歷裡可能有關鍵線索。";
+  return "第 3 輪：叫停 10 秒 huddle，大家一起把 5H5T 過一遍。";
+}
+
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.27-e";
+const SIM_VER = "2026.10.28-d";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -4386,6 +4833,8 @@ async function pull1(){
   ST.off = r.now - Date.now(); ST.meta = r.room;
   if (ST.seat && !ST.histDone && r.room && r.room.created) { ST.histDone = 1; const d = new Date(r.room.created); histAdd({ code: ST.code, created: r.room.created, day: `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`, role: ST.seat.role === "H" ? "主持（大面板）" : roleName(ST.seat.role) }); }
   if (r.vd) Object.assign(VCACHE, r.vd);
+  /* 房間用了這台裝置還沒載入的新教案：重新讀題庫 */
+  if (r.ev && r.ev.some(e => e.a && e.a.type === "case" && !CASE_BY[e.a.id]) && !ST.bankRetry) { ST.bankRetry = 1; await bankLoad(true); }
   if (r.ev && r.ev.length) { const have = new Set(ST.events.map(e => e.i)); r.ev.forEach(e => { if (!have.has(e.i)) ST.events.push(e); }); ST.events.sort((a, b) => a.i - b.i); }
   /* 保險：事件編號要從 0 連續；有缺就整份重拿 */
   const real = ST.events.filter(e => !e.tmp); if (real.some((e, k) => e.i !== k)) { ST.events = ST.events.filter(e => e.tmp); ST.again = true; return; }
@@ -4396,7 +4845,7 @@ function startRoom(code, ...fns){
   /* 演練中每秒同步；等待開始、結束後放慢到 2–3 秒（減少 Apps Script 排隊，演練中的動作就更快） */
   let skip = 0; ST.poll = setInterval(() => { if (document.hidden) return; const S = ST.S, hot = S && S.chat.length && NOW() - S.chat[S.chat.length - 1].t < 30000; if (S && S.status !== "run" && !hot && (skip++ % (LIVE() ? 3 : 2))) return; pull(); }, LIVE() ? 1000 : 600);
   ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); recTick(ST.S); aiTick(ST.S); } catch (e) { console.error(e); } }, 1000);
-  return pull();
+  return (window.BANKP || Promise.resolve()).then(() => pull());
 }
 const NOW = () => Date.now() + ST.off;
 let PEND = 0;
@@ -4528,6 +4977,10 @@ function dictate(id, btn, onFinal){
   SR_ON = r; if (btn) btn.classList.add("on");
   try { r.start(); toast("請說話…說完會自動停"); } catch (e) { SR_ON = null; }
 }
+/* 團隊溝通分析：AI 草稿（大面板與教師手機共用） */
+document.addEventListener("click", async e => { const b = e.target.closest("#commAI"); if (!b || !ST.S) return; b.disabled = true; b.textContent = "🤖 分析中…";
+  const r = await commAI(ST.S); b.disabled = false; b.textContent = "🤖 AI 溝通講評草稿";
+  const o = $("commOut"); if (!o) return; o.innerHTML = r.error ? `<div class="bmsg err">${esc(r.error)}</div>` : `<div class="commai">${esc(r.text).replace(/\n/g, "<br>")}</div>`; ST.commTxt = r.text; });
 document.addEventListener("click", e => { const m = e.target.closest("[data-mic]"); if (!m) return; e.preventDefault(); e.stopPropagation(); dictate(m.dataset.mic, m); }, true);
 const tts = () => { try { return localStorage.getItem("sim2-tts") === "1"; } catch (e) { return false; } };
 async function playVoice(id){ if (!id) return; const r = await api("simVoiceGet", { code: ST.code, id }); if (r && r.ok) { try { const a = new Audio(`data:${r.mime};base64,${r.data}`); await a.play(); } catch (e) {} } }
@@ -4587,7 +5040,7 @@ function landing(code, msg){
           <label><input type="radio" name="md" value="auto"><span><b>系統自動推進（沒有教師）</b><small>評估自動回覆；可選標準 VF，或正式教案①②（第 3 輪找病因、報告自動出、處置對了就 ROSC、結束看解題）</small></span></label></div>
         <label class="sw tsw" id="teamW" hidden><input type="checkbox" id="asTeam" checked> <span>隊伍出賽：<b id="teamNm"></b><small>只有正式教案計分；上場的人都要是隊員並用員編登入</small></span></label>
         <button class="btn big shine" id="mk">建立房間</button>
-        <div class="glinks"><a class="link" href="#rec">演練紀錄 ›</a><a class="link" href="#lb">🏆 排行榜 ›</a><a class="link" href="#team">👥 我的隊伍 ›</a></div>
+        <div class="glinks"><a class="link" href="#rec">演練紀錄 ›</a><a class="link" href="#lb">🏆 排行榜 ›</a><a class="link" href="#team">👥 我的隊伍 ›</a><a class="link" href="#author">✍️ 教案工坊 ›</a></div>
       </section>
     </div>
     <p class="foot">只做教學，不記錄病人資料。內容依 AHA 2025 ACLS 與本院急救室配置。・版本 ${SIM_VER}</p>`;
@@ -4690,7 +5143,7 @@ function board(code){
     else if (S.ev.length > seen) { S.ev.slice(seen).forEach(e => announce(e)); seen = S.ev.length; }
     $("view").classList.toggle("ended", S.status === "end");
     const deb2 = S.status === "end" ? (fCase(S) && S.fph !== "deb" ? boardFormalHTML(S, !!host) : boardDebHTML(S, !!host)) : ""; if ($("bDeb2")._h !== deb2) { const keep = $("chatX") ? $("chatX").value : "", foc = document.activeElement && document.activeElement.id === "chatX"; $("bDeb2").innerHTML = deb2; $("bDeb2")._h = deb2; if ($("chatX")) { $("chatX").value = keep; if (foc) $("chatX").focus(); } const cl = $("chatList"); if (cl) cl.scrollTop = cl.scrollHeight; }
-    const deb = S.status === "end" && !fHold(S) ? `<details class="panel"><summary>完整數據與每次電擊、判讀</summary>${debriefHTML(S, true)}</details>` : ""; if ($("bDeb")._h !== deb) { $("bDeb").innerHTML = deb; $("bDeb")._h = deb; }
+    const deb = S.status === "end" && !fHold(S) ? `<details class="panel"><summary>完整數據與每次電擊、判讀</summary>${debriefHTML(S, true)}</details><details class="panel"><summary>📡 團隊溝通分析</summary>${commHTML(S, !!host)}</details>` : ""; if ($("bDeb")._h !== deb) { const keep = $("commOut") && $("commOut").innerHTML; $("bDeb").innerHTML = deb; $("bDeb")._h = deb; if (keep && $("commOut")) $("commOut").innerHTML = keep; }
     paintTimers(S);
   };
   $("view").onclick = async e => {
@@ -4775,7 +5228,7 @@ function player(code){
     if (key === ui.lastKey) return; ui.lastKey = key;
     const keepScroll = scrollY, focus = document.activeElement && document.activeElement.id, vals = {};
     $("pBody").querySelectorAll("input[id],textarea[id]").forEach(el => { if (el.type !== "checkbox") vals[el.id] = el.value; });
-    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + recBanner(S) + `<div class="hud" id="hud">${fBarHTML(S)}${guideBarHTML(S, role, G)}</div>` + (S.status === "run" && role !== "T" && role !== "C" && !fHold(S) ? compBar(S, role) : "") + resultHTML(S, ST.meta) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" ? myCmds(S, role) : "") + (P.secs ? (() => { const X = P.secs(S, ui), cur = curSec(S, role, ui); return secNavHTML(S, role, ui, G) + `<div class="secbody" data-cur="${cur}">${X[cur] || ""}</div>`; })() : P.html(S, ui)) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
+    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + recBanner(S) + `<div class="hud" id="hud">${fBarHTML(S)}${guideBarHTML(S, role, G)}</div>` + (S.status === "run" && role !== "T" && role !== "C" && !fHold(S) ? compBar(S, role) : "") + resultHTML(S, ST.meta) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + myFbHTML(S, role) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + myFbHTML(S, role) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" ? myCmds(S, role) : "") + (P.secs ? (() => { const X = P.secs(S, ui), cur = curSec(S, role, ui); return secNavHTML(S, role, ui, G) + `<div class="secbody" data-cur="${cur}">${X[cur] || ""}</div>`; })() : P.html(S, ui)) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
     Object.entries(vals).forEach(([id, v]) => { const el = $(id); if (el && v !== undefined && el.dataset.keep !== "0" && (el.tagName !== "TEXTAREA" || ui.edited && ui.edited[id])) el.value = v; });
     mountMonitors($("pBody")); paintTimers(S); reArm(); ui.gEl = guideMark($("pBody"), G && !G.wait ? G : null); ui.G = G && !G.wait ? G : null;
     const hud = $("hud"), hb = document.querySelector(".appbar"); if (hud && hb) { const ts = $("tStrip"), tp = Math.max(0, hb.getBoundingClientRect().height) + (ts && !ts.hidden ? ts.offsetHeight + 6 : 0); hud.style.top = tp + "px"; $("pBody").style.setProperty("--hudh", (tp + hud.offsetHeight + 4) + "px"); }
@@ -4858,7 +5311,7 @@ function recent(S, role, n = 5){ const list = S.ev.filter(e => e.w === role && !
 const PANELS = {
   /* ---------- Leader ---------- */
   L: {
-    key: (S, ui) => (ui.tab === "ask" ? sceneKey(S) + ui.scOpen : "") + JSON.stringify([S.status, S.oral, ui.tab, ui.to, ui.cs, ui.cj, ui.zone, S.cmds.map(c => [c.ack, c.done]), S.asks.map(q => !!q.reply), S.ht, S.procs.length, S.rhythm, S.monitor, S.cpr, S.show, S.vit]),
+    key: (S, ui) => (ui.tab === "ask" ? sceneKey(S) + ui.scOpen : "") + JSON.stringify([ui.who, S.status, S.oral, ui.tab, ui.to, ui.cs, ui.cj, ui.zone, S.cmds.map(c => [c.ack, c.done]), S.asks.map(q => !!q.reply), S.ht, S.procs.length, S.rhythm, S.monitor, S.cpr, S.show, S.vit]),
     html(S, ui){
       const tab = ui.tab || (S.oral ? "ask" : "cmd"), to = ui.to || "C";
       let body = "";
@@ -4868,16 +5321,18 @@ const PANELS = {
           <div class="sseg two"><button data-cs="0" class="${!sy ? "on" : ""}">非同步</button><button data-cs="1" class="${sy ? "on sync" : ""}">同步 SYNC</button></div>
           <div class="chips">${JOULES.map(x => `<button data-cj="${x}" class="${j === x ? "on" : ""}">${x} J</button>`).join("")}</div>
           ${btn({ type: "cmd", to: "D", g: "shock", x: `${sy ? "同步" : "非同步"} ${j} J 電擊`, p: { sync: sy, j } }, `下指令：${sy ? "同步" : "非同步"} ${j} J 電擊`, "big wide")}</div>`; })() : ""}
+        <button class="btn big wide vcmd" data-vcmd="1">🎤 用說的下指令<small>例如「電擊手，非同步 200 焦耳」「給 Epi 1 毫克」「換手壓胸」</small></button>
         <div class="free"><input id="cmdX" maxlength="50" placeholder="自己打指令給「${ROLES[to][0]}」"><button class="mic" data-mic="cmdX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-free="cmd">送出</button></div></section>
         <section class="panel"><h3 class="h3">已下的指令</h3>${S.cmds.length ? `<ol class="cmdlist">${S.cmds.slice(-10).reverse().map(c => `<li class="${c.done ? "done" : c.ack ? "ack" : ""}"><span class="tag" style="--rc:${ROLES[c.to][2]}">${ROLES[c.to][0]}</span>${esc(c.x)}<em>${c.done ? "✓ 完成" : c.ack ? "收到" : "等待"}</em></li>`).join("")}</ol>` : `<p class="hint">還沒下指令。</p>`}</section>`;
       if (tab === "ask") { const z = BODY_ZONES.find(x => x.id === ui.zone), used = k => S.asks.some(q => q.k === k) ? "used" : "";
         body = `<section class="panel voicebar"><button class="btn big" data-micask="1">🎤 用說的評估</button><small>例如：「聽右胸呼吸音」「摸頸動脈」「看瞳孔」，會自動對到評估項目送出</small>
-          <label class="sw"><input type="checkbox" id="ttsOn" ${tts() ? "checked" : ""}> 🔊 教師回覆用語音念出來</label></section>
+          <label class="sw"><input type="checkbox" id="ttsOn" ${tts() ? "checked" : ""}> 🔊 回答用語音念出來</label></section>
         <details class="panel scenep" ${ui.scOpen === false ? "" : "open"}><summary>🛏 急救床（即時）<small>評估過的外觀線索會標在病人身上</small></summary>${sceneSVG(S)}</details>
         <section class="panel"><h3 class="h3">身體評估：點病人身上的部位</h3><div class="bodyw">${bodySVG(ui.zone, S)}
           <div class="zpick">${z ? `<b>${esc(z.n)}</b><div class="grid1">${z.items.map(k => btn({ type: "ask", k }, ASK_BY[k][1], used(k))).join("")}</div>` : `<p class="hint">先點左邊人形的部位（頭、頸、左右胸、心臟、腹部、手、腳），再選要評估什麼。左右是「病人的」左右。</p>`}</div></div></section>
         <section class="panel"><h3 class="h3">檢查與病史</h3><div class="grid2">${["pulse_car", "hx", "med", "look", "lung", "temp", "glu", "abg", "lab", "ekg", "echo", "lus", "ivc"].map(k => btn({ type: "ask", k }, ASK_BY[k][1], used(k))).join("")}</div>
-        <div class="free"><input id="askX" maxlength="40" placeholder="其他評估（例如：看一下引流袋）"><button class="mic" data-mic="askX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-free="ask">送出</button></div></section>
+        <div class="label">問人（${S.mode === "auto" ? "AI 會用對方的口吻回答" : "教師扮演回答"}）</div><div class="whos">${Object.entries(WHO).map(([k, w]) => `<button data-who="${k}" class="${ui.who === k ? "on" : ""}">${w[0]} ${w[1]}</button>`).join("")}<button data-who="" class="${!ui.who ? "on" : ""}">🔎 一般評估</button></div>
+        <div class="free"><input id="askX" maxlength="60" placeholder="${ui.who ? WHO[ui.who][1] + "，例如：" + ({ family: "他平常有吃什麼藥？", witness: "倒下前有說哪裡不舒服嗎？", consult: "這個病人可以來做導管嗎？", nurse: "剛剛到院時生命徵象多少？" })[ui.who] : "其他評估（例如：看一下引流袋）"}"><button class="mic" data-mic="askX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-free="ask">送出</button></div></section>
         <section class="panel"><h3 class="h3">回覆</h3>${S.asks.length ? `<div class="asks">${S.asks.slice().reverse().map(q => `<div class="askrow ${q.reply ? "done" : ""}"><b>${esc(q.label)}</b><span>${q.reply ? esc(q.reply.x || "（語音）") + (q.reply.voice ? ` <button class="mini" data-voice="${esc(q.reply.voice)}">▶ 播放</button>` : "") : "等待教師回覆…"}</span>${q.reply && q.reply.img ? imgHTML(q.reply.img) : ""}</div>`).join("")}</div>` : `<p class="hint">還沒有評估。</p>`}</section>`; }
       if (tab === "ht") body = `<section class="panel"><h3 class="h3">懷疑的病因（5H5T）</h3><p class="hint">點一下標記你懷疑的病因，再點一下取消。</p><div class="grid2">${HT.map(h => `<button class="abtn ${S.ht[h[0]] ? "on" : ""}" data-ht="${h[0]}"><small>${h[2]}</small> ${h[1]}</button>`).join("")}</div></section>
         <section class="panel"><h3 class="h3">處置決策</h3><div class="grid2">${PROC.map(p => btn({ type: "proc", k: p[0] }, p[1], S.procs.some(x => x.k === p[0]) ? "used" : "")).join("")}</div>
@@ -4889,6 +5344,10 @@ const PANELS = {
       const cs = e.target.closest("[data-cs]"); if (cs) { ui.cs = cs.dataset.cs === "1"; return re(); }
       const cj = e.target.closest("[data-cj]"); if (cj) { ui.cj = +cj.dataset.cj; return re(); }
       const zn = e.target.closest("[data-zone]"); if (zn) { ui.zone = zn.dataset.zone; return re(); }
+      const vc = e.target.closest("[data-vcmd]"); if (vc) { if (S.status !== "run") return toast("演練還沒開始", true);
+        return dictate("cmdX", vc, async x => { const c = parseCmd(x); if (!c) { ui.lastKey = ""; return toast("聽不出是給誰的指令，已放進輸入框：選好角色再按「送出」"); }
+          ui.to = c.to; if (await act(Object.assign({ type: "cmd", x: x.slice(0, 50) }, c))) { $("cmdX") && ($("cmdX").value = ""); toast(`已下指令給「${ROLES[c.to][0]}」：${x}`); } }); }
+      const wh = e.target.closest("[data-who]"); if (wh) { ui.who = wh.dataset.who; re(); setTimeout(() => $("askX") && $("askX").focus(), 50); return; }
       const ht = e.target.closest("[data-ht]"); if (ht) return act({ type: "ht", k: ht.dataset.ht, on: !S.ht[ht.dataset.ht] });
       const ma = e.target.closest("[data-micask]"); if (ma) { if (S.status !== "run") return toast("演練還沒開始", true);
         return dictate("askX", ma, async x => { const k = matchAsk(x); if (!k) return toast("沒有對到評估項目，已放進下面輸入框，確認後按「送出」");
@@ -4896,7 +5355,7 @@ const PANELS = {
       const f = e.target.closest("[data-free]"); if (f) { const k = f.dataset.free, inp = $(k + "X"), x = inp.value.trim(); if (!x) return toast("先打字再送出", true);
         if (S.status !== "run") return toast("演練還沒開始", true);
         const ak = k === "ask" ? matchAsk(x) : "";
-        const ok = await act(k === "cmd" ? { type: "cmd", to: ui.to || "C", g: "", x } : k === "ask" ? (ak ? { type: "ask", k: ak } : { type: "ask", k: "free", x }) : { type: "say", x }); if (ok && $(k + "X")) $(k + "X").value = ""; return; }
+        const ok = await act(k === "cmd" ? { type: "cmd", to: ui.to || "C", g: "", x } : k === "ask" ? (ak && !ui.who ? { type: "ask", k: ak } : { type: "ask", k: "free", x, who: ui.who || "" }) : { type: "say", x }); if (ok && $(k + "X")) $(k + "X").value = ""; return; }
       const [a] = A_(e); if (a) await act(a);
     }
   },
@@ -5028,7 +5487,7 @@ const PANELS = {
           <label class="sw"><input type="checkbox" id="oralOn" ${S.oral ? "checked" : ""}> 口頭指令（醫囑直接講、直接做；講評不算手機閉環）</label>
           <button class="btn ghost wide" data-vset="1">${S.voice ? "🎧 換語音室連結" : "🎧 開語音室（Meet／LINE）"}</button>
           <button class="btn wide" data-rec="all">${ui.rec === "all" ? "■ 停止並送出" : "🎙 錄音對大家說（8 秒內，大面板播放）"}</button></section>${recHTML(S, "T", ui)}`;
-      if (tab === "deb") body = fCase(S) && S.fph !== "deb" ? fTeachHTML(S, ui) : (fCase(S) ? fTeachHTML(S, ui) : "") + teacherDebHTML(S, ui);
+      if (tab === "deb") body = (fCase(S) && S.fph !== "deb" ? fTeachHTML(S, ui) : (fCase(S) ? fTeachHTML(S, ui) : "") + teacherDebHTML(S, ui)) + (S.status === "end" && !fHold(S) ? commHTML(S, true) : "");
       if (tab === "log") body = `<section class="panel"><h3 class="h3">完整紀錄（含判讀對錯）</h3><ol class="feed sm">${S.ev.filter(e => e.g !== "join").slice().reverse().map(e => feedLi(e, S, true)).join("")}</ol></section>`;
       return `<section class="panel">${timersHTML(["run", "cyc", "epi", "pause"])}</section>` + (S.status === "end" ? "" : hintsHTML(S, ui)) + tabs([...(S.status === "end" ? [["deb", "講評"]] : []), ["pt", "病人"], ["ask", `評估回覆${pending ? ` <b class="dot">${pending}</b>` : ""}`], ["clue", "線索"], ["log", "紀錄"]], tab) + body;
     },
@@ -5209,7 +5668,7 @@ async function records(){
   const head = { myRole: "我的角色", "到首次電擊(秒)": "到電擊 秒", "心律判讀(對/總)": "判讀", "期待處置完成": "處置", "懷疑對病因": "找到病因" };
   const mine = all.ok ? await api("simMine", {}) : r, fbs = (mine && mine.ok && mine.fb) || [];
   v.innerHTML = `<section class="panel stack"><b>老師給我的回饋（${fbs.length}）</b>${fbs.length ? fbs.map(o => `<div class="fbc" style="--rc:#6650C0"><b>${esc(o["日期"])}・房 ${esc(o["房號"])}・${esc(o["對象"])}・${esc(o["病例"] || "")}</b>${o["做得好"] ? `<p>👍 ${esc(o["做得好"])}</p>` : ""}${o["可以更好"] ? `<p>🔧 ${esc(o["可以更好"])}</p>` : ""}${o.team && o.team["帶走三件事"] ? `<p>📌 帶走：${esc(o.team["帶走三件事"])}</p>` : ""}${o["學員自評"] ? `<p class="hint">我的自評：${esc(o["學員自評"])}</p>` : ""}<small class="hint">教師 ${esc(o["教師"] || "")}</small></div>`).join("") : `<p class="hint">還沒有收到講評。</p>`}</section>
-  <section class="panel stack"><b>${all.ok ? "全部演練" : esc(u.name) + " 的演練"}（${r.rows.length} 場）</b>${r.rows.length ? `<div class="tblw"><table><thead><tr>${cols.map(c => `<th>${esc(head[c] || c)}</th>`).join("")}<th></th></tr></thead><tbody>${r.rows.map(o => `<tr>${cols.map(c => `<td>${esc(o[c] || "—")}</td>`).join("")}<td><a class="mini" href="#r-${esc(String(o["場次"] || o["日期"]))}-${esc(String(o["房號"]))}">回顧</a></td></tr>`).join("")}</tbody></table></div>` : `<p class="hint">還沒有紀錄。</p>`}</section>` + local;
+  ${all.ok ? `<a class="btn" style="text-decoration:none;justify-self:start" href="#report">📊 每月訓練報告</a>` : ""}<section class="panel stack"><b>${all.ok ? "全部演練" : esc(u.name) + " 的演練"}（${r.rows.length} 場）</b>${r.rows.length ? `<div class="tblw"><table><thead><tr>${cols.map(c => `<th>${esc(head[c] || c)}</th>`).join("")}<th></th></tr></thead><tbody>${r.rows.map(o => `<tr>${cols.map(c => `<td>${esc(o[c] || "—")}</td>`).join("")}<td>${o._rp === false ? `<a class="mini ghost" href="#r-${esc(String(o["場次"] || o["日期"]))}-${esc(String(o["房號"]))}" title="這場沒有完整重播，可以看摘要">摘要</a>` : `<a class="mini" href="#r-${esc(String(o["場次"] || o["日期"]))}-${esc(String(o["房號"]))}">📼 回顧</a>`}</td></tr>`).join("")}</tbody></table></div>` : `<p class="hint">還沒有紀錄。</p>`}</section>` + local;
 }
 
 /* ================= 路由 ================= */
@@ -5224,6 +5683,8 @@ function render(){
   if (h === "team") return teamPage();
   if (h === "lb") return boardPage();
   if (h === "lv") return levelPage();
+  if (h === "author") return authorPage();
+  if (h === "report") return reportPage();
   if ((m = h.match(/^r-(\d{13}|\d{4}-\d{2}-\d{2})-(\d{4})$/))) { ST.seat = null; return replay(m[1], m[2]); }
   return landing("");
 }
