@@ -2029,6 +2029,28 @@ details.scenep summary{cursor:pointer;font-weight:800}
 .dcard b{font-size:21px}.dcard em{font-size:26px}.dcard>small{font-size:13.5px}.dcard span{font-size:14px}.apsel{font-size:16px}.apsel small{font-size:14px}
 .gmsel>span{font-size:16px}.gmsel small{font-size:14px}.whos button{font-size:15px;padding:8px 12px}
 .rphead~.panel .h3,.rphead~.rpgrid .h3,.commp .h3,.myfb2 .h3,.apick .h3{font-size:19px}.rphead~.panel .btn{font-size:15.5px}
+/* ---------- 家屬／關係人出場 ---------- */
+.sseg.five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.intr{border-radius:18px;padding:14px;margin:0 0 12px;border:1px solid var(--line);background:var(--surface);box-shadow:0 3px 0 var(--line),0 14px 26px -16px rgba(0,0,0,.45);animation:iIn .4s cubic-bezier(.2,.9,.25,1.2)}
+@keyframes iIn{from{opacity:0;transform:perspective(800px) rotateX(-16deg) translateY(-14px)}to{opacity:1;transform:none}}
+.intr.alert{border:2px solid #D9531E;background:linear-gradient(160deg,color-mix(in srgb,#F6C445 22%,var(--surface)),var(--surface));animation:iIn .4s cubic-bezier(.2,.9,.25,1.2),iPulse 1.6s ease-in-out .4s infinite}
+@keyframes iPulse{0%,100%{box-shadow:0 3px 0 #b8461a,0 0 0 0 rgba(217,83,30,.45)}50%{box-shadow:0 3px 0 #b8461a,0 0 0 10px rgba(217,83,30,0)}}
+.intr .ihd{display:flex;align-items:center;gap:12px}.intr .ihd b{display:block;font-size:17px}.intr .ihd small{color:var(--ink-2);font-size:13px}.intr .ihd .sw{margin-left:auto}
+.intr .iav{width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:26px;background:radial-gradient(circle at 35% 30%,#fff,#FCE3C6 45%,#E8A86A);box-shadow:inset -3px -4px 6px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.2);animation:iBob 2.4s ease-in-out infinite}
+@keyframes iBob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-5deg)}}
+.intr .iq{font-size:18px;font-weight:700;line-height:1.55;margin:10px 0;padding:10px 14px;border-radius:14px;background:var(--surface);border:1px dashed #D9531E}
+.intr.mini{display:flex;align-items:center;gap:10px;padding:8px 12px;font-size:14.5px;animation:none}.intr.mini .iav{width:32px;height:32px;font-size:17px;animation:none}
+.ithread{display:grid;gap:8px;max-height:300px;overflow-y:auto;margin:12px 0;padding:4px}
+.im{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;animation:iUp .3s ease}.im span{font-size:12px;color:var(--ink-2);padding-top:6px;min-width:28px;text-align:center}
+.im p{margin:0;padding:9px 13px;border-radius:16px 16px 16px 4px;background:color-mix(in srgb,#F6C445 20%,var(--surface));border:1px solid var(--line);font-size:16px;line-height:1.55;justify-self:start}
+.im.ims{grid-template-columns:minmax(0,1fr) auto}.im.ims span{order:2}.im.ims p{justify-self:end;border-radius:16px 16px 4px 16px;background:color-mix(in srgb,var(--brand,#14506B) 14%,var(--surface))}
+@keyframes iUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.im.typing p{display:flex;gap:4px;padding:13px 14px}.im.typing i{width:7px;height:7px;border-radius:50%;background:var(--ink-2);animation:iDot 1s infinite}.im.typing i:nth-child(2){animation-delay:.15s}.im.typing i:nth-child(3){animation-delay:.3s}
+@keyframes iDot{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.ichips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}.ichips button{border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--ink)}
+.icalm{margin:0 0 8px;padding:8px 12px;border-radius:12px;background:color-mix(in srgb,var(--ok,#2F855A) 14%,var(--surface));font-weight:700}
+.intrt .itq{border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px}
+@media (prefers-reduced-motion:reduce){.intr,.intr.alert,.intr .iav,.im,.im.typing i{animation:none}}
 
 </style>
 </head>
@@ -3202,7 +3224,7 @@ function blankState(meta){
     caseId: meta.mode === "auto" ? "vf" : "", rhythm: "none", pulse: false, vit: { hr: 0, sbp: 0, dbp: 0, spo2: 0, rr: 0, etco2: 12, temp: 36.4 }, show: false,
     monitor: false, etco2On: false, cpr: false, cprSince: 0, pauseAt: 0, pauses: [], defib: { sync: false, j: 200, charged: 0, clearAt: 0 },
     airway: { dev: "", ett: null, confirm: false }, iv: "", trend: null, stateId: "", custom: {}, cmds: [], asks: [], drugs: [], shocks: [], calls: [], pcalls: [], procs: [], ht: {}, clues: [],
-    ev: [], epiLast: 0, o2: null, hints: [], rhy: [], dstep: 0, fb: null, fbPub: 0, refl: {}, arrestAt: 0, vfAt: 0, syncAt: 0, bradyAt: 0, fm: meta.mode === "auto" ? "practice" : "exam", fclue: {}, views: {}, orders: [], fixAt: 0, roscAt: 0, fph: "", fphAt: 0, chat: [], cues: {}, rec: false, recs: [], recDone: 0, saved: meta.saved, saveErr: meta.saveErr, n: meta.n };
+    ev: [], epiLast: 0, o2: null, hints: [], rhy: [], dstep: 0, fb: null, fbPub: 0, refl: {}, arrestAt: 0, vfAt: 0, syncAt: 0, bradyAt: 0, fm: meta.mode === "auto" ? "practice" : "exam", fclue: {}, views: {}, orders: [], fixAt: 0, roscAt: 0, fph: "", fphAt: 0, chat: [], intr: [], cues: {}, rec: false, recs: [], recDone: 0, saved: meta.saved, saveErr: meta.saveErr, n: meta.n };
 }
 function applyCase(S, id){
   const c = CASE_BY[id]; if (!c) return;
@@ -3256,6 +3278,7 @@ function derive(meta, events){
       log(e, a.auto ? "時間到（15 分鐘），演練結束" : "結束演練", { sp: F ? (S.fm === "exam" ? "演練結束。請團隊進入 debrief 聊天室，三分鐘。" : "演練結束，請看解題。") : "結束演練" }); return; }
     if (a.type === "recmode" && host) { S.rec = !!a.on; if (S.rec) S.recDone = 0; log(e, S.rec ? "🔴 本場錄音：開（語音訊息與現場聲音會保存）" : "本場錄音：關", { g: "rec", quiet: true }); return; }
     if (a.type === "recfile" && host) { if (a.stop) { S.recDone = t; return; } if (a.fid) S.recs.push({ fid: String(a.fid).slice(0, 80), at: +a.at || t, dur: +a.dur || 0, seg: +a.seg || 0 }); return; }
+    if (a.type === "fam" && host && (a.k === "off" || MOODS[a.k])) { S.fam = a.k; log(e, `家屬干擾：${a.k === "off" ? "不出現" : MOODS[a.k][0]}`, { g: "fam", quiet: true }); return; }
     if (a.type === "gmode" && host && ["on", "delay", "off"].includes(a.k)) { S.gm = a.k; log(e, `手機引導：${{ on: "即時提醒", delay: "延遲 30 秒提醒", off: "不提醒" }[a.k]}`, { g: "gmode", quiet: true }); return; }
     if (a.type === "fmode" && host && S.status === "wait") { S.fm = a.k === "practice" ? "practice" : "exam"; log(e, S.fm === "exam" ? "模式：正式評核（15＋3＋2 分鐘）" : "模式：班內練習（15 分鐘＋解題）", { g: "fmode", quiet: true }); return; }
     /* ---- 結束後：講評（教師控制段落、寫回饋；學員自評） ---- */
@@ -3332,6 +3355,24 @@ function derive(meta, events){
       const n = S.orders.filter(x => x.k === a.k).length + 1;
       S.orders.push({ id: "o" + (S.orders.length + 1), k: a.k, t, due: t + o.dly * 1000, sn: fSnap(S), w, n });
       log(e, `下單：${o.n}${n > 1 ? `（第 ${n} 次）` : ""}${o.dly ? `，約 ${o.dly >= 60 ? Math.round(o.dly / 60) + " 分鐘" : o.dly + " 秒"}後出報告` : ""}`, { g: "order", sp: `${o.n}，已下單` }); return; }
+    /* ---- 家屬／關係人出場：主持端發起，任何角色都可以去處理 ---- */
+    if (a.type === "intr" && host) { if (a.si !== undefined && S.intr.some(x => x.si === a.si)) return;
+      const who = INTR_WHO[a.who] ? a.who : "family", mood = MOODS[a.mood] ? a.mood : "anxious", x = String(a.x || "").slice(0, 120) || INTR_LINE[mood];
+      const it = { id: "i" + (S.intr.length + 1), si: a.si, t, who, mood, x, by: "", byAt: 0, end: 0, calm: 0, wait: 0, esc: 0, msgs: [{ t, w: "P", x }] }; S.intr.push(it);
+      log(e, `${WHO[who][0]} ${INTR_WHO[who]}衝到急救室門口：「${x}」`, { g: "intr", sp: x, iid: it.id, xt: `${WHO[who][0]} ${INTR_WHO[who]}出場（${MOODS[mood][0]}）：「${x}」` }); return; }
+    if (a.type === "intrTake" && ROLES[role] && role !== "T") { const it = S.intr.find(x => x.id === a.id); if (!it || it.by || it.end) return;
+      it.by = role; it.byAt = t; log(e, `${roleName(role)} 去處理${INTR_WHO[it.who]}`, { g: "intrTake", sp: `${roleName(role)}去處理${INTR_WHO[it.who]}`, iid: it.id }); return; }
+    if (a.type === "intrSay") { const it = S.intr.find(x => x.id === a.id), x = String(a.x || "").trim().slice(0, 200); if (!it || it.end || !x) return;
+      if (!it.by && ROLES[role] && role !== "T") { it.by = role; it.byAt = t; }
+      if (role !== it.by && role !== "L") return;
+      it.msgs.push({ t, w: role, x }); it.wait = S.mode === "auto" ? 1 : 0; log(e, `${roleName(role)} → ${INTR_WHO[it.who]}：${x}`, { g: "intrSay", iid: it.id, quiet: true }); return; }
+    if (a.type === "intrReply" && host) { const it = S.intr.find(x => x.id === a.id), x = String(a.x || "").trim().slice(0, 200); if (!it || it.end || !x) return;
+      it.msgs.push({ t, w: "P", x, ai: !!a.ai }); it.wait = 0; if (a.esc) it.esc = t;
+      log(e, `${WHO[it.who][0]} ${INTR_WHO[it.who]}：「${x}」`, { g: "intrReply", sp: x, iid: it.id, quiet: !a.esc, xt: a.ai ? `${INTR_WHO[it.who]}（AI）：「${x}」` : undefined });
+      if (a.calm && !it.calm) { it.calm = t; log(e, `${INTR_WHO[it.who]}情緒緩和，願意在外面等候`, { g: "intrCalm", iid: it.id, quiet: true }); } return; }
+    if (a.type === "intrEnd") { const it = S.intr.find(x => x.id === a.id); if (!it || it.end || !(role === it.by || role === "L" || host)) return;
+      it.end = t; it.how = String(a.how || "").slice(0, 20); it.wait = 0;
+      log(e, `${INTR_WHO[it.who]}處理結束${it.how === "hand" ? "（交給社工／警衛）" : it.calm ? "（已安撫）" : ""}`, { g: "intrEnd", iid: it.id, quiet: true }); return; }
     if (a.type === "say") { const x = String(a.x || "").slice(0, 80); if (x) log(e, x, { g: "say", sp: x }); return; }
     /* ---- Leader：評估、處置、懷疑病因 ---- */
     if (a.type === "ask" && role === "L") { const it = ASK_BY[a.k], who = !it && WHO[a.who] ? a.who : ""; const label = it ? it[1] : (who ? WHO[who][1] + "：" : "") + String(a.x || "").slice(0, 60); if (!label) return;
@@ -3701,7 +3742,7 @@ function fTeachHTML(S, ui){
   const F = fCase(S); if (!F) return "";
   if (S.status === "wait") return `<section class="box fbox"><div class="boxh"><b>正式教案設定</b><small>${esc(F.pt)}</small></div>
     <div class="sseg two"><button data-fm="exam" class="${S.fm === "exam" ? "on" : ""}">正式評核<small>演練 15 → debrief 3 → 評審 2</small></button><button data-fm="practice" class="${S.fm === "practice" ? "on" : ""}">班內練習<small>演練 15 → 教師解題</small></button></div>
-    ${guideModeHTML(S)}
+    ${guideModeHTML(S)}${famModeHTML(S)}
     <p class="hint">開始後 15 分鐘自動結束；約第 3 輪（4:00）系統會自動丟線索。病因處理（${esc(F.fixText)}）後，下一次電擊會 ROSC。</p></section>`;
   if (S.status === "run") { const k = F.keys(S);
     return `<section class="box fbox"><div class="boxh"><b>正式教案進度</b><small>${S.fixAt ? `✓ 病因已處理 ${mmss(S.fixAt - S.t0)}` : "病因還沒處理：電擊不會成功"}${S.roscAt ? `・ROSC ${mmss(S.roscAt - S.t0)}` : ""}</small></div>
@@ -3742,6 +3783,7 @@ async function fClick(e, S, ui, re){
     if (await act({ type: "order", k })) toast(`已下單：${F.orders[k].n}`); return true; }
   const c = e.target.closest("[data-chat]"); if (c) { const inp = $("chatX"), x = inp && inp.value.trim(); if (!x) { toast("先輸入內容", true); return true; } if (await act({ type: "chat", x })) { inp.value = ""; } return true; }
   const gmb = e.target.closest("[data-gmode]"); if (gmb) { await act({ type: "gmode", k: gmb.dataset.gmode }); return true; }
+  const fmb = e.target.closest("[data-fam]"); if (fmb) { await act({ type: "fam", k: fmb.dataset.fam }); return true; }
   const fm = e.target.closest("[data-fm]"); if (fm) { await act({ type: "fmode", k: fm.dataset.fm }); return true; }
   const fc = e.target.closest("[data-fclue]"); if (fc) { await act({ type: "fclue", i: +fc.dataset.fclue }); return true; }
   const ph = e.target.closest("[data-fph]"); if (ph) { const k = ph.dataset.fph; await act({ type: "fph", k }, ["ans", "deb"].includes(k) ? { chat: chatRows(S) } : null); return true; }
@@ -3780,7 +3822,7 @@ function autoPickHTML(S, ui){
       return `<button class="dcard ${cd === k ? "on" : ""}" data-apick="__rand:${k}" style="--dc:${D[3]}"><i>${D[1]}</i><b>${D[0]}</b><em>${D[2].toLocaleString()}<small> 分</small></em><small>${esc(D[4])}</small><span>${n} 題・🎲 抽一題</span></button>`; }).join("")}</div>
     ${F ? `<div class="apsel" style="--dc:${cd ? DIFF[cd][3] : "#334155"}"><span class="dtag">${cd ? DIFF[cd][1] + " " + DIFF[cd][0] : ""}</span>已抽到：<b>${esc(apDesc(cur))}</b><small>${esc(KIND_N[F.kind] || "心跳停止・VF")}${cd ? `・滿分 ${DIFF[cd][2].toLocaleString()} 積分` : ""}${cur.bank && cur.bank.status !== "上架" ? `・${esc(cur.bank.status)}（不計分）` : ""}</small><button class="mini" data-apick="__rand:${cd || "low"}">🎲 換一題</button></div>
       <div class="sseg two fmpick"><button data-fm="practice" class="${S.fm === "practice" ? "on" : ""}">班內練習<small>演練 15 分鐘 → 直接解題</small></button><button data-fm="exam" class="${S.fm === "exam" ? "on" : ""}">模擬正式評核<small>15 → 團隊 debrief 3 → 評審題 2（自動出題）</small></button></div>` : ""}
-    ${guideModeHTML(S)}
+    ${guideModeHTML(S)}${famModeHTML(S)}
     <details class="aplist" ${open ? "open" : ""}><summary>自己挑題目（${AUTO_CASES.length} 題）</summary>
       ${DIFF_ORDER.map(k => `<div class="apg"><b class="apgh" style="--dc:${DIFF[k][3]}">${DIFF[k][1]} ${DIFF[k][0]}<small>${DIFF[k][2].toLocaleString()} 分</small></b><div class="apcards">${AUTO_CASES.filter(id => CASE_DIFF[id] === k).map(id => { const c = CASE_BY[id], f = c.formal || c.std;
         return `<button class="apcard ${S.caseId === id ? "on" : ""}" data-apick="${id}"><b>${esc(apDesc(c))}</b><small>${esc(KIND_N[f.kind] || "心跳停止・VF")}${c.bank ? `・<i class="bk ${c.bank.status === "上架" ? "live" : ""}">${c.bank.status === "上架" ? "自訂教案" : c.bank.status + "・不計分"}</i>` : ""}</small></button>`; }).join("")}</div></div>`).join("")}</details>
@@ -4102,6 +4144,142 @@ function aiTick(S){
     const r = await aiAsk(ST.S, q.label.replace(/^[^：]+：/, q.who ? "" : "$&"), q.who);
     await act({ type: "reply", id: q.id, x: r.ok ? r.x : "（沒有教師，請自行判斷）", ai: r.ok ? 1 : 0 });
     if (!r.ok) toast("AI 回答失敗：" + r.error, true); });
+}
+
+/* ================= 家屬／關係人主動出場＋電話會診 SBAR =================
+   1. 家屬（或目擊者）在演練中途衝到急救室門口，任何角色都可以按「我去處理」，用打字或說話跟他對話。
+      無教師：主持端的 AI 扮演家屬，依處理者的回應變得緩和或更激動；有教師：教師扮演或按「AI 代答」。
+   2. 電話會診：Leader「問人 → 電話會診」說的話，用規則檢查 SBAR 五項有沒有講到（不靠 AI 計分）。
+   3. 回答可以用語音念出來，家屬、目擊者、會診醫師各用不同的聲音。 */
+const INTR_WHO = { family: "家屬", witness: "目擊者" };
+const MOODS = { anxious: ["焦慮", "一直問會不會死"], angry: ["生氣", "覺得沒人理、要見主治"], refuse: ["不配合", "堅持要進急救室"], grief: ["崩潰", "一直哭、聽不進去"] };
+const INTR_LINE = { anxious: "醫生！他到底怎麼了？剛剛還好好的……他會不會死？", angry: "你們到底在幹嘛？都沒有人出來講一聲！我要見主治醫師！", refuse: "讓我進去！我要看他！你們是不是有什麼事瞞著我？", grief: "（大哭）怎麼會這樣……我早上出門他還好好的……" };
+const INTR_ESC = { anxious: "拜託！有沒有人可以跟我說一下現在怎麼樣了！", angry: "叫你們主管出來！等這麼久都沒人理是怎樣！", refuse: "你們不讓我進去，我就自己進去了喔！", grief: "（哭得更大聲）有沒有人……誰可以告訴我……" };
+const INTR_CALM = ["好……那我在外面等，有消息一定要馬上跟我說。", "好，我知道了，我先去那邊等。", "謝謝你……拜託你們一定要救他。"];
+const INTR_TIPS = ["我是急診護理師，我來陪你", "我知道你很擔心", "醫師和團隊正在全力急救", "我先帶你到家屬等候區坐", "有任何消息我會馬上出來跟你說", "他平常有什麼病、有吃什麼藥嗎？"];
+const INTR_AT = 180;   // 無教師模式：開始後幾秒家屬出場
+const famMode = S => S.fam || (S.mode === "auto" ? "anxious" : "off");
+function famModeHTML(S){
+  const m = famMode(S);
+  return `<div class="gmsel"><span>🧑‍🦳 家屬干擾（演練中途家屬衝進來）</span><div class="sseg five">${[["off", "不出現"], ...Object.entries(MOODS).map(([k, v]) => [k, v[0]])].map(([k, n]) => `<button data-fam="${k}" class="${m === k ? "on" : ""}">${n}</button>`).join("")}</div><small>${m === "off" ? (S.mode === "auto" ? "這場不會有家屬出現。" : "有教師時：演練中可以隨時在教師手機「派家屬進場」。") : S.mode === "auto" ? `開始後約 ${INTR_AT / 60} 分鐘，${MOODS[m][0]}的家屬會出現（${MOODS[m][1]}），任何角色都可以去處理；AI 扮演家屬。` : `有教師時：教師手機「派家屬進場」預設用「${MOODS[m][0]}」。`}</small></div>`;
+}
+/* ---------- 聲音：不同人物不同聲線 ---------- */
+const itts = () => { try { return localStorage.getItem("sim2-itts") !== "0"; } catch (e) { return true; } };
+function speakAs(who, t, mood){
+  try { if (!t || !("speechSynthesis" in window)) return;
+    const x = String(t).replace(/（[^）]*）/g, "").replace(/ mg/g, " 毫克").replace(/ETCO₂/g, "潮氣末二氧化碳"); if (!x.trim()) return;
+    const u = new SpeechSynthesisUtterance(x); u.lang = "zh-TW";
+    const V = speechSynthesis.getVoices().filter(v => /zh[-_](TW|HK|CN)/i.test(v.lang)), idx = { family: 1, witness: 2, consult: 3, nurse: 0 }[who] || 0;
+    if (V.length) u.voice = V.filter(v => /TW/i.test(v.lang))[idx % Math.max(1, V.filter(v => /TW/i.test(v.lang)).length)] || V[idx % V.length];
+    const P = { family: { anxious: [1.25, 1.18], angry: [0.9, 1.2], refuse: [1.05, 1.15], grief: [1.15, 0.9] }[mood || "anxious"] || [1.2, 1.12], witness: [1, 1.05], consult: [0.82, 1.18], nurse: [1.05, 1.05] }[who] || [1, 1.05];
+    u.pitch = P[0]; u.rate = P[1]; speechSynthesis.speak(u); } catch (e) {}
+}
+/* ---------- 主持端：時間到派家屬出場、AI 扮演回應 ---------- */
+const IAQ = {};
+function intrTick(S){
+  if (!S || S.status !== "run" || !ST.seat || ST.seat.role !== "H" || S.mode !== "auto") return;
+  const m = famMode(S), now = NOW();
+  if (m !== "off" && S.t0 && now - S.t0 > INTR_AT * 1000 && !S.intr.some(x => x.si === 0) && !IAQ[ST.code + "s0"]) { IAQ[ST.code + "s0"] = 1;
+    act({ type: "intr", si: 0, who: "family", mood: m, x: INTR_LINE[m] }); }
+  S.intr.forEach(it => {
+    if (it.end) return;
+    if (!it.by && !it.esc && now - it.t > 40000 && !IAQ[ST.code + it.id + "e"]) { IAQ[ST.code + it.id + "e"] = 1; act({ type: "intrReply", id: it.id, x: INTR_ESC[it.mood] || INTR_ESC.anxious, esc: 1 }); }
+    const last = it.msgs[it.msgs.length - 1], k = ST.code + it.id + "m" + it.msgs.length;
+    if (it.wait && last && last.w !== "P" && !IAQ[k]) { IAQ[k] = 1; intrAI(S, it).then(r => act({ type: "intrReply", id: it.id, x: r.x, calm: r.calm ? 1 : 0, ai: r.ai ? 1 : 0 })); }
+  });
+}
+async function intrAI(S, it){
+  const staff = it.msgs.filter(m => m.w !== "P").length, last = it.msgs[it.msgs.length - 1];
+  const thread = it.msgs.slice(0, -1).map(m => `${m.w === "P" ? INTR_WHO[it.who] : "醫護（" + roleName(m.w) + "）"}：${m.x}`).join("\n");
+  const r = await api("simAI", { code: ST.code, key: ST.seat.key, kind: "intr", who: it.who, mood: it.mood, q: last ? last.x : "", thread, ctx: aiCtx(S) });
+  if (r && r.ok && r.x) return { x: r.x, calm: !!r.calm, ai: 1 };
+  /* AI 不能用時的備用：講到第 3 句就緩和 */
+  return staff >= 3 ? { x: INTR_CALM[0], calm: 1 } : { x: ["可是……他現在到底怎麼樣了？", "那我可以做什麼？我要在哪裡等？"][Math.min(1, staff - 1)] || INTR_ESC[it.mood], calm: 0 };
+}
+/* ---------- 學員手機：出場提醒＋對話 ---------- */
+function intrKey(S, ui){ return JSON.stringify([famMode(S), (S.intr || []).map(it => [it.by, it.end, it.calm, it.wait, it.msgs.length, it.esc]), ui.ival, itts()]); }
+function intrHTML(S, role, ui){
+  if (!S.intr || !S.intr.length || role === "T" || S.status !== "run") return "";
+  return S.intr.filter(it => !it.end).map(it => {
+    const ic = WHO[it.who] ? WHO[it.who][0] : "🧑‍🦳", nm = INTR_WHO[it.who], lastP = [...it.msgs].reverse().find(m => m.w === "P");
+    if (!it.by) return `<section class="intr alert"><div class="ihd"><span class="iav">${ic}</span><div><b>${nm}衝到急救室門口！</b><small>${esc(MOODS[it.mood][0])}・${mmss(NOW() - it.t)} 前</small></div></div>
+      <p class="iq">「${esc(lastP ? lastP.x : it.x)}」</p>
+      <button class="btn big wide" data-intake="${it.id}">🙋 我去處理${nm}</button>${role === "L" ? `<small class="hint">Leader 盡量派別人去（例如紀錄），自己留在床邊指揮；或在「下指令」叫人去。</small>` : ""}</section>`;
+    if (it.by !== role) return `<section class="intr mini"><span class="iav">${ic}</span><span>${nm}：由 <b>${esc(roleName(it.by))}</b> 處理中${it.calm ? "・✓ 已緩和" : ""}</span></section>`;
+    return `<section class="intr talk"><div class="ihd"><span class="iav">${ic}</span><div><b>你正在處理${nm}</b><small>${esc(MOODS[it.mood][0])}・先自我介紹、同理、簡單說明、安排等候位置</small></div><label class="sw"><input type="checkbox" data-itts="1" ${itts() ? "checked" : ""}> 🔊</label></div>
+      <div class="ithread" id="ith-${it.id}">${it.msgs.map(m => `<div class="im ${m.w === "P" ? "p" : "ims"}"><span>${m.w === "P" ? ic : roleName(m.w)}</span><p>${esc(m.x)}</p></div>`).join("")}${it.wait ? `<div class="im p typing"><span>${ic}</span><p><i></i><i></i><i></i></p></div>` : ""}</div>
+      ${it.calm ? `<p class="icalm">✓ ${nm}情緒緩和了，可以按「結束」回到崗位。</p>` : ""}
+      <div class="ichips">${INTR_TIPS.map(t => `<button data-itip="${esc(t)}">${esc(t)}</button>`).join("")}</div>
+      <div class="free"><input id="intrX" data-iid="${it.id}" maxlength="120" placeholder="跟${nm}說…（可以按麥克風用說的）"><button class="mic" data-imic="${it.id}" aria-label="用說的">🎤</button><button class="btn" data-isay="${it.id}">說</button></div>
+      <div class="row"><button class="btn ghost" data-iend="${it.id}" data-how="calm">✓ 結束：已安撫、在外面等</button><button class="btn ghost" data-iend="${it.id}" data-how="hand">交給社工／警衛</button></div></section>`;
+  }).join("");
+}
+async function intrClick(e, S, role, ui, re){
+  const tk = e.target.closest("[data-intake]"); if (tk) { await act({ type: "intrTake", id: tk.dataset.intake }); return true; }
+  const tp = e.target.closest("[data-itip]"); if (tp) { const i = $("intrX"); if (i) { i.value = (i.value ? i.value + "，" : "") + tp.dataset.itip; i.focus(); } return true; }
+  const say = async (id, x) => { x = String(x || "").trim(); if (!x) return toast("先打字或用說的", true); if (await act({ type: "intrSay", id, x })) { const i = $("intrX"); if (i) i.value = ""; } };
+  const sb = e.target.closest("[data-isay]"); if (sb) { await say(sb.dataset.isay, ($("intrX") || {}).value); return true; }
+  const mc = e.target.closest("[data-imic]"); if (mc) { dictate("intrX", mc, x => say(mc.dataset.imic, x)); return true; }
+  const en = e.target.closest("[data-iend]"); if (en) { await act({ type: "intrEnd", id: en.dataset.iend, how: en.dataset.how }); return true; }
+  const tt = e.target.closest("[data-itts]"); if (tt) { try { localStorage.setItem("sim2-itts", tt.checked ? "1" : "0"); } catch (x) {} return true; }
+  return false;
+}
+/* 新事件：處理者的手機把家屬的話念出來 */
+function intrSpeak(S, role, nw){
+  if (!itts()) return;
+  nw.filter(e => e.g === "intrReply").forEach(e => { const it = S.intr.find(x => x.id === e.iid); if (!it) return;
+    if (e.g === "intrReply" && it.by === role) speakAs(it.who, e.sp, it.mood); });
+}
+/* ---------- 教師手機：派家屬進場、扮演回應 ---------- */
+function intrTeachHTML(S, ui){
+  if (S.status !== "run") return "";
+  const m = famMode(S) === "off" ? "anxious" : famMode(S), mood = ui.imood || m, who = ui.iwho || "family";
+  const open = S.intr.filter(it => !it.end);
+  return `<section class="panel intrt"><h3 class="h3">🧑‍🦳 家屬／關係人</h3>
+    ${open.map(it => `<div class="itq"><b>${WHO[it.who][0]} ${INTR_WHO[it.who]}（${MOODS[it.mood][0]}）${it.by ? `・${esc(roleName(it.by))} 處理中` : "・還沒人去處理"}${it.calm ? "・✓ 已緩和" : ""}</b>
+      <div class="ithread">${it.msgs.slice(-6).map(x => `<div class="im ${x.w === "P" ? "p" : "ims"}"><span>${x.w === "P" ? INTR_WHO[it.who] : roleName(x.w)}</span><p>${esc(x.x)}</p></div>`).join("")}</div>
+      <div class="free"><input id="itx-${it.id}" maxlength="120" placeholder="用${INTR_WHO[it.who]}的口吻回答…"><button class="btn" data-itrep="${it.id}">回</button><button class="btn ghost" data-itai="${it.id}">🤖 AI 代答</button></div>
+      <div class="row"><button class="btn ghost" data-itcalm="${it.id}">✓ ${INTR_WHO[it.who]}緩和了</button><button class="btn ghost" data-iend="${it.id}" data-how="teacher">結束這段</button></div></div>`).join("")}
+    <div class="label">派人進場</div><div class="chips">${Object.entries(INTR_WHO).map(([k, n]) => `<button data-iwho="${k}" class="${who === k ? "on" : ""}">${n}</button>`).join("")}</div>
+    <div class="chips">${Object.entries(MOODS).map(([k, v]) => `<button data-imood="${k}" class="${mood === k ? "on" : ""}">${v[0]}</button>`).join("")}</div>
+    <div class="free"><input id="itLine-${mood}" maxlength="120" value="${esc(INTR_LINE[mood])}"><button class="btn" data-isend="1">派進場</button></div></section>`;
+}
+async function intrTeachClick(e, S, ui, re){
+  const w = e.target.closest("[data-iwho]"); if (w) { ui.iwho = w.dataset.iwho; re(); return true; }
+  const m = e.target.closest("[data-imood]"); if (m) { ui.imood = m.dataset.imood; re(); return true; }
+  if (e.target.closest("[data-isend]")) { const mood = ui.imood || (famMode(S) === "off" ? "anxious" : famMode(S)), x = ($("itLine-" + mood) || {}).value || INTR_LINE[mood]; await act({ type: "intr", who: ui.iwho || "family", mood, x }); return true; }
+  const rp = e.target.closest("[data-itrep]"); if (rp) { const i = $("itx-" + rp.dataset.itrep), x = i && i.value.trim(); if (!x) return toast("先打字", true), true; if (await act({ type: "intrReply", id: rp.dataset.itrep, x })) i.value = ""; return true; }
+  const ai = e.target.closest("[data-itai]"); if (ai) { const it = S.intr.find(x => x.id === ai.dataset.itai); if (!it) return true; ai.disabled = true; ai.textContent = "AI 想一下…";
+    const r = await intrAI(S, it); ai.disabled = false; ai.textContent = "🤖 AI 代答"; const i = $("itx-" + it.id); if (i) i.value = r.x; if (r.calm) toast("AI 判斷家屬已緩和，按「回」送出後可以再按「緩和了」"); return true; }
+  const cm = e.target.closest("[data-itcalm]"); if (cm) { await act({ type: "intrReply", id: cm.dataset.itcalm, x: INTR_CALM[0], calm: 1 }); return true; }
+  const en = e.target.closest("[data-iend]"); if (en) { await act({ type: "intrEnd", id: en.dataset.iend, how: en.dataset.how }); return true; }
+  return false;
+}
+/* ---------- 演練後：家屬處理＋會診 SBAR（全部規則判斷） ---------- */
+const SBAR = [["自我介紹", /我是|這裡是|這邊是|急診|ER\b/i], ["病人基本資料", /\d+\s*(歲|y\/?o|yo)|男性|女性|先生|太太|阿公|阿嬤|阿伯|小姐|男生|女生|老先生|老太太/i],
+  ["現在狀況", /主訴|胸痛|胸悶|喘|昏迷|倒下|心跳停止|OHCA|休克|意識|吐血|出血|抽搐|懷疑|STEMI|中風|ROSC|急救|CPR/i], ["生命徵象／數據", /BP|血壓|HR|心跳\s*\d|脈搏|SpO|血氧|GCS|體溫|\d+\s*\/\s*\d+|乳酸|鉀|K\s*\d|血紅素|Hb|EKG|心電圖|ST/i],
+  ["請求", /請|麻煩|可以|能不能|需要|幫忙|來看|會診|評估|安排|收|導管|開刀|手術|內視鏡/]];
+function sbarStats(S){
+  const C = S.asks.filter(q => q.who === "consult"); if (!C.length) return null;
+  const text = q => q.label.replace(/^[^：]+：/, ""), first = text(C[0]), all = C.map(text).join("；");
+  return { n: C.length, first: SBAR.map(([n, re]) => [n, re.test(first)]), all: SBAR.map(([n, re]) => [n, re.test(all)]), back: C.filter(q => q.reply && /哪位|幾歲|多少|什麼狀況|要我做什麼|先給我|先提供/.test(q.reply.x || "")).length };
+}
+function intrStats(S){
+  return (S.intr || []).map(it => ({ who: INTR_WHO[it.who], mood: MOODS[it.mood][0], resp: it.byAt ? Math.round((it.byAt - it.t) / 1000) : null, by: it.by, turns: it.msgs.filter(m => m.w !== "P").length, calm: it.calm ? Math.round((it.calm - it.t) / 1000) : null, esc: !!it.esc, how: it.how || "" }));
+}
+function intrCommHTML(S){
+  const I = intrStats(S), B = sbarStats(S); if (!I.length && !B) return "";
+  const row = (k, v, ok, tip) => `<div class="dbr ${ok === true ? "ok" : ok === false ? "bad" : ""}"><span>${k}${tip ? `<small>${tip}</small>` : ""}</span><b>${v === null || v === "" ? "—" : esc(String(v))}</b></div>`;
+  return `${I.map((x, i) => `<h4 class="h4">🧑‍🦳 ${esc(x.who)}出場${I.length > 1 ? ` ${i + 1}` : ""}（${esc(x.mood)}）</h4><div class="dbgrid">
+      ${row("多久有人去處理", x.resp === null ? "沒有人處理" : x.resp + " 秒", x.resp === null ? false : x.resp <= 30, x.esc ? "等太久，家屬又更激動了一次" : "")}
+      ${row("誰去處理", x.by ? roleName(x.by) : "—", x.by ? x.by !== "L" : null, x.by === "L" ? "Leader 被拉離床邊；可以派紀錄或其他人" : "")}
+      ${row("對話來回", x.turns + " 次")}
+      ${row("情緒緩和", x.calm === null ? "沒有緩和" : `第 ${x.calm} 秒`, x.calm !== null)}</div>`).join("")}
+    ${B ? `<h4 class="h4">🩺 電話會診 SBAR（${B.n} 次）</h4><div class="dbgrid">${B.all.map(([n, ok], i) => row(n, ok ? (B.first[i][1] ? "✓ 第一次就講" : "✓ 後來補") : "✗ 沒講到", ok ? (B.first[i][1] ? true : null) : false)).join("")}
+      ${row("會診醫師反問資料", B.back + " 次", B.back === 0, B.back ? "第一通資料不夠，對方要追問" : "對方不用追問")}</div>` : ""}`;
+}
+function intrCtx(S){
+  return (S.intr || []).map(it => `【${INTR_WHO[it.who]}出場（${MOODS[it.mood][0]}）】${mmss(it.t - S.t0)}\n` + it.msgs.map(m => `${mmss(m.t - S.t0)} ${m.w === "P" ? INTR_WHO[it.who] : roleName(m.w)}：${m.x}`).join("\n")).join("\n");
 }
 
 /* ================= 團隊賽：固定隊、能階保底、積分、排行榜 ================= */
@@ -4592,6 +4770,13 @@ function myFeedback(S, role){
     const n = S.ev.filter(e => e.w === "R" && e.g === "remind").length;
     if (n >= 3) good(`提醒了 ${n} 次（Epi 時間、換手、5H5T），幫 Leader 抓節奏。`); else bad("紀錄要主動提醒 Epi 時間、兩分鐘換手、想 5H5T。", "r5");
   }
+  /* 家屬處理（誰處理就給誰）、電話會診 SBAR（Leader） */
+  (S.intr || []).filter(it => it.by === role).forEach(it => { const r = Math.round((it.byAt - it.t) / 1000);
+    if (it.calm) good(`${r} 秒內就去處理${INTR_WHO[it.who]}，${INTR_WHO[it.who]}的情緒有緩和下來。`); else bad(`${INTR_WHO[it.who]}的情緒沒有緩和：試著先自我介紹、同理感受、用簡單的話說明、安排等候位置並約定會出來說明。`); });
+  if (role === "L") { const un = (S.intr || []).filter(it => !it.by || it.byAt - it.t > 45000); if (un.length) bad(`${INTR_WHO[un[0].who]}衝進來後 45 秒內沒人處理：Leader 可以馬上指派一個人（例如紀錄）去處理。`);
+    if ((S.intr || []).some(it => it.by === "L")) bad("Leader 親自去處理家屬，床邊沒人指揮：盡量派別人去。");
+    const B = sbarStats(S); if (B) { const miss = B.all.filter(x => !x[1]).map(x => x[0]), m1 = B.first.filter(x => !x[1]).map(x => x[0]);
+      if (!m1.length) good("電話會診第一通就把 SBAR 講完整。"); else if (miss.length) bad(`電話會診少講了：${miss.join("、")}。`); else bad(`電話會診第一通少了：${m1.join("、")}，被追問後才補；第一通就講完整比較快。`); } }
   const bads = out.filter(x => x[0] === "bad").slice(0, 2), goods = out.filter(x => x[0] === "good").slice(0, 3 - Math.min(2, bads.length) >= 1 ? 3 - bads.length : 1);
   bads.forEach(x => x[2] && q.add(x[2]));
   return { items: [...goods.slice(0, Math.max(1, 3 - bads.length)), ...bads].slice(0, 3), quests: [...q].slice(0, 2) };
@@ -4638,7 +4823,7 @@ function commHTML(S, host){
       ${row("對內頻道訊息", m.chat ? `${m.chat} 則（語音 ${m.voice}）` : "0", null, Object.entries(m.byRole).map(([k, n]) => `${roleName(k)} ${n}`).join("、"))}
       ${row("看起來像複誦／回報的訊息", m.readback, null)}
       ${row("最長沒有任何指令的空白", m.silent === null ? null : m.silent + " 秒", m.silent === null ? null : m.silent <= 90, "超過 90 秒，Leader 可能被卡住或在忙別的")}
-    </div>
+    </div>${intrCommHTML(S)}
     ${host ? `<div class="row"><button class="btn ghost" id="commAI">🤖 AI 溝通講評草稿</button><small class="hint">只送指令與對內頻道內容（不含姓名），產生後請教師確認。</small></div><div id="commOut"></div>` : ""}</section>`;
 }
 function commCtx(S){
@@ -4646,7 +4831,9 @@ function commCtx(S){
   const lines = [...S.cmds.map(c => ({ t: c.t, x: `${T(c.t)} Leader → ${roleName(c.to)}：${c.x}${c.ack ? `（${Math.round((c.ack - c.t) / 1000)} 秒後收到）` : "（沒人回「收到」）"}${c.done ? `（${Math.round((c.done - c.t) / 1000)} 秒後完成）` : "（沒有完成）"}` })),
     ...S.ev.filter(e => e.w === "L" && e.g === "say").map(e => ({ t: e.t, x: `${T(e.t)} Leader 對全隊：${e.x}` })),
     ...S.chat.filter(c => c.ph === "run").map(c => ({ t: c.t, x: `${T(c.t)} ${roleName(c.w)}（對內頻道）：${c.voice && !c.x ? "（語音）" : c.x}` }))].sort((a, b) => a.t - b.t).slice(0, 120).map(x => x.x);
-  return `【溝通統計】${JSON.stringify(Object.assign({}, m, { vague: m.vague.slice(0, 5) }))}\n【時間序（演練開始起算）】\n${lines.join("\n") || "（沒有任何手機上的溝通紀錄）"}`;
+  const I = intrStats(S), B = sbarStats(S), sc = S.asks.filter(q => q.who).map(q => `${mmss(q.t - t0)} Leader ${q.label}${q.reply ? ` → ${q.reply.x}` : ""}`);
+  return `【溝通統計】${JSON.stringify(Object.assign({}, m, { vague: m.vague.slice(0, 5) }))}\n【時間序（演練開始起算）】\n${lines.join("\n") || "（沒有任何手機上的溝通紀錄）"}`
+    + (I.length ? `\n【家屬處理統計】${JSON.stringify(I)}\n${intrCtx(S)}` : "") + (sc.length ? `\n【問人／電話會診】\n${sc.join("\n")}` : "") + (B ? `\n【會診 SBAR（規則判斷）】${B.all.map(([n, ok]) => `${n}${ok ? "✓" : "✗"}`).join("、")}；會診醫師反問 ${B.back} 次` : "");
 }
 async function commAI(S){
   const r = await api("simAI", { code: ST.code, key: ST.seat.key, kind: "comm", ctx: commCtx(S) });
@@ -4783,7 +4970,7 @@ function reasonHint(S){
 }
 
 /* ================= 共用小工具 ================= */
-const SIM_VER = "2026.10.28-d";
+const SIM_VER = "2026.10.28-e";
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ACC = window.ACCOUNT || null;
@@ -4844,7 +5031,7 @@ function startRoom(code, ...fns){
   stopRoom(); ST.histDone = 0; ST.gen = (ST.gen || 0) + 1; ST.busy = null; ST.again = false; ST.code = code; ST.events = []; ST.S = null; ST.meta = null; ST.paintFns = fns;
   /* 演練中每秒同步；等待開始、結束後放慢到 2–3 秒（減少 Apps Script 排隊，演練中的動作就更快） */
   let skip = 0; ST.poll = setInterval(() => { if (document.hidden) return; const S = ST.S, hot = S && S.chat.length && NOW() - S.chat[S.chat.length - 1].t < 30000; if (S && S.status !== "run" && !hot && (skip++ % (LIVE() ? 3 : 2))) return; pull(); }, LIVE() ? 1000 : 600);
-  ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); recTick(ST.S); aiTick(ST.S); } catch (e) { console.error(e); } }, 1000);
+  ST.tick = setInterval(() => { if (!ST.S) return; if (ST.S.status !== "end" || fCase(ST.S)) paintTimers(ST.S); try { fTick(ST.S); recTick(ST.S); aiTick(ST.S); intrTick(ST.S); } catch (e) { console.error(e); } }, 1000);
   return (window.BANKP || Promise.resolve()).then(() => pull());
 }
 const NOW = () => Date.now() + ST.off;
@@ -5155,6 +5342,7 @@ function board(code){
       if (r.error) { ap2.disabled = false; ap2.textContent = "🤖 AI 講評並發布"; return toast(r.error, true); } const x = fbRows(ST.S, r.fb); if (await act({ type: "fbpub", fb: r.fb }, { fbRows: x.rows, fbTeam: x.team })) toast("AI 講評已發布到每支手機"); return; }
     if (e.target.closest("#vset")) return voiceSetup();
     const gmb = e.target.closest("[data-gmode]"); if (gmb) { await act({ type: "gmode", k: gmb.dataset.gmode }); return; }
+    const fmb = e.target.closest("[data-fam]"); if (fmb) { await act({ type: "fam", k: fmb.dataset.fam }); return; }
     const ap = e.target.closest("[data-apick]"); if (ap) { let id = ap.dataset.apick; const S0 = ST.S;
       if (id.startsWith("__rand")) { const k = id.split(":")[1]; let L = AUTO_CASES.filter(x => !k || CASE_DIFF[x] === k); if (L.length > 1) L = L.filter(x => x !== (S0 && S0.caseId)); id = L[Math.floor(Math.random() * L.length)]; }
       if (!id || !CASE_BY[id]) return; await act({ type: "case", id }); toast("已抽題，準備好就按「開始演練」"); return; }
@@ -5221,14 +5409,15 @@ function player(code){
     $("meSt").textContent = S.status === "wait" ? "等待主持人開始…" : S.status === "run" ? "演練中" : "演練結束";
     if (ui.seen === undefined || S.ev.length < ui.seen) ui.seen = S.ev.length;
     else if (S.ev.length > ui.seen) { const nw = S.ev.slice(ui.seen); ui.seen = S.ev.length;
-      if (role === "L" && tts()) nw.filter(e => e.g === "reply" || e.g === "clue").forEach(e => e.voice ? playVoice(e.voice) : speak(e.sp || e.x)); }
+      if (role === "L" && tts()) nw.filter(e => e.g === "reply" || e.g === "clue").forEach(e => { const q = e.ask && S.asks.find(x => x.id === e.ask); e.voice ? playVoice(e.voice) : q && q.who ? speakAs(q.who, e.sp || e.x) : speak(e.sp || e.x); });
+      intrSpeak(S, role, nw); }
     if (ui.dragging) return;
     const G = GUIDE_ON() && role !== "T" ? guideFor(S, role) : null;
-    const key = JSON.stringify([ui.sec, G && [G.x, G.sec, G.tab, G.wait], GUIDE_ON(), guideAllowed(S)]) + JSON.stringify(ST.meta && ST.meta.game || 0) + fKey(S, ui) + (P.key ? P.key(S, ui) : JSON.stringify([S.status, S.ev.length])) + JSON.stringify([S.cpr, S.comp, !!S.arrestAt, S.seats, S.voice]) + (S.status === "end" ? JSON.stringify([S.dstep, S.fbPub, S.fb, S.refl, ui.reedit]) : "");
+    const key = JSON.stringify([ui.sec, G && [G.x, G.sec, G.tab, G.wait], GUIDE_ON(), guideAllowed(S)]) + JSON.stringify(ST.meta && ST.meta.game || 0) + fKey(S, ui) + intrKey(S, ui) + (P.key ? P.key(S, ui) : JSON.stringify([S.status, S.ev.length])) + JSON.stringify([S.cpr, S.comp, !!S.arrestAt, S.seats, S.voice]) + (S.status === "end" ? JSON.stringify([S.dstep, S.fbPub, S.fb, S.refl, ui.reedit]) : "");
     if (key === ui.lastKey) return; ui.lastKey = key;
     const keepScroll = scrollY, focus = document.activeElement && document.activeElement.id, vals = {};
     $("pBody").querySelectorAll("input[id],textarea[id]").forEach(el => { if (el.type !== "checkbox") vals[el.id] = el.value; });
-    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + recBanner(S) + `<div class="hud" id="hud">${fBarHTML(S)}${guideBarHTML(S, role, G)}</div>` + (S.status === "run" && role !== "T" && role !== "C" && !fHold(S) ? compBar(S, role) : "") + resultHTML(S, ST.meta) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + myFbHTML(S, role) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + myFbHTML(S, role) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" ? myCmds(S, role) : "") + (P.secs ? (() => { const X = P.secs(S, ui), cur = curSec(S, role, ui); return secNavHTML(S, role, ui, G) + `<div class="secbody" data-cur="${cur}">${X[cur] || ""}</div>`; })() : P.html(S, ui)) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
+    $("pBody").innerHTML = (S.voice ? `<div class="voicewrap"><a class="voicebar2" href="${esc(S.voice)}" target="_blank" rel="noopener">🎧 加入語音室<small>${/line\.me/.test(S.voice) ? "LINE" : /meet\.google/.test(S.voice) ? "Google Meet" : "線上會議"}・線上擬真每個人都加入；同一間的人只留一支開麥克風，避免回音</small></a><a class="boardlink" href="#b-${esc(code)}" target="_blank" rel="noopener">📺 看大面板</a></div>` : "") + recBanner(S) + `<div class="hud" id="hud">${fBarHTML(S)}${guideBarHTML(S, role, G)}</div>` + (S.status === "run" && role !== "T" && role !== "C" && !fHold(S) ? compBar(S, role) : "") + intrHTML(S, role, ui) + resultHTML(S, ST.meta) + (S.status === "end" && role !== "T" ? (fCase(S) && S.fph !== "deb" ? (["team", "judge"].includes(S.fph) ? chatHTML(S, role) : ansHTML(S) + myFbHTML(S, role) + checklistHTML(S, role)) : learnerDebHTML(S, role, ui) + myFbHTML(S, role) + checklistHTML(S, role)) : "") + (fHold(S) && role !== "T" ? recHTML(S, role, ui) : (role !== "T" ? myCmds(S, role) : "") + (P.secs ? (() => { const X = P.secs(S, ui), cur = curSec(S, role, ui); return secNavHTML(S, role, ui, G) + `<div class="secbody" data-cur="${cur}">${X[cur] || ""}</div>`; })() : P.html(S, ui)) + (S.status === "end" ? debriefHTML(S, role === "T") : ""));
     Object.entries(vals).forEach(([id, v]) => { const el = $(id); if (el && v !== undefined && el.dataset.keep !== "0" && (el.tagName !== "TEXTAREA" || ui.edited && ui.edited[id])) el.value = v; });
     mountMonitors($("pBody")); paintTimers(S); reArm(); ui.gEl = guideMark($("pBody"), G && !G.wait ? G : null); ui.G = G && !G.wait ? G : null;
     const hud = $("hud"), hb = document.querySelector(".appbar"); if (hud && hb) { const ts = $("tStrip"), tp = Math.max(0, hb.getBoundingClientRect().height) + (ts && !ts.hidden ? ts.offsetHeight + 6 : 0); hud.style.top = tp + "px"; $("pBody").style.setProperty("--hudh", (tp + hud.offsetHeight + 4) + "px"); }
@@ -5254,6 +5443,8 @@ function player(code){
   $("pBody").onkeydown = e => { if (e.key === "Enter" && e.target.id === "chatX") { e.preventDefault(); const b = $("pBody").querySelector("[data-chat]"); b && b.click(); } };
   $("pBody").onclick = async e => {
     if (await fClick(e, ST.S, ui, () => { ui.lastKey = ""; paint(ST.S); })) return;
+    if (role !== "T" && await intrClick(e, ST.S, role, ui, () => { ui.lastKey = ""; paint(ST.S); })) return;
+    if (role === "T" && await intrTeachClick(e, ST.S, ui, () => { ui.lastKey = ""; paint(ST.S); })) return;
     const sc = e.target.closest("[data-sec]"); if (sc) { ui.sec = sc.dataset.sec; try { localStorage.setItem("sim2-sec-" + role, ui.sec); } catch (x) {} ui.lastKey = ""; paint(ST.S); scrollTo({ top: Math.max(0, $("pBody").querySelector(".secnav").getBoundingClientRect().top + scrollY - 140), behavior: "smooth" }); return; }
     if (e.target.closest("[data-gtog]")) { try { localStorage.setItem("sim2-guide", GUIDE_ON() ? "0" : "1"); } catch (x) {} ui.lastKey = ""; return paint(ST.S); }
     if (e.target.closest("[data-ggo]")) { const G = ui.G; if (!G) return; if (G.sec && G.sec !== curSec(ST.S, role, ui)) ui.sec = G.sec; if (G.tab && role === "L") { ui.tab = G.tab; if (G.to) ui.to = G.to; } ui.lastKey = ""; paint(ST.S);
@@ -5325,7 +5516,7 @@ const PANELS = {
         <div class="free"><input id="cmdX" maxlength="50" placeholder="自己打指令給「${ROLES[to][0]}」"><button class="mic" data-mic="cmdX" aria-label="語音輸入" title="用說的">🎤</button><button class="btn" data-free="cmd">送出</button></div></section>
         <section class="panel"><h3 class="h3">已下的指令</h3>${S.cmds.length ? `<ol class="cmdlist">${S.cmds.slice(-10).reverse().map(c => `<li class="${c.done ? "done" : c.ack ? "ack" : ""}"><span class="tag" style="--rc:${ROLES[c.to][2]}">${ROLES[c.to][0]}</span>${esc(c.x)}<em>${c.done ? "✓ 完成" : c.ack ? "收到" : "等待"}</em></li>`).join("")}</ol>` : `<p class="hint">還沒下指令。</p>`}</section>`;
       if (tab === "ask") { const z = BODY_ZONES.find(x => x.id === ui.zone), used = k => S.asks.some(q => q.k === k) ? "used" : "";
-        body = `<section class="panel voicebar"><button class="btn big" data-micask="1">🎤 用說的評估</button><small>例如：「聽右胸呼吸音」「摸頸動脈」「看瞳孔」，會自動對到評估項目送出</small>
+        body = `<section class="panel voicebar"><button class="btn big" data-micask="1">🎤 ${ui.who ? "用說的" + WHO[ui.who][1] : "用說的評估"}</button><small>例如：「聽右胸呼吸音」「摸頸動脈」「看瞳孔」，會自動對到評估項目送出</small>
           <label class="sw"><input type="checkbox" id="ttsOn" ${tts() ? "checked" : ""}> 🔊 回答用語音念出來</label></section>
         <details class="panel scenep" ${ui.scOpen === false ? "" : "open"}><summary>🛏 急救床（即時）<small>評估過的外觀線索會標在病人身上</small></summary>${sceneSVG(S)}</details>
         <section class="panel"><h3 class="h3">身體評估：點病人身上的部位</h3><div class="bodyw">${bodySVG(ui.zone, S)}
@@ -5350,7 +5541,8 @@ const PANELS = {
       const wh = e.target.closest("[data-who]"); if (wh) { ui.who = wh.dataset.who; re(); setTimeout(() => $("askX") && $("askX").focus(), 50); return; }
       const ht = e.target.closest("[data-ht]"); if (ht) return act({ type: "ht", k: ht.dataset.ht, on: !S.ht[ht.dataset.ht] });
       const ma = e.target.closest("[data-micask]"); if (ma) { if (S.status !== "run") return toast("演練還沒開始", true);
-        return dictate("askX", ma, async x => { const k = matchAsk(x); if (!k) return toast("沒有對到評估項目，已放進下面輸入框，確認後按「送出」");
+        return dictate("askX", ma, async x => { if (ui.who) { if (await act({ type: "ask", k: "free", x: x.slice(0, 60), who: ui.who })) { $("askX") && ($("askX").value = ""); toast(`已問${WHO[ui.who][1].replace(/^問/, "")}：${x}`); } return; }
+          const k = matchAsk(x); if (!k) return toast("沒有對到評估項目，已放進下面輸入框，確認後按「送出」");
           if (await act({ type: "ask", k })) { $("askX") && ($("askX").value = ""); toast("已送出評估：" + ASK_BY[k][1]); } }); }
       const f = e.target.closest("[data-free]"); if (f) { const k = f.dataset.free, inp = $(k + "X"), x = inp.value.trim(); if (!x) return toast("先打字再送出", true);
         if (S.status !== "run") return toast("演練還沒開始", true);
@@ -5443,7 +5635,7 @@ const PANELS = {
   },
   /* ---------- 臨床教師 ---------- */
   T: {
-    key: (S, ui) => JSON.stringify([S.gm, S.fm, S.status, ui.tab, S.caseId, S.rhythm, S.pulse, S.show, S.monitor, S.stateId, ui.slow, ui.zone, ui.titem, S.custom, S.airway.ett, ui.img, S.vit, S.asks.map(q => !!q.reply), S.clues.length, ui.draft, ui.rec, S.ev.length, Object.keys(ui.hd || {}).length, S.dstep, S.fb, S.fbPub, S.refl, ui.sc]),
+    key: (S, ui) => JSON.stringify([S.gm, S.fam, ui.iwho, ui.imood, S.fm, S.status, ui.tab, S.caseId, S.rhythm, S.pulse, S.show, S.monitor, S.stateId, ui.slow, ui.zone, ui.titem, S.custom, S.airway.ett, ui.img, S.vit, S.asks.map(q => !!q.reply), S.clues.length, ui.draft, ui.rec, S.ev.length, Object.keys(ui.hd || {}).length, S.dstep, S.fb, S.fbPub, S.refl, ui.sc]),
     html(S, ui){
       if (S.status === "end" && !ui.debSeen) { ui.debSeen = 1; ui.tab = "deb"; }
       const tab = S.status !== "end" && ui.tab === "deb" ? "pt" : ui.tab || "pt", c = CASE_BY[S.caseId];
@@ -5455,7 +5647,7 @@ const PANELS = {
         const slider = (k, n, min, max, st) => `<div class="sld"><div class="sldh"><span>${n}</span><b id="slv-${k}">${v[k]}</b></div><div class="sldr"><button data-st="${k}" data-d="-${st}">−</button><input type="range" data-sl="${k}" min="${min}" max="${max}" step="1" value="${v[k]}"><button data-st="${k}" data-d="${st}">＋</button></div></div>`;
         body = `<section class="panel">${S.status === "wait" ? `<button class="btn big" data-h="start">開始演練</button>` : S.status === "run" ? `<button class="btn ghost" data-h="end">結束演練</button>` : ""}
           <div class="label">病例（學員看不到）</div><select id="caseSel"><option value="">— 選病例 —</option>${["正式教案", "標準", "5H", "5T", "其他"].map(g => `<optgroup label="${g}">${CASES.filter(x => x.g === g).map(x => `<option value="${x.id}" ${S.caseId === x.id ? "selected" : ""}>${esc(x.n)}</option>`).join("")}</optgroup>`).join("")}</select>
-          ${c ? `<p class="brief">${esc(c.brief)}<br><b>期待處置：</b>${c.tx.map(TX_NAME).join("、")}</p>` : ""}${fCase(S) ? "" : guideModeHTML(S)}</section>${fTeachHTML(S, ui)}
+          ${c ? `<p class="brief">${esc(c.brief)}<br><b>期待處置：</b>${c.tx.map(TX_NAME).join("、")}</p>` : ""}${fCase(S) ? "" : guideModeHTML(S)}${famModeHTML(S)}</section>${intrTeachHTML(S, ui)}${fTeachHTML(S, ui)}
           <section class="panel">${monitorHTML(S, { small: true, teacher: true })}
           <p class="hint">給氧：${S.o2 ? `${O2_BY[S.o2.dev][1]} ${S.o2.f} L/min` : "—"}｜呼吸道：${S.airway.ett ? `ETT ${S.airway.ett.size}／${S.airway.ett.depth} cm` : S.airway.dev || "—"}｜管路：${S.iv || "—"}</p>
           <label class="sw"><input type="checkbox" id="monOn" ${S.monitor ? "checked" : ""}> 病人已接監視器（不勾＝要等電擊手接監視器或貼片，學員才看得到波形）</label>
